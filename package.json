@@ -1,0 +1,31 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "Solutions to adventofcode.com problems",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrianosmond/adventofcode.git"
+  },
+  "keywords": [
+    "adventofcode",
+    "coding",
+    "puzzles"
+  ],
+  "author": "adrianosmond",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adrianosmond/adventofcode/issues"
+  },
+  "homepage": "https://github.com/adrianosmond/adventofcode#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.19.1"
+  }
+}
