@@ -1,0 +1,57 @@
+const input = require('./input03'); // multi line string
+
+const claims = input.split('\n').map(claim =>
+  claim
+    .replace(/[#@:]/g, '')
+    .replace(/[\sx]/g, ',')
+    .split(',')
+    .filter(Boolean)
+    .map(x => parseInt(x, 10)),
+);
+
+const MAX_WIDTH = Math.max(...claims.map(c => c[1] + c[3])) + 1;
+const MAX_HEIGHT = Math.max(...claims.map(c => c[2] + c[4])) + 1;
+
+const grid = new Array(MAX_HEIGHT)
+  .fill(0)
+  .map(() => new Array(MAX_WIDTH).fill({}));
+const unique = claims.map(() => false);
+
+claims.forEach(([elf, x, y, w, h]) => {
+  const competition = new Set();
+  for (let i = y; i < y + h; i++) {
+    for (let j = x; j < x + w; j++) {
+      const squareInch = grid[i][j];
+      const otherElves = Object.keys(squareInch);
+      if (otherElves.length > 0) {
+        otherElves.forEach(e => competition.add(e));
+      }
+      grid[i][j] = {
+        ...squareInch,
+        [elf]: true,
+      };
+    }
+  }
+  if (
+    competition.size === 0 ||
+    (competition.size === 1 && competition.has(elf))
+  ) {
+    unique[elf - 1] = true;
+  } else {
+    competition.forEach(e => {
+      unique[e - 1] = false;
+    });
+  }
+});
+
+const contested = grid
+  .map(
+    row =>
+      row.map(cell => Object.keys(cell).length).filter(cell => cell > 1).length,
+  )
+  .reduce((a, b) => a + b);
+
+const uniqueElf = unique.map((e, idx) => e && idx + 1).filter(Boolean);
+
+console.log('part1:', contested);
+console.log('part2:', uniqueElf[0]);
