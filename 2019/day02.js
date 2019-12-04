@@ -1,37 +1,37 @@
 const input = require('./input02'); // array of integers
 
-const intComputer = (input, noun, verb) => {
-  input[1] = noun;
-  input[2] = verb;
+const intComputer = (intList, noun, verb) => {
+  const program = [...intList];
+  program[1] = noun;
+  program[2] = verb;
 
-  var ptr = 0;
-  while (true) {
-    var opCode = input[ptr];
-    if (opCode === 99) {
-      break;
-    }
-    var p1 = input[ptr + 1];
-    var p2 = input[ptr + 2];
-    var p3 = input[ptr + 3];
+  let ptr = 0;
+  let opCode = program[ptr];
+  while (opCode !== 99) {
+    const p1 = program[ptr + 1];
+    const p2 = program[ptr + 2];
+    const p3 = program[ptr + 3];
     if (opCode === 1) {
-      input[p3] = input[p1] + input[p2];
+      program[p3] = program[p1] + program[p2];
     } else if (opCode === 2) {
-      input[p3] = input[p1] * input[p2];
+      program[p3] = program[p1] * program[p2];
     }
     ptr += 4;
+    opCode = program[ptr];
   }
-  return input[0];
+  return program[0];
 };
 
-function part2() {
-  for (var noun = 0; noun <= 99; noun++) {
-    for (var verb = 0; verb <= 99; verb++) {
-      if (intComputer([...input], noun, verb) === 19690720) {
+const part2 = () => {
+  for (let noun = 0; noun <= 99; noun += 1) {
+    for (let verb = 0; verb <= 99; verb += 1) {
+      if (intComputer(input, noun, verb) === 19690720) {
         return 100 * noun + verb;
       }
     }
   }
-}
+  return 'failed';
+};
 
-console.log('part 1:', intComputer([...input], 12, 2));
+console.log('part 1:', intComputer(input, 12, 2));
 console.log('part 2:', part2());
