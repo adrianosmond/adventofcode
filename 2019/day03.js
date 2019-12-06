@@ -20,7 +20,7 @@ let closestManhattan = Number.MAX_SAFE_INTEGER;
 let closestSteps = Number.MAX_SAFE_INTEGER;
 
 const tracePath = (wireKey, steps, distance, startX, startY, xDiff, yDiff) => {
-  for (let i = 1; i <= distance; i += 1) {
+  for (let i = 1; i <= distance; i++) {
     const x = startX + i * xDiff;
     const y = startY + i * yDiff;
     const posKey = `${x},${y}`;

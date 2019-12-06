@@ -19,7 +19,7 @@ const testPassword = password => {
   return [Math.max(...freq) > 1, freq.indexOf(2) >= 0];
 };
 
-for (let i = from; i <= to; i += 1) {
+for (let i = from; i <= to; i++) {
   const [ascendingWithConsecutive, ascendingWithStrictDouble] = testPassword(i);
   matches[0] += ascendingWithConsecutive ? 1 : 0;
   matches[1] += ascendingWithStrictDouble ? 1 : 0;
