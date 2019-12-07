@@ -11,34 +11,35 @@ const getCodeAndModes = instruction => {
 const getVal = (program, address, mode) =>
   mode === 0 ? program[address] : address;
 
-const add = (program, ptr, mode1, mode2) => {
+const getValues = (program, ptr, mode1, mode2) => {
   const p1 = program[ptr + 1];
   const p2 = program[ptr + 2];
-  return getVal(program, p1, mode1) + getVal(program, p2, mode2);
+  return [getVal(program, p1, mode1), getVal(program, p2, mode2)];
+};
+
+const add = (program, ptr, mode1, mode2) => {
+  const [v1, v2] = getValues(program, ptr, mode1, mode2);
+  return v1 + v2;
 };
 
 const mul = (program, ptr, mode1, mode2) => {
-  const p1 = program[ptr + 1];
-  const p2 = program[ptr + 2];
-  return getVal(program, p1, mode1) * getVal(program, p2, mode2);
+  const [v1, v2] = getValues(program, ptr, mode1, mode2);
+  return v1 * v2;
 };
 
 const lt = (program, ptr, mode1, mode2) => {
-  const p1 = program[ptr + 1];
-  const p2 = program[ptr + 2];
-  return getVal(program, p1, mode1) < getVal(program, p2, mode2) ? 1 : 0;
+  const [v1, v2] = getValues(program, ptr, mode1, mode2);
+  return v1 < v2 ? 1 : 0;
 };
 
 const eq = (program, ptr, mode1, mode2) => {
-  const p1 = program[ptr + 1];
-  const p2 = program[ptr + 2];
-  return getVal(program, p1, mode1) === getVal(program, p2, mode2) ? 1 : 0;
+  const [v1, v2] = getValues(program, ptr, mode1, mode2);
+  return v1 === v2 ? 1 : 0;
 };
 
 function* intComputer(intList, inputValues) {
   const program = [...intList];
   let inputPtr = 0;
-
   let ptr = 0;
 
   let [opCode, mode1, mode2] = getCodeAndModes(program[ptr]);
@@ -63,8 +64,9 @@ function* intComputer(intList, inputValues) {
         ptr += 3;
       }
     } else if (opCode === 6) {
-      if (getVal(program, program[ptr + 1], mode1) === 0) {
-        ptr = getVal(program, program[ptr + 2], mode2);
+      const [v1, v2] = getValues(program, ptr, mode1, mode2);
+      if (v1 !== 0) {
+        ptr = v2;
       } else {
         ptr += 3;
       }
