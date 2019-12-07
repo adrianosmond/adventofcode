@@ -35,13 +35,11 @@ const eq = (program, ptr, mode1, mode2) => {
   return getVal(program, p1, mode1) === getVal(program, p2, mode2) ? 1 : 0;
 };
 
-let lastOutput = 0;
-
-const intComputer = (intList, inputValues, ptrStart = 0) => {
+function* intComputer(intList, inputValues) {
   const program = [...intList];
   let inputPtr = 0;
 
-  let ptr = ptrStart;
+  let ptr = 0;
 
   let [opCode, mode1, mode2] = getCodeAndModes(program[ptr]);
   while (opCode !== 99) {
@@ -56,7 +54,8 @@ const intComputer = (intList, inputValues, ptrStart = 0) => {
       inputPtr++;
       ptr += 2;
     } else if (opCode === 4) {
-      return [getVal(program, program[ptr + 1], mode1), ptr + 2, program];
+      yield getVal(program, program[ptr + 1], mode1);
+      ptr += 2;
     } else if (opCode === 5) {
       if (getVal(program, program[ptr + 1], mode1) !== 0) {
         ptr = getVal(program, program[ptr + 2], mode2);
@@ -78,8 +77,9 @@ const intComputer = (intList, inputValues, ptrStart = 0) => {
     }
     [opCode, mode1, mode2] = getCodeAndModes(program[ptr]);
   }
-  return [lastOutput, -1, null];
-};
+}
+
+const makeAmplifier = inputValues => intComputer(input, inputValues);
 
 function* choose5(start = 0) {
   for (let A = start; A < start + 5; A++) {
@@ -105,41 +105,41 @@ function* choose5(start = 0) {
 
 const day7part1 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
+  let lastOutput = 0;
 
   for (const phases of choose5()) {
-    lastOutput = phases.reduce((prev, phase) => {
-      const [out] = intComputer(input, [phase, prev]);
-      return out;
-    }, 0);
+    lastOutput = phases.reduce(
+      (prev, phase) => intComputer(input, [phase, prev]).next().value,
+      0,
+    );
     bestOutput = Math.max(lastOutput, bestOutput);
   }
   return bestOutput;
 };
 
-/* eslint-disable no-loop-func */
+const runAmp = (amp, ampInputs, prevAmpOutput) => {
+  ampInputs.push(prevAmpOutput);
+  const { value } = amp.next();
+  if (value) {
+    return [value, false];
+  }
+  return [prevAmpOutput, true];
+};
+
 const day7part2 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
 
   for (const phases of choose5(5)) {
-    lastOutput = 0;
-    const pointers = new Array(5);
-    const programs = new Array(5);
+    const inputs = phases.map(phase => [phase]);
+    const amps = inputs.map(i => makeAmplifier(i));
+    let lastOutput = 0;
+    let done = false;
 
-    phases.forEach((phase, idx) => {
-      [lastOutput, pointers[idx], programs[idx]] = intComputer(input, [
-        phase,
-        lastOutput,
-      ]);
-    });
-
-    while (!programs.includes(null)) {
-      phases.forEach((_, idx) => {
-        [lastOutput, pointers[idx], programs[idx]] = intComputer(
-          programs[idx],
-          [lastOutput],
-          pointers[idx],
-        );
-      });
+    while (!done) {
+      [lastOutput, done] = amps.reduce(
+        ([prev], amp, idx) => runAmp(amp, inputs[idx], prev),
+        [lastOutput, done],
+      );
     }
 
     bestOutput = Math.max(lastOutput, bestOutput);
