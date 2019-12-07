@@ -1,4 +1,4 @@
-const input = require('./input07');
+const input = require('./input07'); // Array of integers
 
 const getCodeAndModes = instruction => {
   const opCode = instruction % 100;
@@ -79,8 +79,6 @@ function* intComputer(intList, inputValues) {
   }
 }
 
-const makeAmplifier = inputValues => intComputer(input, inputValues);
-
 function* choose5(start = 0) {
   for (let A = start; A < start + 5; A++) {
     for (let B = start; B < start + 5; B++) {
@@ -103,6 +101,17 @@ function* choose5(start = 0) {
   }
 }
 
+const makeAmplifier = inputValues => intComputer(input, inputValues);
+
+const runAmp = (amp, ampInputs, prevAmpOutput) => {
+  ampInputs.push(prevAmpOutput);
+  const { value } = amp.next();
+  if (value) {
+    return [value, false];
+  }
+  return [prevAmpOutput, true];
+};
+
 const day7part1 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
   let lastOutput = 0;
@@ -115,15 +124,6 @@ const day7part1 = () => {
     bestOutput = Math.max(lastOutput, bestOutput);
   }
   return bestOutput;
-};
-
-const runAmp = (amp, ampInputs, prevAmpOutput) => {
-  ampInputs.push(prevAmpOutput);
-  const { value } = amp.next();
-  if (value) {
-    return [value, false];
-  }
-  return [prevAmpOutput, true];
 };
 
 const day7part2 = () => {
