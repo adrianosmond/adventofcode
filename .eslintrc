@@ -8,6 +8,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "no-plusplus": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "no-restricted-syntax": "off"
   }
 }
