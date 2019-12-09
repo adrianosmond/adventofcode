@@ -56,23 +56,16 @@ function* intComputer(intList, inputValues) {
   const program = [...intList, ...new Array(memBuffer).fill(0)];
   let inputPtr = 0;
   let ptr = 0;
-  let rb = 0;
+  let rel = 0;
 
   let [opCode, mode1, mode2, mode3] = getCodeAndModes(program[ptr]);
   while (opCode !== 99) {
+    const r = mode3 === 2 ? rel : 0;
     if (opCode === 1) {
-      if (mode3 === 2) {
-        program[rb + program[ptr + 3]] = add(program, ptr, mode1, mode2, rb);
-      } else {
-        program[program[ptr + 3]] = add(program, ptr, mode1, mode2, rb);
-      }
+      program[r + program[ptr + 3]] = add(program, ptr, mode1, mode2, rel);
       ptr += 4;
     } else if (opCode === 2) {
-      if (mode3 === 2) {
-        program[rb + program[ptr + 3]] = mul(program, ptr, mode1, mode2, rb);
-      } else {
-        program[program[ptr + 3]] = mul(program, ptr, mode1, mode2, rb);
-      }
+      program[r + program[ptr + 3]] = mul(program, ptr, mode1, mode2, rel);
       ptr += 4;
     } else if (opCode === 3) {
       const p1 = program[ptr + 1];
@@ -81,43 +74,35 @@ function* intComputer(intList, inputValues) {
       } else if (mode1 === 1) {
         program[p1] = inputValues[inputPtr];
       } else if (mode1 === 2) {
-        program[rb + p1] = inputValues[inputPtr];
+        program[rel + p1] = inputValues[inputPtr];
       }
       inputPtr++;
       ptr += 2;
     } else if (opCode === 4) {
-      yield getVal(program, program[ptr + 1], mode1, rb);
+      yield getVal(program, program[ptr + 1], mode1, rel);
       ptr += 2;
     } else if (opCode === 5) {
-      const [v1, v2] = getValues(program, ptr, mode1, mode2, rb);
+      const [v1, v2] = getValues(program, ptr, mode1, mode2, rel);
       if (v1 !== 0) {
         ptr = v2;
       } else {
         ptr += 3;
       }
     } else if (opCode === 6) {
-      const [v1, v2] = getValues(program, ptr, mode1, mode2, rb);
+      const [v1, v2] = getValues(program, ptr, mode1, mode2, rel);
       if (v1 === 0) {
         ptr = v2;
       } else {
         ptr += 3;
       }
     } else if (opCode === 7) {
-      if (mode3 === 2) {
-        program[rb + program[ptr + 3]] = lt(program, ptr, mode1, mode2, rb);
-      } else {
-        program[program[ptr + 3]] = lt(program, ptr, mode1, mode2, rb);
-      }
+      program[r + program[ptr + 3]] = lt(program, ptr, mode1, mode2, rel);
       ptr += 4;
     } else if (opCode === 8) {
-      if (mode3 === 2) {
-        program[rb + program[ptr + 3]] = eq(program, ptr, mode1, mode2, rb);
-      } else {
-        program[program[ptr + 3]] = eq(program, ptr, mode1, mode2, rb);
-      }
+      program[r + program[ptr + 3]] = eq(program, ptr, mode1, mode2, rel);
       ptr += 4;
     } else if (opCode === 9) {
-      rb += getVal(program, program[ptr + 1], mode1, rb);
+      rel += getVal(program, program[ptr + 1], mode1, rel);
       ptr += 2;
     }
     [opCode, mode1, mode2, mode3] = getCodeAndModes(program[ptr]);
