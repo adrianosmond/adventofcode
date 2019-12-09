@@ -23,33 +23,14 @@ const getVal = (program, address, mode, relativeBase) => {
   return program[relativeBase + address];
 };
 
-const getValues = (program, ptr, mode1, mode2, relativeBase) => {
+const getValues = (program, ptr, mode1, mode2, mode3, relativeBase) => {
   const p1 = program[ptr + 1];
   const p2 = program[ptr + 2];
   return [
     getVal(program, p1, mode1, relativeBase),
     getVal(program, p2, mode2, relativeBase),
+    (mode3 === 2 ? relativeBase : 0) + program[ptr + 3],
   ];
-};
-
-const add = (program, ptr, mode1, mode2, relativeBase) => {
-  const [v1, v2] = getValues(program, ptr, mode1, mode2, relativeBase);
-  return v1 + v2;
-};
-
-const mul = (program, ptr, mode1, mode2, relativeBase) => {
-  const [v1, v2] = getValues(program, ptr, mode1, mode2, relativeBase);
-  return v1 * v2;
-};
-
-const lt = (program, ptr, mode1, mode2, relativeBase) => {
-  const [v1, v2] = getValues(program, ptr, mode1, mode2, relativeBase);
-  return v1 < v2 ? 1 : 0;
-};
-
-const eq = (program, ptr, mode1, mode2, relativeBase) => {
-  const [v1, v2] = getValues(program, ptr, mode1, mode2, relativeBase);
-  return v1 === v2 ? 1 : 0;
 };
 
 function* intComputer(intList, inputValues) {
@@ -60,49 +41,44 @@ function* intComputer(intList, inputValues) {
 
   let [opCode, mode1, mode2, mode3] = getCodeAndModes(program[ptr]);
   while (opCode !== 99) {
-    const r = mode3 === 2 ? rel : 0;
+    const [v1, v2, v3] = getValues(program, ptr, mode1, mode2, mode3, rel);
     if (opCode === 1) {
-      program[r + program[ptr + 3]] = add(program, ptr, mode1, mode2, rel);
+      program[v3] = v1 + v2;
       ptr += 4;
     } else if (opCode === 2) {
-      program[r + program[ptr + 3]] = mul(program, ptr, mode1, mode2, rel);
+      program[v3] = v1 * v2;
       ptr += 4;
     } else if (opCode === 3) {
-      const p1 = program[ptr + 1];
-      if (mode1 === 0) {
-        program[program[p1]] = inputValues[inputPtr];
-      } else if (mode1 === 1) {
-        program[p1] = inputValues[inputPtr];
-      } else if (mode1 === 2) {
-        program[rel + p1] = inputValues[inputPtr];
+      if (mode1 === 2) {
+        program[rel + program[ptr + 1]] = inputValues[inputPtr];
+      } else {
+        program[v1] = inputValues[inputPtr];
       }
       inputPtr++;
       ptr += 2;
     } else if (opCode === 4) {
-      yield getVal(program, program[ptr + 1], mode1, rel);
+      yield v1;
       ptr += 2;
     } else if (opCode === 5) {
-      const [v1, v2] = getValues(program, ptr, mode1, mode2, rel);
       if (v1 !== 0) {
         ptr = v2;
       } else {
         ptr += 3;
       }
     } else if (opCode === 6) {
-      const [v1, v2] = getValues(program, ptr, mode1, mode2, rel);
       if (v1 === 0) {
         ptr = v2;
       } else {
         ptr += 3;
       }
     } else if (opCode === 7) {
-      program[r + program[ptr + 3]] = lt(program, ptr, mode1, mode2, rel);
+      program[v3] = v1 < v2 ? 1 : 0;
       ptr += 4;
     } else if (opCode === 8) {
-      program[r + program[ptr + 3]] = eq(program, ptr, mode1, mode2, rel);
+      program[v3] = v1 === v2 ? 1 : 0;
       ptr += 4;
     } else if (opCode === 9) {
-      rel += getVal(program, program[ptr + 1], mode1, rel);
+      rel += v1;
       ptr += 2;
     }
     [opCode, mode1, mode2, mode3] = getCodeAndModes(program[ptr]);
