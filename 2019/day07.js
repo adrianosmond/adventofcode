@@ -58,14 +58,15 @@ function* intComputer(intList, inputValues) {
       yield getVal(program, program[ptr + 1], mode1);
       ptr += 2;
     } else if (opCode === 5) {
-      if (getVal(program, program[ptr + 1], mode1) !== 0) {
-        ptr = getVal(program, program[ptr + 2], mode2);
+      const [v1, v2] = getValues(program, ptr, mode1, mode2);
+      if (v1 !== 0) {
+        ptr = v2;
       } else {
         ptr += 3;
       }
     } else if (opCode === 6) {
       const [v1, v2] = getValues(program, ptr, mode1, mode2);
-      if (v1 !== 0) {
+      if (v1 === 0) {
         ptr = v2;
       } else {
         ptr += 3;
