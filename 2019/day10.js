@@ -3,6 +3,12 @@ const input = require('./input10'); // Multi line string
 const space = input.split('\n').map(r => r.split(''));
 const asteroids = [];
 
+const distance = (a, b) => {
+  const xDiff = Math.abs(a.x - b.x);
+  const yDiff = Math.abs(a.y - b.y);
+  return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+};
+
 const blocksLOS = (from, to, blocker) => {
   const xDiff = to.x - from.x;
   const yDiff = to.y - from.y;
@@ -12,39 +18,22 @@ const blocksLOS = (from, to, blocker) => {
   if (xDiff < 0 && blockerXDiff >= 0) {
     return false;
   }
-  if (xDiff < 0 && blockerXDiff < xDiff) {
-    return false;
-  }
   if (xDiff > 0 && blockerXDiff <= 0) {
-    return false;
-  }
-  if (xDiff > 0 && blockerXDiff > xDiff) {
     return false;
   }
   if (yDiff < 0 && blockerYDiff >= 0) {
     return false;
   }
-  if (yDiff < 0 && blockerYDiff < yDiff) {
-    return false;
-  }
   if (yDiff > 0 && blockerYDiff <= 0) {
     return false;
   }
-  if (yDiff > 0 && blockerYDiff > yDiff) {
+  if (distance(from, to) < distance(from, blocker)) {
     return false;
   }
-  if (
-    xDiff === 0 &&
-    blockerXDiff === 0 &&
-    Math.abs(yDiff) > Math.abs(blockerYDiff)
-  ) {
+  if (xDiff === 0 && blockerXDiff === 0) {
     return true;
   }
-  if (
-    yDiff === 0 &&
-    blockerYDiff === 0 &&
-    Math.abs(xDiff) > Math.abs(blockerXDiff)
-  ) {
+  if (yDiff === 0 && blockerYDiff === 0) {
     return true;
   }
   const xRatio = Math.abs(xDiff) / Math.abs(blockerXDiff);
@@ -117,12 +106,6 @@ const day10part2 = () => {
   for (let i = 0; i < toDestroy.length; i++) {
     toDestroy[i].angle = getAngle(bestAsteroid, toDestroy[i]);
   }
-
-  const distance = (a, b) => {
-    const xDiff = Math.abs(a.x - b.x);
-    const yDiff = Math.abs(a.y - b.y);
-    return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-  };
 
   toDestroy.sort((a, b) => {
     if (a.angle === b.angle) {
