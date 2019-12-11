@@ -2,40 +2,30 @@ const input = require('./input11');
 const intComputer = require('./intComputer');
 
 const MOVEMENTS = [
-  [-1, 0],
-  [0, 1],
-  [1, 0],
-  [0, -1],
+  [-1, 0], // Left
+  [0, 1], // Up
+  [1, 0], // Right
+  [0, -1], // Down
 ];
 
-const NEW_HULL_PANEL = {
-  painted: false,
-  color: 0,
-};
-
-const getDimensions = hull => {
-  let maxX = -1;
-  let minX = 1;
-  let maxY = -1;
-  let minY = 1;
-
-  const coords = Object.keys(hull).map(c =>
-    c.split(',').map(i => parseInt(i, 10)),
-  );
-
-  coords.forEach(([x, y]) => {
-    maxX = Math.max(x, maxX);
-    minX = Math.min(x, minX);
-    maxY = Math.max(y, maxY);
-    minY = Math.min(y, minY);
-  });
-
-  return [minX, maxX, minY, maxY];
-};
+const getLimits = hull =>
+  Object.keys(hull)
+    .map(c => c.split(',').map(i => parseInt(i, 10)))
+    .reduce(
+      ([minX, maxX, minY, maxY], [x, y]) => [
+        Math.min(x, minX),
+        Math.max(x, maxX),
+        Math.min(y, minY),
+        Math.max(y, maxY),
+      ],
+      [1, -1, 1, -1],
+    );
 
 const hullRobot = startColor => {
-  const robot = { x: 0, y: 0, direction: 1 };
-  let coords = `${robot.x},${robot.y}`;
+  let x = 0;
+  let y = 0;
+  let direction = 1; // Up
+  let coords = `${x},${y}`;
   const hull = {
     '0,0': { painted: false, color: startColor },
   };
@@ -44,17 +34,14 @@ const hullRobot = startColor => {
   let outputIdx = 0;
   for (const output of intComputer(input, inputs)) {
     if (outputIdx % 2 === 0) {
-      hull[coords].painted = true;
-      hull[coords].color = output;
+      hull[coords] = { painted: true, color: output };
     } else {
-      robot.direction += output === 0 ? 3 : 1;
-      robot.direction %= 4;
-      const movement = MOVEMENTS[robot.direction];
-      robot.x += movement[0];
-      robot.y += movement[1];
-      coords = `${robot.x},${robot.y}`;
+      direction = (direction + (output === 0 ? 3 : 1)) % 4;
+      x += MOVEMENTS[direction][0];
+      y += MOVEMENTS[direction][1];
+      coords = `${x},${y}`;
       if (!hull[coords]) {
-        hull[coords] = { ...NEW_HULL_PANEL };
+        hull[coords] = { painted: false, color: 0 };
       }
       inputs.push(hull[coords].color);
     }
@@ -65,18 +52,14 @@ const hullRobot = startColor => {
 
 const day11part2 = () => {
   const hull = hullRobot(1);
-  const [minX, maxX, minY, maxY] = getDimensions(hull);
+  const [minX, maxX, minY, maxY] = getLimits(hull);
   let painting = '';
 
   for (let y = maxY; y >= minY; y--) {
     painting += '\n';
     for (let x = minX; x <= maxX; x++) {
       const coords = `${x},${y}`;
-      if (!hull[coords] || hull[coords].color === 0) {
-        painting += ' ';
-      } else {
-        painting += '#';
-      }
+      painting += !hull[coords] || hull[coords].color === 0 ? ' ' : '#';
     }
   }
 
