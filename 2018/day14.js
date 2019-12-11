@@ -1,6 +1,6 @@
 const input = require('./input14');
 
-const makeRecipes = (numRecipes, shouldBreak) => {
+const makeRecipes = (numRecipes, target, breakCondition) => {
   const recipes = Array(numRecipes);
   recipes[0] = 3;
   recipes[1] = 7;
@@ -13,8 +13,14 @@ const makeRecipes = (numRecipes, shouldBreak) => {
     if (newScore > 9) {
       maxRecipe++;
       recipes[maxRecipe] = Math.floor(newScore / 10);
-      if (shouldBreak(recipes, maxRecipe)) {
-        break;
+      if (breakCondition === 2) {
+        let matches = true;
+        for (let i = 0; i < target.length && matches; i++) {
+          matches = recipes[maxRecipe - i] === target[target.length - 1 - i];
+        }
+        if (matches) {
+          break;
+        }
       }
     }
     maxRecipe++;
@@ -27,8 +33,18 @@ const makeRecipes = (numRecipes, shouldBreak) => {
     while (elf2 > maxRecipe) {
       elf2 -= maxRecipe + 1;
     }
-    if (shouldBreak(recipes, makeRecipes)) {
-      break;
+    if (breakCondition === 1) {
+      if (maxRecipe >= target + 10) {
+        break;
+      }
+    } else if (breakCondition === 2) {
+      let matches = true;
+      for (let i = 0; i < target.length && matches; i++) {
+        matches = recipes[maxRecipe - i] === target[target.length - 1 - i];
+      }
+      if (matches) {
+        break;
+      }
     }
   }
   return [recipes, maxRecipe];
@@ -36,8 +52,7 @@ const makeRecipes = (numRecipes, shouldBreak) => {
 
 const day14part1 = () => {
   const target = input;
-  const shouldBreak = (_, maxRecipe) => maxRecipe >= target + 10;
-  const [recipes] = makeRecipes(10 + target, shouldBreak);
+  const [recipes] = makeRecipes(10 + target, target, 1);
   return recipes
     .filter((_, idx) => idx >= target && idx < target + 10)
     .join('');
@@ -49,15 +64,7 @@ const day14part2 = () => {
     .split('')
     .map(i => parseInt(i, 10));
 
-  const shouldBreak = (recipes, maxRecipe) => {
-    let matches = true;
-    for (let i = 0; i < target.length && matches; i++) {
-      matches = recipes[maxRecipe - i] === target[target.length - 1 - i];
-    }
-    return matches;
-  };
-
-  const [, maxRecipe] = makeRecipes(25000000, shouldBreak);
+  const [, maxRecipe] = makeRecipes(21000000, target, 2);
   return maxRecipe - target.length + 1;
 };
 
