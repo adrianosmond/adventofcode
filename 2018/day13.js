@@ -9,33 +9,19 @@ const input = fs
 const VERTICAL = '|';
 const HORIZONTAL = '-';
 const INTERSECTION = '+';
-const CURVE_TOP_LEFT = '/';
-const CURVE_TOP_RIGHT = '\\';
+const TL_BR = '/'; // Top left / Bottom right
+const TR_BL = '\\'; // Top right / Bottom left
 
-const nextTurn = {
-  right: 'left',
-  left: 'straight',
-  straight: 'right',
-};
+// [col movement, row movement]
+const movements = [
+  [0, -1],
+  [1, 0],
+  [0, 1],
+  [-1, 0],
+];
 
-const newDirection = {
-  up: {
-    left: 'left',
-    right: 'right',
-  },
-  down: {
-    left: 'right',
-    right: 'left',
-  },
-  left: {
-    left: 'down',
-    right: 'up',
-  },
-  right: {
-    left: 'up',
-    right: 'down',
-  },
-};
+// Turn first left, then don't turn, then turn right
+const nextDirection = [3, 0, 1];
 
 const carts = [];
 let firstCrash;
@@ -44,51 +30,44 @@ for (let i = 0; i < input.length; i++) {
   const row = input[i];
   for (let j = 0; j < row.length; j++) {
     const char = input[i][j];
+    const c = { row: i, col: j, turns: 0 };
     if (char === '^') {
       carts.push({
-        direction: 'up',
-        row: i,
-        col: j,
-        lastTurn: 'right',
+        ...c,
+        direction: 0, // Up = 0
       });
       input[i][j] = VERTICAL;
     } else if (char === 'v') {
       carts.push({
-        direction: 'down',
-        row: i,
-        col: j,
-        lastTurn: 'right',
+        ...c,
+        direction: 2, // Down = 2
       });
       input[i][j] = VERTICAL;
     } else if (char === '<') {
       carts.push({
-        direction: 'left',
-        row: i,
-        col: j,
-        lastTurn: 'right',
+        ...c,
+        direction: 3, // Left = 3
       });
       input[i][j] = HORIZONTAL;
     } else if (char === '>') {
       carts.push({
-        direction: 'right',
-        row: i,
-        col: j,
-        lastTurn: 'right',
+        ...c,
+        direction: 1, // Right = 4
       });
       input[i][j] = HORIZONTAL;
     }
   }
 }
 
-function sortCarts() {
+const sortCarts = () => {
   carts.sort((a, b) => {
     if (a.row < b.row) return -1;
     if (b.row < a.row) return 1;
     return a.col - b.col;
   });
-}
+};
 
-function checkForCrash(cart, ignore) {
+const checkForCrash = (cart, ignore) => {
   for (let i = 0; i < carts.length; i++) {
     if (i === ignore) {
       continue;
@@ -103,49 +82,30 @@ function checkForCrash(cart, ignore) {
     }
   }
   return [];
-}
+};
 
 while (carts.length > 1) {
   sortCarts();
   for (let i = 0; i < carts.length; i++) {
     const cart = carts[i];
-    const trackType = input[cart.row][cart.col];
-    if (trackType === INTERSECTION) {
-      const turn = nextTurn[cart.lastTurn];
-      if (turn !== 'straight') {
-        cart.direction = newDirection[cart.direction][turn];
-      }
-      cart.lastTurn = turn;
-    } else if (trackType === CURVE_TOP_LEFT) {
-      if (cart.direction === 'up') {
-        cart.direction = 'right';
-      } else if (cart.direction === 'down') {
-        cart.direction = 'left';
-      } else if (cart.direction === 'left') {
-        cart.direction = 'down';
-      } else if (cart.direction === 'right') {
-        cart.direction = 'up';
-      }
-    } else if (trackType === CURVE_TOP_RIGHT) {
-      if (cart.direction === 'up') {
-        cart.direction = 'left';
-      } else if (cart.direction === 'down') {
-        cart.direction = 'right';
-      } else if (cart.direction === 'left') {
-        cart.direction = 'up';
-      } else if (cart.direction === 'right') {
-        cart.direction = 'down';
-      }
+    const track = input[cart.row][cart.col];
+    const upDown = cart.direction % 2 === 0;
+    if (track === INTERSECTION) {
+      cart.direction += nextDirection[cart.turns % 3];
+      cart.direction %= 4;
+      cart.turns++;
+    } else if ((track === TL_BR && upDown) || (track === TR_BL && !upDown)) {
+      // Clockwise
+      cart.direction += 1;
+      cart.direction %= 4;
+    } else if ((track === TL_BR && !upDown) || (track === TR_BL && upDown)) {
+      // Anti-clockwise
+      cart.direction += 3;
+      cart.direction %= 4;
     }
-    if (cart.direction === 'up') {
-      cart.row--;
-    } else if (cart.direction === 'down') {
-      cart.row++;
-    } else if (cart.direction === 'left') {
-      cart.col--;
-    } else if (cart.direction === 'right') {
-      cart.col++;
-    }
+    const m = movements[cart.direction];
+    cart.col += m[0];
+    cart.row += m[1];
     const removed = checkForCrash(cart, i);
     i -= removed.filter(r => r <= i).length;
   }
