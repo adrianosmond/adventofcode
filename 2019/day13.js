@@ -3,11 +3,11 @@ const { intComputer, getNOutputs } = require('./intComputer');
 
 const day12part1 = () => {
   const computer = intComputer(input, []);
-  const grid = [];
-  for (const [x, y, output] of getNOutputs(3, computer)) {
-    grid[`${x},${y}`] = output;
+  let blocks = 0;
+  for (const [, , output] of getNOutputs(3, computer)) {
+    if (output === 2) blocks++;
   }
-  return Object.values(grid).filter(v => v === 2).length;
+  return blocks;
 };
 
 const day12part2 = () => {
