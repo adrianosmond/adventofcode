@@ -1,4 +1,4 @@
-const input = require('./input12.js'); // multi line string
+const input = require('./input12'); // multi line string
 
 const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 

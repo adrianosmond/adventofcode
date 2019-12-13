@@ -1,5 +1,5 @@
 const input = require('./input05'); // array of integers
-const intComputer = require('./intComputer');
+const { intComputer } = require('./intComputer');
 
 let output;
 for (output of intComputer(input, [1]));

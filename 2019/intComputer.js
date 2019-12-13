@@ -52,7 +52,9 @@ function* intComputer(intList, inputValues) {
       } else {
         program[program[ptr + 1]] = inputValues[inputPtr];
       }
-      inputPtr++;
+      if (inputValues[inputPtr]) {
+        inputPtr++;
+      }
       ptr += 2;
     } else if (opCode === 4) {
       yield v1;
@@ -83,4 +85,18 @@ function* intComputer(intList, inputValues) {
   }
 }
 
-module.exports = intComputer;
+function* getNOutputs(n, computer) {
+  let outputs = [];
+  for (const output of computer) {
+    outputs.push(output);
+    if (outputs.length === n) {
+      yield outputs;
+      outputs = [];
+    }
+  }
+}
+
+module.exports = {
+  intComputer,
+  getNOutputs,
+};

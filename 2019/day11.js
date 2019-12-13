@@ -1,5 +1,5 @@
 const input = require('./input11');
-const intComputer = require('./intComputer');
+const { intComputer } = require('./intComputer');
 
 const MOVEMENTS = [
   [-1, 0], // Left

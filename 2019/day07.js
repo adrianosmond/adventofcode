@@ -1,5 +1,5 @@
 const input = require('./input07'); // Array of integers
-const intComputer = require('./intComputer');
+const { intComputer } = require('./intComputer');
 
 function* choose5(start = 0) {
   for (let A = start; A < start + 5; A++) {
