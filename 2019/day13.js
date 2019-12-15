@@ -25,12 +25,10 @@ const day12part2 = () => {
     } else if (output === 3) {
       paddleX = x;
     } else if (output === 4) {
-      if (paddleX) {
-        if (x < paddleX) {
-          inputs.push(-1);
-        } else if (x > paddleX) {
-          inputs.push(1);
-        }
+      if (x < paddleX) {
+        inputs.push(-1);
+      } else if (x > paddleX) {
+        inputs.push(1);
       }
     }
   }
