@@ -14,7 +14,8 @@ for (let phase = 0; phase < 100; phase++) {
   const pNext = (phase + 1) % 2;
   for (let i = 0; i < signal.length; i++) {
     let total = 0;
-    for (let j = 0; j < signal.length; j++) {
+    // The first i multipliers will be 0, so we can skip them
+    for (let j = i; j < signal.length; j++) {
       total += phases[p][j] * getMultiplier(i, j);
     }
     phases[pNext][i] = Math.abs(total) % 10;
@@ -23,22 +24,24 @@ for (let phase = 0; phase < 100; phase++) {
 
 console.log('part1:', phases[0].slice(0, 8).join(''));
 
-let input10000 = '';
-for (let i = 0; i < 10000; i++) {
-  input10000 += input;
+const start = parseInt(input.substr(0, 7), 10);
+const input2Len = input.length * 10000 - start;
+
+let inputPart2 = '';
+for (let i = 0; i < Math.ceil(input2Len / input.length); i++) {
+  inputPart2 += input;
 }
 
-const start = parseInt(input.substr(0, 7), 10);
-input10000 = input10000
-  .substr(start)
+inputPart2 = inputPart2
+  .substr(inputPart2.length - input2Len)
   .split('')
   .map(x => parseInt(x, 10));
 
 for (let phase = 0; phase < 100; phase++) {
-  for (let i = input10000.length - 2; i >= 0; i--) {
-    input10000[i] += input10000[i + 1];
-    input10000[i] %= 10;
+  for (let i = inputPart2.length - 2; i >= 0; i--) {
+    inputPart2[i] += inputPart2[i + 1];
+    inputPart2[i] %= 10;
   }
 }
 
-console.log('part2:', input10000.slice(0, 8).join(''));
+console.log('part2:', inputPart2.slice(0, 8).join(''));
