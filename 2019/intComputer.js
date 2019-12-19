@@ -52,7 +52,7 @@ function* intComputer(intList, inputValues) {
       } else {
         program[program[ptr + 1]] = inputValues[inputPtr];
       }
-      if (inputValues[inputPtr]) {
+      if (inputValues[inputPtr] !== undefined) {
         inputPtr++;
       }
       ptr += 2;
