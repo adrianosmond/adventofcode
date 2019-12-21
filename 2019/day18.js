@@ -26,6 +26,24 @@ const makeMaze = () => {
   return [maze, keys, me];
 };
 
+const makeMazes = () => {
+  const [maze, keys] = makeMaze();
+  const yCentre = Math.floor(maze.length / 2);
+  const xCentre = Math.floor(maze[0].length / 2);
+  maze[yCentre][xCentre] = '#';
+  maze[yCentre - 1][xCentre] = '#';
+  maze[yCentre + 1][xCentre] = '#';
+  maze[yCentre][xCentre - 1] = '#';
+  maze[yCentre][xCentre + 1] = '#';
+  const robots = {
+    robot1: { row: yCentre - 1, col: xCentre - 1 },
+    robot2: { row: yCentre + 1, col: xCentre - 1 },
+    robot3: { row: yCentre + 1, col: xCentre + 1 },
+    robot4: { row: yCentre - 1, col: xCentre + 1 },
+  };
+  return [maze, keys, robots];
+};
+
 const createMap = (maze, val) => {
   const map = [];
   for (let i = 0; i < maze.length; i++) {
@@ -110,7 +128,7 @@ const getPath = (maze, from, to) => {
         tentativeGScore + manhattan(neighbour, to);
     }
   }
-  throw new Error('No path found');
+  return -1;
 };
 
 const getDoorsFromPath = (maze, path) =>
@@ -127,27 +145,36 @@ const getDoorsFromPath = (maze, path) =>
     return doors;
   }, {});
 
-const makeKeyMap = (maze, start, keys) => {
+const makeKeyMap = (maze, starts, keys) => {
   const keyNames = Object.keys(keys);
-  const keyMap = {
-    start: {},
-  };
+  const keyMap = {};
   for (let i = 0; i < keyNames.length; i++) {
     keyMap[keyNames[i]] = {};
-    const key1 = keyNames[i];
-    const path = getPath(maze, start, keys[key1]);
-    const distance = path.length - 1;
-    const doors = getDoorsFromPath(maze, path);
-    keyMap.start[key1] = {
-      distance,
-      doors,
-    };
   }
+  Object.entries(starts).forEach(([k, v]) => {
+    keyMap[k] = {};
+    for (let i = 0; i < keyNames.length; i++) {
+      const key1 = keyNames[i];
+      const path = getPath(maze, v, keys[key1]);
+      if (path === -1) {
+        continue;
+      }
+      const distance = path.length - 1;
+      const doors = getDoorsFromPath(maze, path);
+      keyMap[k][key1] = {
+        distance,
+        doors,
+      };
+    }
+  });
   for (let i = 0; i < keyNames.length; i++) {
     const key1 = keyNames[i];
     for (let j = i + 1; j < keyNames.length; j++) {
       const key2 = keyNames[j];
       const path = getPath(maze, keys[key1], keys[key2]);
+      if (path === -1) {
+        continue;
+      }
       const distance = path.length - 1;
       const doors = getDoorsFromPath(maze, path);
       const obj = {
@@ -161,9 +188,11 @@ const makeKeyMap = (maze, start, keys) => {
   return keyMap;
 };
 
+const arrToSortedStr = arr => [...arr].sort().join(',');
+
 const keyCache = {};
 const generateCacheId = state =>
-  `${state.currentKey},${[...state.haveKeys].sort().join(',')}`;
+  `${arrToSortedStr(state.currentKeys)},${arrToSortedStr(state.haveKeys)}`;
 
 const getReachableKeys = (from, keyMap) => {
   const cacheId = generateCacheId(from);
@@ -171,34 +200,39 @@ const getReachableKeys = (from, keyMap) => {
     return keyCache[cacheId];
   }
 
-  const { currentKey, haveKeys } = from;
-  const reachables = Object.entries(keyMap[currentKey]).reduce((r, [k, v]) => {
-    const doors = Object.keys(v.doors);
-    if (!haveKeys.includes(k) && doors.every(d => haveKeys.includes(d))) {
-      return {
-        ...r,
-        [k]: v,
-      };
-    }
-    return {
-      ...r,
-    };
-  }, {});
-
+  const { currentKeys, haveKeys } = from;
+  const reachables = currentKeys.reduce(
+    (all, current) => ({
+      ...all,
+      ...Object.entries(keyMap[current]).reduce((r, [k, v]) => {
+        const doors = Object.keys(v.doors);
+        if (!haveKeys.includes(k) && doors.every(d => haveKeys.includes(d))) {
+          return {
+            ...r,
+            [k]: {
+              ...v,
+              from: current,
+            },
+          };
+        }
+        return {
+          ...r,
+        };
+      }, {}),
+    }),
+    {},
+  );
   keyCache[cacheId] = reachables;
   return reachables;
 };
 
 const searchMaze = (from, keyMap) => {
-  const distances = {
-    start: {
-      '': 0,
-    },
-  };
   let bestDistance = Number.MAX_SAFE_INTEGER;
+
+  const distances = {};
   const queue = [
     {
-      currentKey: from,
+      currentKeys: from,
       haveKeys: [],
       distance: 0,
     },
@@ -212,7 +246,7 @@ const searchMaze = (from, keyMap) => {
         bestDistance = current.distance;
       }
     }
-    const keyStr = [...current.haveKeys].sort().join('');
+    const keyStr = arrToSortedStr(current.haveKeys);
 
     Object.entries(neighbours).forEach(([key, value]) => {
       if (!distances[key]) {
@@ -224,7 +258,9 @@ const searchMaze = (from, keyMap) => {
       ) {
         distances[key][keyStr] = current.distance + value.distance;
         queue.push({
-          currentKey: key,
+          currentKeys: current.currentKeys.map(k =>
+            k === value.from ? key : k,
+          ),
           haveKeys: [...current.haveKeys, key],
           distance: current.distance + value.distance,
         });
@@ -237,8 +273,15 @@ const searchMaze = (from, keyMap) => {
 
 const day18part1 = () => {
   const [maze, keys, me] = makeMaze();
-  const keyMap = makeKeyMap(maze, me, keys);
-  return searchMaze('start', keyMap);
+  const keyMap = makeKeyMap(maze, { start: me }, keys);
+  return searchMaze(['start'], keyMap);
+};
+
+const day18part2 = () => {
+  const [maze, keys, robots] = makeMazes();
+  const keyMap = makeKeyMap(maze, robots, keys);
+  return searchMaze(Object.keys(robots), keyMap);
 };
 
 console.log('part1:', day18part1());
+console.log('part2:', day18part2());
