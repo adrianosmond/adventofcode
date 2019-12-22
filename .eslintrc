@@ -1,6 +1,6 @@
 {
   "parserOptions": {
-    "ecmaVersion": 2019
+    "ecmaVersion": 2020
   },
   "extends": ["airbnb-base", "prettier"],
   "plugins": ["prettier", "jest"],
@@ -13,6 +13,7 @@
     "no-console": "off",
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",
-    "no-continue": "off"
+    "no-continue": "off",
+    "no-bitwise": "off"
   }
 }

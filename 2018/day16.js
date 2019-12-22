@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 const { input, input2 } = require('./input16');
 
 const instructions = {
