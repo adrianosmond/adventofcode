@@ -31,10 +31,12 @@ const getValues = (program, ptr, mode1, mode2, mode3, relativeBase) => {
   ];
 };
 
-function* intComputer(intList, inputValues) {
+function* intComputer(intList, inputValues, options = {}) {
+  const blockForInput = !!options.blockForInput;
+  const emptyInputArray = !!options.emptyInputArray;
   const program = [...intList, ...new Array(memBuffer).fill(0)];
-  let inputPtr = 0;
   let ptr = 0;
+  let inputPtr = 0;
   let rel = 0;
 
   let [opCode, mode1, mode2, mode3] = getCodeAndModes(program[ptr]);
@@ -47,13 +49,22 @@ function* intComputer(intList, inputValues) {
       program[v3] = v1 * v2;
       ptr += 4;
     } else if (opCode === 3) {
-      if (mode1 === 2) {
-        program[rel + program[ptr + 1]] = inputValues[inputPtr];
-      } else {
-        program[program[ptr + 1]] = inputValues[inputPtr];
+      if (blockForInput) {
+        yield Number.MIN_SAFE_INTEGER;
       }
-      if (inputValues[inputPtr] !== undefined) {
-        inputPtr++;
+      let val;
+      if (emptyInputArray) {
+        val = inputValues.shift();
+      } else {
+        val = inputValues[inputPtr];
+        if (val !== undefined) {
+          inputPtr++;
+        }
+      }
+      if (mode1 === 2) {
+        program[rel + program[ptr + 1]] = val;
+      } else {
+        program[program[ptr + 1]] = val;
       }
       ptr += 2;
     } else if (opCode === 4) {
