@@ -121,4 +121,4 @@ while (upper !== lower) {
   }
 }
 
-console.log('part 2:', lower);
+console.log('part2:', lower);

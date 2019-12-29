@@ -21,5 +21,5 @@ while (!foundDuplicate) {
   }
 }
 
-console.log('part 1:', resultingFrequency);
-console.log('part 2:', firstRepeatedFrequency);
+console.log('part1:', resultingFrequency);
+console.log('part2:', firstRepeatedFrequency);

@@ -50,5 +50,5 @@ const day12part2 = () => {
   return groups;
 };
 
-console.log('part 1:', day12part1());
-console.log('part 2:', day12part2());
+console.log('part1:', day12part1());
+console.log('part2:', day12part2());

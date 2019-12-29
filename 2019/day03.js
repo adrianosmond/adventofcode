@@ -67,5 +67,5 @@ wires.forEach((wire, idx) => {
   });
 });
 
-console.log('part 1:', closestManhattan);
-console.log('part 2:', closestSteps);
+console.log('part1:', closestManhattan);
+console.log('part2:', closestSteps);

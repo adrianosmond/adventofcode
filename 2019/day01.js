@@ -12,5 +12,5 @@ const getFuelNeededIncludingFuelMass = mass => {
 };
 const sum = (a, b) => a + b;
 
-console.log('part 1:', input.map(getFuelNeededForMass).reduce(sum));
-console.log('part 2:', input.map(getFuelNeededIncludingFuelMass).reduce(sum));
+console.log('part1:', input.map(getFuelNeededForMass).reduce(sum));
+console.log('part2:', input.map(getFuelNeededIncludingFuelMass).reduce(sum));

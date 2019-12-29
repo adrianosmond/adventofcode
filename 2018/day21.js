@@ -76,7 +76,7 @@ console.log('You might have to wait a few minutes for part 2...');
 while (ptr >= 0 && ptr < instructions.length) {
   if (ptr === 28) {
     if (getOutVals[registers[targetReg]]) {
-      console.log('part 2:');
+      console.log('part2:');
       console.log(prev);
       break;
     }
@@ -84,7 +84,7 @@ while (ptr >= 0 && ptr < instructions.length) {
     prev = registers[targetReg];
     count++;
     if (count === 1) {
-      console.log('part 1:');
+      console.log('part1:');
       console.log(prev);
     }
   }

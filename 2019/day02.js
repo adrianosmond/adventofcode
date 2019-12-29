@@ -33,5 +33,5 @@ const part2 = () => {
   return 'failed';
 };
 
-console.log('part 1:', intComputer(input, 12, 2));
-console.log('part 2:', part2());
+console.log('part1:', intComputer(input, 12, 2));
+console.log('part2:', part2());
