@@ -1,5 +1,6 @@
 const input = require('./input15');
 const { intComputer } = require('./intComputer');
+const manhattan = require('../utils/functions');
 
 const FLOOR = {
   UNKNOWN: -1,
@@ -29,8 +30,6 @@ let target;
 
 const coordsToStr = c => `${c[0]},${c[1]}`;
 const strToCoords = str => str.split(',').map(c => parseInt(c, 10));
-
-const manhattan = ([x1, y1], [x2, y2]) => Math.abs(x1 - x2) + Math.abs(y1 - y2);
 
 const getNeighbours = coordStr => {
   const coords = strToCoords(coordStr);
