@@ -1,4 +1,5 @@
 const input = require('./input04'); // multi line string
+const { highestByKey } = require('../utils/reducers');
 
 const makeDate = matches =>
   new Date(
@@ -63,15 +64,13 @@ records = Object.values(records).map(r => {
   };
 });
 
-const part1BestGuard = records.reduce(
-  (best, curr) => (curr.totalSleep > best.totalSleep ? curr : best),
-  { totalSleep: -1 },
-);
+const part1BestGuard = records.reduce(highestByKey('totalSleep'), {
+  totalSleep: -1,
+});
 
-const part2BestGuard = records.reduce(
-  (best, curr) => (curr.mostSleeps > best.mostSleeps ? curr : best),
-  { mostSleeps: -1 },
-);
+const part2BestGuard = records.reduce(highestByKey('mostSleeps'), {
+  mostSleeps: -1,
+});
 
 console.log('part1:', part1BestGuard.id * part1BestGuard.bestMinute);
 console.log('part2:', part2BestGuard.id * part2BestGuard.bestMinute);

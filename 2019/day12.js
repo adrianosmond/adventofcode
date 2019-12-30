@@ -1,4 +1,5 @@
 const input = require('./input12'); // multi line string
+const { sum } = require('../utils/reducers');
 
 const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 
@@ -76,7 +77,7 @@ while (foundCount < frequency.length) {
         const kin = Math.abs(v[0]) + Math.abs(v[1]) + Math.abs(v[2]);
         return pot * kin;
       })
-      .reduce((a, b) => a + b);
+      .reduce(sum);
     console.log('part1:', energy);
   }
 }

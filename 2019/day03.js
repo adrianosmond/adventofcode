@@ -1,5 +1,6 @@
-const input = require('./input03');
-// multiline string
+const input = require('./input03'); // multiline string
+const { sumByKey } = require('../utils/reducers');
+
 const wires = input.split('\n').map(wire =>
   wire.split(',').map(instruction => ({
     direction: instruction[0],
@@ -44,7 +45,8 @@ const tracePath = (wireKey, steps, distance, startX, startY, xDiff, yDiff) => {
       }
 
       const stepsDistance = Object.values(paths[posKey]).reduce(
-        (a, b) => a.steps + b.steps,
+        sumByKey('steps'),
+        0,
       );
       if (stepsDistance < closestSteps) {
         closestSteps = stepsDistance;

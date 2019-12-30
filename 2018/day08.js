@@ -1,13 +1,14 @@
 const input = require('./input08'); // String
+const { sum, sumByKey } = require('../utils/reducers');
 
 const nodes = input.split(' ').map(x => parseInt(x, 10));
 
 const countMetadata = (start, number) => {
-  let sum = 0;
+  let count = 0;
   for (let i = start; i < start + number; i++) {
-    sum += nodes[i];
+    count += nodes[i];
   }
-  return sum;
+  return count;
 };
 
 const findMetadata = startIdx => {
@@ -22,26 +23,22 @@ const findMetadata = startIdx => {
     idx = child.end;
   }
   const sumMetadata =
-    countMetadata(idx, numMetadata) +
-    children.reduce((tot, cur) => {
-      return tot + cur.metadata;
-    }, 0);
+    countMetadata(idx, numMetadata) + children.reduce(sumByKey('metadata'), 0);
   return {
     metadata: sumMetadata,
     end: idx + numMetadata,
   };
 };
 
-const getTreeValue = tree => {
-  if (tree.children.length === 0) {
-    return tree.metadata.reduce((p, c) => p + c, 0);
-  }
-  return tree.metadata.reduce((p, c) => {
-    return (
-      p + (c > tree.children.length ? 0 : getTreeValue(tree.children[c - 1]))
-    );
-  }, 0);
-};
+const getTreeValue = tree =>
+  tree.children.length === 0
+    ? tree.metadata.reduce(sum, 0)
+    : tree.metadata.reduce(
+        (p, c) =>
+          p +
+          (c > tree.children.length ? 0 : getTreeValue(tree.children[c - 1])),
+        0,
+      );
 
 const makeTree = (startIdx, tree) => {
   let idx = startIdx;

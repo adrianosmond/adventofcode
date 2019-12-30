@@ -12,13 +12,13 @@ const getStrongestBridge = (port, remainingPieces) => {
   if (options.length === 0) {
     return 0;
   }
-  return options
-    .map(p => {
+  return Math.max(
+    ...options.map(p => {
       const nextPort = p[0] === port ? p[1] : p[0];
       const remainingOptions = remainingPieces.filter(opt => opt !== p);
       return p[0] + p[1] + getStrongestBridge(nextPort, remainingOptions);
-    })
-    .reduce((a, b) => Math.max(a, b));
+    }),
+  );
 };
 
 console.log('part1:', getStrongestBridge(0, ports));

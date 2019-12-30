@@ -1,4 +1,5 @@
 const input = require('./input10'); // Multi line string
+const { highestByKey } = require('../utils/reducers');
 
 const space = input.split('\n').map(r => r.split(''));
 
@@ -96,11 +97,7 @@ const findBestAsteroid = asteroids => {
     }
   }
 
-  return asteroids.reduce(
-    (best, current) =>
-      current.lineOfSight > best.lineOfSight ? current : best,
-    { lineOfSight: -1 },
-  );
+  return asteroids.reduce(highestByKey('lineOfSight'), { lineOfSight: -1 });
 };
 
 const sortAsteroidsToDestroy = (asteroids, monitoringStation) => {

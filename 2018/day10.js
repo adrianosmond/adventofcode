@@ -42,9 +42,5 @@ while (loops < 11000) {
 }
 
 console.log('part1:');
-console.log(
-  message.reduce((prevLines, currentLine) => {
-    return `${prevLines + currentLine.join('')}\n`;
-  }, ''),
-);
+console.log(message.map(r => r.join('')).join('\n'));
 console.log('part2:', bestTime);

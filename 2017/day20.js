@@ -1,4 +1,5 @@
 const input = require('./input20');
+const { lowestWithIndex } = require('../utils/reducers');
 
 const getParticles = () =>
   input.split('\n').map(l =>
@@ -42,19 +43,10 @@ const day20part1 = () => {
   while (timesInARow < 10000) {
     updateParticles(particles);
     const manhattans = particles.map(p => manhattan(p[x], p[y], p[z]));
-    const { index } = manhattans.reduce(
-      (prevBest, current, idx) =>
-        prevBest.best > current
-          ? {
-              index: idx,
-              best: current,
-            }
-          : prevBest,
-      {
-        index: -1,
-        best: Number.MAX_SAFE_INTEGER,
-      },
-    );
+    const { index } = manhattans.reduce(lowestWithIndex, {
+      index: -1,
+      best: Number.MAX_SAFE_INTEGER,
+    });
     if (index === prevBestIdx) {
       timesInARow++;
     } else {

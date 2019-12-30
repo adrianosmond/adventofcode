@@ -1,4 +1,5 @@
 const input = require('./input15');
+const { sumByKey } = require('../utils/reducers');
 
 const readingOrder = (a, b) =>
   a.row === b.row ? a.col - b.col : a.row - b.row;
@@ -136,9 +137,7 @@ const fightLoop = (elvesAndGoblins, map, elvesMayDie = true) => {
       const fighter = fighters[i];
       const targets = fighters.filter(f => f.isElf !== fighter.isElf);
       if (targets.length === 0) {
-        return (
-          loops * fighters.reduce((prev, curr) => prev + curr.hitPoints, 0)
-        );
+        return loops * fighters.reduce(sumByKey('hitPoints'), 0);
       }
       let reachableWithoutMove = targets.filter(t => inRange(fighter, t));
       let chosenTarget = null;

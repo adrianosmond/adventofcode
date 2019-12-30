@@ -1,4 +1,5 @@
 const input = require('./input19');
+const { sum } = require('../utils/reducers');
 
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);
@@ -107,7 +108,7 @@ const day19part2 = () => {
     ptr++;
   }
   const factors = findFactors(Math.max(...registers));
-  return factors.reduce((a, b) => a + b, 0);
+  return factors.reduce(sum, 0);
 };
 
 console.log('part1:', day19part1());

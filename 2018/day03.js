@@ -1,4 +1,5 @@
 const input = require('./input03'); // multi line string
+const { sum } = require('../utils/reducers');
 
 const claims = input.split('\n').map(claim =>
   claim
@@ -13,23 +14,24 @@ const MAX_WIDTH = Math.max(...claims.map(c => c[1] + c[3])) + 1;
 const MAX_HEIGHT = Math.max(...claims.map(c => c[2] + c[4])) + 1;
 
 const grid = new Array(MAX_HEIGHT)
-  .fill(0)
-  .map(() => new Array(MAX_WIDTH).fill({}));
+  .fill()
+  .map(() => new Array(MAX_WIDTH).fill());
+
+for (let y = 0; y < MAX_HEIGHT; y++) {
+  for (let x = 0; x < MAX_WIDTH; x++) {
+    grid[y][x] = {};
+  }
+}
+
 const unique = claims.map(() => false);
 
 claims.forEach(([elf, x, y, w, h]) => {
   const competition = new Set();
   for (let i = y; i < y + h; i++) {
     for (let j = x; j < x + w; j++) {
-      const squareInch = grid[i][j];
-      const otherElves = Object.keys(squareInch);
-      if (otherElves.length > 0) {
-        otherElves.forEach(e => competition.add(e));
-      }
-      grid[i][j] = {
-        ...squareInch,
-        [elf]: true,
-      };
+      const otherElves = Object.keys(grid[i][j]);
+      otherElves.forEach(e => competition.add(e));
+      grid[i][j][elf] = true;
     }
   }
   if (
@@ -49,7 +51,7 @@ const contested = grid
     row =>
       row.map(cell => Object.keys(cell).length).filter(cell => cell > 1).length,
   )
-  .reduce((a, b) => a + b);
+  .reduce(sum);
 
 const uniqueElf = unique.map((e, idx) => e && idx + 1).filter(Boolean);
 

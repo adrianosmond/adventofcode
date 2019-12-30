@@ -1,5 +1,6 @@
 const knotHash = require('./knotHash');
 const input = require('./input14');
+const { sum } = require('../utils/reducers');
 
 let output = '';
 
@@ -22,7 +23,7 @@ console.log(
     .replace(/0/g, '')
     .split('\n')
     .map(r => r.length)
-    .reduce((tot, cur) => tot + cur),
+    .reduce(sum),
 );
 
 output = output.split('\n').map(r => r.split(''));

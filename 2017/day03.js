@@ -1,4 +1,5 @@
 const input = require('./input03');
+const { sum } = require('../utils/reducers');
 
 const getCoordinates = number => {
   let sideLength = 3;
@@ -39,7 +40,7 @@ const getCoordinates = number => {
 
 const day4part1 = () => {
   const coords = getCoordinates(input);
-  return coords.map(Math.abs).reduce((tot, cur) => tot + cur);
+  return coords.map(Math.abs).reduce(sum);
 };
 
 const getNextDirection = dir => {

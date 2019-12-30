@@ -1,4 +1,5 @@
 const input = require('./input09');
+const { sum } = require('../utils/reducers');
 
 let sanitised = input.replace(/!./g, '');
 let inputLength = sanitised.length;
@@ -32,12 +33,7 @@ const buildStructure = start => {
 };
 
 const score = (pts, structure) => {
-  return (
-    pts +
-    structure.children
-      .map(c => score(pts + 1, c))
-      .reduce((tot, cur) => tot + cur, 0)
-  );
+  return pts + structure.children.map(c => score(pts + 1, c)).reduce(sum, 0);
 };
 
 console.log('part1:', score(1, buildStructure(0)));

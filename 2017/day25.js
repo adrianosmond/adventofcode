@@ -1,3 +1,4 @@
+const { sum } = require('../utils/reducers');
 const { startState, states, checksumAfter } = require('./input25');
 /**
  * states should be an object which takes the form: {
@@ -28,5 +29,5 @@ for (let i = 0; i < checksumAfter; i++) {
   currentState = state;
 }
 
-const checksum = tape.reduce((a, b) => a + b);
+const checksum = tape.reduce(sum);
 console.log('part1:', checksum);

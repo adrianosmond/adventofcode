@@ -1,4 +1,5 @@
 const input = require('./input21');
+const { mergeObjects } = require('../utils/reducers');
 
 const rules = input.split('\n').map(l => l.split(' => '));
 const variants = [...rules];
@@ -65,13 +66,7 @@ rules.forEach(([rule, outcome]) => {
 
 const dictionary = variants
   .map(x => ({ [x[0]]: x[1] }))
-  .reduce(
-    (prev, curr) => ({
-      ...prev,
-      ...curr,
-    }),
-    {},
-  );
+  .reduce(mergeObjects, {});
 
 let pattern = '.#./..#/###';
 

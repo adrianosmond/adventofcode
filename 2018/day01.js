@@ -1,7 +1,8 @@
 const input = require('./input01'); // multi line string
+const { sum } = require('../utils/reducers');
 
 const frequencies = input.split('\n').map(f => parseInt(f, 10));
-const resultingFrequency = frequencies.reduce((a, b) => a + b);
+const resultingFrequency = frequencies.reduce(sum);
 
 const visitedFrequencies = {};
 let foundDuplicate = false;

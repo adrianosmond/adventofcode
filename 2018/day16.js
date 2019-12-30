@@ -95,9 +95,10 @@ const day16part1 = () =>
   input.reduce((total, sample) => {
     const [before, instruction, after] = sample;
     const [, ...values] = instruction;
-    const matches = Object.values(instructions).reduce((prev, op) => {
-      return prev + (compare(after, op(before, values)) ? 1 : 0);
-    }, 0);
+    const matches = Object.values(instructions).reduce(
+      (prev, op) => prev + (compare(after, op(before, values)) ? 1 : 0),
+      0,
+    );
     return total + (matches >= 3 ? 1 : 0);
   }, 0);
 

@@ -1,4 +1,5 @@
 const input = require('./input04');
+const { sum } = require('../utils/reducers');
 
 const passphrases = input.split('\n').map(r => r.split(' ').sort());
 const alphabetised = passphrases.map(r =>
@@ -20,8 +21,6 @@ const removeDuplicates = words => {
   }
   return 1;
 };
-
-const sum = (tot, curr) => tot + curr;
 
 console.log('part1:', passphrases.map(removeDuplicates).reduce(sum));
 console.log('part2:', alphabetised.map(removeDuplicates).reduce(sum));

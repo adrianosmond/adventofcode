@@ -76,31 +76,29 @@ const getAvailableSteps = dependencies =>
 
 const updateDependencies = (dependencies, completed) => {
   const depsToUpdate = completed.map(s => dependencies[s].requiredFor).flat();
-  return Object.keys(dependencies).reduce((prev, curr) => {
-    if (completed.includes(curr)) {
-      return prev;
-    }
-    return {
-      ...prev,
-      [curr]: {
-        ...dependencies[curr],
-        ...(depsToUpdate.includes(curr) && {
-          waitingFor: dependencies[curr].waitingFor.filter(
-            x => !completed.includes(x),
-          ),
-        }),
-      },
-    };
-  }, {});
+  return Object.keys(dependencies).reduce(
+    (prev, curr) =>
+      completed.includes(curr)
+        ? prev
+        : {
+            ...prev,
+            [curr]: {
+              ...dependencies[curr],
+              ...(depsToUpdate.includes(curr) && {
+                waitingFor: dependencies[curr].waitingFor.filter(
+                  x => !completed.includes(x),
+                ),
+              }),
+            },
+          },
+    {},
+  );
 };
 
 const freeUpWorkers = (allWorkers, { workers }) =>
-  allWorkers.map(worker => {
-    if (workers.includes(worker)) {
-      return { ...FREE_WORKER };
-    }
-    return worker;
-  });
+  allWorkers.map(worker =>
+    workers.includes(worker) ? { ...FREE_WORKER } : worker,
+  );
 
 const freeUpDependencies = ({ workers }, dependencies) => {
   const workingOn = workers

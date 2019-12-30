@@ -1,4 +1,5 @@
 const input = require('./input07');
+const { mergeObjects, sum: sumFn } = require('../utils/reducers');
 
 const programs = input
   .split('\n')
@@ -13,12 +14,7 @@ const programs = input
       },
     };
   })
-  .reduce((all, curr) => {
-    return {
-      ...all,
-      ...curr,
-    };
-  }, {});
+  .reduce(mergeObjects, {});
 
 const flatten = list =>
   list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
@@ -41,7 +37,7 @@ function findImbalance(prog) {
   let sum = 0;
   if (program.children) {
     weights = program.children.map(findImbalance);
-    sum = weights.reduce((tot, cur) => tot + cur, 0);
+    sum = weights.reduce(sumFn, 0);
     if (sum / weights.length !== weights[0]) {
       const outlier = weights.find(
         w => weights.filter(ww => ww !== w).length > 1,

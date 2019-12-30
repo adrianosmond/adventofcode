@@ -1,4 +1,5 @@
 const input = require('./input02');
+const { sum } = require('../utils/reducers');
 
 const digits = input.split('\n').map(r =>
   r
@@ -7,9 +8,7 @@ const digits = input.split('\n').map(r =>
     .sort((a, b) => a - b),
 );
 
-const result = digits
-  .map(r => r[r.length - 1] - r[0])
-  .reduce((tot, curr) => tot + curr, 0);
+const result = digits.map(r => r[r.length - 1] - r[0]).reduce(sum);
 console.log('part1:', result);
 
 const result2 = digits
@@ -25,5 +24,5 @@ const result2 = digits
     }
     throw new Error('Not found');
   })
-  .reduce((tot, curr) => tot + curr, 0);
+  .reduce(sum);
 console.log('part2:', result2);
