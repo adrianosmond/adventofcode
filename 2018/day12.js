@@ -1,7 +1,7 @@
 const input = require('./input12.js');
 
-const initialState = input.initialState.split('').map(x => x === '#');
-const stateRules = input.rules.split('\n').map(rule => rule.split(' => '));
+const initialState = input.initialState.split('').map((x) => x === '#');
+const stateRules = input.rules.split('\n').map((rule) => rule.split(' => '));
 const buffer = 150;
 const minRepetitions = 10;
 const bufferedPlants = [
@@ -17,9 +17,9 @@ const matchesPattern = (state, middle, pattern) =>
   state[middle + 1] === pattern[3] &&
   state[middle + 2] === pattern[4];
 
-const rules = stateRules.map(r => {
+const rules = stateRules.map((r) => {
   const [pat, res] = r;
-  const pattern = pat.split('').map(x => x === '#');
+  const pattern = pat.split('').map((x) => x === '#');
   return (state, middle) =>
     matchesPattern(state, middle, pattern) ? res === '#' : null;
 });
@@ -34,7 +34,7 @@ const transform = (state, middle) => {
   throw new Error("Couldn't transform");
 };
 
-const countPlants = plants =>
+const countPlants = (plants) =>
   plants.reduce((acc, curr, idx) => acc + (curr ? idx - buffer : 0), 0);
 
 const day12part1 = () => {
@@ -71,7 +71,7 @@ const day12part2 = () => {
     const count = countPlants(plants[gen % 2]);
     if (prevCount > 0) {
       diffs[gen % diffs.length] = count - prevCount;
-      if (diffs.filter(d => d !== diffs[0]).length === 0) {
+      if (diffs.filter((d) => d !== diffs[0]).length === 0) {
         return (50000000000 - gen) * diffs[0] + count;
       }
     }

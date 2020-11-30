@@ -1,6 +1,6 @@
 const input = require('./input16');
 
-const processMove = str => {
+const processMove = (str) => {
   if (str[0] === 's') {
     return ['s', parseInt(str.substring(1), 10)];
   }
@@ -10,7 +10,7 @@ const processMove = str => {
       ...str
         .substring(1)
         .split('/')
-        .map(x => parseInt(x, 10)),
+        .map((x) => parseInt(x, 10)),
     ];
   }
   if (str[0] === 'p') {
@@ -24,7 +24,7 @@ const instructions = input.split(',').map(processMove);
 let line = start.split('');
 
 const moves = {
-  s: i => {
+  s: (i) => {
     line = line.slice(-i).concat(line.slice(0, line.length - i));
   },
   x: (i, j) => {
@@ -42,7 +42,7 @@ const moves = {
 
 const states = [start];
 while (true) {
-  instructions.forEach(inp => {
+  instructions.forEach((inp) => {
     const [move, ...values] = inp;
     moves[move](...values);
   });

@@ -1,13 +1,13 @@
 const input = require('./input21');
 const { mergeObjects } = require('../utils/reducers');
 
-const rules = input.split('\n').map(l => l.split(' => '));
+const rules = input.split('\n').map((l) => l.split(' => '));
 const variants = [...rules];
 
-const makeOutput = inp =>
+const makeOutput = (inp) =>
   new Array(inp.length).fill(null).map(() => new Array(inp[0].length).fill(''));
 
-const flipHorizontal = inp => {
+const flipHorizontal = (inp) => {
   const output = makeOutput(inp);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp[0].length; j++) {
@@ -17,7 +17,7 @@ const flipHorizontal = inp => {
   return output;
 };
 
-const flipVertical = inp => {
+const flipVertical = (inp) => {
   const output = makeOutput(inp);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp.length; j++) {
@@ -27,7 +27,7 @@ const flipVertical = inp => {
   return output;
 };
 
-const rotate90 = inp => {
+const rotate90 = (inp) => {
   const output = makeOutput(inp);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp.length; j++) {
@@ -37,7 +37,7 @@ const rotate90 = inp => {
   return output;
 };
 
-const rotate270 = inp => {
+const rotate270 = (inp) => {
   const output = makeOutput(inp);
   for (let i = 0; i < inp.length; i++) {
     for (let j = 0; j < inp.length; j++) {
@@ -47,9 +47,9 @@ const rotate270 = inp => {
   return output;
 };
 
-const strToGrid = str => str.split('/').map(l => l.split(''));
+const strToGrid = (str) => str.split('/').map((l) => l.split(''));
 
-const gridToStr = grid => grid.map(r => r.join('')).join('/');
+const gridToStr = (grid) => grid.map((r) => r.join('')).join('/');
 
 const addVariant = (grid, outcome) => variants.push([gridToStr(grid), outcome]);
 
@@ -65,7 +65,7 @@ rules.forEach(([rule, outcome]) => {
 });
 
 const dictionary = variants
-  .map(x => ({ [x[0]]: x[1] }))
+  .map((x) => ({ [x[0]]: x[1] }))
   .reduce(mergeObjects, {});
 
 let pattern = '.#./..#/###';
@@ -85,7 +85,7 @@ const getGrid = (ptrn, gridSize, row, col) => {
   return grid;
 };
 
-const rebuildPattern = grids => {
+const rebuildPattern = (grids) => {
   const newSize = grids.length;
   const innerSize = grids[0].length;
   const sqrt = Math.sqrt(newSize);
@@ -114,8 +114,8 @@ for (let i = 0; i < 18; i++) {
     }
   }
 
-  grids = grids.map(g => dictionary[g]);
-  grids = grids.map(g => g.split('/'));
+  grids = grids.map((g) => dictionary[g]);
+  grids = grids.map((g) => g.split('/'));
   pattern = rebuildPattern(grids);
   if (i === 4) {
     console.log('part1:', pattern.replace(/[^#]/g, '').length);

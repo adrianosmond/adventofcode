@@ -4,10 +4,10 @@ const { sum } = require('../utils/reducers');
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);
 const instructions = inst
-  .map(i => i.split(' '))
-  .map(([i, ...values]) => [i, ...values.map(v => parseInt(v, 10))]);
+  .map((i) => i.split(' '))
+  .map(([i, ...values]) => [i, ...values.map((v) => parseInt(v, 10))]);
 
-const findFactors = n => {
+const findFactors = (n) => {
   let factor = 2;
   const factors = [];
   while (n >= factor) {

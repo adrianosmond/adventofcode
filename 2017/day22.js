@@ -27,7 +27,7 @@ const makeGrid = () => {
   let grid = input.split('\n');
   const extra = (size - grid.length) / 2;
 
-  grid = grid.map(r => {
+  grid = grid.map((r) => {
     const buffer = Array(extra).fill('.');
     return [...buffer, ...r, ...buffer];
   });

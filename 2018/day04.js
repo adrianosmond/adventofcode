@@ -1,7 +1,7 @@
 const input = require('./input04'); // multi line string
 const { highestByKey } = require('../utils/reducers');
 
-const makeDate = matches =>
+const makeDate = (matches) =>
   new Date(
     Date.UTC(
       parseInt(matches[1], 10) + 500,
@@ -15,7 +15,7 @@ const makeDate = matches =>
 const logs = input
   .split('\n')
   .sort()
-  .map(str => {
+  .map((str) => {
     const match = str.match(
       /^\[([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})] (.*)/,
     );
@@ -26,7 +26,7 @@ let guardNumber = -1;
 let sleepStart = null;
 let records = {};
 
-const setGuardNumber = str => {
+const setGuardNumber = (str) => {
   guardNumber = parseInt(str.match(/Guard #([0-9]+)/)[1], 10);
 };
 
@@ -55,7 +55,7 @@ logs.forEach(([date, action]) => {
   }
 });
 
-records = Object.values(records).map(r => {
+records = Object.values(records).map((r) => {
   const mostSleeps = Math.max(...r.minutes);
   return {
     ...r,

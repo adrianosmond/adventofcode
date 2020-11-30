@@ -1,6 +1,6 @@
 const input = require('./input16');
 
-const signal = input.split('').map(x => parseInt(x, 10));
+const signal = input.split('').map((x) => parseInt(x, 10));
 const phases = [signal, new Array(signal.length).fill(0)];
 const base = [0, 1, 0, -1];
 
@@ -35,7 +35,7 @@ for (let i = 0; i < Math.ceil(input2Len / input.length); i++) {
 inputPart2 = inputPart2
   .substr(inputPart2.length - input2Len)
   .split('')
-  .map(x => parseInt(x, 10));
+  .map((x) => parseInt(x, 10));
 
 for (let phase = 0; phase < 100; phase++) {
   for (let i = inputPart2.length - 2; i >= 0; i--) {

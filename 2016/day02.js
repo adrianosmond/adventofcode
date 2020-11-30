@@ -1,6 +1,6 @@
 const input = require('./input02');
 
-const instructions = input.split('\n').map(l => l.split(''));
+const instructions = input.split('\n').map((l) => l.split(''));
 
 const directions = {
   U: [-1, 0],
@@ -19,8 +19,8 @@ const day2part1 = () => {
   const position = [1, 1];
   let keycode = 0;
 
-  instructions.forEach(line => {
-    line.forEach(direction => {
+  instructions.forEach((line) => {
+    line.forEach((direction) => {
       position[0] += directions[direction][0];
       position[1] += directions[direction][1];
       if (position[0] < 0) position[0] = 0;
@@ -46,8 +46,8 @@ const day2part2 = () => {
   const position = [2, 0];
   let keycode = '';
 
-  instructions.forEach(line => {
-    line.forEach(direction => {
+  instructions.forEach((line) => {
+    line.forEach((direction) => {
       position[0] += directions[direction][0];
       position[1] += directions[direction][1];
       if (position[0] < 0) position[0] = 0;

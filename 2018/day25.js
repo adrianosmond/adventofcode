@@ -2,7 +2,7 @@ const input = require('./input25');
 
 const points = input
   .split('\n')
-  .map(l => l.split(',').map(d => parseInt(d, 10)));
+  .map((l) => l.split(',').map((d) => parseInt(d, 10)));
 
 const manhattan4d = (from, to) =>
   Math.abs(from[0] - to[0]) +
@@ -12,9 +12,9 @@ const manhattan4d = (from, to) =>
 
 const constellations = [];
 let maxC = 0;
-points.forEach(coords => {
+points.forEach((coords) => {
   const options = [];
-  constellations.forEach(toTest => {
+  constellations.forEach((toTest) => {
     if (
       manhattan4d(coords, toTest.coords) <= 3 &&
       !options.includes(toTest.constellation)
@@ -39,7 +39,7 @@ points.forEach(coords => {
     });
     for (let i = 0; i < options.length; i++) {
       const toMerge = constellations.filter(
-        x => x.constellation === options[i],
+        (x) => x.constellation === options[i],
       );
       for (let j = 0; j < toMerge.length; j++) {
         const x = toMerge[j];
@@ -50,7 +50,7 @@ points.forEach(coords => {
 });
 
 const list = [];
-constellations.forEach(c => {
+constellations.forEach((c) => {
   if (!list.includes(c.constellation)) list.push(c.constellation);
 });
 

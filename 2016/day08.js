@@ -27,12 +27,12 @@ const rotateRow = (row, by) => {
   }
 };
 
-instructions.forEach(instruction => {
+instructions.forEach((instruction) => {
   if (instruction.startsWith('rect')) {
     const dimensions = instruction
       .substring(5)
       .split('x')
-      .map(d => parseInt(d, 10));
+      .map((d) => parseInt(d, 10));
 
     for (let w = 0; w < dimensions[0]; w++) {
       for (let h = 0; h < dimensions[1]; h++) {
@@ -43,14 +43,14 @@ instructions.forEach(instruction => {
     const [col, by] = instruction
       .substring(16)
       .split(' by ')
-      .map(d => parseInt(d, 10));
+      .map((d) => parseInt(d, 10));
 
     rotateCol(col, by);
   } else if (instruction.startsWith('rotate row')) {
     const [row, by] = instruction
       .substring(13)
       .split(' by ')
-      .map(d => parseInt(d, 10));
+      .map((d) => parseInt(d, 10));
 
     rotateRow(row, by);
   }
@@ -59,9 +59,9 @@ instructions.forEach(instruction => {
 console.log(
   'part1:',
   screen
-    .map(r => r.join(''))
+    .map((r) => r.join(''))
     .join('')
     .replace(/\s/g, '').length,
 );
 console.log('part2:');
-console.log(screen.map(r => r.join('')).join('\n'));
+console.log(screen.map((r) => r.join('')).join('\n'));

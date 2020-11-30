@@ -37,7 +37,7 @@ const day23 = () => {
         inputs[i].push(-1);
       }
     }
-    if (inputs.map(i => i.length).every(v => v === 1)) {
+    if (inputs.map((i) => i.length).every((v) => v === 1)) {
       idleCount++;
     } else {
       idleCount = 0;

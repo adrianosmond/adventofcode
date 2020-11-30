@@ -1,9 +1,9 @@
 const input = require('./input10');
 const knotHash = require('./knotHash');
 
-const day10part1 = inputStr => {
+const day10part1 = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
-  const inputArr = inputStr.split(',').map(d => parseInt(d, 10));
+  const inputArr = inputStr.split(',').map((d) => parseInt(d, 10));
 
   let pos = 0;
   let skip = 0;

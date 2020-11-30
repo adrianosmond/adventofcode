@@ -5,17 +5,18 @@ const FREE_WORKER = {
   workingOn: undefined,
 };
 
-const connections = input.map(str => [str.substr(5, 1), str.substr(36, 1)]);
+const connections = input.map((str) => [str.substr(5, 1), str.substr(36, 1)]);
 
-const getStepTime = step => step.charCodeAt(0) - 4;
+const getStepTime = (step) => step.charCodeAt(0) - 4;
 
 const isWorkerFree = (worker, time) => worker.freeAt <= time;
 
-const workersFree = (workers, time) => workers.some(w => isWorkerFree(w, time));
+const workersFree = (workers, time) =>
+  workers.some((w) => isWorkerFree(w, time));
 
-const isAvailable = s => s.waitingFor.length === 0;
+const isAvailable = (s) => s.waitingFor.length === 0;
 
-const isAssigned = s => s.assigned;
+const isAssigned = (s) => s.assigned;
 
 const setupDependencies = () => {
   const dependencies = {};
@@ -47,7 +48,7 @@ const setupWorkers = (numWorkers = 5) =>
 
 const getNextFreeWorkers = (workers, completing = false) =>
   workers
-    .filter(w => !completing || (completing && w.workingOn))
+    .filter((w) => !completing || (completing && w.workingOn))
     .reduce(
       (nextWorkers, currentWorker) => {
         if (currentWorker.freeAt > nextWorkers.freeAt) {
@@ -69,13 +70,13 @@ const getNextFreeWorkers = (workers, completing = false) =>
       },
     );
 
-const getAvailableSteps = dependencies =>
+const getAvailableSteps = (dependencies) =>
   Object.keys(dependencies)
-    .filter(s => isAvailable(dependencies[s]) && !isAssigned(dependencies[s]))
+    .filter((s) => isAvailable(dependencies[s]) && !isAssigned(dependencies[s]))
     .sort();
 
 const updateDependencies = (dependencies, completed) => {
-  const depsToUpdate = completed.map(s => dependencies[s].requiredFor).flat();
+  const depsToUpdate = completed.map((s) => dependencies[s].requiredFor).flat();
   return Object.keys(dependencies).reduce(
     (prev, curr) =>
       completed.includes(curr)
@@ -86,7 +87,7 @@ const updateDependencies = (dependencies, completed) => {
               ...dependencies[curr],
               ...(depsToUpdate.includes(curr) && {
                 waitingFor: dependencies[curr].waitingFor.filter(
-                  x => !completed.includes(x),
+                  (x) => !completed.includes(x),
                 ),
               }),
             },
@@ -96,13 +97,13 @@ const updateDependencies = (dependencies, completed) => {
 };
 
 const freeUpWorkers = (allWorkers, { workers }) =>
-  allWorkers.map(worker =>
+  allWorkers.map((worker) =>
     workers.includes(worker) ? { ...FREE_WORKER } : worker,
   );
 
 const freeUpDependencies = ({ workers }, dependencies) => {
   const workingOn = workers
-    .map(w => w.workingOn)
+    .map((w) => w.workingOn)
     .reduce((a, b) => [...a, b], []);
 
   return updateDependencies(dependencies, workingOn);

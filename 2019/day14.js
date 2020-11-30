@@ -1,13 +1,13 @@
 const input = require('./input14');
 
-const parseInputChem = str => {
+const parseInputChem = (str) => {
   const [q, e] = str.split(' ');
   return [parseInt(q, 10), e];
 };
 
 const instructions = input
   .split('\n')
-  .map(i => i.split(' => '))
+  .map((i) => i.split(' => '))
   .map(([inp, out]) => {
     const [quantity, chemical] = parseInputChem(out);
     const i = {
@@ -33,25 +33,25 @@ const instructions = input
     {},
   );
 
-const getDepth = chemical => {
+const getDepth = (chemical) => {
   const { inputs } = instructions[chemical];
   if (inputs.ORE) {
     return 1;
   }
-  const inputDepths = Object.keys(inputs).map(i => getDepth(i));
+  const inputDepths = Object.keys(inputs).map((i) => getDepth(i));
   return 1 + Math.max(...inputDepths);
 };
 
 const depths = Object.keys(instructions)
-  .map(c => ({ [c]: getDepth(c) }))
+  .map((c) => ({ [c]: getDepth(c) }))
   .reduce((all, curr) => {
     const [k, v] = Object.entries(curr)[0];
     return { ...all, [k]: v };
   }, {});
 
-const flattenInputs = inputs => {
+const flattenInputs = (inputs) => {
   let flatInputs = [];
-  inputs.forEach(arr => {
+  inputs.forEach((arr) => {
     if (Array.isArray(arr[0])) {
       flatInputs = [...flatInputs, ...arr];
     } else {
@@ -61,10 +61,10 @@ const flattenInputs = inputs => {
   return flatInputs;
 };
 
-const consolidateChemicals = inputs => {
+const consolidateChemicals = (inputs) => {
   const consolidated = [];
   inputs.forEach(([c, q]) => {
-    const idx = consolidated.findIndex(i => i[0] === c);
+    const idx = consolidated.findIndex((i) => i[0] === c);
     if (idx < 0) {
       consolidated.push([c, q]);
     } else {
@@ -77,7 +77,7 @@ const consolidateChemicals = inputs => {
 const multiplyAmounts = (inputs, amount) =>
   Object.entries(inputs).map(([c, q]) => [c, q * amount]);
 
-const getQuantityNeeded = amountOfFuel => {
+const getQuantityNeeded = (amountOfFuel) => {
   let inputs = multiplyAmounts(instructions.FUEL.inputs, amountOfFuel);
   while (inputs.length > 1) {
     const currentDepths = inputs.map(([c]) => depths[c]);

@@ -6,7 +6,7 @@ const IMG_HEIGHT = 6;
 const PX_PER_LAYER = IMG_WIDTH * IMG_HEIGHT;
 const ALL_ZEROS = { zeros: PX_PER_LAYER, score: 0 };
 const TRANSPARENT_IMG = new Array(PX_PER_LAYER).fill(2);
-const pixels = input.split('').map(p => parseInt(p, 10));
+const pixels = input.split('').map((p) => parseInt(p, 10));
 const numLayers = pixels.length / PX_PER_LAYER;
 
 const layers = new Array(numLayers)
@@ -15,9 +15,10 @@ const layers = new Array(numLayers)
     pixels.slice(i * PX_PER_LAYER, i * PX_PER_LAYER + PX_PER_LAYER),
   );
 
-const getZerosAndScore = layer => ({
-  zeros: layer.filter(x => x === 0).length,
-  score: layer.filter(x => x === 1).length * layer.filter(x => x === 2).length,
+const getZerosAndScore = (layer) => ({
+  zeros: layer.filter((x) => x === 0).length,
+  score:
+    layer.filter((x) => x === 1).length * layer.filter((x) => x === 2).length,
 });
 
 const chooseLayerWithFewestZeros = (best, layer) =>
@@ -26,7 +27,7 @@ const chooseLayerWithFewestZeros = (best, layer) =>
 const overrideTransparentPixelsInImage = (img, layer) =>
   img.map((px, i) => (px < 2 ? px : layer[i]));
 
-const numbersToOutputChars = px => OUTPUT_CHARS[px];
+const numbersToOutputChars = (px) => OUTPUT_CHARS[px];
 
 const imgToMultiLineString = (img, px, idx) =>
   img + px + ((idx + 1) % IMG_WIDTH === 0 ? '\n' : '');

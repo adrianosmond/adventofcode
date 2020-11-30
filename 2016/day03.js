@@ -2,12 +2,12 @@ const input = require('./input03');
 
 const digits = input
   .split('\n')
-  .map(s => s.trim())
-  .map(s => s.split(/\s+/).map(d => parseInt(d, 10)));
+  .map((s) => s.trim())
+  .map((s) => s.split(/\s+/).map((d) => parseInt(d, 10)));
 
 const isTriangle = (a, b, c) => a + b > c && a + c > b && b + c > a;
 
-const validTriangles = digits.filter(row => isTriangle(...row));
+const validTriangles = digits.filter((row) => isTriangle(...row));
 
 console.log('part1:', validTriangles.length);
 

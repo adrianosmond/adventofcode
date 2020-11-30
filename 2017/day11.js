@@ -20,7 +20,7 @@ let y = 0;
 
 let max = 0;
 
-instructions.forEach(i => {
+instructions.forEach((i) => {
   if (i === 'n') {
     y += 2;
   } else if (i === 'nw') {

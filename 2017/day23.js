@@ -1,6 +1,6 @@
 const input = require('./input23');
 
-const instructions = input.split('\n').map(x => x.split(' '));
+const instructions = input.split('\n').map((x) => x.split(' '));
 
 const regKeys = {
   a: 0,
@@ -13,13 +13,13 @@ const regKeys = {
   h: 7,
 };
 const regKeysArray = Object.keys(regKeys);
-const isKey = x => regKeysArray.includes(x);
-const sanitize = x => (isKey(x) ? x : parseInt(x, 10));
+const isKey = (x) => regKeysArray.includes(x);
+const sanitize = (x) => (isKey(x) ? x : parseInt(x, 10));
 let instruction = 0;
 let multiplied = 0;
 
 const registers = Array(regKeysArray.length).fill(0);
-const getVal = x => (isKey(x) ? registers[regKeys[x]] : parseInt(x, 10));
+const getVal = (x) => (isKey(x) ? registers[regKeys[x]] : parseInt(x, 10));
 
 const commands = {
   set: (X, Y) => {

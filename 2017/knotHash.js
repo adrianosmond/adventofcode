@@ -1,8 +1,8 @@
-module.exports = inputStr => {
+module.exports = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
   const inputArr = inputStr
     .split('')
-    .map(c => c.charCodeAt(0))
+    .map((c) => c.charCodeAt(0))
     .concat([17, 31, 73, 47, 23]);
 
   let pos = 0;

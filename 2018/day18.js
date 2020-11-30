@@ -1,6 +1,6 @@
 const input = require('./input18');
 
-const map = input.split('\n').map(r => r.split(''));
+const map = input.split('\n').map((r) => r.split(''));
 
 function getAdjacent(row, col) {
   const adj = {
@@ -24,7 +24,7 @@ function getAdjacent(row, col) {
   return adj;
 }
 
-const doCycle = adj => {
+const doCycle = (adj) => {
   let lumber = 0;
   let wooded = 0;
   for (let row = 0; row < map.length; row++) {

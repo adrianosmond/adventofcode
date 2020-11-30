@@ -28,13 +28,13 @@ const unexplored = [
 const position = [0, 0];
 let target;
 
-const coordsToStr = c => `${c[0]},${c[1]}`;
-const strToCoords = str => str.split(',').map(c => parseInt(c, 10));
+const coordsToStr = (c) => `${c[0]},${c[1]}`;
+const strToCoords = (str) => str.split(',').map((c) => parseInt(c, 10));
 
-const getNeighbours = coordStr => {
+const getNeighbours = (coordStr) => {
   const coords = strToCoords(coordStr);
   return directions
-    .map(d => {
+    .map((d) => {
       if (d.length < 2) {
         return undefined;
       }
@@ -56,7 +56,7 @@ const findShortestPath = (from, to) => {
   const cameFrom = {};
   const gScore = {};
   const fScore = {};
-  Object.keys(grid).forEach(k => {
+  Object.keys(grid).forEach((k) => {
     gScore[k] = Number.MAX_SAFE_INTEGER;
     fScore[k] = Number.MAX_SAFE_INTEGER;
   });
@@ -72,10 +72,10 @@ const findShortestPath = (from, to) => {
         current = cameFrom[current];
         path.unshift(current);
       }
-      return path.map(s => strToCoords(s));
+      return path.map((s) => strToCoords(s));
     }
     const neighbours = getNeighbours(current);
-    neighbours.forEach(n => {
+    neighbours.forEach((n) => {
       const possibleGScore = gScore[current] + 1;
       const isUnknown = grid[n] === FLOOR.UNKNOWN;
       const isTo = n === toStr;
@@ -108,13 +108,13 @@ const findClosestUnexplored = () => {
 };
 
 const extendGrid = () => {
-  directions.forEach(d => {
+  directions.forEach((d) => {
     if (d.length === 2) {
       const x = position[0] + d[0];
       const y = position[1] + d[1];
       if (grid[`${x},${y}`] === undefined) {
         grid[`${x},${y}`] = FLOOR.UNKNOWN;
-        if (unexplored.findIndex(e => e[0] === x && e[1] === y) === -1) {
+        if (unexplored.findIndex((e) => e[0] === x && e[1] === y) === -1) {
           unexplored.unshift([x, y]);
         }
       }
@@ -123,9 +123,9 @@ const extendGrid = () => {
 };
 
 const getCommand = ([fromX, fromY], [toX, toY]) =>
-  directions.findIndex(d => d[0] === toX - fromX && d[1] === toY - fromY);
+  directions.findIndex((d) => d[0] === toX - fromX && d[1] === toY - fromY);
 
-const getCommands = path => {
+const getCommands = (path) => {
   const commands = [];
   for (let i = 1; i < path.length; i++) {
     commands.push(getCommand(path[i - 1], path[i]));
@@ -172,7 +172,7 @@ for (const output of computer) {
 console.log('part1:', findShortestPath([0, 0], oxygen).length - 1);
 
 const allDistances = Object.keys(grid)
-  .filter(k => grid[k] === FLOOR.EMPTY)
-  .map(k => findShortestPath(oxygen, strToCoords(k)).length - 1);
+  .filter((k) => grid[k] === FLOOR.EMPTY)
+  .map((k) => findShortestPath(oxygen, strToCoords(k)).length - 1);
 
 console.log('part2:', Math.max(...allDistances));

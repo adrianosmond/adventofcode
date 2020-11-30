@@ -1,17 +1,17 @@
 const input = require('./input03'); // multi line string
 const { sum } = require('../utils/reducers');
 
-const claims = input.split('\n').map(claim =>
+const claims = input.split('\n').map((claim) =>
   claim
     .replace(/[#@:]/g, '')
     .replace(/[\sx]/g, ',')
     .split(',')
     .filter(Boolean)
-    .map(x => parseInt(x, 10)),
+    .map((x) => parseInt(x, 10)),
 );
 
-const MAX_WIDTH = Math.max(...claims.map(c => c[1] + c[3])) + 1;
-const MAX_HEIGHT = Math.max(...claims.map(c => c[2] + c[4])) + 1;
+const MAX_WIDTH = Math.max(...claims.map((c) => c[1] + c[3])) + 1;
+const MAX_HEIGHT = Math.max(...claims.map((c) => c[2] + c[4])) + 1;
 
 const grid = new Array(MAX_HEIGHT)
   .fill()
@@ -30,7 +30,7 @@ claims.forEach(([elf, x, y, w, h]) => {
   for (let i = y; i < y + h; i++) {
     for (let j = x; j < x + w; j++) {
       const otherElves = Object.keys(grid[i][j]);
-      otherElves.forEach(e => competition.add(e));
+      otherElves.forEach((e) => competition.add(e));
       grid[i][j][elf] = true;
     }
   }
@@ -40,7 +40,7 @@ claims.forEach(([elf, x, y, w, h]) => {
   ) {
     unique[elf - 1] = true;
   } else {
-    competition.forEach(e => {
+    competition.forEach((e) => {
       unique[e - 1] = false;
     });
   }
@@ -48,8 +48,9 @@ claims.forEach(([elf, x, y, w, h]) => {
 
 const contested = grid
   .map(
-    row =>
-      row.map(cell => Object.keys(cell).length).filter(cell => cell > 1).length,
+    (row) =>
+      row.map((cell) => Object.keys(cell).length).filter((cell) => cell > 1)
+        .length,
   )
   .reduce(sum);
 

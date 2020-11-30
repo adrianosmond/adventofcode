@@ -1,7 +1,7 @@
 const input = require('./input01'); // array of integers;
 
-const getFuelNeededForMass = mass => Math.floor(mass / 3) - 2;
-const getFuelNeededIncludingFuelMass = mass => {
+const getFuelNeededForMass = (mass) => Math.floor(mass / 3) - 2;
+const getFuelNeededIncludingFuelMass = (mass) => {
   let totalFuelMass = 0;
   let lastFuelMass = getFuelNeededForMass(mass);
   while (lastFuelMass > 0) {

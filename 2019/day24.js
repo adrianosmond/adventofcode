@@ -3,9 +3,9 @@ const input = require('./input24');
 const size = input.split('\n').length;
 const centre = Math.floor(size / 2);
 
-const getBiodiversity = state =>
+const getBiodiversity = (state) =>
   state
-    .map(r => r.join(''))
+    .map((r) => r.join(''))
     .join('')
     .split('')
     .reduce((count, cell, idx) => (cell === '#' ? count + 2 ** idx : count), 0);
@@ -27,7 +27,7 @@ const getCount = (state, row, col) => {
   return count;
 };
 
-const getKey = state => state.map(r => r.join('')).join('');
+const getKey = (state) => state.map((r) => r.join('')).join('');
 
 const nextMinute = (states, currentState) => {
   const current = states[currentState];
@@ -49,8 +49,8 @@ const nextMinute = (states, currentState) => {
 
 const day24part1 = () => {
   const states = [
-    input.split('\n').map(r => r.split('')),
-    input.split('\n').map(r => r.split('')),
+    input.split('\n').map((r) => r.split('')),
+    input.split('\n').map((r) => r.split('')),
   ];
   let currentState = 0;
   const seen = { [getKey(states[0])]: true };
@@ -67,7 +67,7 @@ const day24part1 = () => {
   return getBiodiversity(states[currentState]);
 };
 
-const makeLevels = numLevels =>
+const makeLevels = (numLevels) =>
   new Array(numLevels)
     .fill()
     .map(() => new Array(size).fill().map(() => new Array(size).fill('.')));
@@ -161,7 +161,7 @@ const nextRecursiveMinute = (states, currentState, level, direction) => {
   }
 };
 
-const getNumBugs = state => {
+const getNumBugs = (state) => {
   let count = 0;
   for (let level = 0; level < state.length; level++) {
     const l = state[level];
@@ -183,7 +183,7 @@ const day24part2 = () => {
   const startLevel = Math.floor(numLevels / 2);
   const states = [makeLevels(numLevels), makeLevels(numLevels)];
   let currentState = 0;
-  states[currentState][startLevel] = input.split('\n').map(r => r.split(''));
+  states[currentState][startLevel] = input.split('\n').map((r) => r.split(''));
 
   for (let i = 0; i < 200; i++) {
     nextRecursiveMinute(states, currentState, startLevel, 0);

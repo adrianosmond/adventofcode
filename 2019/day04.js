@@ -2,7 +2,7 @@ const [from, to] = require('./input04');
 
 const matches = [0, 0];
 
-const testPassword = password => {
+const testPassword = (password) => {
   let number = password;
   let lastDigit = 9;
 

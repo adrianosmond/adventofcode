@@ -19,7 +19,7 @@ const getInputLimits = () => {
   );
 };
 
-const createMap = limits => {
+const createMap = (limits) => {
   const map = [];
   for (let y = 0; y <= limits.maxY; y++) {
     map[y] = new Array(limits.maxX).fill('#');
@@ -30,9 +30,9 @@ const createMap = limits => {
 const distance = (x1, y1, x2, y2) => Math.abs(x1 - x2) + Math.abs(y1 - y2);
 
 const findClosestPoint = (x, y) => {
-  const distances = input.map(i => distance(x, y, i[0], i[1]));
+  const distances = input.map((i) => distance(x, y, i[0], i[1]));
   const best = Math.min(...distances);
-  const candidates = distances.filter(d => d === best);
+  const candidates = distances.filter((d) => d === best);
   if (candidates.length === 1) {
     return distances.indexOf(best);
   }
@@ -71,7 +71,7 @@ function day6Part1() {
     }
   }
   const infinite = getInfiniteAreas(map);
-  const nonInf = map.flat().filter(x => x !== '#' && !infinite.includes(x));
+  const nonInf = map.flat().filter((x) => x !== '#' && !infinite.includes(x));
 
   const areas = nonInf.reduce(
     (acc, curr) => ({
@@ -97,7 +97,7 @@ function day6Part2() {
       map[y][x] = isWithinThreshold(x, y, 10000);
     }
   }
-  return map.flat().filter(x => x === '#').length;
+  return map.flat().filter((x) => x === '#').length;
 }
 
 console.log('part1:', day6Part1());

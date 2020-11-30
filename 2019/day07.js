@@ -23,7 +23,7 @@ function* choose5(start = 0) {
   }
 }
 
-const makeAmplifier = inputValues => intComputer(input, inputValues);
+const makeAmplifier = (inputValues) => intComputer(input, inputValues);
 
 const runAmp = (amp, ampInputs, prevAmpOutput) => {
   ampInputs.push(prevAmpOutput);
@@ -52,8 +52,8 @@ const day7part2 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
 
   for (const phases of choose5(5)) {
-    const inputs = phases.map(phase => [phase]);
-    const amps = inputs.map(i => makeAmplifier(i));
+    const inputs = phases.map((phase) => [phase]);
+    const amps = inputs.map((i) => makeAmplifier(i));
     let lastOutput = 0;
     let done = false;
 

@@ -2,9 +2,9 @@ const input = require('./input02');
 
 const boxes = input.split('\n');
 const checksum = boxes
-  .map(box => {
+  .map((box) => {
     const letters = {};
-    box.split('').forEach(char => {
+    box.split('').forEach((char) => {
       if (letters[char]) {
         letters[char] += 1;
       } else {

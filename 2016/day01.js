@@ -8,7 +8,7 @@ const directions = [
   [0, -1],
 ];
 
-const instructions = input.split(', ').map(i => {
+const instructions = input.split(', ').map((i) => {
   const direction = i[0] === 'R' ? 1 : 3;
   const distance = parseInt(i.substr(1), 10);
   return { direction, distance };

@@ -1,6 +1,6 @@
 const input = require('./input12');
 
-const instructions = input.split('\n').map(i => {
+const instructions = input.split('\n').map((i) => {
   const [op, x, y] = i.split(' ');
   const xInt = parseInt(x, 10);
   const yInt = parseInt(y, 10);
@@ -17,10 +17,10 @@ const opCodes = {
   cpy: (X, Y) => {
     registers[regKey[Y]] = typeof X === 'number' ? X : registers[regKey[X]];
   },
-  inc: X => {
+  inc: (X) => {
     registers[regKey[X]]++;
   },
-  dec: X => {
+  dec: (X) => {
     registers[regKey[X]]--;
   },
   jnz: (X, Y) => {
@@ -33,7 +33,7 @@ const opCodes = {
   },
 };
 
-const runProgram = initialRegisters => {
+const runProgram = (initialRegisters) => {
   registers = initialRegisters;
   iPtr = 0;
   while (iPtr < instructions.length) {

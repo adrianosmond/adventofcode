@@ -1,6 +1,6 @@
 const input = require('./input01');
 
-const captcha = input.split('').map(x => parseInt(x, 10));
+const captcha = input.split('').map((x) => parseInt(x, 10));
 
 console.log(
   'part1;',

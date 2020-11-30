@@ -1,7 +1,7 @@
 /* global BigInt */
 const input = require('./input22');
 
-const getInstruction = i => {
+const getInstruction = (i) => {
   if (i.includes('increment')) {
     const inc = parseInt(i.substring(20), 10);
     return ['increment', inc];
@@ -16,9 +16,9 @@ const getInstruction = i => {
   throw new Error('Invalid instruction');
 };
 
-const instructions = input.split('\n').map(i => getInstruction(i));
+const instructions = input.split('\n').map((i) => getInstruction(i));
 
-const getActions = numCards => ({
+const getActions = (numCards) => ({
   increment: (decks, currentDeck, nextDeck, n) => {
     const next = decks[nextDeck];
     const current = decks[currentDeck];
@@ -43,7 +43,7 @@ const getActions = numCards => ({
   },
 });
 
-const doShuffle = numCards => {
+const doShuffle = (numCards) => {
   const actions = getActions(numCards);
   const decks = new Array(2)
     .fill()
@@ -85,7 +85,7 @@ const modularPow = (b, e, modulus) => {
 const getCardAtPos = (pos, offset, increment, modulo) =>
   mod(offset + pos * increment, modulo);
 
-const reduceInstructions = numCards => {
+const reduceInstructions = (numCards) => {
   let offset = 0n;
   let increment = 1n;
   instructions.forEach(([action, n]) => {

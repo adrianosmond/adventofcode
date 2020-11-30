@@ -1,6 +1,6 @@
 const input = require('./input18');
 
-const program = input.split('\n').map(x => x.split(' '));
+const program = input.split('\n').map((x) => x.split(' '));
 const regKeys = {
   a: 0,
   b: 1,
@@ -9,13 +9,13 @@ const regKeys = {
   p: 4,
 };
 const regKeysArray = Object.keys(regKeys);
-const isKey = x => regKeysArray.includes(x);
-const sanitize = x => (isKey(x) ? x : parseInt(x, 10));
+const isKey = (x) => regKeysArray.includes(x);
+const sanitize = (x) => (isKey(x) ? x : parseInt(x, 10));
 let registers;
 let instructions;
 let running = 0;
 
-const getVal = x =>
+const getVal = (x) =>
   isKey(x) ? registers[running][regKeys[x]] : parseInt(x, 10);
 
 const getCommands = (snd, rcv) => ({
@@ -48,10 +48,10 @@ function day18Part1() {
   instructions = [0];
   registers = [new Array(regKeysArray.length).fill(0)];
 
-  const snd = X => {
+  const snd = (X) => {
     lastSound = registers[running][regKeys[X]];
   };
-  const rcv = X => {
+  const rcv = (X) => {
     recovered = registers[running][regKeys[X]] !== 0 ? lastSound : null;
   };
   const commands = getCommands(snd, rcv);
@@ -80,7 +80,7 @@ function day18Part2() {
   ];
   registers[1][regKeys.p] = 1;
 
-  const snd = X => {
+  const snd = (X) => {
     if (running === 1) {
       p1Sends++;
     }
@@ -90,7 +90,7 @@ function day18Part2() {
       queues[other].push(registers[running][regKeys[X]]);
     }
   };
-  const rcv = X => {
+  const rcv = (X) => {
     if (queues[running].length > 0) {
       registers[running][regKeys[X]] = queues[running].shift();
     } else if (

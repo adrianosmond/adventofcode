@@ -46,7 +46,7 @@ const resolveInputs = () => {
   }
 };
 
-instructions.forEach(i => {
+instructions.forEach((i) => {
   if (!i.startsWith('value')) {
     const [, bot, type1, id1, type2, id2] = i.match(
       /bot (\d+) gives low to (bot|output) (\d+) and high to (bot|output) (\d+)/,
@@ -57,7 +57,7 @@ instructions.forEach(i => {
   }
 });
 
-instructions.forEach(i => {
+instructions.forEach((i) => {
   if (i.startsWith('value')) {
     const [, val, bot] = i.match(/value (\d+) goes to bot (\d+)/);
     bots[bot].inputs.push(parseInt(val, 10));

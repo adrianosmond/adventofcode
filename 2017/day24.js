@@ -2,10 +2,10 @@ const input = require('./input24');
 
 const ports = input
   .split('\n')
-  .map(p => p.split('/').map(n => parseInt(n, 10)));
+  .map((p) => p.split('/').map((n) => parseInt(n, 10)));
 
 const getFittingPieces = (port, pieces) =>
-  pieces.filter(p => p[0] === port || p[1] === port);
+  pieces.filter((p) => p[0] === port || p[1] === port);
 
 const getStrongestBridge = (port, remainingPieces) => {
   const options = getFittingPieces(port, remainingPieces);
@@ -13,9 +13,9 @@ const getStrongestBridge = (port, remainingPieces) => {
     return 0;
   }
   return Math.max(
-    ...options.map(p => {
+    ...options.map((p) => {
       const nextPort = p[0] === port ? p[1] : p[0];
-      const remainingOptions = remainingPieces.filter(opt => opt !== p);
+      const remainingOptions = remainingPieces.filter((opt) => opt !== p);
       return p[0] + p[1] + getStrongestBridge(nextPort, remainingOptions);
     }),
   );
@@ -33,9 +33,9 @@ const getLongestBridge = (port, remainingPieces) => {
     };
   }
   return options
-    .map(p => {
+    .map((p) => {
       const nextPort = p[0] === port ? p[1] : p[0];
-      const remainingOptions = remainingPieces.filter(opt => opt !== p);
+      const remainingOptions = remainingPieces.filter((opt) => opt !== p);
       const { strength, length } = getLongestBridge(nextPort, remainingOptions);
       return {
         strength: p[0] + p[1] + strength,

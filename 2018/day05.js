@@ -34,13 +34,13 @@ function day5Part1(polymer) {
       rPtr++;
     }
   }
-  return polyArr.filter(x => x !== '#').length;
+  return polyArr.filter((x) => x !== '#').length;
 }
 
 function day5Part2() {
   const chars = new Array(26).fill().map((_, i) => String.fromCharCode(65 + i));
   return Math.min(
-    ...chars.map(c => day5Part1(input.replace(new RegExp(c, 'gi'), ''))),
+    ...chars.map((c) => day5Part1(input.replace(new RegExp(c, 'gi'), ''))),
   );
 }
 

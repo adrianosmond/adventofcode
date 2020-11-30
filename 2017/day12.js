@@ -2,11 +2,11 @@ const input = require('./input12');
 
 const programs = input
   .split('\n')
-  .map(r => r.split(' <-> '))
+  .map((r) => r.split(' <-> '))
   .reduce(
     (acc, [key, values]) => ({
       ...acc,
-      [key]: values.split(', ').map(v => parseInt(v, 10)),
+      [key]: values.split(', ').map((v) => parseInt(v, 10)),
     }),
     {},
   );

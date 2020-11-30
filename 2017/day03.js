@@ -1,7 +1,7 @@
 const input = require('./input03');
 const { sum } = require('../utils/reducers');
 
-const getCoordinates = number => {
+const getCoordinates = (number) => {
   let sideLength = 3;
   let score = 9;
   let numSides = 0;
@@ -43,7 +43,7 @@ const day4part1 = () => {
   return coords.map(Math.abs).reduce(sum);
 };
 
-const getNextDirection = dir => {
+const getNextDirection = (dir) => {
   if (dir[0] === 1 && dir[1] === 0) {
     return [0, -1];
   }

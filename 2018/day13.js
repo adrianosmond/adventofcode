@@ -4,7 +4,7 @@ const path = require('path');
 const input = fs
   .readFileSync(path.resolve(__dirname, 'input13.txt'), 'utf8')
   .split('\n')
-  .map(x => x.split(''));
+  .map((x) => x.split(''));
 
 const VERTICAL = '|';
 const HORIZONTAL = '-';
@@ -107,7 +107,7 @@ while (carts.length > 1) {
     cart.col += m[0];
     cart.row += m[1];
     const removed = checkForCrash(cart, i);
-    i -= removed.filter(r => r <= i).length;
+    i -= removed.filter((r) => r <= i).length;
   }
 }
 

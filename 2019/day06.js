@@ -1,14 +1,14 @@
 const input = require('./input06'); // multi line string
 
-const orbits = input.split('\n').map(x => x.split(')'));
+const orbits = input.split('\n').map((x) => x.split(')'));
 const chains = new Array(orbits.length);
 
-const comIndex = orbits.findIndex(o => o[0] === 'COM');
+const comIndex = orbits.findIndex((o) => o[0] === 'COM');
 chains[comIndex] = [orbits[comIndex]];
 
-const getParentIndex = parent => orbits.findIndex(o => o[1] === parent);
+const getParentIndex = (parent) => orbits.findIndex((o) => o[1] === parent);
 
-const getChain = start => {
+const getChain = (start) => {
   const chain = [];
   let parentIndex = getParentIndex(start);
   const startIndex = parentIndex;
@@ -23,12 +23,12 @@ const getChain = start => {
 };
 
 const getUniqueSegments = (chainA, chainB) => [
-  ...chainA.filter(c => !chainB.includes(c)),
-  ...chainB.filter(c => !chainA.includes(c)),
+  ...chainA.filter((c) => !chainB.includes(c)),
+  ...chainB.filter((c) => !chainA.includes(c)),
 ];
 
 const numOrbits = orbits
-  .map(o => getChain(o[1]).length)
+  .map((o) => getChain(o[1]).length)
   .reduce((a, b) => a + b, 0);
 
 const pathLength =

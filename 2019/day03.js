@@ -1,8 +1,8 @@
 const input = require('./input03'); // multiline string
 const { sumByKey } = require('../utils/reducers');
 
-const wires = input.split('\n').map(wire =>
-  wire.split(',').map(instruction => ({
+const wires = input.split('\n').map((wire) =>
+  wire.split(',').map((instruction) => ({
     direction: instruction[0],
     distance: parseInt(instruction.substring(1), 10),
   })),

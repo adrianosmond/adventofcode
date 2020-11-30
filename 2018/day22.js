@@ -8,7 +8,7 @@ const targetY = parseInt(target[1], 10);
 const limitX = 100;
 const limitY = 800;
 
-const createMap = val => {
+const createMap = (val) => {
   const map = [];
   for (let y = 0; y < limitY; y++) {
     map[y] = [];
@@ -67,7 +67,7 @@ const getOtherTool = (terrain, currentTool) => {
 const isToolAllowed = (tool, terrain) =>
   terrain === tool || (terrain + 2) % 3 === tool;
 
-const getAdjacentSquares = current => {
+const getAdjacentSquares = (current) => {
   const adj = [];
   const currTerrain = type[current.row][current.col];
   const testAndAdd = (row, col, tool) => {
@@ -127,7 +127,7 @@ const findPath = (from, to) => {
     }
 
     openSet = openSet.filter(
-      x =>
+      (x) =>
         x.row !== current.row ||
         x.col !== current.col ||
         x.tool !== current.tool,

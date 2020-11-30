@@ -1,7 +1,7 @@
 const input = require('./input04');
 const { sumByKey, mergeObjects } = require('../utils/reducers');
 
-const processRoom = str => {
+const processRoom = (str) => {
   const [, name, id, checksum] = str.match(/([a-z-]+)(\d+)\[([a-z]{5})\]/);
   return {
     name,
@@ -12,11 +12,8 @@ const processRoom = str => {
 
 const rooms = input.split('\n').map(processRoom);
 
-const checkRoom = room => {
-  const letters = room.name
-    .replace(/-/g, '')
-    .split('')
-    .sort();
+const checkRoom = (room) => {
+  const letters = room.name.replace(/-/g, '').split('').sort();
 
   const individualLetters = letters
     .join('')
@@ -24,8 +21,8 @@ const checkRoom = room => {
     .split('');
 
   const freq = individualLetters
-    .map(letter => ({
-      [letter]: letters.filter(l => l === letter).length,
+    .map((letter) => ({
+      [letter]: letters.filter((l) => l === letter).length,
     }))
     .reduce(mergeObjects, {});
 
@@ -39,7 +36,7 @@ const checkRoom = room => {
 const decryptRoomName = ({ name, sectorId }) =>
   name
     .split('')
-    .map(char => {
+    .map((char) => {
       if (char === '-') {
         return ' ';
       }
@@ -54,7 +51,7 @@ const checksumSum = realRooms.reduce(sumByKey('sectorId'), 0);
 
 console.log('part1:', checksumSum);
 
-realRooms.forEach(room => {
+realRooms.forEach((room) => {
   const realName = decryptRoomName(room);
   if (realName.includes('north')) {
     console.log('part2:', room.sectorId);

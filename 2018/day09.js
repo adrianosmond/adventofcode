@@ -43,7 +43,7 @@ class Circle {
   }
 }
 
-const game = highestMarble => {
+const game = (highestMarble) => {
   let currentPlayer = 1;
   let nextMarble = 1;
   const numPlayers = 462;

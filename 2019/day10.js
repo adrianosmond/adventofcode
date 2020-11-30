@@ -1,7 +1,7 @@
 const input = require('./input10'); // Multi line string
 const { highestByKey } = require('../utils/reducers');
 
-const space = input.split('\n').map(r => r.split(''));
+const space = input.split('\n').map((r) => r.split(''));
 
 const distance = (a, b) => {
   const xDiff = Math.abs(a.x - b.x);
@@ -74,7 +74,7 @@ const setupAsteroids = () => {
   return asteroids;
 };
 
-const findBestAsteroid = asteroids => {
+const findBestAsteroid = (asteroids) => {
   for (let i = 0; i < asteroids.length; i++) {
     const from = asteroids[i];
     for (let j = i + 1; j < asteroids.length; j++) {
@@ -101,7 +101,7 @@ const findBestAsteroid = asteroids => {
 };
 
 const sortAsteroidsToDestroy = (asteroids, monitoringStation) => {
-  const toDestroy = asteroids.filter(a => a !== monitoringStation);
+  const toDestroy = asteroids.filter((a) => a !== monitoringStation);
   for (let i = 0; i < toDestroy.length; i++) {
     toDestroy[i].angle = getAngle(monitoringStation, toDestroy[i]);
   }

@@ -1,6 +1,6 @@
 const memBuffer = 10000;
 
-const getCodeAndModes = instruction => {
+const getCodeAndModes = (instruction) => {
   const opCode = instruction % 100;
   const mode1 = Math.floor(instruction / 100) % 10;
   const mode2 = Math.floor(instruction / 1000) % 10;

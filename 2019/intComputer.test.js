@@ -1,7 +1,7 @@
 const { intComputer } = require('./intComputer');
 const { duplicator, is8, input5, input9 } = require('./intComputer.test.data');
 
-const getOutputs = computer => {
+const getOutputs = (computer) => {
   const outputs = [];
 
   for (const output of computer) {

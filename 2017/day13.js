@@ -2,7 +2,7 @@ const input = require('./input13');
 
 const firewall = input
   .split('\n')
-  .map(r => r.split(': '))
+  .map((r) => r.split(': '))
   .reduce(
     (acc, [layer, range]) => ({
       ...acc,
@@ -14,7 +14,7 @@ const firewall = input
 const keys = Object.keys(firewall);
 let severity = 0;
 
-keys.forEach(depth => {
+keys.forEach((depth) => {
   const range = firewall[depth];
   const present = depth % (range + range - 2) === 0;
   if (present) severity += depth * range;

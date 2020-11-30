@@ -70,7 +70,7 @@ const makeDistanceMap = () => {
     if (distances[key] === 100) continue;
 
     const neighbours = getNeighbours(current);
-    neighbours.forEach(neighbour => {
+    neighbours.forEach((neighbour) => {
       const neighbourKey = makeKey(neighbour);
       if (!distances[neighbourKey]) {
         queue.push(neighbour);
@@ -84,4 +84,4 @@ const makeDistanceMap = () => {
 
 const distances = makeDistanceMap();
 console.log('part1:', distances[targetKey]);
-console.log('part2:', Object.values(distances).filter(v => v <= 50).length);
+console.log('part2:', Object.values(distances).filter((v) => v <= 50).length);

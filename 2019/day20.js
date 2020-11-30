@@ -4,7 +4,7 @@ const path = require('path');
 const input = fs.readFileSync(path.resolve(__dirname, 'input20.txt'), 'utf8');
 
 const readInput = () => {
-  const maze = input.split('\n').map(r => r.split(''));
+  const maze = input.split('\n').map((r) => r.split(''));
 
   let inner = null;
   const keys = {};
@@ -141,7 +141,7 @@ const getPath = (maze, portals, from, to, recursive = false) => {
       return distance;
     }
     const neighbours = getAdjacentSquares(maze, portals, at);
-    neighbours.forEach(n => {
+    neighbours.forEach((n) => {
       const nextLevel = recursive ? level + n.levelDiff : 0;
       if (
         nextLevel >= 0 &&

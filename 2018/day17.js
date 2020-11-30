@@ -1,15 +1,18 @@
 let input = require('./input17');
 
-input = input.split('\n').map(l => l.split(', '));
-input = input.map(l => [...l[0].split('='), ...l[1].substring(2).split('..')]);
-input = input.map(([c, ...vals]) => [c, ...vals.map(x => parseInt(x, 10))]);
+input = input.split('\n').map((l) => l.split(', '));
+input = input.map((l) => [
+  ...l[0].split('='),
+  ...l[1].substring(2).split('..'),
+]);
+input = input.map(([c, ...vals]) => [c, ...vals.map((x) => parseInt(x, 10))]);
 
 let minX = Number.MAX_SAFE_INTEGER;
 let minY = Number.MAX_SAFE_INTEGER;
 let maxX = Number.MIN_SAFE_INTEGER;
 let maxY = Number.MIN_SAFE_INTEGER;
 
-input.forEach(i => {
+input.forEach((i) => {
   if (i[0] === 'x') {
     minX = Math.min(minX, i[1]);
     maxX = Math.max(maxX, i[1]);
@@ -36,7 +39,7 @@ for (let row = 0; row < height; row++) {
   }
 }
 
-input.forEach(i => {
+input.forEach((i) => {
   if (i[0] === 'x') {
     for (let j = i[2]; j <= i[3]; j++) {
       plan[j][i[1] + diff] = '#';

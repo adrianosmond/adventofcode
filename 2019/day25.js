@@ -8,7 +8,7 @@ const readlineSync = require('readline-sync');
 const input = require('./input25');
 const { intComputer } = require('./intComputer');
 
-const toAsciiArray = str => str.split('').map(char => char.charCodeAt(0));
+const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 
 let str = '';
 const inputs = [];

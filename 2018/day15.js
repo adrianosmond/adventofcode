@@ -66,7 +66,7 @@ const addDistance = (from, to, cave) => {
     }
 
     openSet = openSet.filter(
-      x => x.row !== current.row || x.col !== current.col,
+      (x) => x.row !== current.row || x.col !== current.col,
     );
     closedSet.push(current);
 
@@ -75,7 +75,7 @@ const addDistance = (from, to, cave) => {
       const neighbour = neighbours[i];
       if (
         closedSet.findIndex(
-          x => x.row === neighbour.row && x.col === neighbour.col,
+          (x) => x.row === neighbour.row && x.col === neighbour.col,
         ) >= 0
       ) {
         continue;
@@ -84,7 +84,7 @@ const addDistance = (from, to, cave) => {
       const tentativeGScore = gScore[current.row][current.col] + 1;
       if (
         openSet.findIndex(
-          x => x.row === neighbour.row && x.col === neighbour.col,
+          (x) => x.row === neighbour.row && x.col === neighbour.col,
         ) < 0
       ) {
         openSet.push(neighbour);
@@ -102,7 +102,7 @@ const addDistance = (from, to, cave) => {
 
 const findClosestToTarget = (opts, target, cave) => {
   const options = [...opts]
-    .map(t => ({
+    .map((t) => ({
       ...t,
       distance: addDistance(target, t, cave),
     }))
@@ -135,11 +135,11 @@ const fightLoop = (elvesAndGoblins, map, elvesMayDie = true) => {
   while (true) {
     for (let i = 0; i < fighters.length; i++) {
       const fighter = fighters[i];
-      const targets = fighters.filter(f => f.isElf !== fighter.isElf);
+      const targets = fighters.filter((f) => f.isElf !== fighter.isElf);
       if (targets.length === 0) {
         return loops * fighters.reduce(sumByKey('hitPoints'), 0);
       }
-      let reachableWithoutMove = targets.filter(t => inRange(fighter, t));
+      let reachableWithoutMove = targets.filter((t) => inRange(fighter, t));
       let chosenTarget = null;
       if (reachableWithoutMove.length > 0) {
         reachableWithoutMove.sort(fewestHitpoints);
@@ -159,7 +159,7 @@ const fightLoop = (elvesAndGoblins, map, elvesMayDie = true) => {
           fighter.col = bestFirstMove.col;
           cave[fighter.row][fighter.col] = fighter.isElf ? 'E' : 'G';
           if (moveTarget.distance === 1) {
-            reachableWithoutMove = targets.filter(t => inRange(fighter, t));
+            reachableWithoutMove = targets.filter((t) => inRange(fighter, t));
             reachableWithoutMove.sort(fewestHitpoints);
             [chosenTarget] = reachableWithoutMove;
           }
@@ -176,7 +176,7 @@ const fightLoop = (elvesAndGoblins, map, elvesMayDie = true) => {
         }
         cave[chosenTarget.row][chosenTarget.col] = '.';
         if (fighters.indexOf(chosenTarget) < i) i--;
-        fighters = fighters.filter(x => x !== chosenTarget);
+        fighters = fighters.filter((x) => x !== chosenTarget);
       }
     }
     fighters.sort(readingOrder);
@@ -202,13 +202,13 @@ const makeFighters = (cave, elfBoost = 0) => {
 };
 
 function day15part1() {
-  const cave = input.split('\n').map(r => r.split(''));
+  const cave = input.split('\n').map((r) => r.split(''));
   const fighters = makeFighters(cave);
   return fightLoop(fighters, cave);
 }
 
 function day15part2() {
-  const cave = input.split('\n').map(r => r.split(''));
+  const cave = input.split('\n').map((r) => r.split(''));
   // try different numbers for the 2nd param
   const fighters = makeFighters(cave, 31);
   return fightLoop(fighters, cave, false);

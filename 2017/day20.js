@@ -2,11 +2,11 @@ const input = require('./input20');
 const { lowestWithIndex } = require('../utils/reducers');
 
 const getParticles = () =>
-  input.split('\n').map(l =>
+  input.split('\n').map((l) =>
     l
       .replace(/[^,\-0-9]/g, '')
       .split(',')
-      .map(x => parseInt(x, 10)),
+      .map((x) => parseInt(x, 10)),
   );
 
 const x = 0;
@@ -22,7 +22,7 @@ const az = 8;
 const manhattan = (xDiff, yDiff, zDiff) =>
   Math.abs(xDiff) + Math.abs(yDiff) + Math.abs(zDiff);
 
-const updateParticles = particles => {
+const updateParticles = (particles) => {
   for (let i = 0; i < particles.length; i++) {
     const particle = particles[i];
     particle[vx] += particle[ax];
@@ -42,7 +42,7 @@ const day20part1 = () => {
 
   while (timesInARow < 10000) {
     updateParticles(particles);
-    const manhattans = particles.map(p => manhattan(p[x], p[y], p[z]));
+    const manhattans = particles.map((p) => manhattan(p[x], p[y], p[z]));
     const { index } = manhattans.reduce(lowestWithIndex, {
       index: -1,
       best: Number.MAX_SAFE_INTEGER,
@@ -67,7 +67,7 @@ const day20part2 = () => {
 
     particles = particles.filter(
       (p, _, ps) =>
-        ps.filter(p2 => p[x] === p2[x] && p[y] === p2[y] && p[z] === p2[z])
+        ps.filter((p2) => p[x] === p2[x] && p[y] === p2[y] && p[z] === p2[z])
           .length === 1,
     );
 

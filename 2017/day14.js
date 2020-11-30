@@ -22,11 +22,11 @@ console.log(
   output
     .replace(/0/g, '')
     .split('\n')
-    .map(r => r.length)
+    .map((r) => r.length)
     .reduce(sum),
 );
 
-output = output.split('\n').map(r => r.split(''));
+output = output.split('\n').map((r) => r.split(''));
 
 function getNeighbours(row, col) {
   const n = [];
@@ -53,7 +53,7 @@ for (let row = 0; row < 128; row++) {
     const done = [];
     while (queue.length > 0) {
       const current = queue.shift();
-      const [r, c] = current.split(',').map(d => parseInt(d, 10));
+      const [r, c] = current.split(',').map((d) => parseInt(d, 10));
       const neighbours = getNeighbours(r, c);
       output[r][c] = '-';
       for (let n = 0; n < neighbours.length; n++) {

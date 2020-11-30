@@ -1,13 +1,13 @@
 const input = require('./input10'); // Array of array of integers
 
-const positions = input.map(x => [x[0], x[1]]);
-const velocities = input.map(x => [x[2], x[3]]);
+const positions = input.map((x) => [x[0], x[1]]);
+const velocities = input.map((x) => [x[2], x[3]]);
 
 let loops = 1;
 let bestTime = 0;
 
 function hasNegativePositions() {
-  return positions.some(p => p[0] < 0 || p[1] < 0);
+  return positions.some((p) => p[0] < 0 || p[1] < 0);
 }
 
 let lowestArea = Number.MAX_VALUE;
@@ -19,10 +19,10 @@ while (loops < 11000) {
     positions[j][1] += velocities[j][1];
   }
   if (!hasNegativePositions()) {
-    const xMin = Math.min(...positions.map(x => x[0]));
-    const yMin = Math.min(...positions.map(x => x[1]));
-    const xMax = Math.max(...positions.map(x => x[0]));
-    const yMax = Math.max(...positions.map(x => x[1]));
+    const xMin = Math.min(...positions.map((x) => x[0]));
+    const yMin = Math.min(...positions.map((x) => x[1]));
+    const xMax = Math.max(...positions.map((x) => x[0]));
+    const yMax = Math.max(...positions.map((x) => x[1]));
 
     const area = (yMax - yMin) * (xMax - xMin);
     if (area < lowestArea) {
@@ -42,5 +42,5 @@ while (loops < 11000) {
 }
 
 console.log('part1:');
-console.log(message.map(r => r.join('')).join('\n'));
+console.log(message.map((r) => r.join('')).join('\n'));
 console.log('part2:', bestTime);

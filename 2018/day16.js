@@ -108,13 +108,13 @@ const day16part2 = () => {
     opCodes[i] = Object.keys(instructions);
   }
 
-  input.forEach(sample => {
+  input.forEach((sample) => {
     const [before, instruction, after] = sample;
     const [opCode, ...values] = instruction;
     const toTest = [...opCodes[opCode]];
-    toTest.forEach(op => {
+    toTest.forEach((op) => {
       if (!compare(after, instructions[op](before, values))) {
-        opCodes[opCode] = opCodes[opCode].filter(x => x !== op);
+        opCodes[opCode] = opCodes[opCode].filter((x) => x !== op);
       }
     }, 0);
   });
@@ -130,7 +130,7 @@ const day16part2 = () => {
     for (let i = 0; i < opCodes.length; i++) {
       const prevLen = opCodes[i].length;
       if (prevLen > 1) {
-        opCodes[i] = opCodes[i].filter(x => known.indexOf(x) < 0);
+        opCodes[i] = opCodes[i].filter((x) => known.indexOf(x) < 0);
         const newLen = opCodes[i].length;
         if (newLen < prevLen) {
           changed = true;
@@ -141,7 +141,7 @@ const day16part2 = () => {
       }
     }
   }
-  opCodes = opCodes.map(o => o[0]);
+  opCodes = opCodes.map((o) => o[0]);
 
   let registers = [0, 0, 0, 0];
   input2.forEach(([opCode, ...values]) => {

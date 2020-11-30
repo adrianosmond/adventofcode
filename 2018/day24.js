@@ -7,7 +7,7 @@ const byPower = (a, b) =>
   b.power === a.power ? b.initiative - a.initiative : b.power - a.power;
 const byInitiative = (a, b) => b.initiative - a.initiative;
 
-const processStrengthsAndWeaknesses = str => {
+const processStrengthsAndWeaknesses = (str) => {
   let s = str;
   let immuneTo = [];
   let weakTo = [];
@@ -15,7 +15,7 @@ const processStrengthsAndWeaknesses = str => {
     s = s.replace('(', '');
     s = s.replace(') ', '');
     const groups = s.split('; ');
-    groups.forEach(group => {
+    groups.forEach((group) => {
       let g = group;
       if (g.startsWith('weak to')) {
         g = g.substring(8);
@@ -39,7 +39,7 @@ const calculateDamage = (attacker, defender) => {
   return attacker.power;
 };
 
-const makeUnits = boost => {
+const makeUnits = (boost) => {
   const units = [];
   let currentTeam = 0;
 
@@ -96,7 +96,7 @@ const doFight = (boost = 0, loopLimit = false) => {
     for (let i = 0; i < units.length; i++) {
       const unit = units[i];
       const untargetedEnemies = units.filter(
-        enemy => enemy.team !== unit.team && enemy.isTargeted === false,
+        (enemy) => enemy.team !== unit.team && enemy.isTargeted === false,
       );
 
       if (untargetedEnemies.length === 0) {
@@ -128,7 +128,7 @@ const doFight = (boost = 0, loopLimit = false) => {
       if (unit.isDead) {
         continue;
       }
-      const [target] = units.filter(t => t.id === unit.targeting);
+      const [target] = units.filter((t) => t.id === unit.targeting);
       if (!target) {
         continue;
       }
@@ -144,12 +144,12 @@ const doFight = (boost = 0, loopLimit = false) => {
       units[i].targeting = null;
       units[i].isTargeted = false;
     }
-    units = units.filter(unit => !unit.isDead);
+    units = units.filter((unit) => !unit.isDead);
     loops++;
     const immuneDead =
-      units.filter(unit => unit.team === TEAM_IMMUNE).length === 0;
+      units.filter((unit) => unit.team === TEAM_IMMUNE).length === 0;
     const infectionDead =
-      units.filter(unit => unit.team === TEAM_INFECTION).length === 0;
+      units.filter((unit) => unit.team === TEAM_INFECTION).length === 0;
     if (immuneDead || infectionDead) {
       return [
         units.reduce((tot, unit) => tot + unit.numUnits, 0),

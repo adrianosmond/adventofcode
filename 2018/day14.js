@@ -62,7 +62,7 @@ const day14part2 = () => {
   const target = input
     .toString()
     .split('')
-    .map(i => parseInt(i, 10));
+    .map((i) => parseInt(i, 10));
 
   const [, maxRecipe] = makeRecipes(21000000, target, 2);
   return maxRecipe - target.length + 1;

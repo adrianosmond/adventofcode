@@ -3,7 +3,7 @@ const { mergeObjects, sum: sumFn } = require('../utils/reducers');
 
 const programs = input
   .split('\n')
-  .map(p => p.split(' -> '))
+  .map((p) => p.split(' -> '))
   .map(([l, r]) => {
     const [key, val] = l.split(' ');
     const weight = parseInt(val.replace(/[()]/g, ''), 10);
@@ -16,17 +16,17 @@ const programs = input
   })
   .reduce(mergeObjects, {});
 
-const flatten = list =>
+const flatten = (list) =>
   list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
-const withChildren = Object.keys(programs).filter(i => programs[i].children);
+const withChildren = Object.keys(programs).filter((i) => programs[i].children);
 
-flatten(withChildren.map(i => programs[i].children)).forEach(child => {
+flatten(withChildren.map((i) => programs[i].children)).forEach((child) => {
   programs[child].isBottom = false;
 });
 
 const bottom = Object.keys(programs).filter(
-  i => typeof programs[i].isBottom === 'undefined',
+  (i) => typeof programs[i].isBottom === 'undefined',
 )[0];
 
 console.log('part1:', bottom);
@@ -40,7 +40,7 @@ function findImbalance(prog) {
     sum = weights.reduce(sumFn, 0);
     if (sum / weights.length !== weights[0]) {
       const outlier = weights.find(
-        w => weights.filter(ww => ww !== w).length > 1,
+        (w) => weights.filter((ww) => ww !== w).length > 1,
       );
       const outlierIdx = weights.indexOf(outlier);
       const normal = outlier === weights[0] ? weights[1] : weights[0];

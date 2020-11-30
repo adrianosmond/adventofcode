@@ -5,9 +5,9 @@ const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 
 const lcm = (a, b) => (a * b) / gcd(a, b);
 
-const lcmArray = numbers => {
+const lcmArray = (numbers) => {
   let multiple = Math.min(...numbers);
-  numbers.forEach(n => {
+  numbers.forEach((n) => {
     multiple = lcm(multiple, n);
   });
   return multiple;
@@ -17,7 +17,7 @@ const velocities = input.split('\n').map(() => [0, 0, 0]);
 const moons = input
   .replace(/[<>=xyz]/g, '')
   .split('\n')
-  .map(m => m.split(', ').map(i => parseInt(i, 10)));
+  .map((m) => m.split(', ').map((i) => parseInt(i, 10)));
 
 const history = [];
 history.push([...moons].flat());

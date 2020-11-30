@@ -9,26 +9,26 @@ input.split('\n').forEach((floor, idx) => {
   if (!floor.includes('nothing relevant')) {
     floor
       .match(/([^\s]+) (generator|microchip)/g)
-      .map(s =>
+      .map((s) =>
         s
           .replace('-compatible', '')
           .split(' ')
-          .map(w => w.substr(0, 2))
+          .map((w) => w.substr(0, 2))
           .join(''),
       )
-      .forEach(name => {
+      .forEach((name) => {
         initialState[name] = idx;
       });
   }
 });
 
 const getItemsOnLevel = (state, level) =>
-  Object.keys(state).filter(i => i !== 'elev' && state[i] === level);
+  Object.keys(state).filter((i) => i !== 'elev' && state[i] === level);
 
-const getMicrochips = items => items.filter(i => i.endsWith('mi'));
-const getGenerators = items => items.filter(i => i.endsWith('ge'));
+const getMicrochips = (items) => items.filter((i) => i.endsWith('mi'));
+const getGenerators = (items) => items.filter((i) => i.endsWith('ge'));
 
-const isLegalState = state => {
+const isLegalState = (state) => {
   for (let i = 0; i <= maxFloor; i++) {
     const items = getItemsOnLevel(state, i);
     const generators = getGenerators(items);
@@ -47,7 +47,7 @@ const isLegalState = state => {
 const moveItems = (state, nextSteps, items, direction) => {
   const newState = { ...state };
   newState.elev += direction;
-  items.forEach(i => {
+  items.forEach((i) => {
     newState[i] += direction;
   });
   if (isLegalState(newState)) {
@@ -55,7 +55,7 @@ const moveItems = (state, nextSteps, items, direction) => {
   }
 };
 
-const getNextSteps = state => {
+const getNextSteps = (state) => {
   const nextSteps = [];
   const itemsBelow = [];
   for (let i = 0; i < state.elev; i++) {
@@ -86,25 +86,25 @@ const getNextSteps = state => {
   }
   if (state.elev > 0 && itemsBelow.length > 0) {
     if (singlesToCarry.length) {
-      singlesToCarry.forEach(item => moveItems(state, nextSteps, item, -1));
+      singlesToCarry.forEach((item) => moveItems(state, nextSteps, item, -1));
     } else {
-      doublesToCarry.forEach(item => moveItems(state, nextSteps, item, -1));
+      doublesToCarry.forEach((item) => moveItems(state, nextSteps, item, -1));
     }
   }
   if (state.elev < maxFloor) {
     if (doublesToCarry.length) {
-      doublesToCarry.forEach(item => moveItems(state, nextSteps, item, 1));
+      doublesToCarry.forEach((item) => moveItems(state, nextSteps, item, 1));
     } else {
-      singlesToCarry.forEach(item => moveItems(state, nextSteps, item, 1));
+      singlesToCarry.forEach((item) => moveItems(state, nextSteps, item, 1));
     }
   }
 
   return nextSteps;
 };
 
-const makeKey = steps => JSON.stringify(steps);
+const makeKey = (steps) => JSON.stringify(steps);
 
-const findSteps = state => {
+const findSteps = (state) => {
   const queue = [state];
   const steps = {
     [makeKey(state)]: 0,
@@ -114,11 +114,11 @@ const findSteps = state => {
     const current = queue.shift();
     const currentKey = makeKey(current);
     const currentSteps = steps[currentKey];
-    if (Object.values(current).every(v => v === maxFloor)) {
+    if (Object.values(current).every((v) => v === maxFloor)) {
       return currentSteps;
     }
     const nextSteps = getNextSteps(current);
-    nextSteps.forEach(step => {
+    nextSteps.forEach((step) => {
       const keyStr = makeKey(step);
       if (typeof steps[keyStr] === 'undefined') {
         steps[keyStr] = currentSteps + 1;

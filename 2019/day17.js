@@ -33,7 +33,7 @@ const makeGrid = () => {
   return grid;
 };
 
-const isValueScaffold = s => s === '#';
+const isValueScaffold = (s) => s === '#';
 
 const isScaffold = (grid, x, y) => isValueScaffold(grid[y][x]);
 
@@ -44,7 +44,7 @@ const getAdjacent = (grid, x, y) => [
   grid[y][x + 1],
 ];
 
-const getAlignmentSum = grid => {
+const getAlignmentSum = (grid) => {
   let alignmentSum = 0;
   for (let y = 1; y < grid.length - 1; y++) {
     for (let x = 1; x < grid[0].length - 1; x++) {
@@ -59,7 +59,7 @@ const getAlignmentSum = grid => {
   return alignmentSum;
 };
 
-const findRobot = grid => {
+const findRobot = (grid) => {
   for (let y = 0; y < grid.length - 0; y++) {
     for (let x = 0; x < grid[0].length - 0; x++) {
       const p = grid[y][x];
@@ -192,7 +192,7 @@ function* makePatterns(instructions) {
   }
 }
 
-const findPattern = instructions => {
+const findPattern = (instructions) => {
   for (const [A, B, C] of makePatterns(instructions)) {
     const pattern = testPattern({ A, B, C }, instructions);
 
@@ -203,9 +203,9 @@ const findPattern = instructions => {
   throw new Error('No pattern found');
 };
 
-const toAsciiArray = str => str.split('').map(char => char.charCodeAt(0));
+const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 
-const getDust = grid => {
+const getDust = (grid) => {
   const program = [...input];
   program[0] = 2;
 

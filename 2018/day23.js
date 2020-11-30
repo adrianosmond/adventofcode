@@ -4,7 +4,7 @@ const bots = input
   .replace(/pos=</g, '')
   .replace(/>, r=/g, ',')
   .split('\n')
-  .map(n => n.split(',').map(d => parseInt(d, 10)));
+  .map((n) => n.split(',').map((d) => parseInt(d, 10)));
 
 const manhattan3d = (from, to) =>
   Math.abs(from[0] - to[0]) +

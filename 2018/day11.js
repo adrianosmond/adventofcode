@@ -1,6 +1,6 @@
 const serial = require('./input11');
 
-const getRackId = x => x + 10;
+const getRackId = (x) => x + 10;
 
 const getPower = (x, y) => {
   let power = getRackId(x);

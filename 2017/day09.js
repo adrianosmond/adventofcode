@@ -14,7 +14,7 @@ while (inputLength !== prevInputLength) {
   removedInputLength -= 2;
 }
 
-const buildStructure = start => {
+const buildStructure = (start) => {
   const structure = { children: [] };
   for (let i = start + 1; i < sanitised.length; i++) {
     if (sanitised[start] !== '{') throw new Error('Huh?');
@@ -33,7 +33,7 @@ const buildStructure = start => {
 };
 
 const score = (pts, structure) => {
-  return pts + structure.children.map(c => score(pts + 1, c)).reduce(sum, 0);
+  return pts + structure.children.map((c) => score(pts + 1, c)).reduce(sum, 0);
 };
 
 console.log('part1:', score(1, buildStructure(0)));

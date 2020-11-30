@@ -7,7 +7,7 @@ for (let i = 0; i < input.length; i++) {
     const [len, repeats] = input
       .substring(markerStart, i)
       .split('x')
-      .map(d => parseInt(d, 10));
+      .map((d) => parseInt(d, 10));
     for (let j = 0; j < repeats; j++) {
       output += input.substr(i + 1, len);
     }
@@ -20,7 +20,7 @@ for (let i = 0; i < input.length; i++) {
   }
 }
 
-const getLengths = str => {
+const getLengths = (str) => {
   if (!str.includes('(')) return str.length;
   let s = str;
   let ptr = 0;
@@ -39,7 +39,7 @@ const getLengths = str => {
       const [len, repeats] = s
         .substring(ptr + 1, end)
         .split('x')
-        .map(d => parseInt(d, 10));
+        .map((d) => parseInt(d, 10));
 
       length += repeats * getLengths(s.substr(end + 1, len));
       s = s.substr(end + 1 + len);

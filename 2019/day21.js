@@ -1,9 +1,9 @@
 const input = require('./input21');
 const { intComputer } = require('./intComputer');
 
-const toAsciiArray = str => str.split('').map(char => char.charCodeAt(0));
+const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 
-const springBot = instructions => {
+const springBot = (instructions) => {
   const ascii = toAsciiArray([...instructions, ''].join('\n'));
   const computer = intComputer(input, ascii);
   let output;

@@ -1,6 +1,6 @@
 const input = require('./input08')
   .split('\n')
-  .map(inst => inst.split(' '));
+  .map((inst) => inst.split(' '));
 
 const reg = {};
 const ops = {
@@ -14,7 +14,7 @@ const ops = {
 
 let max = 0;
 
-input.forEach(instruction => {
+input.forEach((instruction) => {
   const [target, action, amt, , condTarget, condition, condAmt] = instruction;
   const amount = parseInt(amt, 10);
   const condAmount = parseInt(condAmt, 10);

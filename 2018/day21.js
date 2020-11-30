@@ -3,8 +3,8 @@ const input = require('./input21');
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);
 const instructions = inst
-  .map(i => i.split(' '))
-  .map(([i, ...values]) => [i, ...values.map(v => parseInt(v, 10))]);
+  .map((i) => i.split(' '))
+  .map(([i, ...values]) => [i, ...values.map((v) => parseInt(v, 10))]);
 
 /* eslint-disable no-param-reassign */
 const opCodes = {

@@ -4,7 +4,7 @@ const input = 'ngcjuoqr';
 
 const chars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
 
-const getTriple = hash => {
+const getTriple = (hash) => {
   for (let i = 0; i < hash.length < 2; i++) {
     if (hash[i] === hash[i + 1] && hash[i] === hash[i + 2]) {
       return hash[i];
@@ -15,14 +15,14 @@ const getTriple = hash => {
 
 const makeArrays = () => {
   const obj = {};
-  chars.forEach(c => {
+  chars.forEach((c) => {
     obj[c] = [];
   });
   return obj;
 };
 
 const fives = {};
-chars.forEach(c => {
+chars.forEach((c) => {
   fives[c] = new Array(5).fill(c).join('');
 });
 

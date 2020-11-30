@@ -1,5 +1,5 @@
 module.exports = {
-  highestByKey: key => (best, current) =>
+  highestByKey: (key) => (best, current) =>
     current[key] > best[key] ? current : best,
   highestWithIndex: (best, curr, index) =>
     curr > best.best
@@ -20,5 +20,5 @@ module.exports = {
     ...curr,
   }),
   sum: (tot, curr) => tot + curr,
-  sumByKey: key => (tot, curr) => tot + curr[key],
+  sumByKey: (key) => (tot, curr) => tot + curr[key],
 };

@@ -1,7 +1,7 @@
 const input = require('./input18');
 
 const makeMaze = () => {
-  const maze = input.split('\n').map(r => r.split(''));
+  const maze = input.split('\n').map((r) => r.split(''));
   const keys = [];
   const me = {
     row: -1,
@@ -77,7 +77,7 @@ const getAdjacentSquares = (maze, current) => {
   return adj;
 };
 
-const matching = neighbour => x =>
+const matching = (neighbour) => (x) =>
   x.row === neighbour.row && x.col === neighbour.col;
 
 const getPath = (maze, from, to) => {
@@ -103,7 +103,7 @@ const getPath = (maze, from, to) => {
     }
 
     openSet = openSet.filter(
-      x => x.row !== current.row || x.col !== current.col,
+      (x) => x.row !== current.row || x.col !== current.col,
     );
     closedSet.push(current);
 
@@ -188,10 +188,10 @@ const makeKeyMap = (maze, starts, keys) => {
   return keyMap;
 };
 
-const arrToSortedStr = arr => [...arr].sort().join(',');
+const arrToSortedStr = (arr) => [...arr].sort().join(',');
 
 const keyCache = {};
-const generateCacheId = state =>
+const generateCacheId = (state) =>
   `${arrToSortedStr(state.currentKeys)},${arrToSortedStr(state.haveKeys)}`;
 
 const getReachableKeys = (from, keyMap) => {
@@ -206,7 +206,7 @@ const getReachableKeys = (from, keyMap) => {
       ...all,
       ...Object.entries(keyMap[current]).reduce((r, [k, v]) => {
         const doors = Object.keys(v.doors);
-        if (!haveKeys.includes(k) && doors.every(d => haveKeys.includes(d))) {
+        if (!haveKeys.includes(k) && doors.every((d) => haveKeys.includes(d))) {
           return {
             ...r,
             [k]: {
@@ -258,7 +258,7 @@ const searchMaze = (from, keyMap) => {
       ) {
         distances[key][keyStr] = current.distance + value.distance;
         queue.push({
-          currentKeys: current.currentKeys.map(k =>
+          currentKeys: current.currentKeys.map((k) =>
             k === value.from ? key : k,
           ),
           haveKeys: [...current.haveKeys, key],

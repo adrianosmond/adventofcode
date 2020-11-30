@@ -8,9 +8,9 @@ const MOVEMENTS = [
   [0, -1], // Down
 ];
 
-const getLimits = hull =>
+const getLimits = (hull) =>
   Object.keys(hull)
-    .map(c => c.split(',').map(i => parseInt(i, 10)))
+    .map((c) => c.split(',').map((i) => parseInt(i, 10)))
     .reduce(
       ([minX, maxX, minY, maxY], [x, y]) => [
         Math.min(x, minX),
@@ -21,7 +21,7 @@ const getLimits = hull =>
       [1, -1, 1, -1],
     );
 
-const hullRobot = startColor => {
+const hullRobot = (startColor) => {
   let x = 0;
   let y = 0;
   let direction = 1; // Up

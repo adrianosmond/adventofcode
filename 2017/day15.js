@@ -2,8 +2,8 @@ const input = require('./input15');
 
 const generators = input
   .split('\n')
-  .map(s => s.substring(24))
-  .map(d => parseInt(d, 10));
+  .map((s) => s.substring(24))
+  .map((d) => parseInt(d, 10));
 
 let [a, b] = generators;
 const aFactor = 16807;

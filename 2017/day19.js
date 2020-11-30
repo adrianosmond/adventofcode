@@ -1,6 +1,6 @@
 const input = require('./input19');
 
-const grid = input.split('\n').map(line => line.split(''));
+const grid = input.split('\n').map((line) => line.split(''));
 let y = 0;
 let x = grid[0].indexOf('|');
 let current = grid[y][x];
