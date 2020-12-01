@@ -15,6 +15,7 @@
     "max-classes-per-file": "off",
     "no-continue": "off",
     "no-bitwise": "off",
-    "no-constant-condition": "off"
+    "no-constant-condition": "off",
+    "consistent-return": "off"
   }
 }
