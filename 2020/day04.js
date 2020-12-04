@@ -4,14 +4,14 @@ const path = require('path');
 const input = fs
   .readFileSync(path.resolve(__dirname, 'input04.txt'), 'utf8')
   .split('\n\n')
-  .map((p) => p.replace(/\n/g, ' '));
+  .map((p) => p.split(/[\s]/g).map((f) => f.split(':')));
 
 const isNumberBetween = (str, min, max) => {
   const num = parseInt(str, 10);
   return num >= min && num <= max;
 };
 
-const isValidField = (field, value) =>
+const isValidField = ([field, value]) =>
   ({
     byr: (val) => isNumberBetween(val, 1920, 2002),
     iyr: (val) => isNumberBetween(val, 2010, 2020),
@@ -26,24 +26,16 @@ const isValidField = (field, value) =>
     cid: () => true,
   }[field](value));
 
-const containsRequiredFields = (passport) =>
-  passport.includes('byr:') &&
-  passport.includes('iyr:') &&
-  passport.includes('eyr:') &&
-  passport.includes('hgt:') &&
-  passport.includes('hcl:') &&
-  passport.includes('ecl:') &&
-  passport.includes('pid:');
+const hasRequiredFields = (passport) =>
+  ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every((requiredField) =>
+    passport.map(([field]) => field).includes(requiredField),
+  );
 
-const hasValidFields = (passport) =>
-  passport
-    .split(' ')
-    .map((field) => field.split(':'))
-    .every((fieldAndValue) => isValidField(...fieldAndValue));
+const hasValidFields = (passport) => passport.every(isValidField);
 
-const part1 = () => input.filter(containsRequiredFields).length;
+const part1 = () => input.filter(hasRequiredFields).length;
 const part2 = () =>
-  input.filter(containsRequiredFields).filter(hasValidFields).length;
+  input.filter(hasRequiredFields).filter(hasValidFields).length;
 
 console.log('part1', part1());
 console.log('part2', part2());
