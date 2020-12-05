@@ -8,6 +8,8 @@ module.exports = {
           index,
         }
       : best,
+  lowestByKey: (key) => (best, current) =>
+    current[key] < best[key] ? current : best,
   lowestWithIndex: (best, curr, index) =>
     best.best > curr
       ? {
