@@ -1,17 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
-const input = fs
-  .readFileSync(path.resolve(__dirname, 'input03.txt'), 'utf8')
-  .split('\n');
+const input = fs.readFileSync(path.resolve(__dirname, 'input03.txt'), 'utf8');
+const rows = input.split('\n');
 
 const treesEncountered = (downMovement, rightMovement) => {
-  const width = input[0].length;
+  const width = rows[0].length;
   let row = 0;
   let col = 0;
   let numTrees = 0;
-  while (row < input.length) {
-    if (input[row][col] === '#') numTrees++;
+  while (row < rows.length) {
+    if (rows[row][col] === '#') numTrees++;
     col += rightMovement;
     col %= width;
     row += downMovement;

@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const input = fs
-  .readFileSync(path.resolve(__dirname, 'input04.txt'), 'utf8')
+const input = fs.readFileSync(path.resolve(__dirname, 'input04.txt'), 'utf8');
+
+const passports = input
   .split('\n\n')
   .map((p) => p.split(/[\s]/g).map((f) => f.split(':')));
 
@@ -33,9 +34,9 @@ const hasRequiredFields = (passport) =>
 
 const hasValidFields = (passport) => passport.every(isValidField);
 
-const part1 = () => input.filter(hasRequiredFields).length;
+const part1 = () => passports.filter(hasRequiredFields).length;
 const part2 = () =>
-  input.filter(hasRequiredFields).filter(hasValidFields).length;
+  passports.filter(hasRequiredFields).filter(hasValidFields).length;
 
 console.log('part1', part1());
 console.log('part2', part2());
