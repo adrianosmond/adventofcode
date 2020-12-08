@@ -4,82 +4,63 @@ const path = require('path');
 const input = fs.readFileSync(path.resolve(__dirname, 'input08.txt'), 'utf8');
 
 const instructions = input
-  .replace(/\+/g, '')
   .split('\n')
   .map((i) => i.split(' '))
   .map(([i, v]) => [i, parseInt(v, 10)]);
 
-const part1 = () => {
-  const visited = [];
+let visited;
+let acc;
+let ptr;
 
-  let acc = 0;
-  let ptr = 0;
-  while (ptr < instructions.length) {
-    if (visited[ptr] === true) {
-      break;
-    }
-    visited[ptr] = true;
-
-    const [instruction, value] = instructions[ptr];
-    switch (instruction) {
-      case 'acc':
-        acc += value;
-        ptr++;
-        break;
-      case 'jmp':
-        ptr += value;
-        break;
-      default:
-        ptr++;
-        break;
-    }
+const switchJmpAndNop = (index) => {
+  if (instructions[index][0] === 'jmp') {
+    instructions[index][0] = 'nop';
+  } else {
+    instructions[index][0] = 'jmp';
   }
+};
+
+const processor = {
+  acc: (value) => {
+    acc += value;
+    ptr++;
+  },
+  jmp: (value) => {
+    ptr += value;
+  },
+  nop: () => ptr++,
+};
+
+const runProgram = () => {
+  visited = [];
+  acc = 0;
+  ptr = 0;
+  while (ptr < instructions.length) {
+    if (visited[ptr] === true) return false;
+
+    visited[ptr] = true;
+    const [instruction, value] = instructions[ptr];
+    processor[instruction](value);
+  }
+  return true;
+};
+
+const part1 = () => {
+  runProgram();
+
   return acc;
 };
 
 const part2 = () => {
   for (let i = 0; i < instructions.length; i++) {
     if (instructions[i][0] === 'acc') continue;
-    if (instructions[i][0] === 'jmp') {
-      instructions[i][0] = 'nop';
-    } else {
-      instructions[i][0] = 'jmp';
-    }
-    let success = true;
-    const visited = [];
+    switchJmpAndNop(i);
 
-    let acc = 0;
-    let ptr = 0;
-
-    while (ptr < instructions.length) {
-      if (visited[ptr] === true) {
-        success = false;
-        break;
-      }
-      visited[ptr] = true;
-
-      const [instruction, value] = instructions[ptr];
-      switch (instruction) {
-        case 'acc':
-          acc += value;
-          ptr++;
-          break;
-        case 'jmp':
-          ptr += value;
-          break;
-        default:
-          ptr++;
-          break;
-      }
-    }
-    if (success) {
+    if (runProgram()) {
       return acc;
     }
-    if (instructions[i][0] === 'jmp') {
-      instructions[i][0] = 'nop';
-    } else {
-      instructions[i][0] = 'jmp';
-    }
+
+    switchJmpAndNop(i);
   }
 };
 
