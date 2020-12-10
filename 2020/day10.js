@@ -11,16 +11,14 @@ const jolts = input
 jolts.push(jolts[jolts.length - 1] + 3);
 jolts.unshift(0);
 
-let diff1 = 0;
-let diff3 = 0;
+const diffs = new Array(4).fill(0);
 
 const part1 = () => {
   for (let i = 1; i < jolts.length; i++) {
-    const diff = jolts[i] - jolts[i - 1];
-    if (diff === 1) diff1++;
-    if (diff === 3) diff3++;
+    diffs[jolts[i] - jolts[i - 1]]++;
   }
-  return diff1 * diff3;
+
+  return diffs[1] * diffs[3];
 };
 
 const part2 = () => {
