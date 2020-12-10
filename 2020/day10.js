@@ -1,15 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+const { strToIntArray } = require('../utils/functions');
+const { sum } = require('../utils/reducers');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input10.txt'), 'utf8');
 
-const jolts = input
-  .split('\n')
-  .map((n) => parseInt(n, 10))
-  .sort((a, b) => a - b);
+const jolts = strToIntArray(input).sort((a, b) => a - b);
 
-jolts.push(jolts[jolts.length - 1] + 3);
 jolts.unshift(0);
+jolts.push(Math.max(...jolts) + 3);
 
 const part1 = () => {
   const differences = jolts.map((current, i) => jolts[i + 1] - current);
@@ -21,23 +20,18 @@ const part1 = () => {
 };
 
 const part2 = () => {
-  const numRoutes = Object.fromEntries(jolts.map((j) => [j, 0]));
+  const ways = {};
   const reversedJolts = [...jolts].reverse();
-
-  numRoutes[reversedJolts[0]] = 1;
 
   reversedJolts.forEach((jolt) => {
     const possibleJumps = jolts.filter(
-      (jump) => jump > jolt && jump - jolt <= 3,
+      (jump) => jump > jolt && jump <= jolt + 3,
     );
 
-    numRoutes[jolt] += possibleJumps.reduce(
-      (totalRoutes, jump) => totalRoutes + numRoutes[jump],
-      0,
-    );
+    ways[jolt] = possibleJumps.map((jump) => ways[jump]).reduce(sum, 0) || 1;
   });
 
-  return numRoutes[0];
+  return ways[0];
 };
 
 console.log('part1', part1());

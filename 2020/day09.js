@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+const { strToIntArray } = require('../utils/functions');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input09.txt'), 'utf8');
-const numbers = input.split('\n').map((n) => parseInt(n, 10));
+const numbers = strToIntArray(input);
 const PREAMBLE = 25;
 
 const part1 = () => {
