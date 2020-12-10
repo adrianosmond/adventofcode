@@ -11,29 +11,31 @@ const jolts = input
 jolts.push(jolts[jolts.length - 1] + 3);
 jolts.unshift(0);
 
-const diffs = new Array(4).fill(0);
-
 const part1 = () => {
-  for (let i = 1; i < jolts.length; i++) {
-    diffs[jolts[i] - jolts[i - 1]]++;
-  }
+  const differences = jolts.map((current, i) => jolts[i + 1] - current);
 
-  return diffs[1] * diffs[3];
+  return (
+    differences.filter((d) => d === 1).length *
+    differences.filter((d) => d === 3).length
+  );
 };
 
 const part2 = () => {
-  const numRoutes = {};
+  const numRoutes = Object.fromEntries(jolts.map((j) => [j, 0]));
+  const reversedJolts = [...jolts].reverse();
 
-  numRoutes[jolts[jolts.length - 1]] = 1;
+  numRoutes[reversedJolts[0]] = 1;
 
-  for (let i = jolts.length - 2; i >= 0; i--) {
-    numRoutes[jolts[i]] = 0;
-    for (let j = i + 1; j < jolts.length && j <= i + 3; j++) {
-      if (jolts[j] - jolts[i] <= 3) {
-        numRoutes[jolts[i]] += numRoutes[jolts[j]];
-      }
-    }
-  }
+  reversedJolts.forEach((jolt) => {
+    const possibleJumps = jolts.filter(
+      (jump) => jump > jolt && jump - jolt <= 3,
+    );
+
+    numRoutes[jolt] += possibleJumps.reduce(
+      (totalRoutes, jump) => totalRoutes + numRoutes[jump],
+      0,
+    );
+  });
 
   return numRoutes[0];
 };
