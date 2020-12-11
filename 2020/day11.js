@@ -84,20 +84,20 @@ const getNextLayout = (prev, maxDistance = 1, neighbourTolerance = 4) => {
   return next;
 };
 
-const makeStr = (l) => l.map((r) => r.join('')).join('\n');
+const getGridKey = (l) => l.map((r) => r.join('')).join('\n');
 
 const findStableState = (maxDistance = 1, neighbourTolerance = 4) => {
-  let next = layout;
-  let current = makeStr(next);
+  let grid = layout;
+  let current = getGridKey(grid);
   let prev = '';
 
   while (current !== prev) {
     prev = current;
-    next = getNextLayout(next, maxDistance, neighbourTolerance);
-    current = makeStr(next);
+    grid = getNextLayout(grid, maxDistance, neighbourTolerance);
+    current = getGridKey(grid);
   }
 
-  return current.replace(/[^#]/g, '').length;
+  return grid.flat().filter((cell) => cell === '#').length;
 };
 
 const part1 = () => findStableState();
