@@ -1,9 +1,8 @@
+/* eslint-disable no-param-reassign */
 const fs = require('fs');
 const path = require('path');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input11.txt'), 'utf8');
-
-const layout = input.split('\n').map((r) => r.split(''));
 
 const STATES = {
   EMPTY: 'L',
@@ -22,19 +21,27 @@ const DIRECTIONS = [
   [1, 1],
 ];
 
-const isInGridBounds = (row, col) =>
-  row >= 0 && col >= 0 && row < layout.length && col <= layout[0].length;
+let ADJACENCY_CACHE;
 
-const getAdjacent = (grid, row, col, maxDistance = 1) =>
-  DIRECTIONS.map(([rDiff, cDiff]) => {
+const createAdjacencyCache = () => {
+  ADJACENCY_CACHE = input
+    .split('\n')
+    .map((r) => r.split('').map(() => undefined));
+};
+
+const isInGridBounds = (grid, row, col) =>
+  row >= 0 && col >= 0 && row < grid.length && col < grid[0].length;
+
+const getAdjacentSeatIndices = (grid, row, col, maxDistance) => {
+  if (ADJACENCY_CACHE[row][col]) return ADJACENCY_CACHE[row][col];
+
+  const adjacentSeats = DIRECTIONS.map(([rDiff, cDiff]) => {
     let r = row + rDiff;
     let c = col + cDiff;
     let distance = 1;
 
-    while (isInGridBounds(r, c) && distance <= maxDistance) {
-      if (grid[r][c] !== STATES.FLOOR) {
-        return grid[r][c];
-      }
+    while (isInGridBounds(grid, r, c) && distance <= maxDistance) {
+      if (grid[r][c] !== STATES.FLOOR) return [r, c];
       r += rDiff;
       c += cDiff;
       distance++;
@@ -43,61 +50,72 @@ const getAdjacent = (grid, row, col, maxDistance = 1) =>
     return false;
   }).filter(Boolean);
 
-const getNextCellState = (
-  grid,
-  row,
-  col,
-  maxDistance = 1,
-  neighbourTolerance = 4,
-) => {
+  ADJACENCY_CACHE[row][col] = adjacentSeats;
+
+  return adjacentSeats;
+};
+
+const getNextCellState = (grid, row, col, maxDistance = 1, tolerance = 4) => {
   const currentState = grid[row][col];
   if (currentState === STATES.FLOOR) return STATES.FLOOR;
 
-  const numAdjacentOccupied = getAdjacent(grid, row, col, maxDistance).filter(
-    (s) => s === STATES.OCCUPIED,
-  ).length;
+  const numAdjacentOccupied = getAdjacentSeatIndices(
+    grid,
+    row,
+    col,
+    maxDistance,
+  ).reduce(
+    (total, [r, c]) => total + (grid[r][c] === STATES.OCCUPIED ? 1 : 0),
+    0,
+  );
 
   if (currentState === STATES.EMPTY && numAdjacentOccupied === 0) {
     return STATES.OCCUPIED;
   }
 
-  if (
-    currentState === STATES.OCCUPIED &&
-    numAdjacentOccupied >= neighbourTolerance
-  ) {
+  if (currentState === STATES.OCCUPIED && numAdjacentOccupied >= tolerance) {
     return STATES.EMPTY;
   }
 
   return currentState;
 };
 
-const getNextLayout = (prev, maxDistance = 1, neighbourTolerance = 4) => {
-  const next = [];
+const getNextLayout = (curr, prev, maxDistance = 1, tolerance = 4) => {
+  let changed = false;
+
   for (let i = 0; i < prev.length; i++) {
-    const row = [];
     for (let j = 0; j < prev[i].length; j++) {
-      row.push(getNextCellState(prev, i, j, maxDistance, neighbourTolerance));
+      curr[i][j] = getNextCellState(prev, i, j, maxDistance, tolerance);
+      changed = changed || curr[i][j] !== prev[i][j];
     }
-    next.push(row);
   }
 
-  return next;
+  return changed;
 };
 
-const getGridKey = (l) => l.map((r) => r.join('')).join('\n');
+const findStableState = (maxDistance = 1, tolerance = 4) => {
+  createAdjacencyCache();
 
-const findStableState = (maxDistance = 1, neighbourTolerance = 4) => {
-  let grid = layout;
-  let current = getGridKey(grid);
-  let prev = '';
+  const grids = [
+    input.split('\n').map((r) => r.split('')),
+    input.split('\n').map((r) => r.split('')),
+  ];
+  let idx = 0;
+  let changed = true;
 
-  while (current !== prev) {
-    prev = current;
-    grid = getNextLayout(grid, maxDistance, neighbourTolerance);
-    current = getGridKey(grid);
+  while (changed) {
+    changed = getNextLayout(
+      grids[idx % 2],
+      grids[(idx + 1) % 2],
+      maxDistance,
+      tolerance,
+    );
+    idx++;
   }
 
-  return grid.flat().filter((cell) => cell === '#').length;
+  return grids[idx % 2]
+    .flat()
+    .reduce((total, cell) => total + (cell === STATES.OCCUPIED ? 1 : 0), 0);
 };
 
 const part1 = () => findStableState();
