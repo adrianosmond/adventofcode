@@ -32,9 +32,8 @@ const buildStructure = (start) => {
   throw new Error('Not found');
 };
 
-const score = (pts, structure) => {
-  return pts + structure.children.map((c) => score(pts + 1, c)).reduce(sum, 0);
-};
+const score = (pts, structure) =>
+  pts + structure.children.map((c) => score(pts + 1, c)).reduce(sum, 0);
 
 console.log('part1:', score(1, buildStructure(0)));
 console.log('part2:', removedInputLength);

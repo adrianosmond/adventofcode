@@ -17,21 +17,20 @@ const isValidPassword = (min, max, letter, password) => {
   return letterCount >= min && letterCount <= max;
 };
 
-const isValidPassword2 = (pos1, pos2, letter, password) => {
-  return (password[pos1 - 1] === letter) ^ (password[pos2 - 1] === letter);
-};
+const isValidPassword2 = (pos1, pos2, letter, password) =>
+  (password[pos1 - 1] === letter) ^ (password[pos2 - 1] === letter);
 
-const part1 = () => {
-  return passwords.reduce((total, pass) => {
-    return total + (isValidPassword(...pass) ? 1 : 0);
-  }, 0);
-};
+const part1 = () =>
+  passwords.reduce(
+    (total, pass) => total + (isValidPassword(...pass) ? 1 : 0),
+    0,
+  );
 
-const part2 = () => {
-  return passwords.reduce((total, pass) => {
-    return total + (isValidPassword2(...pass) ? 1 : 0);
-  }, 0);
-};
+const part2 = () =>
+  passwords.reduce(
+    (total, pass) => total + (isValidPassword2(...pass) ? 1 : 0),
+    0,
+  );
 
 console.log('part1', part1());
 console.log('part2', part2());

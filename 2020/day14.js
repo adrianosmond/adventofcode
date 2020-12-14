@@ -16,7 +16,7 @@ const getValue = (mask, val) => {
 };
 
 const part1 = () => {
-  let memory = {};
+  const memory = {};
   let mask;
 
   instructions.forEach(([i, v]) => {
@@ -53,7 +53,7 @@ const getDecodedAddresses = (originalMask, replacedMasks, address) =>
   });
 
 const part2 = () => {
-  let memory = {};
+  const memory = {};
   let originalMask;
   let replacedMasks;
 

@@ -2,6 +2,7 @@
   "name": "adventofcode",
   "version": "1.0.0",
   "description": "Solutions to adventofcode.com problems",
+  "main": "",
   "scripts": {
     "test": "jest",
     "lint": "eslint ."

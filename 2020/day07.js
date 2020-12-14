@@ -39,9 +39,10 @@ const findContaining = (target) =>
 const getNumberOfBags = (target, count) =>
   count +
   count *
-    Object.entries(ruleTree[target]).reduce((total, [key, number]) => {
-      return total + getNumberOfBags(key, number);
-    }, 0);
+    Object.entries(ruleTree[target]).reduce(
+      (total, [key, number]) => total + getNumberOfBags(key, number),
+      0,
+    );
 
 const part1 = () => {
   const containingBagColor = new Set(findContaining('shiny gold'));

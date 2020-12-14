@@ -1,15 +1,13 @@
 const input = require('./input06'); // Array of arrays of integers
 
-const getInputLimits = () => {
-  return input.reduce(
-    (currentBest, newValues) => {
-      return {
-        minX: Math.min(currentBest.minX, newValues[0]),
-        maxX: Math.max(currentBest.maxX, newValues[0]),
-        minY: Math.min(currentBest.minY, newValues[1]),
-        maxY: Math.max(currentBest.maxY, newValues[1]),
-      };
-    },
+const getInputLimits = () =>
+  input.reduce(
+    (currentBest, newValues) => ({
+      minX: Math.min(currentBest.minX, newValues[0]),
+      maxX: Math.max(currentBest.maxX, newValues[0]),
+      minY: Math.min(currentBest.minY, newValues[1]),
+      maxY: Math.max(currentBest.maxY, newValues[1]),
+    }),
     {
       minX: Number.MAX_VALUE,
       maxX: Number.MIN_VALUE,
@@ -17,7 +15,6 @@ const getInputLimits = () => {
       maxY: Number.MIN_VALUE,
     },
   );
-};
 
 const createMap = (limits) => {
   const map = [];

@@ -77,17 +77,19 @@ const moveWaypoint = () => {
         break;
       case 'L':
       case 'R':
-        const tmp = wX;
-        const leftRotation = instruction === 'L' ? amount : 360 - amount;
-        if (leftRotation === 180) {
-          wX = -wX;
-          wY = -wY;
-        } else if (leftRotation === 90) {
-          wX = wY;
-          wY = -tmp;
-        } else if (leftRotation === 270) {
-          wX = -wY;
-          wY = tmp;
+        {
+          const tmp = wX;
+          const leftRotation = instruction === 'L' ? amount : 360 - amount;
+          if (leftRotation === 180) {
+            wX = -wX;
+            wY = -wY;
+          } else if (leftRotation === 90) {
+            wX = wY;
+            wY = -tmp;
+          } else if (leftRotation === 270) {
+            wX = -wY;
+            wY = tmp;
+          }
         }
         break;
       case 'F':

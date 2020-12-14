@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 const fs = require('fs');
 const path = require('path');
 
