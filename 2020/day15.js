@@ -6,7 +6,7 @@ const input = fs.readFileSync(path.resolve(__dirname, 'input15.txt'), 'utf8');
 const numbers = input.split(',').map((n) => parseInt(n, 10));
 
 const getNthNumber = (maxTurn) => {
-  const history = new Array(maxTurn);
+  const history = new Array(maxTurn).fill(-1);
   let spoken;
   let lastSpoken;
 
@@ -14,10 +14,10 @@ const getNthNumber = (maxTurn) => {
     lastSpoken = spoken;
     if (turn < numbers.length) {
       spoken = numbers[turn];
-    } else if (typeof history[lastSpoken] !== 'undefined') {
-      spoken = turn - history[lastSpoken];
-    } else {
+    } else if (history[lastSpoken] < 0) {
       spoken = 0;
+    } else {
+      spoken = turn - history[lastSpoken];
     }
 
     history[lastSpoken] = turn;
