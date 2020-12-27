@@ -6,7 +6,6 @@ const instructions = inst
   .map((i) => i.split(' '))
   .map(([i, ...values]) => [i, ...values.map((v) => parseInt(v, 10))]);
 
-/* eslint-disable no-param-reassign */
 const opCodes = {
   addr: (reg, A, B, C) => {
     reg[C] = reg[A] + reg[B];
@@ -57,7 +56,6 @@ const opCodes = {
     reg[C] = reg[A] === reg[B] ? 1 : 0;
   },
 };
-/* eslint-enable no-param-reassign */
 
 const getOutVals = Array(16777215).fill(false);
 let prev = 0;

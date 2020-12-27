@@ -19,7 +19,6 @@ const findFactors = (n) => {
   return factors;
 };
 
-/* eslint-disable no-param-reassign */
 const opCodes = {
   addr: (reg, A, B, C) => {
     reg[C] = reg[A] + reg[B];
@@ -70,7 +69,6 @@ const opCodes = {
     reg[C] = reg[A] === reg[B] ? 1 : 0;
   },
 };
-/* eslint-enable no-param-reassign */
 
 const day19part1 = () => {
   const registers = [0, 0, 0, 0, 0, 0];

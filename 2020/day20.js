@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func, prefer-destructuring, no-param-reassign */
 const fs = require('fs');
 const path = require('path');
 

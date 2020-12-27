@@ -16,6 +16,9 @@
     "no-continue": "off",
     "no-bitwise": "off",
     "no-constant-condition": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "no-param-reassign": "off",
+    "no-loop-func": "off",
+    "prefer-destructuring": "off"
   }
 }
