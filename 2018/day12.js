@@ -1,4 +1,4 @@
-const input = require('./input12.js');
+const input = require('./input12');
 
 const initialState = input.initialState.split('').map((x) => x === '#');
 const stateRules = input.rules.split('\n').map((rule) => rule.split(' => '));

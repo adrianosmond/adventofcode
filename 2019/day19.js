@@ -1,4 +1,4 @@
-const input = require('./input19.js');
+const input = require('./input19');
 const { intComputer } = require('./intComputer');
 
 const SIZE = 50;

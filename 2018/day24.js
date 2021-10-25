@@ -56,9 +56,8 @@ const makeUnits = (boost) => {
       ] = line.match(
         /(\d+) units each with (\d+) hit points (\([^)]+\) )?with an attack that does (\d+) (\w+) damage at initiative (\d+)/,
       );
-      const [immuneTo, weakTo] = processStrengthsAndWeaknesses(
-        strengthsWeaknesses,
-      );
+      const [immuneTo, weakTo] =
+        processStrengthsAndWeaknesses(strengthsWeaknesses);
 
       const attackStrength =
         parseInt(strength, 10) + (currentTeam === TEAM_IMMUNE ? boost : 0);
