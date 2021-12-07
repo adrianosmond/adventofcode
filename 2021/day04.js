@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { strToIntArray } = require('../utils/functions');
 const { sum } = require('../utils/reducers');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input04.txt'), 'utf8');
@@ -9,7 +10,7 @@ const MARKED = -1;
 const getStartState = () => {
   let [numbers, ...boards] = input.split('\n\n');
 
-  numbers = numbers.split(',').map((n) => parseInt(n, 10));
+  numbers = strToIntArray(numbers, ',');
   boards = boards.map((board) =>
     board.split('\n').map((row) =>
       row

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const { strToIntArray } = require('../utils/functions');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input15.txt'), 'utf8');
 
-const numbers = input.split(',').map((n) => parseInt(n, 10));
+const numbers = strToIntArray(input, ',');
 
 const getNthNumber = (maxTurn) => {
   const history = new Array(maxTurn).fill(-1);

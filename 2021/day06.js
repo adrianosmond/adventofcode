@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+const { strToIntArray } = require('../utils/functions');
 const { sum } = require('../utils/reducers');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input06.txt'), 'utf8');
-const initialAges = input.split(',').map((n) => parseInt(n, 10));
+const initialAges = strToIntArray(input, ',');
 
 const countFishAfterDays = (numDays) => {
   const ageCount = new Array(7).fill(0);
