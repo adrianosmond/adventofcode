@@ -1,79 +1,90 @@
 const fs = require('fs');
 const path = require('path');
-const { sum } = require('../utils/reducers');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input08.txt'), 'utf8');
 
-const puzzle = input.split('\n').map((row) => {
-  const [sample, code] = row.split(' | ');
+const patterns = input.split('\n').map((row) => {
+  const [signal, output] = row.split(' | ');
   return [
-    sample.split(' ').map((a) => a.split('').sort().join('')),
-    code.split(' ').map((a) => a.split('').sort().join('')),
+    signal.split(' ').map((a) => a.split('').sort().join('')),
+    output.split(' ').map((a) => a.split('').sort().join('')),
   ];
 });
 
-const part1 = () =>
-  puzzle
-    .map(
-      ([, code]) =>
-        code.filter((str) => [2, 3, 4, 7].includes(str.length)).length,
-    )
-    .reduce(sum);
-
-const findDigits = (sample) => {
+const findDigits = (signal) => {
   const digits = new Array(10);
-  digits[1] = sample.find((str) => str.length === 2);
-  digits[7] = sample.find((str) => str.length === 3);
-  digits[4] = sample.find((str) => str.length === 4);
-  digits[8] = sample.find((str) => str.length === 7);
+  // 1 is the only number made of 2 segments
+  digits[1] = signal.find((pattern) => pattern.length === 2);
+  // 7 is the only number made of 3 segments
+  digits[7] = signal.find((pattern) => pattern.length === 3);
+  // 4 is the only number made of 4 segments
+  digits[4] = signal.find((pattern) => pattern.length === 4);
+  // 8 is the only number made of 7 segments
+  digits[8] = signal.find((pattern) => pattern.length === 7);
 
-  digits[6] = sample.find(
-    (str) =>
-      str.length === 6 &&
-      !digits[7].split('').every((char) => str.includes(char)),
+  // Numbers made of 6 segments are: 0, 6, 9
+  // 9 is the only number made of 6 segments that completely
+  // contains the segments of the number 4
+  digits[9] = signal.find(
+    (pattern) =>
+      pattern.length === 6 &&
+      digits[4].split('').every((char) => pattern.includes(char)),
   );
 
-  digits[0] = sample.find(
-    (str) =>
-      str.length === 6 &&
-      str !== digits[6] &&
-      !digits[4].split('').every((char) => str.includes(char)),
+  // 6 is the only number made of 6 segments that doesn't
+  // completely contain the segments of the number 7
+  digits[6] = signal.find(
+    (pattern) =>
+      pattern.length === 6 &&
+      !digits[7].split('').every((char) => pattern.includes(char)),
   );
 
-  digits[9] = sample.find(
-    (str) => str.length === 6 && str !== digits[6] && str !== digits[0],
+  // 0 is the other number made of 6 segments
+  digits[0] = signal.find(
+    (pattern) =>
+      pattern.length === 6 && pattern !== digits[6] && pattern !== digits[9],
   );
 
-  digits[3] = sample.find(
-    (str) =>
-      str.length === 5 &&
-      digits[1].split('').every((char) => str.includes(char)),
+  // Numbers made of 5 segments are: 2, 3, 5
+  // 3 is the only number made of 5 segments that completely
+  // contains the segments of the number 1
+  digits[3] = signal.find(
+    (pattern) =>
+      pattern.length === 5 &&
+      digits[1].split('').every((char) => pattern.includes(char)),
   );
 
-  digits[3] = sample.find(
-    (str) =>
-      str.length === 5 &&
-      digits[1].split('').every((char) => str.includes(char)),
+  // 5 is the only number made of 5 segments that completely
+  // fits inside the segments of the number 6
+  digits[5] = signal.find(
+    (pattern) =>
+      pattern.length === 5 &&
+      pattern.split('').every((char) => digits[6].includes(char)),
   );
 
-  digits[5] = sample.find(
-    (str) =>
-      str.length === 5 &&
-      str.split('').every((char) => digits[6].includes(char)),
-  );
-
-  digits[2] = sample.find(
-    (str) => str.length === 5 && str !== digits[5] && str !== digits[3],
+  // 2 is the other number made of 5 segments
+  digits[2] = signal.find(
+    (pattern) =>
+      pattern.length === 5 && pattern !== digits[5] && pattern !== digits[3],
   );
 
   return digits;
 };
 
+const part1 = () =>
+  patterns.reduce(
+    (total, [, output]) =>
+      total +
+      output.filter((pattern) => [2, 3, 4, 7].includes(pattern.length)).length,
+    0,
+  );
+
 const part2 = () =>
-  puzzle.reduce((total, [sample, code]) => {
-    const digits = findDigits(sample);
+  patterns.reduce((total, [signal, output]) => {
+    const digits = findDigits(signal);
     return (
-      total + parseInt(code.map((str) => digits.indexOf(str)).join(''), 10)
+      total +
+      parseInt(output.map((pattern) => digits.indexOf(pattern)).join(''), 10)
     );
   }, 0);
 
