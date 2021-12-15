@@ -23,4 +23,16 @@ module.exports = {
 
     return permute(inputArr);
   },
+  getNeighbours: (grid, rowIdx, colIdx) => {
+    const neighbours = [];
+    if (rowIdx < grid.length - 1)
+      neighbours.push([rowIdx + 1, colIdx, grid[rowIdx + 1][colIdx]]);
+    if (rowIdx > 0)
+      neighbours.push([rowIdx - 1, colIdx, grid[rowIdx - 1][colIdx]]);
+    if (colIdx < grid[0].length - 1)
+      neighbours.push([rowIdx, colIdx + 1, grid[rowIdx][colIdx + 1]]);
+    if (colIdx > 0)
+      neighbours.push([rowIdx, colIdx - 1, grid[rowIdx][colIdx - 1]]);
+    return neighbours;
+  },
 };
