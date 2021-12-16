@@ -23,4 +23,5 @@ module.exports = {
   }),
   sum: (tot, curr) => tot + curr,
   sumByKey: (key) => (tot, curr) => tot + curr[key],
+  product: (tot, curr) => tot * curr,
 };

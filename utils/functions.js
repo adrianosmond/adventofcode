@@ -1,3 +1,22 @@
+const hexMap = {
+  0: '0000',
+  1: '0001',
+  2: '0010',
+  3: '0011',
+  4: '0100',
+  5: '0101',
+  6: '0110',
+  7: '0111',
+  8: '1000',
+  9: '1001',
+  A: '1010',
+  B: '1011',
+  C: '1100',
+  D: '1101',
+  E: '1110',
+  F: '1111',
+};
+
 module.exports = {
   manhattan: ([x1, y1], [x2, y2] = [0, 0]) =>
     Math.abs(x1 - x2) + Math.abs(y1 - y2),
@@ -35,4 +54,9 @@ module.exports = {
       neighbours.push([rowIdx, colIdx - 1, grid[rowIdx][colIdx - 1]]);
     return neighbours;
   },
+  hexToBinaryStr: (bin) =>
+    bin
+      .split('')
+      .map((c) => hexMap[c])
+      .join(''),
 };
