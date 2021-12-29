@@ -32,6 +32,17 @@ const getSouth = (key) => {
   return `${x},${y + 1}`;
 };
 
+const east = {};
+const south = {};
+
+for (let y = 0; y <= maxY; y++) {
+  for (let x = 0; x <= maxX; x++) {
+    const key = `${x},${y}`;
+    east[key] = getEast(key);
+    south[key] = getSouth(key);
+  }
+}
+
 const part1 = () => {
   let changed = true;
   let steps = 0;
@@ -40,14 +51,13 @@ const part1 = () => {
     changed = false;
     cucumbersE
       .filter((cucumber) => {
-        const target = getEast(cucumber.loc);
+        const target = east[cucumber.loc];
         if (cucumbers[target]) return false;
         return true;
       })
       .forEach((cucumber) => {
-        const target = getEast(cucumber.loc);
-        if (cucumbers[target]) return;
         changed = true;
+        const target = east[cucumber.loc];
         cucumbers[cucumber.loc] = false;
         cucumbers[target] = true;
         cucumber.loc = target;
@@ -55,14 +65,13 @@ const part1 = () => {
 
     cucumbersS
       .filter((cucumber) => {
-        const target = getSouth(cucumber.loc);
+        const target = south[cucumber.loc];
         if (cucumbers[target]) return false;
         return true;
       })
       .forEach((cucumber) => {
-        const target = getSouth(cucumber.loc);
-        if (cucumbersE[target]) return;
         changed = true;
+        const target = south[cucumber.loc];
         cucumbers[cucumber.loc] = false;
         cucumbers[target] = true;
         cucumber.loc = target;
@@ -71,7 +80,4 @@ const part1 = () => {
   return steps;
 };
 
-const part2 = () => {};
-
 console.log('part1', part1());
-console.log('part2', part2());
