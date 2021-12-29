@@ -53,7 +53,7 @@ const performEnhancements = (numEnhancements) => {
     const prev = (round + 1) % 2;
     const curr = round % 2;
     emptyGrid(curr, prev);
-    grid = grid[curr];
+    grid = grids[curr];
     for (let y = grid.min; y <= grid.max; y++) {
       for (let x = grid.min; x <= grid.max; x++) {
         if (getPixel(x, y, grids[prev]) === '#') grid.light[`${x},${y}`] = true;
