@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const md5 = require('./md5');
+const md5 = require('../utils/md5');
 
 const input = fs.readFileSync(path.resolve(__dirname, 'input17.txt'), 'utf8');
 
