@@ -1,5 +1,7 @@
-import input from './input04.js';
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
+
+const input = readInput();
 
 const passphrases = input.split('\n').map((r) => r.split(' ').sort());
 const alphabetised = passphrases.map((r) =>

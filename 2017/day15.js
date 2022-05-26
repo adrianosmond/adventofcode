@@ -1,4 +1,6 @@
-import input from './input15.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const generators = input
   .split('\n')

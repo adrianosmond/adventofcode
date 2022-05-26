@@ -1,4 +1,6 @@
-import input from './input21.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);

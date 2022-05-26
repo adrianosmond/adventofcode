@@ -1,5 +1,7 @@
-import input from './input02.js';
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
+
+const input = readInput();
 
 const digits = input.split('\n').map((r) =>
   r

@@ -1,7 +1,10 @@
-import input from './input05.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
+
+const input = readInput();
+const message = strToIntArray(input);
 
 const day5part1 = () => {
-  const jumps = [...input];
+  const jumps = [...message];
   let currentPosition = 0;
   let loop = 0;
 
@@ -15,7 +18,7 @@ const day5part1 = () => {
 };
 
 const day5part2 = () => {
-  const jumps = [...input];
+  const jumps = [...message];
   let currentPosition = 0;
   let loop = 0;
 

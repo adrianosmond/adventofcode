@@ -1,6 +1,7 @@
-import input from './input15.js';
+import { readInput, manhattan, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
-import { manhattan } from '../utils/functions.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const FLOOR = {
   UNKNOWN: -1,

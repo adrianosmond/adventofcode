@@ -1,11 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { manhattan3d } from '../utils/functions.js';
+import { readInput, manhattan3d } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input19.txt'), 'utf8');
+const input = readInput();
 
 const scanners = input
   .replace(/--- scanner \d+ ---\n/g, '')

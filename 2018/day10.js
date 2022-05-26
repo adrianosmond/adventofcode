@@ -1,7 +1,21 @@
-import input from './input10.js'; // Array of array of integers
+import { readInput, strToIntArray } from '../utils/functions.js';
 
-const positions = input.map((x) => [x[0], x[1]]);
-const velocities = input.map((x) => [x[2], x[3]]);
+const input = readInput();
+const positions = [];
+const velocities = [];
+
+input.split('\n').forEach((line) => {
+  const [p1, p2, v1, v2] = strToIntArray(
+    line
+      .replace(/\s/g, '')
+      .replace('position=<', '')
+      .replace('>velocity=<', ',')
+      .replace('>', ''),
+    ',',
+  );
+  positions.push([p1, p2]);
+  velocities.push([v1, v2]);
+});
 
 let loops = 1;
 let bestTime = 0;

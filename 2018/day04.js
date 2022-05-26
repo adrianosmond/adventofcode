@@ -1,6 +1,7 @@
-import input from './input04.js';
-// multi line string
+import { readInput } from '../utils/functions.js';
 import { highestByKey } from '../utils/reducers.js';
+
+const input = readInput();
 
 const makeDate = (matches) =>
   new Date(

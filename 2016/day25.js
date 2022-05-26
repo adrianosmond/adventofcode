@@ -1,11 +1,7 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 import runProgram from './assembunny.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input25.txt'), 'utf8');
+const input = readInput();
 
 const instructions = input.split('\n').map((i) => {
   const [op, x, y] = i.split(' ');

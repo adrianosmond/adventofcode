@@ -1,4 +1,21 @@
-import { input, input2 } from './input16.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
+let [samples, program] = input.split('\n\n\n\n');
+
+samples = samples
+  .replace(/Before: \[/g, '')
+  .replace(/After: {2}\[/g, '')
+  .replace(/\]/g, '')
+  .replace(/,/g, '')
+  .split('\n\n')
+  .map((i) =>
+    i.split('\n').map((j) => j.split(' ').map((k) => parseInt(k, 10))),
+  );
+
+program = program
+  .split('\n')
+  .map((j) => j.split(' ').map((k) => parseInt(k, 10)));
 
 const instructions = {
   addr: (reg, [A, B, C]) => {
@@ -92,7 +109,7 @@ const compare = (a, b) => {
 };
 
 const day16part1 = () =>
-  input.reduce((total, sample) => {
+  samples.reduce((total, sample) => {
     const [before, instruction, after] = sample;
     const [, ...values] = instruction;
     const matches = Object.values(instructions).reduce(
@@ -108,7 +125,7 @@ const day16part2 = () => {
     opCodes[i] = Object.keys(instructions);
   }
 
-  input.forEach((sample) => {
+  samples.forEach((sample) => {
     const [before, instruction, after] = sample;
     const [opCode, ...values] = instruction;
     const toTest = [...opCodes[opCode]];
@@ -144,7 +161,7 @@ const day16part2 = () => {
   opCodes = opCodes.map((o) => o[0]);
 
   let registers = [0, 0, 0, 0];
-  input2.forEach(([opCode, ...values]) => {
+  program.forEach(([opCode, ...values]) => {
     const instruction = instructions[opCodes[opCode]];
     registers = instruction(registers, values);
   });

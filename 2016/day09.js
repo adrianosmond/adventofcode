@@ -1,4 +1,6 @@
-import input from './input09.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 let output = '';
 let markerStart = -1;

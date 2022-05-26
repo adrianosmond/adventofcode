@@ -1,6 +1,7 @@
-import input from './input07.js';
-// Array of integers
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 function* choose5(start = 0) {
   for (let A = start; A < start + 5; A++) {

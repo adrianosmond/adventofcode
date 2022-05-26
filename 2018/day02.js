@@ -1,4 +1,6 @@
-import input from './input02.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const boxes = input.split('\n');
 const checksum = boxes

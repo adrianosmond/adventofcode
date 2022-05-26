@@ -1,4 +1,7 @@
-import serial from './input11.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
+const serial = parseInt(input, 10);
 
 const getRackId = (x) => x + 10;
 

@@ -1,10 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input23.txt'), 'utf8');
+const input = readInput();
 
 const numbers = input.split('').map((n) => parseInt(n, 10));
 const min = Math.min(...numbers);

@@ -1,11 +1,7 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 import { mergeObjects } from '../utils/reducers.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input07.txt'), 'utf8');
+const input = readInput();
 
 const rules = input.split('\n');
 

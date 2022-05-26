@@ -1,5 +1,7 @@
-import input from './input03.js';
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
+
+const input = parseInt(readInput(), 10);
 
 const getCoordinates = (number) => {
   let sideLength = 3;

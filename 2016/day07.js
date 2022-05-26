@@ -1,4 +1,6 @@
-import input from './input07.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const ips = input.split('\n');
 

@@ -1,6 +1,7 @@
-import input from './input19.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const SIZE = 50;
 

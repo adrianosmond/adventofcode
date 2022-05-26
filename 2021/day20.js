@@ -1,10 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input20.txt'), 'utf8');
+const input = readInput();
 
 const [algorithm, img] = input.split('\n\n');
 let grids;

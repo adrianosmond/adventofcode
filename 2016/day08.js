@@ -1,4 +1,6 @@
-import input from './input08.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const instructions = input.split('\n');
 

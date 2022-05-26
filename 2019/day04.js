@@ -1,4 +1,6 @@
-import input from './input04.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
+
+const input = strToIntArray(readInput(), '-');
 
 const [from, to] = input;
 const matches = [0, 0];

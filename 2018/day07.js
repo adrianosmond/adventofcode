@@ -1,4 +1,6 @@
-import input from './input07.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput().split('\n');
 
 const FREE_WORKER = {
   freeAt: 0,

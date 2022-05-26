@@ -1,6 +1,7 @@
-import input from './input23.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const NUM_COMPUTERS = 50;
 

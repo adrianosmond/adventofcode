@@ -1,5 +1,7 @@
 /* global BigInt */
-import input from './input22.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const getInstruction = (i) => {
   if (i.includes('increment')) {

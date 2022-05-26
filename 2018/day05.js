@@ -1,4 +1,6 @@
-import input from './input05.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const match = (c1, c2) => c1 !== c2 && c1.toLowerCase() === c2.toLowerCase();
 

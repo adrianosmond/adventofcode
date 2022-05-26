@@ -1,4 +1,6 @@
-import input from './input09.js'; // Integer
+import { readInput } from '../utils/functions.js';
+
+const input = parseInt(readInput(), 10);
 
 class Marble {
   constructor(number, prev = null, next = null) {

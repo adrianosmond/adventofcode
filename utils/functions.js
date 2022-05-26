@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+
 const hexMap = {
   0: '0000',
   1: '0001',
@@ -16,6 +18,12 @@ const hexMap = {
   E: '1110',
   F: '1111',
 };
+
+export const readInput = () =>
+  readFileSync(
+    process.argv[1].replace('day', 'input').replace('.js', '.txt'),
+    'utf8',
+  );
 
 export const manhattan = ([x1, y1], [x2, y2] = [0, 0]) =>
   Math.abs(x1 - x2) + Math.abs(y1 - y2);

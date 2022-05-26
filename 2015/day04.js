@@ -1,11 +1,7 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
 import md5 from 'spark-md5';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input04.txt'), 'utf8');
+const input = readInput();
 
 const findCoin = (start) => {
   let number = 1;

@@ -1,6 +1,7 @@
-import input from './input07.js';
-
+import { readInput } from '../utils/functions.js';
 import { mergeObjects, sum as sumFn } from '../utils/reducers.js';
+
+const input = readInput();
 
 const programs = input
   .split('\n')

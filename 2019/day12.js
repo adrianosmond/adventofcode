@@ -1,7 +1,7 @@
-// multi line string
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
-import input from './input12.js';
+const input = readInput();
 
 const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 

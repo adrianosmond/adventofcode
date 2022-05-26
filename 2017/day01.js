@@ -1,4 +1,6 @@
-import input from './input01.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const captcha = input.split('').map((x) => parseInt(x, 10));
 

@@ -1,7 +1,7 @@
-// multi line string
 import { sum } from '../utils/reducers.js';
+import { readInput } from '../utils/functions.js';
 
-import input from './input01.js';
+const input = readInput();
 
 const frequencies = input.split('\n').map((f) => parseInt(f, 10));
 const resultingFrequency = frequencies.reduce(sum);

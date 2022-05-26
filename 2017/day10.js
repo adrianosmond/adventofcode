@@ -1,5 +1,7 @@
-import input from './input10.js';
+import { readInput } from '../utils/functions.js';
 import knotHash from './knotHash.js';
+
+const input = readInput();
 
 const day10part1 = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);

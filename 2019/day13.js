@@ -1,6 +1,7 @@
-import input from './input13.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer, getNOutputs } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const day12part1 = () => {
   const computer = intComputer(input, []);

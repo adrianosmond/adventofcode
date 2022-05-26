@@ -4,8 +4,10 @@
  * solution to all inputs. I played and solved it manually
  */
 import readlineSync from 'readline-sync';
-import input from './input25.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 

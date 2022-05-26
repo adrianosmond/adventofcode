@@ -1,11 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { manhattan } from '../utils/functions.js';
+import { readInput, manhattan } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input12.txt'), 'utf8');
+const input = readInput();
 
 const instructions = input
   .split('\n')

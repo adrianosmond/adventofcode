@@ -1,6 +1,7 @@
-import input from './input08.js';
-// String
+import { readInput } from '../utils/functions.js';
 import { sum, sumByKey } from '../utils/reducers.js';
+
+const input = readInput();
 
 const nodes = input.split(' ').map((x) => parseInt(x, 10));
 

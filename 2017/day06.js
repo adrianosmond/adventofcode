@@ -1,6 +1,7 @@
-import input from './input06.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { highestWithIndex } from '../utils/reducers.js';
+
+const input = strToIntArray(readInput(), '\t');
 
 const banks = input.length;
 let loops = 0;

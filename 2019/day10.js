@@ -1,6 +1,7 @@
-import input from './input10.js';
-// Multi line string
+import { readInput } from '../utils/functions.js';
 import { highestByKey } from '../utils/reducers.js';
+
+const input = readInput();
 
 const space = input.split('\n').map((r) => r.split(''));
 

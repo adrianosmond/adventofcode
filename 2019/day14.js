@@ -1,4 +1,6 @@
-import input from './input14.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const parseInputChem = (str) => {
   const [q, e] = str.split(' ');

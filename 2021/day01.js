@@ -1,12 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { strToIntArray } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input01.txt'), 'utf8');
-
+const input = readInput();
 const depths = strToIntArray(input);
 
 const getTimesIncreased = (arr) =>

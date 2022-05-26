@@ -1,6 +1,7 @@
-import input from './input21.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 

@@ -1,4 +1,6 @@
-import input from './input02.js'; // array of integers
+import { readInput, strToIntArray } from '../utils/functions.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const intComputer = (intList, noun, verb) => {
   const program = [...intList];

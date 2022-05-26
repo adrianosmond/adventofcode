@@ -1,4 +1,6 @@
-import input from './input18.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const program = input.split('\n').map((x) => x.split(' '));
 const regKeys = {

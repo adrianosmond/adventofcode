@@ -1,7 +1,7 @@
-// multi line string
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
-import input from './input03.js';
+const input = readInput();
 
 const claims = input.split('\n').map((claim) =>
   claim

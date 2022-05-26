@@ -1,4 +1,6 @@
-import input from './input08.js'; // String
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const OUTPUT_CHARS = [' ', '#']; // Representing black and white pixels
 const IMG_WIDTH = 25;

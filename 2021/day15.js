@@ -1,11 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { getNeighbours } from '../utils/functions.js';
+import { readInput, getNeighbours } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input15.txt'), 'utf8');
+const input = readInput();
 
 const getShortestDistance = (grid) => {
   const bestDistances = new Array(grid.length)

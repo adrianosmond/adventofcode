@@ -1,10 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input08.txt'), 'utf8');
+const input = readInput();
 
 const patterns = input.split('\n').map((row) => {
   const [signal, output] = row.split(' | ');

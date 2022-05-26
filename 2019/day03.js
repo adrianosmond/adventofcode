@@ -1,6 +1,7 @@
-import input from './input03.js';
-// multiline string
+import { readInput } from '../utils/functions.js';
 import { sumByKey } from '../utils/reducers.js';
+
+const input = readInput();
 
 const wires = input.split('\n').map((wire) =>
   wire.split(',').map((instruction) => ({

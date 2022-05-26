@@ -1,6 +1,6 @@
-import input from './input01.js';
+import { manhattan, readInput } from '../utils/functions.js';
 
-import { manhattan } from '../utils/functions.js';
+const input = readInput();
 
 const directions = [
   [-1, 0],

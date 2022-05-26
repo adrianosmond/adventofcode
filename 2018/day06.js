@@ -1,4 +1,8 @@
-import input from './input06.js'; // Array of arrays of integers
+import { readInput, strToIntArray } from '../utils/functions.js';
+
+const input = readInput()
+  .split('\n')
+  .map((line) => strToIntArray(line, ', '));
 
 const getInputLimits = () =>
   input.reduce(

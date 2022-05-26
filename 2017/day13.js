@@ -1,4 +1,6 @@
-import input from './input13.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const firewall = input
   .split('\n')

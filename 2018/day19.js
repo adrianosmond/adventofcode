@@ -1,6 +1,8 @@
 import { sum } from '../utils/reducers.js';
 
-import input from './input19.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);

@@ -1,6 +1,7 @@
-import input from './input21.js';
-
+import { readInput } from '../utils/functions.js';
 import { mergeObjects } from '../utils/reducers.js';
+
+const input = readInput();
 
 const rules = input.split('\n').map((l) => l.split(' => '));
 const variants = [...rules];

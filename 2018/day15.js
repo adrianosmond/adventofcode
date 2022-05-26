@@ -1,6 +1,8 @@
-import input from './input15.js';
+import { readInput } from '../utils/functions.js';
 
 import { sumByKey } from '../utils/reducers.js';
+
+const input = readInput();
 
 const readingOrder = (a, b) =>
   a.row === b.row ? a.col - b.col : a.row - b.row;

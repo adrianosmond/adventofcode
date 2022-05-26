@@ -1,6 +1,7 @@
-import input from './input05.js';
-// array of integers
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 let output;
 for (output of intComputer(input, [1]));

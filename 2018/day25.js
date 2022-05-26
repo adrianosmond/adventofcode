@@ -1,4 +1,6 @@
-import input from './input25.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const points = input
   .split('\n')

@@ -1,4 +1,6 @@
-import inp from './input17.js';
+import { readInput } from '../utils/functions.js';
+
+const inp = readInput();
 
 let input = inp.split('\n').map((l) => l.split(', '));
 input = input.map((l) => [

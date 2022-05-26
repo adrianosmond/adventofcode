@@ -1,4 +1,6 @@
-import input from './input22.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const lines = input.split('\n');
 const depth = parseInt(lines[0].split(' ')[1], 10);

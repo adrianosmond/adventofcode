@@ -1,6 +1,8 @@
-import input from './input14.js';
+import { readInput } from '../utils/functions.js';
 import knotHash from './knotHash.js';
 import { sum } from '../utils/reducers.js';
+
+const input = readInput();
 
 let output = '';
 

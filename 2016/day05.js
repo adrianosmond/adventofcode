@@ -1,5 +1,7 @@
 import md5 from 'spark-md5';
-import input from './input05.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 let password = '';
 let password2 = '________';

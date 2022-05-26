@@ -1,4 +1,6 @@
-import input from './input06.js'; // multi line string
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const orbits = input.split('\n').map((x) => x.split(')'));
 const chains = new Array(orbits.length);

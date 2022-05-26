@@ -1,7 +1,14 @@
-import input from './input12.js';
+import { readInput } from '../utils/functions.js';
 
-const initialState = input.initialState.split('').map((x) => x === '#');
-const stateRules = input.rules.split('\n').map((rule) => rule.split(' => '));
+const input = readInput();
+
+let [initialState, stateRules] = input
+  .replace('initial state: ', '')
+  .split('\n\n');
+
+initialState = initialState.split('').map((x) => x === '#');
+stateRules = stateRules.split('\n').map((rule) => rule.split(' => '));
+
 const buffer = 150;
 const minRepetitions = 10;
 const bufferedPlants = [

@@ -1,4 +1,6 @@
-import input from './input16.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const signal = input.split('').map((x) => parseInt(x, 10));
 const phases = [signal, new Array(signal.length).fill(0)];

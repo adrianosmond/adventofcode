@@ -1,12 +1,8 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
+const input = readInput();
 
-const input = readFileSync(resolve(currentDir, 'input20.txt'), 'utf8');
-
-const readInput = () => {
+const parseInput = () => {
   const maze = input.split('\n').map((r) => r.split(''));
 
   let inner = null;
@@ -163,6 +159,6 @@ const getPath = (maze, portals, from, to, recursive = false) => {
   throw new Error('No path found');
 };
 
-const [maze, portals, entrance, exit] = readInput();
+const [maze, portals, entrance, exit] = parseInput();
 console.log('part1:', getPath(maze, portals, entrance, exit));
 console.log('part2:', getPath(maze, portals, entrance, exit, true));

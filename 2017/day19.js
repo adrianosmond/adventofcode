@@ -1,4 +1,6 @@
-import input from './input19.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const grid = input.split('\n').map((line) => line.split(''));
 let y = 0;

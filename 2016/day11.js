@@ -1,4 +1,6 @@
-import input from './input11.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const maxFloor = 3;
 const initialState = {

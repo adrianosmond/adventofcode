@@ -1,6 +1,7 @@
-import input from './input04.js';
-
+import { readInput } from '../utils/functions.js';
 import { sumByKey, mergeObjects } from '../utils/reducers.js';
+
+const input = readInput();
 
 const processRoom = (str) => {
   const [, name, id, checksum] = str.match(/([a-z-]+)(\d+)\[([a-z]{5})\]/);

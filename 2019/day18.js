@@ -1,4 +1,6 @@
-import input from './input18.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const makeMaze = () => {
   const maze = input.split('\n').map((r) => r.split(''));

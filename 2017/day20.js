@@ -1,6 +1,7 @@
-import input from './input20.js';
-
+import { readInput } from '../utils/functions.js';
 import { lowestWithIndex } from '../utils/reducers.js';
+
+const input = readInput();
 
 const getParticles = () =>
   input.split('\n').map((l) =>

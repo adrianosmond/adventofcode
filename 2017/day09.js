@@ -1,5 +1,7 @@
-import input from './input09.js';
+import { readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
+
+const input = readInput();
 
 let sanitised = input.replace(/!./g, '');
 let inputLength = sanitised.length;

@@ -1,4 +1,6 @@
-import input from './input14.js';
+import { readInput } from '../utils/functions.js';
+
+const input = parseInt(readInput(), 10);
 
 const makeRecipes = (numRecipes, target, breakCondition) => {
   const recipes = Array(numRecipes);

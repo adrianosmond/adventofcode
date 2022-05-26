@@ -1,4 +1,6 @@
-import input from './input23.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const instructions = input.split('\n').map((x) => x.split(' '));
 

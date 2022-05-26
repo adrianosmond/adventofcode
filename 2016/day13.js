@@ -1,4 +1,6 @@
-import input from './input13.js';
+import { readInput } from '../utils/functions.js';
+
+const input = parseInt(readInput(), 10);
 
 const makeKey = ([x, y]) => `${x},${y}`;
 

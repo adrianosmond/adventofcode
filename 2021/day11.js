@@ -1,10 +1,6 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
+import { readInput } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-const input = readFileSync(resolve(currentDir, 'input11.txt'), 'utf8');
+const input = readInput();
 const levels = input
   .split('\n')
   .map((r) => r.split('').map((n) => parseInt(n, 10)));

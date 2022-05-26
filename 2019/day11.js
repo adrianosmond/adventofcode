@@ -1,6 +1,7 @@
-import input from './input11.js';
-
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
+
+const input = strToIntArray(readInput(), ',');
 
 const MOVEMENTS = [
   [-1, 0], // Left

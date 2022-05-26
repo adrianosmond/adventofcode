@@ -1,4 +1,6 @@
-import input from './input16.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const processMove = (str) => {
   if (str[0] === 's') {

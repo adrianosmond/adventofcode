@@ -1,4 +1,6 @@
-import input from './input06.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const messages = input.split('\n');
 

@@ -1,4 +1,6 @@
-import input from './input01.js'; // array of integers;
+import { readInput, strToIntArray } from '../utils/functions.js';
+
+const input = strToIntArray(readInput());
 
 const getFuelNeededForMass = (mass) => Math.floor(mass / 3) - 2;
 const getFuelNeededIncludingFuelMass = (mass) => {

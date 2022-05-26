@@ -1,12 +1,7 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { manhattan } from '../utils/functions.js';
+import { readInput, manhattan } from '../utils/functions.js';
 
-const currentDir = dirname(fileURLToPath(import.meta.url));
-
-let input = readFileSync(resolve(currentDir, 'input23.txt'), 'utf8');
-input = input.substring(14, input.length - 12);
+const input = readInput();
+const map = input.substring(14, input.length - 12);
 
 const goal = '#...........#\n###A#B#C#D###\n  #A#B#C#D#';
 const goal2 =
@@ -145,10 +140,10 @@ const solve = (start, end) => {
   return best;
 };
 
-const part1 = () => solve(input, goal);
+const part1 = () => solve(map, goal);
 
 const part2 = () => {
-  const rows = input.split('\n');
+  const rows = map.split('\n');
   rows.splice(2, 0, '  #D#C#B#A#', '  #D#B#A#C#');
   const modified = rows.join('\n');
 

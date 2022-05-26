@@ -1,4 +1,6 @@
-import input from './input12.js';
+import { readInput } from '../utils/functions.js';
+
+const input = readInput();
 
 const programs = input
   .split('\n')
