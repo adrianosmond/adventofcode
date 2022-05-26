@@ -77,7 +77,7 @@ const optimizeMultiplications = () => {
   }
 };
 
-module.exports = function* runProgram(initialRegisters, ins) {
+export default function* runProgram(initialRegisters, ins) {
   registers = initialRegisters;
   iPtr = 0;
   instructions = ins;
@@ -93,4 +93,4 @@ module.exports = function* runProgram(initialRegisters, ins) {
     iPtr++;
   }
   yield registers[0];
-};
+}

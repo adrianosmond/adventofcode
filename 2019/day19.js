@@ -1,5 +1,6 @@
-const input = require('./input19');
-const { intComputer } = require('./intComputer');
+import input from './input19.js';
+
+import { intComputer } from './intComputer.js';
 
 const SIZE = 50;
 

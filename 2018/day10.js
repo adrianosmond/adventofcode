@@ -1,4 +1,4 @@
-const input = require('./input10'); // Array of array of integers
+import input from './input10.js'; // Array of array of integers
 
 const positions = input.map((x) => [x[0], x[1]]);
 const velocities = input.map((x) => [x[2], x[3]]);

@@ -1,4 +1,4 @@
-const input = require('./input09');
+import input from './input09.js';
 
 let output = '';
 let markerStart = -1;

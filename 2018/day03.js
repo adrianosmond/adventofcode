@@ -1,5 +1,7 @@
-const input = require('./input03'); // multi line string
-const { sum } = require('../utils/reducers');
+// multi line string
+import { sum } from '../utils/reducers.js';
+
+import input from './input03.js';
 
 const claims = input.split('\n').map((claim) =>
   claim

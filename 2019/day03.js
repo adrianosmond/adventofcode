@@ -1,5 +1,6 @@
-const input = require('./input03'); // multiline string
-const { sumByKey } = require('../utils/reducers');
+import input from './input03.js';
+// multiline string
+import { sumByKey } from '../utils/reducers.js';
 
 const wires = input.split('\n').map((wire) =>
   wire.split(',').map((instruction) => ({

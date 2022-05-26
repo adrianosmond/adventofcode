@@ -1,5 +1,6 @@
-const input = require('./input21');
-const { mergeObjects } = require('../utils/reducers');
+import input from './input21.js';
+
+import { mergeObjects } from '../utils/reducers.js';
 
 const rules = input.split('\n').map((l) => l.split(' => '));
 const variants = [...rules];

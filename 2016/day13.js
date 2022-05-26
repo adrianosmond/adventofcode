@@ -1,4 +1,4 @@
-const input = require('./input13');
+import input from './input13.js';
 
 const makeKey = ([x, y]) => `${x},${y}`;
 

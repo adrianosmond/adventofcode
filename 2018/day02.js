@@ -1,4 +1,4 @@
-const input = require('./input02');
+import input from './input02.js';
 
 const boxes = input.split('\n');
 const checksum = boxes

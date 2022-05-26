@@ -1,5 +1,7 @@
-const { intComputer } = require('./intComputer');
-const { duplicator, is8, input5, input9 } = require('./intComputer.test.data');
+import { intComputer } from './intComputer.js';
+import testData from './intComputer.test.data.js';
+
+const { duplicator, is8, input5, input9 } = testData;
 
 const getOutputs = (computer) => {
   const outputs = [];

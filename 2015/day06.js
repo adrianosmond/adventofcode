@@ -1,8 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { sum } = require('../utils/reducers');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { sum } from '../utils/reducers.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input06.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input06.txt'), 'utf8');
 const instructions = input.split('\n').map((r) => {
   const [, instr, x1, y1, x2, y2] = r.match(
     /(\D+) (\d+),(\d+) through (\d+),(\d+)/,

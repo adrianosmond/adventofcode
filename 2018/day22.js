@@ -1,4 +1,4 @@
-const input = require('./input22');
+import input from './input22.js';
 
 const lines = input.split('\n');
 const depth = parseInt(lines[0].split(' ')[1], 10);

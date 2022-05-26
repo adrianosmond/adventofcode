@@ -1,5 +1,6 @@
-const input = require('./input21');
-const { intComputer } = require('./intComputer');
+import input from './input21.js';
+
+import { intComputer } from './intComputer.js';
 
 const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 

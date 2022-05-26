@@ -1,5 +1,6 @@
-const input = require('./input05'); // array of integers
-const { intComputer } = require('./intComputer');
+import input from './input05.js';
+// array of integers
+import { intComputer } from './intComputer.js';
 
 let output;
 for (output of intComputer(input, [1]));

@@ -1,4 +1,4 @@
-const input = require('./input19');
+import input from './input19.js';
 
 const grid = input.split('\n').map((line) => line.split(''));
 let y = 0;

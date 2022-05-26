@@ -1,4 +1,4 @@
-const input = require('./input16');
+import input from './input16.js';
 
 const processMove = (str) => {
   if (str[0] === 's') {

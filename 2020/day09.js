@@ -1,8 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { strToIntArray } = require('../utils/functions');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { strToIntArray } from '../utils/functions.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input09.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input09.txt'), 'utf8');
 const numbers = strToIntArray(input);
 const PREAMBLE = 25;
 

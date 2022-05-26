@@ -1,5 +1,6 @@
-const input = require('./input17');
-const { intComputer } = require('./intComputer');
+import input from './input17.js';
+
+import { intComputer } from './intComputer.js';
 
 const MOVEMENTS = [
   [-1, 0],

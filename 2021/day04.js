@@ -1,9 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const { strToIntArray } = require('../utils/functions');
-const { sum } = require('../utils/reducers');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { sum } from '../utils/reducers.js';
+import { strToIntArray } from '../utils/functions.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input04.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input04.txt'), 'utf8');
 
 const MARKED = -1;
 

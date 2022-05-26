@@ -1,7 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input17.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input17.txt'), 'utf8');
 
 const [, xMin, xMax, yMin, yMax] = input
   .match(/target area: x=(-?\d+)..(-?\d+), y=(-?\d+)..(-?\d+)/)

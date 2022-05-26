@@ -1,4 +1,4 @@
-const input = require('./input12');
+import input from './input12.js';
 
 const programs = input
   .split('\n')

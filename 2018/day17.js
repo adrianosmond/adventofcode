@@ -1,6 +1,6 @@
-let input = require('./input17');
+import inp from './input17.js';
 
-input = input.split('\n').map((l) => l.split(', '));
+let input = inp.split('\n').map((l) => l.split(', '));
 input = input.map((l) => [
   ...l[0].split('='),
   ...l[1].substring(2).split('..'),

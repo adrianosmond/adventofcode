@@ -1,5 +1,6 @@
-const [from, to] = require('./input04');
+import input from './input04.js';
 
+const [from, to] = input;
 const matches = [0, 0];
 
 const testPassword = (password) => {

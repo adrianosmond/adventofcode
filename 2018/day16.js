@@ -1,4 +1,4 @@
-const { input, input2 } = require('./input16');
+import { input, input2 } from './input16.js';
 
 const instructions = {
   addr: (reg, [A, B, C]) => {

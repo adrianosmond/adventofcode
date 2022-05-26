@@ -1,4 +1,4 @@
-const input = require('./input22');
+import input from './input22.js';
 
 const size = 999;
 

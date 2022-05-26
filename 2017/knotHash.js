@@ -1,4 +1,4 @@
-module.exports = (inputStr) => {
+export default (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
   const inputArr = inputStr
     .split('')

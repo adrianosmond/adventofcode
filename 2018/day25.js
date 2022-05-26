@@ -1,4 +1,4 @@
-const input = require('./input25');
+import input from './input25.js';
 
 const points = input
   .split('\n')

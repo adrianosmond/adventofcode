@@ -1,4 +1,4 @@
-const input = require('./input18');
+import input from './input18.js';
 
 const program = input.split('\n').map((x) => x.split(' '));
 const regKeys = {

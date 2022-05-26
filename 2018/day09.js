@@ -1,4 +1,4 @@
-const input = require('./input09'); // Integer
+import input from './input09.js'; // Integer
 
 class Marble {
   constructor(number, prev = null, next = null) {

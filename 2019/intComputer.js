@@ -107,7 +107,4 @@ function* getNOutputs(n, computer) {
   }
 }
 
-module.exports = {
-  intComputer,
-  getNOutputs,
-};
+export { intComputer, getNOutputs };

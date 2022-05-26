@@ -1,4 +1,4 @@
-const input = require('./input14');
+import input from './input14.js';
 
 const parseInputChem = (str) => {
   const [q, e] = str.split(' ');

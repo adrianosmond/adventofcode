@@ -1,4 +1,4 @@
-const input = require('./input08');
+import input from './input08.js';
 
 const instructions = input.split('\n');
 

@@ -1,4 +1,4 @@
-const input = require('./input06');
+import input from './input06.js';
 
 const messages = input.split('\n');
 

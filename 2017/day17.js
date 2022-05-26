@@ -1,4 +1,4 @@
-const numMoves = require('./input17');
+import numMoves from './input17.js';
 
 class Item {
   constructor(number, prev = null, next = null) {

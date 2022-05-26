@@ -1,4 +1,4 @@
-const input = require('./input21');
+import input from './input21.js';
 
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);

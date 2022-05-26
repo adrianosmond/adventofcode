@@ -1,8 +1,11 @@
-const path = require('path');
-const fs = require('fs');
-const { permutator, getNeighbours } = require('../utils/functions');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { permutator, getNeighbours } from '../utils/functions.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input24.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input24.txt'), 'utf8');
 
 const grid = input.split('\n').map((r) => r.split(''));
 

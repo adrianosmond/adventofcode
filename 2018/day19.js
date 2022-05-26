@@ -1,5 +1,6 @@
-const input = require('./input19');
-const { sum } = require('../utils/reducers');
+import { sum } from '../utils/reducers.js';
+
+import input from './input19.js';
 
 const [p, ...inst] = input.split('\n');
 const ptrReg = parseInt(p.split(' ')[1], 10);

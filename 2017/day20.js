@@ -1,5 +1,6 @@
-const input = require('./input20');
-const { lowestWithIndex } = require('../utils/reducers');
+import input from './input20.js';
+
+import { lowestWithIndex } from '../utils/reducers.js';
 
 const getParticles = () =>
   input.split('\n').map((l) =>

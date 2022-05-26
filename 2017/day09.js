@@ -1,5 +1,5 @@
-const input = require('./input09');
-const { sum } = require('../utils/reducers');
+import input from './input09.js';
+import { sum } from '../utils/reducers.js';
 
 let sanitised = input.replace(/!./g, '');
 let inputLength = sanitised.length;

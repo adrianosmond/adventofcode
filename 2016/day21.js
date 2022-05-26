@@ -1,8 +1,11 @@
-const path = require('path');
-const fs = require('fs');
-const { permutator } = require('../utils/functions');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { permutator } from '../utils/functions.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input21.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input21.txt'), 'utf8');
 const instructions = input.split('\n').map((line) =>
   line
     .split(' ')

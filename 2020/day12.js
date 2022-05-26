@@ -1,8 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { manhattan } = require('../utils/functions');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { manhattan } from '../utils/functions.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input12.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input12.txt'), 'utf8');
 
 const instructions = input
   .split('\n')

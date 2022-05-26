@@ -1,5 +1,5 @@
-const input = require('./input04');
-const { sum } = require('../utils/reducers');
+import input from './input04.js';
+import { sum } from '../utils/reducers.js';
 
 const passphrases = input.split('\n').map((r) => r.split(' ').sort());
 const alphabetised = passphrases.map((r) =>

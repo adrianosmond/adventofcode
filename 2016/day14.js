@@ -1,4 +1,4 @@
-const md5 = require('../utils/md5');
+import md5 from 'spark-md5';
 
 const input = 'ngcjuoqr';
 

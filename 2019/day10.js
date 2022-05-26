@@ -1,5 +1,6 @@
-const input = require('./input10'); // Multi line string
-const { highestByKey } = require('../utils/reducers');
+import input from './input10.js';
+// Multi line string
+import { highestByKey } from '../utils/reducers.js';
 
 const space = input.split('\n').map((r) => r.split(''));
 

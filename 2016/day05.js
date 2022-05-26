@@ -1,5 +1,5 @@
-const md5 = require('../utils/md5');
-const input = require('./input05');
+import md5 from 'spark-md5';
+import input from './input05.js';
 
 let password = '';
 let password2 = '________';

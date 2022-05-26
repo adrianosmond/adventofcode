@@ -1,7 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input20.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input20.txt'), 'utf8');
 
 const [algorithm, img] = input.split('\n\n');
 let grids;

@@ -1,6 +1,10 @@
-const fs = require('fs');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 
-const input = fs.readFileSync(`${__dirname}/input20.txt`, 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input20.txt'), 'utf8');
 const size = 211;
 const diff = (size - 1) / 2;
 const grid = new Array(size).fill().map(() => new Array(size).fill('.'));

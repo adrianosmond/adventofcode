@@ -1,4 +1,4 @@
-const input = require('./input01');
+import input from './input01.js';
 
 const captcha = input.split('').map((x) => parseInt(x, 10));
 

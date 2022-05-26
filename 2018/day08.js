@@ -1,5 +1,6 @@
-const input = require('./input08'); // String
-const { sum, sumByKey } = require('../utils/reducers');
+import input from './input08.js';
+// String
+import { sum, sumByKey } from '../utils/reducers.js';
 
 const nodes = input.split(' ').map((x) => parseInt(x, 10));
 

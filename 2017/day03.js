@@ -1,5 +1,5 @@
-const input = require('./input03');
-const { sum } = require('../utils/reducers');
+import input from './input03.js';
+import { sum } from '../utils/reducers.js';
 
 const getCoordinates = (number) => {
   let sideLength = 3;

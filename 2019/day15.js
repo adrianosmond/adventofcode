@@ -1,6 +1,6 @@
-const input = require('./input15');
-const { intComputer } = require('./intComputer');
-const manhattan = require('../utils/functions');
+import input from './input15.js';
+import { intComputer } from './intComputer.js';
+import { manhattan } from '../utils/functions.js';
 
 const FLOOR = {
   UNKNOWN: -1,

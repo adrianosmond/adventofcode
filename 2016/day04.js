@@ -1,5 +1,6 @@
-const input = require('./input04');
-const { sumByKey, mergeObjects } = require('../utils/reducers');
+import input from './input04.js';
+
+import { sumByKey, mergeObjects } from '../utils/reducers.js';
 
 const processRoom = (str) => {
   const [, name, id, checksum] = str.match(/([a-z-]+)(\d+)\[([a-z]{5})\]/);

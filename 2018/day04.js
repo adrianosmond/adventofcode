@@ -1,5 +1,6 @@
-const input = require('./input04'); // multi line string
-const { highestByKey } = require('../utils/reducers');
+import input from './input04.js';
+// multi line string
+import { highestByKey } from '../utils/reducers.js';
 
 const makeDate = (matches) =>
   new Date(

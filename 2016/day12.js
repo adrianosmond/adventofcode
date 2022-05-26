@@ -1,5 +1,6 @@
-const input = require('./input12');
-const runProgram = require('./assembunny');
+import input from './input12.js';
+
+import runProgram from './assembunny.js';
 
 const instructions = input.split('\n').map((i) => {
   const [op, x, y] = i.split(' ');

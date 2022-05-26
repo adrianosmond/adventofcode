@@ -1,4 +1,4 @@
-const input = require('./input06'); // Array of arrays of integers
+import input from './input06.js'; // Array of arrays of integers
 
 const getInputLimits = () =>
   input.reduce(

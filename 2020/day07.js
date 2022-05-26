@@ -1,8 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { mergeObjects } = require('../utils/reducers');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { mergeObjects } from '../utils/reducers.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input07.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input07.txt'), 'utf8');
 
 const rules = input.split('\n');
 

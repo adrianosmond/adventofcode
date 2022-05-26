@@ -3,10 +3,9 @@
  * This code allows you to play the game yourself but doesn't give a generic
  * solution to all inputs. I played and solved it manually
  */
-const readlineSync = require('readline-sync');
-
-const input = require('./input25');
-const { intComputer } = require('./intComputer');
+import readlineSync from 'readline-sync';
+import input from './input25.js';
+import { intComputer } from './intComputer.js';
 
 const toAsciiArray = (str) => str.split('').map((char) => char.charCodeAt(0));
 

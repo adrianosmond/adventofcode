@@ -1,4 +1,4 @@
-const input = require('./input07');
+import input from './input07.js';
 
 const ips = input.split('\n');
 

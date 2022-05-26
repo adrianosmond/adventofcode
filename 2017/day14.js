@@ -1,6 +1,6 @@
-const knotHash = require('./knotHash');
-const input = require('./input14');
-const { sum } = require('../utils/reducers');
+import input from './input14.js';
+import knotHash from './knotHash.js';
+import { sum } from '../utils/reducers.js';
 
 let output = '';
 

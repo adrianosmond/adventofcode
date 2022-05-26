@@ -1,5 +1,5 @@
-const input = require('./input10');
-const knotHash = require('./knotHash');
+import input from './input10.js';
+import knotHash from './knotHash.js';
 
 const day10part1 = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
@@ -28,5 +28,3 @@ const day10part1 = (inputStr) => {
 
 console.log('part1:', day10part1(input));
 console.log('part2:', knotHash(input));
-
-module.exports = knotHash;

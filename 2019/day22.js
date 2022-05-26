@@ -1,5 +1,5 @@
 /* global BigInt */
-const input = require('./input22');
+import input from './input22.js';
 
 const getInstruction = (i) => {
   if (i.includes('increment')) {

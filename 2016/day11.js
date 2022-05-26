@@ -1,4 +1,4 @@
-const input = require('./input11');
+import input from './input11.js';
 
 const maxFloor = 3;
 const initialState = {

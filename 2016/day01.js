@@ -1,5 +1,6 @@
-const input = require('./input01');
-const { manhattan } = require('../utils/functions');
+import input from './input01.js';
+
+import { manhattan } from '../utils/functions.js';
 
 const directions = [
   [-1, 0],

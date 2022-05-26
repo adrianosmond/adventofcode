@@ -1,5 +1,6 @@
-const input = require('./input15');
-const { sumByKey } = require('../utils/reducers');
+import input from './input15.js';
+
+import { sumByKey } from '../utils/reducers.js';
 
 const readingOrder = (a, b) =>
   a.row === b.row ? a.col - b.col : a.row - b.row;

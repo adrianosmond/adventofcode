@@ -1,4 +1,6 @@
-const input = require('./input24').split('\n');
+import input from './input24.js';
+
+const inp = input.split('\n');
 
 const TEAM_IMMUNE = 0;
 const TEAM_INFECTION = 1;
@@ -43,7 +45,7 @@ const makeUnits = (boost) => {
   const units = [];
   let currentTeam = 0;
 
-  input.forEach((line, idx) => {
+  inp.forEach((line, idx) => {
     if (line.includes('units')) {
       const [
         ,

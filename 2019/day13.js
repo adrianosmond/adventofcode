@@ -1,5 +1,6 @@
-const input = require('./input13');
-const { intComputer, getNOutputs } = require('./intComputer');
+import input from './input13.js';
+
+import { intComputer, getNOutputs } from './intComputer.js';
 
 const day12part1 = () => {
   const computer = intComputer(input, []);

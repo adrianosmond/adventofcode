@@ -1,4 +1,4 @@
-const input = require('./input15');
+import input from './input15.js';
 
 const generators = input
   .split('\n')

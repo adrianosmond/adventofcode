@@ -1,4 +1,4 @@
-const input = require('./input01'); // array of integers;
+import input from './input01.js'; // array of integers;
 
 const getFuelNeededForMass = (mass) => Math.floor(mass / 3) - 2;
 const getFuelNeededIncludingFuelMass = (mass) => {

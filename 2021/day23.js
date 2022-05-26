@@ -1,8 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { manhattan } = require('../utils/functions');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { manhattan } from '../utils/functions.js';
 
-let input = fs.readFileSync(path.resolve(__dirname, 'input23.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+let input = readFileSync(resolve(currentDir, 'input23.txt'), 'utf8');
 input = input.substring(14, input.length - 12);
 
 const goal = '#...........#\n###A#B#C#D###\n  #A#B#C#D#';

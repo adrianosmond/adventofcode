@@ -1,5 +1,6 @@
-const input = require('./input11');
-const { intComputer } = require('./intComputer');
+import input from './input11.js';
+
+import { intComputer } from './intComputer.js';
 
 const MOVEMENTS = [
   [-1, 0], // Left

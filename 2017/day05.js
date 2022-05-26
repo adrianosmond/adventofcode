@@ -1,4 +1,4 @@
-const input = require('./input05');
+import input from './input05.js';
 
 const day5part1 = () => {
   const jumps = [...input];

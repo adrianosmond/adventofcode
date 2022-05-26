@@ -1,5 +1,7 @@
-const { sum } = require('../utils/reducers');
-const { startState, states, checksumAfter } = require('./input25');
+import { sum } from '../utils/reducers.js';
+import input from './input25.js';
+
+const { startState, states, checksumAfter } = input;
 /**
  * states should be an object which takes the form: {
     A: [ // In state A

@@ -1,4 +1,4 @@
-const input = require('./input05');
+import input from './input05.js';
 
 const match = (c1, c2) => c1 !== c2 && c1.toLowerCase() === c2.toLowerCase();
 

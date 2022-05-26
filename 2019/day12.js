@@ -1,5 +1,7 @@
-const input = require('./input12'); // multi line string
-const { sum } = require('../utils/reducers');
+// multi line string
+import { sum } from '../utils/reducers.js';
+
+import input from './input12.js';
 
 const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 

@@ -1,5 +1,6 @@
-const input = require('./input06');
-const { highestWithIndex } = require('../utils/reducers');
+import input from './input06.js';
+
+import { highestWithIndex } from '../utils/reducers.js';
 
 const banks = input.length;
 let loops = 0;

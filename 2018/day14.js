@@ -1,4 +1,4 @@
-const input = require('./input14');
+import input from './input14.js';
 
 const makeRecipes = (numRecipes, target, breakCondition) => {
   const recipes = Array(numRecipes);

@@ -1,4 +1,4 @@
-const input = require('./input02'); // array of integers
+import input from './input02.js'; // array of integers
 
 const intComputer = (intList, noun, verb) => {
   const program = [...intList];

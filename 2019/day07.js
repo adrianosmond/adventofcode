@@ -1,5 +1,6 @@
-const input = require('./input07'); // Array of integers
-const { intComputer } = require('./intComputer');
+import input from './input07.js';
+// Array of integers
+import { intComputer } from './intComputer.js';
 
 function* choose5(start = 0) {
   for (let A = start; A < start + 5; A++) {

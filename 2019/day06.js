@@ -1,4 +1,4 @@
-const input = require('./input06'); // multi line string
+import input from './input06.js'; // multi line string
 
 const orbits = input.split('\n').map((x) => x.split(')'));
 const chains = new Array(orbits.length);

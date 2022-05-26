@@ -1,5 +1,6 @@
-const input = require('./input07');
-const { mergeObjects, sum: sumFn } = require('../utils/reducers');
+import input from './input07.js';
+
+import { mergeObjects, sum as sumFn } from '../utils/reducers.js';
 
 const programs = input
   .split('\n')

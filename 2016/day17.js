@@ -1,8 +1,11 @@
-const path = require('path');
-const fs = require('fs');
-const md5 = require('../utils/md5');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import md5 from 'spark-md5';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input17.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input17.txt'), 'utf8');
 
 const isOpen = (char) => /[b-f]/.test(char);
 

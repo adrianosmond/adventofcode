@@ -1,4 +1,4 @@
-const serial = require('./input11');
+import serial from './input11.js';
 
 const getRackId = (x) => x + 10;
 

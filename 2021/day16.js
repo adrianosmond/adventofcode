@@ -1,10 +1,13 @@
 /* eslint-disable no-use-before-define */
-const fs = require('fs');
-const path = require('path');
-const { hexToBinaryStr } = require('../utils/functions');
-const { sum, product } = require('../utils/reducers');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
+import { hexToBinaryStr } from '../utils/functions.js';
+import { sum, product } from '../utils/reducers.js';
 
-const input = fs.readFileSync(path.resolve(__dirname, 'input16.txt'), 'utf8');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+
+const input = readFileSync(resolve(currentDir, 'input16.txt'), 'utf8');
 const binary = hexToBinaryStr(input);
 
 const parseLiteral = (litStr) => {

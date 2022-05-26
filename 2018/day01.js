@@ -1,5 +1,7 @@
-const input = require('./input01'); // multi line string
-const { sum } = require('../utils/reducers');
+// multi line string
+import { sum } from '../utils/reducers.js';
+
+import input from './input01.js';
 
 const frequencies = input.split('\n').map((f) => parseInt(f, 10));
 const resultingFrequency = frequencies.reduce(sum);

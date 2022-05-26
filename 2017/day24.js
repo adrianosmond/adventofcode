@@ -1,4 +1,4 @@
-const input = require('./input24');
+import input from './input24.js';
 
 const ports = input
   .split('\n')

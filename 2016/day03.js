@@ -1,4 +1,4 @@
-const input = require('./input03');
+import input from './input03.js';
 
 const digits = input
   .split('\n')

@@ -1,4 +1,4 @@
-const input = require('./input08'); // String
+import input from './input08.js'; // String
 
 const OUTPUT_CHARS = [' ', '#']; // Representing black and white pixels
 const IMG_WIDTH = 25;

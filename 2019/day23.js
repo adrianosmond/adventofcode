@@ -1,5 +1,6 @@
-const input = require('./input23');
-const { intComputer } = require('./intComputer');
+import input from './input23.js';
+
+import { intComputer } from './intComputer.js';
 
 const NUM_COMPUTERS = 50;
 

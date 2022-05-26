@@ -1,5 +1,5 @@
-const input = require('./input02');
-const { sum } = require('../utils/reducers');
+import input from './input02.js';
+import { sum } from '../utils/reducers.js';
 
 const digits = input.split('\n').map((r) =>
   r

@@ -1,4 +1,4 @@
-const input = require('./input18');
+import input from './input18.js';
 
 const map = input.split('\n').map((r) => r.split(''));
 
