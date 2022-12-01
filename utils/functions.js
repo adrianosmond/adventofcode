@@ -68,6 +68,27 @@ export const getNeighbours = (grid, rowIdx, colIdx) => {
   return neighbours;
 };
 
+export const getNeighboursWithDiagonals = (grid, rowIdx, colIdx) => {
+  const neighbours = getNeighbours(grid, rowIdx, colIdx);
+  if (rowIdx < grid.length - 1) {
+    if (colIdx < grid[0].length - 1) {
+      neighbours.push([rowIdx + 1, colIdx + 1, grid[rowIdx + 1][colIdx + 1]]);
+    }
+    if (colIdx > 0) {
+      neighbours.push([rowIdx + 1, colIdx - 1, grid[rowIdx + 1][colIdx - 1]]);
+    }
+  }
+  if (rowIdx > 0) {
+    if (colIdx < grid[0].length - 1) {
+      neighbours.push([rowIdx - 1, colIdx + 1, grid[rowIdx - 1][colIdx + 1]]);
+    }
+    if (colIdx > 0) {
+      neighbours.push([rowIdx - 1, colIdx - 1, grid[rowIdx - 1][colIdx - 1]]);
+    }
+  }
+  return neighbours;
+};
+
 export const hexToBinaryStr = (bin) =>
   bin
     .split('')
