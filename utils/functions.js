@@ -94,3 +94,7 @@ export const hexToBinaryStr = (bin) =>
     .split('')
     .map((c) => hexMap[c])
     .join('');
+
+export const sortAsc = (a, b) => a - b;
+
+export const sortDesc = (a, b) => b - a;

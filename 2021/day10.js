@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, sortAsc } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -62,7 +62,7 @@ const part2 = () => {
         0,
       ),
     )
-    .sort((a, b) => a - b);
+    .sort(sortAsc);
 
   return scores[Math.floor(scores.length / 2)];
 };

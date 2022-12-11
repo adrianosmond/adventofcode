@@ -1,5 +1,5 @@
 import md5 from 'spark-md5';
-import { readInput } from '../utils/functions.js';
+import { readInput, sortAsc } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -66,7 +66,7 @@ const findKeys = (numHashes = 1) => {
     }
     i++;
   }
-  indexes.sort((a, b) => a - b);
+  indexes.sort(sortAsc);
   return indexes[63];
 };
 

@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, sortDesc } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
@@ -57,7 +57,7 @@ const simulateMonkeys = (numRounds, worryModifier = (worry) => worry) => {
 
   return monkeys
     .map((m) => m.inspections)
-    .sort((a, b) => b - a)
+    .sort(sortDesc)
     .slice(0, 2)
     .reduce(product);
 };

@@ -1,11 +1,11 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import { readInput, sortDesc, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 const elves = input.split('\n\n');
 const calories = elves
   .map((elf) => strToIntArray(elf).reduce(sum))
-  .sort((a, b) => b - a);
+  .sort(sortDesc);
 
 const part1 = () => calories[0];
 

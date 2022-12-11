@@ -1,9 +1,9 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import { readInput, sortAsc, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 
-const jolts = strToIntArray(input).sort((a, b) => a - b);
+const jolts = strToIntArray(input).sort(sortAsc);
 
 jolts.unshift(0);
 jolts.push(Math.max(...jolts) + 3);

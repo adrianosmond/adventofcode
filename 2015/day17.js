@@ -1,9 +1,9 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import { readInput, sortDesc, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 const TARGET = 150;
-const containers = strToIntArray(input).sort((a, b) => b - a);
+const containers = strToIntArray(input).sort(sortDesc);
 const numCombinations = new Array(containers.length + 1).fill(0);
 
 const findCombinations = (usedContainerIndices) => {

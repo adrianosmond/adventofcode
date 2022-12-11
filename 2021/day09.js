@@ -1,5 +1,5 @@
 import { sum } from '../utils/reducers.js';
-import { getNeighbours, readInput } from '../utils/functions.js';
+import { getNeighbours, readInput, sortDesc } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -44,7 +44,7 @@ const part2 = () => {
     basins.push(cells.length);
   });
 
-  basins.sort((a, b) => b - a);
+  basins.sort(sortDesc);
   const [first, second, third] = basins;
   return first * second * third;
 };

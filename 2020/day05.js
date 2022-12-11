@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, sortAsc } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -11,7 +11,7 @@ const tickets = input
     const col = parseInt(ticket.substr(7, 3), 2);
     return row * 8 + col;
   })
-  .sort((a, b) => a - b);
+  .sort(sortAsc);
 
 const part1 = () => tickets[tickets.length - 1];
 
