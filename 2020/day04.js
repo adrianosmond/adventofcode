@@ -24,7 +24,7 @@ const isValidField = ([field, value]) =>
       ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(val),
     pid: (val) => val.match('^[0-9]{9}$'),
     cid: () => true,
-  }[field](value));
+  })[field](value);
 
 const hasRequiredFields = (passport) =>
   ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'].every((requiredField) =>
