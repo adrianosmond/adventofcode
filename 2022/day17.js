@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { iterateOverGrid, readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -20,11 +20,9 @@ const NUM_ROCKS_FOR_SEQUENCE = 4000;
 const heightDiffs = new Array(NUM_ROCKS_FOR_SEQUENCE);
 
 const spaceToMove = (chamber, rock, left, bottom) => {
-  for (let row = 0; row < rock.length; row++) {
-    for (let col = 0; col < rock[row].length; col++) {
-      if (chamber[bottom + row][left + col] === '#' && rock[row][col] === '#') {
-        return false;
-      }
+  for (const [cell, row, col] of iterateOverGrid(rock)) {
+    if (chamber[bottom + row][left + col] === '#' && cell === '#') {
+      return false;
     }
   }
   return true;
@@ -72,11 +70,9 @@ const dropRocks = () => {
       }
     }
 
-    for (let row = 0; row < rock.length; row++) {
-      for (let col = 0; col < rock[row].length; col++) {
-        if (rock[row][col] === '#') {
-          chamber[bottom + row][left + col] = rock[row][col];
-        }
+    for (const [cell, row, col] of iterateOverGrid(rock)) {
+      if (cell === '#') {
+        chamber[bottom + row][left + col] = cell;
       }
     }
   }

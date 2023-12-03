@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { gridToCells, readInput } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
@@ -32,33 +32,23 @@ const getTreesToEdge = (row, col, [rowDiff, colDiff], onlyVisible = false) => {
   return treesToEdge;
 };
 
-const findVisible = () => {
-  let visibleTrees = 0;
-  for (let row = 0; row < trees.length; row++) {
-    for (let col = 0; col < trees[row].length; col++) {
-      const isVisible = Object.values(DIRECTIONS).some((direction) =>
-        getTreesToEdge(row, col, direction).every((h) => h < trees[row][col]),
-      );
-      if (isVisible) {
-        visibleTrees++;
-      }
-    }
-  }
-  return visibleTrees;
-};
+const findVisible = () =>
+  gridToCells(trees)
+    .map(([cell, row, col]) =>
+      Object.values(DIRECTIONS).some((direction) =>
+        getTreesToEdge(row, col, direction).every((h) => h < cell),
+      ),
+    )
+    .filter(Boolean).length;
 
-const getScenicScore = () => {
-  let max = 0;
-  for (let row = 1; row < trees.length - 1; row++) {
-    for (let col = 1; col < trees[row].length - 1; col++) {
-      const score = Object.values(DIRECTIONS)
+const getScenicScore = () =>
+  Math.max(
+    ...gridToCells(trees).map(([, row, col]) =>
+      Object.values(DIRECTIONS)
         .map((direction) => getTreesToEdge(row, col, direction, true).length)
-        .reduce(product);
-      max = Math.max(score, max);
-    }
-  }
-  return max;
-};
+        .reduce(product),
+    ),
+  );
 
 const part1 = () => findVisible();
 
