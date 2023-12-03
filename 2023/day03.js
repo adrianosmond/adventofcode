@@ -1,4 +1,8 @@
-import { getNeighboursWithDiagonals, readInput } from '../utils/functions.js';
+import {
+  getNeighboursWithDiagonals,
+  gridToCells,
+  readInput,
+} from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -45,36 +49,18 @@ const getNeighbouringPartNumbers = (row, col) =>
     ),
   ).map((n) => numbersFound[n]);
 
-const part1 = () => {
-  let total = 0;
-  for (let r = 0; r < grid.length; r++) {
-    const row = grid[r];
-    for (let c = 0; c < row.length; c++) {
-      const cell = grid[r][c];
-      if (/[^0-9.]/.test(cell)) {
-        total += getNeighbouringPartNumbers(r, c).reduce(sum, 0);
-      }
-    }
-  }
-  return total;
-};
+const part1 = () =>
+  gridToCells(grid)
+    .filter(([cell]) => /[^0-9.]/.test(cell))
+    .map(([, r, c]) => getNeighbouringPartNumbers(r, c).reduce(sum, 0))
+    .reduce(sum);
 
-const part2 = () => {
-  let total = 0;
-  for (let r = 0; r < grid.length; r++) {
-    const row = grid[r];
-    for (let c = 0; c < row.length; c++) {
-      const cell = grid[r][c];
-      if (cell === '*') {
-        const parts = getNeighbouringPartNumbers(r, c);
-        if (parts.length === 2) {
-          total += parts[0] * parts[1];
-        }
-      }
-    }
-  }
-  return total;
-};
+const part2 = () =>
+  gridToCells(grid)
+    .filter(([cell]) => cell === '*')
+    .map(([, r, c]) => getNeighbouringPartNumbers(r, c))
+    .map((parts) => (parts.length === 2 ? parts[0] * parts[1] : 0))
+    .reduce(sum);
 
 console.log('part1', part1());
 console.log('part2', part2());

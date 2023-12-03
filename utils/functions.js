@@ -98,3 +98,20 @@ export const hexToBinaryStr = (bin) =>
 export const sortAsc = (a, b) => a - b;
 
 export const sortDesc = (a, b) => b - a;
+
+export function* iterateOverGrid(grid) {
+  for (let row = 0; row < grid.length; row++) {
+    for (let col = 0; col < grid[row].length; col++) {
+      const cell = grid[row][col];
+      yield [cell, row, col];
+    }
+  }
+}
+
+export function gridToCells(grid) {
+  const result = [];
+  for (const cell of iterateOverGrid(grid)) {
+    result.push(cell);
+  }
+  return result;
+}
