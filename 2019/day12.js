@@ -1,19 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { lcm, readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
-
-const gcd = (a, b) => (!b ? a : gcd(b, a % b));
-
-const lcm = (a, b) => (a * b) / gcd(a, b);
-
-const lcmArray = (numbers) => {
-  let multiple = Math.min(...numbers);
-  numbers.forEach((n) => {
-    multiple = lcm(multiple, n);
-  });
-  return multiple;
-};
 
 const velocities = input.split('\n').map(() => [0, 0, 0]);
 const moons = input
@@ -85,4 +73,4 @@ while (foundCount < frequency.length) {
 }
 
 const uniqueFrequencies = new Set([...frequency]);
-console.log('part2:', lcmArray([...uniqueFrequencies]));
+console.log('part2:', lcm([...uniqueFrequencies]));

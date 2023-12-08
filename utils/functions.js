@@ -115,3 +115,9 @@ export function gridToCells(grid) {
   }
   return result;
 }
+
+const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+
+const lcmPair = (a, b) => (a * b) / gcd(a, b);
+
+export const lcm = (numbers) => numbers.reduce((a, b) => lcmPair(a, b));
