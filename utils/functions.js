@@ -55,16 +55,20 @@ export const permutator = (inputArr) => {
   return permute(inputArr);
 };
 
-export const getNeighbours = (grid, rowIdx, colIdx) => {
+export const getNeighbours = (grid, rowIdx, colIdx, preserveOrder = false) => {
   const neighbours = [];
   if (rowIdx < grid.length - 1)
     neighbours.push([rowIdx + 1, colIdx, grid[rowIdx + 1][colIdx]]);
+  else if (preserveOrder) neighbours.push(null);
   if (rowIdx > 0)
     neighbours.push([rowIdx - 1, colIdx, grid[rowIdx - 1][colIdx]]);
+  else if (preserveOrder) neighbours.push(null);
   if (colIdx < grid[0].length - 1)
     neighbours.push([rowIdx, colIdx + 1, grid[rowIdx][colIdx + 1]]);
+  else if (preserveOrder) neighbours.push(null);
   if (colIdx > 0)
     neighbours.push([rowIdx, colIdx - 1, grid[rowIdx][colIdx - 1]]);
+  else if (preserveOrder) neighbours.push(null);
   return neighbours;
 };
 
