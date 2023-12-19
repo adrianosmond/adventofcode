@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -64,7 +64,7 @@ const mapLight = (
 };
 
 const getEmptyGridAndBeams = () => {
-  const grid = input.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(input);
   const beams = grid.map((r) => r.map(() => [false, false, false, false]));
   return [grid, beams];
 };
@@ -81,7 +81,7 @@ const getEnergisedBeams = (row, col, direction) => {
 const part1 = () => getEnergisedBeams(0, 0, DIRECTIONS.RIGHT);
 
 const part2 = () => {
-  const grid = input.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(input);
 
   let max = 0;
   for (let row = 0; row < grid.length; row++) {

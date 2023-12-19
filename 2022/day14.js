@@ -1,13 +1,13 @@
-import { readInput } from '../utils/functions.js';
+import {
+  readInput,
+  splitAndMapInputLines,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
-const rockPaths = input
-  .split('\n')
-  .map((path) =>
-    path
-      .split(' -> ')
-      .map((coords) => coords.split(',').map((c) => parseInt(c, 10))),
-  );
+const rockPaths = splitAndMapInputLines(input, ' -> ', (coords) =>
+  strToIntArray(coords, ','),
+);
 
 const xCoords = rockPaths.flat(2).filter((_, i) => i % 2 === 0);
 const yCoords = rockPaths.flat(2).filter((_, i) => i % 2 === 1);

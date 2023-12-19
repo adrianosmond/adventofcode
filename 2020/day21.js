@@ -1,11 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-
-const data = input
-  .replace(/[()]/g, '')
-  .split('\n')
-  .map((r) => r.split(' contains ').map((i) => i.split(/[,]? /)));
+const data = splitAndMapInputLines(
+  input.replace(/[()]/g, ''),
+  ' contains ',
+  (i) => i.split(/[,]? /),
+);
 
 const possibilities = {};
 

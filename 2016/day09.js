@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -6,10 +6,7 @@ let output = '';
 let markerStart = -1;
 for (let i = 0; i < input.length; i++) {
   if (markerStart >= 0 && input[i] === ')') {
-    const [len, repeats] = input
-      .substring(markerStart, i)
-      .split('x')
-      .map((d) => parseInt(d, 10));
+    const [len, repeats] = strToIntArray(input.substring(markerStart, i), 'x');
     for (let j = 0; j < repeats; j++) {
       output += input.substr(i + 1, len);
     }
@@ -38,10 +35,7 @@ const getLengths = (str) => {
       ptr = 0;
     } else {
       const end = s.indexOf(')');
-      const [len, repeats] = s
-        .substring(ptr + 1, end)
-        .split('x')
-        .map((d) => parseInt(d, 10));
+      const [len, repeats] = strToIntArray(s.substring(ptr + 1, end), 'x');
 
       length += repeats * getLengths(s.substr(end + 1, len));
       s = s.substr(end + 1 + len);

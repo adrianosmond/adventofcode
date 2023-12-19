@@ -1,4 +1,4 @@
-import { readInput, manhattan } from '../utils/functions.js';
+import { readInput, manhattan, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 const map = input.substring(14, input.length - 12);
@@ -47,7 +47,7 @@ const makeUpdatedState = (
 
 const getNextStates = (state) => {
   const states = [];
-  const grid = state.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(state);
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid[0].length; x++) {
       const cell = grid[y][x];

@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -20,13 +20,13 @@ input.split('\n').forEach((r, y) => {
 });
 
 const getEast = (key) => {
-  const [x, y] = key.split(',').map((n) => parseInt(n, 10));
+  const [x, y] = strToIntArray(key, ',');
   if (x + 1 > maxX) return `0,${y}`;
   return `${x + 1},${y}`;
 };
 
 const getSouth = (key) => {
-  const [x, y] = key.split(',').map((n) => parseInt(n, 10));
+  const [x, y] = strToIntArray(key, ',');
   if (y + 1 > maxY) return `${x},0`;
   return `${x},${y + 1}`;
 };

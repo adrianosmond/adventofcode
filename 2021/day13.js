@@ -1,9 +1,9 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
 
 let [dots, folds] = input.split('\n\n');
-dots = dots.split('\n').map((r) => r.split(',').map((n) => parseInt(n, 10)));
+dots = multilineStrToIntArrays(dots, ',');
 folds = folds
   .split('\n')
   .map((f) => f.substring(11).split('='))

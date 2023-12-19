@@ -1,11 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
-
-const digits = input
-  .split('\n')
-  .map((s) => s.trim())
-  .map((s) => s.split(/\s+/).map((d) => parseInt(d, 10)));
+const digits = input.split('\n').map((s) => strToIntArray(s.trim(), /\s+/));
 
 const isTriangle = (a, b, c) => a + b > c && a + c > b && b + c > a;
 

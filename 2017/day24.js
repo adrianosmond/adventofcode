@@ -1,10 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
-
-const ports = input
-  .split('\n')
-  .map((p) => p.split('/').map((n) => parseInt(n, 10)));
+const ports = multilineStrToIntArrays(input, '/');
 
 const getFittingPieces = (port, pieces) =>
   pieces.filter((p) => p[0] === port || p[1] === port);

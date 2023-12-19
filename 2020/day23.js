@@ -1,8 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
-
-const numbers = input.split('').map((n) => parseInt(n, 10));
+const numbers = strToIntArray(input, '');
 const min = Math.min(...numbers);
 const max = Math.max(...numbers);
 

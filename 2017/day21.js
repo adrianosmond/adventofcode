@@ -1,9 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { mergeObjects } from '../utils/reducers.js';
 
 const input = readInput();
-
-const rules = input.split('\n').map((l) => l.split(' => '));
+const rules = splitAndMapInputLines(input, ' => ');
 const variants = [...rules];
 
 const makeOutput = (inp) =>

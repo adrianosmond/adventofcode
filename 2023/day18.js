@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 const hexDirectionMap = {
@@ -8,7 +8,7 @@ const hexDirectionMap = {
   3: 'U',
 };
 
-const directions = input.split('\n').map((r) => r.split(' '));
+const directions = splitAndMapInputLines(input);
 
 const getCoordinates = (part2 = false) => {
   let x = 0;

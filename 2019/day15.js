@@ -30,7 +30,7 @@ const position = [0, 0];
 let target;
 
 const coordsToStr = (c) => `${c[0]},${c[1]}`;
-const strToCoords = (str) => str.split(',').map((c) => parseInt(c, 10));
+const strToCoords = (str) => strToIntArray(str, ',');
 
 const getNeighbours = (coordStr) => {
   const coords = strToCoords(coordStr);

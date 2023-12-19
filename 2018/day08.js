@@ -1,9 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { sum, sumByKey } from '../utils/reducers.js';
 
 const input = readInput();
-
-const nodes = input.split(' ').map((x) => parseInt(x, 10));
+const nodes = strToIntArray(input, ' ');
 
 const countMetadata = (start, number) => {
   let count = 0;

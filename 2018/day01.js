@@ -1,9 +1,8 @@
 import { sum } from '../utils/reducers.js';
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
-
-const frequencies = input.split('\n').map((f) => parseInt(f, 10));
+const frequencies = strToIntArray(input);
 const resultingFrequency = frequencies.reduce(sum);
 
 const visitedFrequencies = {};

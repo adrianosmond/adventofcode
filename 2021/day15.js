@@ -1,4 +1,8 @@
-import { readInput, getNeighbours } from '../utils/functions.js';
+import {
+  readInput,
+  getNeighbours,
+  inputToIntGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
 
@@ -24,9 +28,7 @@ const getShortestDistance = (grid) => {
 };
 
 const makeGrid = (numRepeats = 1) => {
-  const risks = input
-    .split('\n')
-    .map((r) => r.split('').map((n) => parseInt(n, 10)));
+  const risks = inputToIntGrid(input);
   const rs = risks.length;
   const cs = risks[0].length;
   const grid = new Array(numRepeats * rs)

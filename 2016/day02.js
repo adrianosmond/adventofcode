@@ -1,8 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
-const instructions = input.split('\n').map((l) => l.split(''));
+const instructions = inputToCharGrid(input);
 
 const directions = {
   U: [-1, 0],

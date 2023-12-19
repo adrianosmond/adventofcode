@@ -1,14 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 
-const digits = input.split('\n').map((r) =>
-  r
-    .split(' ')
-    .map((x) => parseInt(x, 10))
-    .sort((a, b) => a - b),
-);
+const digits = input
+  .split('\n')
+  .map((r) => strToIntArray(r, ' ').sort((a, b) => a - b));
 
 const result = digits.map((r) => r[r.length - 1] - r[0]).reduce(sum);
 console.log('part1:', result);

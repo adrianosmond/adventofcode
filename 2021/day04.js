@@ -1,5 +1,9 @@
 import { sum } from '../utils/reducers.js';
-import { readInput, strToIntArray } from '../utils/functions.js';
+import {
+  multilineStrToIntArrays,
+  readInput,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
 
@@ -9,14 +13,7 @@ const getStartState = () => {
   let [numbers, ...boards] = input.split('\n\n');
 
   numbers = strToIntArray(numbers, ',');
-  boards = boards.map((board) =>
-    board.split('\n').map((row) =>
-      row
-        .trim()
-        .split(/\s+/)
-        .map((n) => parseInt(n, 10)),
-    ),
-  );
+  boards = boards.map((board) => multilineStrToIntArrays(board, /\s+/));
 
   return [numbers, boards];
 };

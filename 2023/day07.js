@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -105,10 +105,10 @@ const sortByHandValue = ([a], [b]) => {
   return a.score - b.score;
 };
 
-const hands = input
-  .split('\n')
-  .map((line) => line.split(' '))
-  .map(([hand, bid]) => [hand, parseInt(bid, 10)]);
+const hands = splitAndMapInputLines(input).map(([hand, bid]) => [
+  hand,
+  parseInt(bid, 10),
+]);
 
 const part1 = () =>
   hands

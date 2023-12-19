@@ -1,8 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
-const map = input.split('\n').map((r) => r.split(''));
+const map = inputToCharGrid(input);
 
 function getAdjacent(row, col) {
   const adj = {

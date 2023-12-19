@@ -1,16 +1,14 @@
-import { readInput } from '../utils/functions.js';
+import {
+  multilineStrToIntArrays,
+  readInput,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
-
 const [seedsStr, ...mapStrs] = input.split(/\n[a-z:-\s]+\n/);
-const seeds = seedsStr
-  .split(': ')[1]
-  .split(' ')
-  .map((s) => parseInt(s, 10));
+const seeds = strToIntArray(seedsStr.split(': ')[1], ' ');
 
-const maps = mapStrs.map((m) =>
-  m.split('\n').map((line) => line.split(' ').map((n) => parseInt(n, 10))),
-);
+const maps = mapStrs.map((m) => multilineStrToIntArrays(m));
 
 const reversedMaps = [...maps].reverse();
 

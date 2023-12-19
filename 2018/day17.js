@@ -1,8 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const inp = readInput();
 
-let input = inp.split('\n').map((l) => l.split(', '));
+let input = splitAndMapInputLines(inp, ', ');
 input = input.map((l) => [
   ...l[0].split('='),
   ...l[1].substring(2).split('..'),

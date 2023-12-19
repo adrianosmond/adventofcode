@@ -1,8 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
-const grid = input.split('\n').map((line) => line.split(''));
+const grid = inputToCharGrid(input);
 let y = 0;
 let x = grid[0].indexOf('|');
 let current = grid[y][x];

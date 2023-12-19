@@ -12,7 +12,7 @@ const MOVEMENTS = [
 
 const getLimits = (hull) =>
   Object.keys(hull)
-    .map((c) => c.split(',').map((i) => parseInt(i, 10)))
+    .map((c) => strToIntArray(c, ','))
     .reduce(
       ([minX, maxX, minY, maxY], [x, y]) => [
         Math.min(x, minX),

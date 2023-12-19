@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -7,9 +7,7 @@ const parseInputChem = (str) => {
   return [parseInt(q, 10), e];
 };
 
-const instructions = input
-  .split('\n')
-  .map((i) => i.split(' => '))
+const instructions = splitAndMapInputLines(input, ' => ')
   .map(([inp, out]) => {
     const [quantity, chemical] = parseInputChem(out);
     const i = {

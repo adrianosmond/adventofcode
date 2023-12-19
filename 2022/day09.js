@@ -1,10 +1,9 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-const movements = input
-  .split('\n')
-  .map((i) => i.split(' '))
-  .map(([direction, amount]) => [direction, parseInt(amount, 10)]);
+const movements = splitAndMapInputLines(input, ' ').map(
+  ([direction, amount]) => [direction, parseInt(amount, 10)],
+);
 
 const X = 1;
 const Y = 0;

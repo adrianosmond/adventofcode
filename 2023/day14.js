@@ -1,4 +1,4 @@
-import { gridToCells, readInput } from '../utils/functions.js';
+import { gridToCells, readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -82,13 +82,13 @@ const doCycle = (grid) => {
 };
 
 const part1 = () => {
-  const grid = input.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(input);
   moveUp(grid);
   return getLoad(grid);
 };
 
 const part2 = () => {
-  const grid = input.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(input);
   const loads = {};
   const target = 1000000000;
   let cycles = 0;

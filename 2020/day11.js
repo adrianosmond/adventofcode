@@ -1,4 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import {
+  readInput,
+  inputToCharGrid,
+  splitAndMapInputLines,
+} from '../utils/functions.js';
 
 const input = readInput();
 
@@ -22,9 +26,7 @@ const DIRECTIONS = [
 let ADJACENCY_CACHE;
 
 const createAdjacencyCache = () => {
-  ADJACENCY_CACHE = input
-    .split('\n')
-    .map((r) => r.split('').map(() => undefined));
+  ADJACENCY_CACHE = splitAndMapInputLines(input, '', () => undefined);
 };
 
 const isInGridBounds = (grid, row, col) =>
@@ -94,10 +96,7 @@ const getNextLayout = (curr, prev, maxDistance = 1, tolerance = 4) => {
 const findStableState = (maxDistance = 1, tolerance = 4) => {
   createAdjacencyCache();
 
-  const grids = [
-    input.split('\n').map((r) => r.split('')),
-    input.split('\n').map((r) => r.split('')),
-  ];
+  const grids = [inputToCharGrid(input), inputToCharGrid(input)];
   let idx = 0;
   let changed = true;
 

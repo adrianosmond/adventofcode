@@ -1,9 +1,12 @@
-import { getNeighboursWithDiagonals, readInput } from '../utils/functions.js';
+import {
+  getNeighboursWithDiagonals,
+  readInput,
+  splitAndMapInputLines,
+} from '../utils/functions.js';
 
 const input = readInput();
 
-const makeGrid = () =>
-  input.split('\n').map((r) => r.split('').map((c) => c === '#'));
+const makeGrid = () => splitAndMapInputLines(input, '', (c) => c === '#');
 
 const makeNextGrid = (current, next) => {
   for (let row = 0; row < current.length; row++) {

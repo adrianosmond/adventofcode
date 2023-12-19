@@ -1,15 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 const lines = input.split('\n');
 
 const getCalibrationValue = (line) => {
-  const digits = line
-    .split('')
-    .map((c) => parseInt(c, 10))
-    .filter(Boolean); // get rid of NaN
-
+  const digits = strToIntArray(line, '').filter(Boolean); // get rid of NaN
   return 10 * digits[0] + digits.at(-1);
 };
 

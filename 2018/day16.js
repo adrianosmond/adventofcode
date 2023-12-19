@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
 let [samples, program] = input.split('\n\n\n\n');
@@ -9,13 +9,9 @@ samples = samples
   .replace(/\]/g, '')
   .replace(/,/g, '')
   .split('\n\n')
-  .map((i) =>
-    i.split('\n').map((j) => j.split(' ').map((k) => parseInt(k, 10))),
-  );
+  .map((i) => multilineStrToIntArrays(i));
 
-program = program
-  .split('\n')
-  .map((j) => j.split(' ').map((k) => parseInt(k, 10)));
+program = multilineStrToIntArrays(program);
 
 const instructions = {
   addr: (reg, [A, B, C]) => {

@@ -1,17 +1,14 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 
-const firewall = input
-  .split('\n')
-  .map((r) => r.split(': '))
-  .reduce(
-    (acc, [layer, range]) => ({
-      ...acc,
-      [layer]: parseInt(range, 10),
-    }),
-    {},
-  );
+const firewall = splitAndMapInputLines(input, ': ').reduce(
+  (acc, [layer, range]) => ({
+    ...acc,
+    [layer]: parseInt(range, 10),
+  }),
+  {},
+);
 
 const keys = Object.keys(firewall);
 let severity = 0;

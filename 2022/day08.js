@@ -1,4 +1,4 @@
-import { gridToCells, readInput } from '../utils/functions.js';
+import { gridToCells, readInput, inputToIntGrid } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
@@ -10,9 +10,7 @@ const DIRECTIONS = {
   RIGHT: [0, 1],
 };
 
-const trees = input
-  .split('\n')
-  .map((r) => r.split('').map((t) => parseInt(t, 10)));
+const trees = inputToIntGrid(input);
 
 const getTreesToEdge = (row, col, [rowDiff, colDiff], onlyVisible = false) => {
   const treesToEdge = [];

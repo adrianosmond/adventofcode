@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -16,9 +16,7 @@ let maxX = 0;
 let maxY = 0;
 
 const updateBounds = () => {
-  const keys = Object.keys(tiles).map((key) =>
-    key.split(',').map((x) => parseInt(x, 10)),
-  );
+  const keys = Object.keys(tiles).map((key) => strToIntArray(key, ','));
 
   const xs = keys.map(([x]) => x);
   const ys = keys.map(([, y]) => y);

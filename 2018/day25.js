@@ -1,10 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
-
-const points = input
-  .split('\n')
-  .map((l) => l.split(',').map((d) => parseInt(d, 10)));
+const points = multilineStrToIntArrays(input, ',');
 
 const manhattan4d = (from, to) =>
   Math.abs(from[0] - to[0]) +

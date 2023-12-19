@@ -1,9 +1,9 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 
 const [replacements, target] = input.split('\n\n');
-const possibles = replacements.split('\n').map((p) => p.split(' => '));
+const possibles = splitAndMapInputLines(replacements, ' => ');
 
 const expand = (molecule) => {
   const newMolecules = new Set([]);

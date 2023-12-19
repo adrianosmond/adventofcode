@@ -9,7 +9,7 @@
  *  ##
  *  #
  */
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 const [map, instructions] = input.split('\n\n');
@@ -76,7 +76,7 @@ const getFace = (grid, fy, fx) => {
 
 const getFaces = () => {
   const faces = [];
-  const grid = map.split('\n').map((r) => r.split(''));
+  const grid = inputToCharGrid(map);
 
   for (let fy = 0; fy < grid.length; fy += FACE_SIZE) {
     for (let fx = 0; fx < grid[fy].length; fx += FACE_SIZE) {

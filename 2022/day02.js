@@ -1,9 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
-
-const rounds = input.split('\n').map((round) => round.split(' '));
+const rounds = splitAndMapInputLines(input);
 
 const getScore = ([p1, p2]) => {
   // Rock

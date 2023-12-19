@@ -1,9 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToIntGrid } from '../utils/functions.js';
 
 const input = readInput();
-const levels = input
-  .split('\n')
-  .map((r) => r.split('').map((n) => parseInt(n, 10)));
+const levels = inputToIntGrid(input);
 
 const maxRow = levels.length - 1;
 const maxCol = levels[0].length - 1;

@@ -1,4 +1,4 @@
-import { readInput, manhattan } from '../utils/functions.js';
+import { readInput, manhattan, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -11,7 +11,7 @@ const sensors = input
   .replace(/y=/g, '')
   .replace(/, /g, ',')
   .split('\n')
-  .map((r) => r.split(',').map((d) => parseInt(d, 10)))
+  .map((r) => strToIntArray(r, ','))
   .map(([x1, y1, x2, y2]) => {
     beaconsSet.add([x2, y2].join(','));
     return [x1, y1, manhattan([x1, y1], [x2, y2])];
@@ -20,7 +20,7 @@ const sensors = input
 const targetYRow = 2000000;
 
 const numBeaconsInTargetRowWithinRangeOfSensor = Array.from(beaconsSet)
-  .map((b) => b.split(',').map((d) => parseInt(d, 10)))
+  .map((b) => strToIntArray(b, ','))
   .filter(([, by]) => by === targetYRow)
   .map((beacon) => {
     for (const sensor of sensors) {

@@ -1,8 +1,13 @@
-import { gridToCells, manhattan, readInput } from '../utils/functions.js';
+import {
+  gridToCells,
+  manhattan,
+  readInput,
+  inputToCharGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
 
-const galaxyGrid = input.split('\n').map((r) => r.split(''));
+const galaxyGrid = inputToCharGrid(input);
 const galaxies = gridToCells(galaxyGrid)
   .filter(([cell]) => cell === '#')
   .map(([, row, col]) => ({

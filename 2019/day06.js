@@ -1,10 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-
-const orbits = input.split('\n').map((x) => x.split(')'));
+const orbits = splitAndMapInputLines(input, ')');
 const chains = new Array(orbits.length);
-
 const comIndex = orbits.findIndex((o) => o[0] === 'COM');
 chains[comIndex] = [orbits[comIndex]];
 

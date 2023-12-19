@@ -2,13 +2,14 @@ import {
   getNeighboursWithDiagonals,
   gridToCells,
   readInput,
+  inputToCharGrid,
 } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 
 const numbersFound = [];
-const grid = input.split('\n').map((r) => r.split(''));
+const grid = inputToCharGrid(input);
 
 // Go through the grid, find all the numbers and put them in the numbersFound array
 // then replace each digit of the number in the grid with the index of that number

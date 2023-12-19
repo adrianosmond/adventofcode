@@ -1,15 +1,16 @@
-import { readInput, manhattan3d } from '../utils/functions.js';
+import {
+  readInput,
+  manhattan3d,
+  multilineStrToIntArrays,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
 
 const scanners = input
   .replace(/--- scanner \d+ ---\n/g, '')
   .split('\n\n')
-  .map((beacons) =>
-    beacons
-      .split('\n')
-      .map((coords) => coords.split(',').map((n) => parseInt(n, 10))),
-  );
+  .map((beacons) => multilineStrToIntArrays(beacons, ','));
 
 const positions = [[0, 0, 0]];
 
@@ -71,10 +72,10 @@ const part1 = () => {
         }
         const max = Math.max(...Object.values(differences));
         if (max >= 12) {
-          const [dx, dy, dz] = Object.entries(differences)
-            .find(([, v]) => v === max)[0]
-            .split(',')
-            .map((n) => parseInt(n, 10));
+          const [dx, dy, dz] = strToIntArray(
+            Object.entries(differences).find(([, v]) => v === max)[0],
+            ',',
+          );
 
           positions.push([dx, dy, dz]);
 

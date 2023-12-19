@@ -1,13 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
 const part1 = () => {
-  const [now, ...buses] = input
-    .replace(/,x/g, '')
-    .replace(/,/g, '\n')
-    .split('\n')
-    .map((n) => parseInt(n, 10));
+  const [now, ...buses] = strToIntArray(
+    input.replace(/,x/g, '').replace(/,/g, '\n'),
+  );
 
   let time = now;
   let departing = buses.find((bus) => time % bus === 0);

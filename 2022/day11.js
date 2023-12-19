@@ -1,4 +1,4 @@
-import { readInput, sortDesc } from '../utils/functions.js';
+import { readInput, sortDesc, strToIntArray } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
@@ -14,7 +14,7 @@ const getMonkeys = () => {
     .split('\n\n')
     .map((m) => m.split('\n'))
     .map((m) => {
-      const items = m[0].split(', ').map((i) => parseInt(i, 10));
+      const items = strToIntArray(m[0], ',');
       const [op, amt] = m[1].split(' ');
       let updateWorry;
       if (amt === 'old') {

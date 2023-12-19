@@ -1,20 +1,17 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
 const CAPACITY = 100;
 const ingredients = Object.fromEntries(
-  input
-    .split('\n')
-    .map((ingredient) => ingredient.split(/[:,] /))
-    .map(([i, ...properties]) => [
-      i.toLowerCase(),
-      Object.fromEntries(
-        properties.map((prop) =>
-          prop.split(' ').map((x, idx) => (idx === 0 ? x : parseInt(x, 10))),
-        ),
+  splitAndMapInputLines(input, /[:,] /).map(([i, ...properties]) => [
+    i.toLowerCase(),
+    Object.fromEntries(
+      properties.map((prop) =>
+        prop.split(' ').map((x, idx) => (idx === 0 ? x : parseInt(x, 10))),
       ),
-    ]),
+    ),
+  ]),
 );
 
 function* getCombinations() {

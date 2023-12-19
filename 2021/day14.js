@@ -1,11 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 const [template, ins] = input.split('\n\n');
-
-const insertions = Object.fromEntries(
-  ins.split('\n').map((r) => r.split(' -> ')),
-);
+const insertions = Object.fromEntries(splitAndMapInputLines(ins, ' -> '));
 
 const makeEmptyPairCount = () =>
   Object.fromEntries(Object.keys(insertions).map((key) => [key, 0]));

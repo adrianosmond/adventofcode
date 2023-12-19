@@ -1,8 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-
-const connections = input.split('\n').map((r) => r.split('-'));
+const connections = splitAndMapInputLines(input, '-');
 const graph = {};
 connections.forEach(([a, b]) => {
   if (!graph[a]) graph[a] = { big: a === a.toUpperCase(), connections: [b] };

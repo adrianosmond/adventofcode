@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -8,7 +8,7 @@ const IMG_HEIGHT = 6;
 const PX_PER_LAYER = IMG_WIDTH * IMG_HEIGHT;
 const ALL_ZEROS = { zeros: PX_PER_LAYER, score: 0 };
 const TRANSPARENT_IMG = new Array(PX_PER_LAYER).fill(2);
-const pixels = input.split('').map((p) => parseInt(p, 10));
+const pixels = strToIntArray(input, '');
 const numLayers = pixels.length / PX_PER_LAYER;
 
 const layers = new Array(numLayers)

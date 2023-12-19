@@ -1,4 +1,4 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -6,7 +6,7 @@ const UNCHECKED = 0;
 const LAVA = 1;
 const AIR = 2;
 
-const cubes = input.split('\n').map((c) => strToIntArray(c, ','));
+const cubes = multilineStrToIntArrays(input, ',');
 const maxX = Math.max(...cubes.map(([x]) => x));
 const maxY = Math.max(...cubes.map(([, y]) => y));
 const maxZ = Math.max(...cubes.map(([, , z]) => z));

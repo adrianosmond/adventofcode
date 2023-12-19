@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -50,10 +50,7 @@ const nextMinute = (states, currentState) => {
 };
 
 const day24part1 = () => {
-  const states = [
-    input.split('\n').map((r) => r.split('')),
-    input.split('\n').map((r) => r.split('')),
-  ];
+  const states = [inputToCharGrid(input), inputToCharGrid(input)];
   let currentState = 0;
   const seen = { [getKey(states[0])]: true };
 
@@ -185,7 +182,7 @@ const day24part2 = () => {
   const startLevel = Math.floor(numLevels / 2);
   const states = [makeLevels(numLevels), makeLevels(numLevels)];
   let currentState = 0;
-  states[currentState][startLevel] = input.split('\n').map((r) => r.split(''));
+  states[currentState][startLevel] = inputToCharGrid(input);
 
   for (let i = 0; i < 200; i++) {
     nextRecursiveMinute(states, currentState, startLevel, 0);

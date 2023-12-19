@@ -1,14 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { sumByKey } from '../utils/reducers.js';
 
 const input = readInput();
-
-const wires = input.split('\n').map((wire) =>
-  wire.split(',').map((instruction) => ({
-    direction: instruction[0],
-    distance: parseInt(instruction.substring(1), 10),
-  })),
-);
+const wires = splitAndMapInputLines(input, ',', (instruction) => ({
+  direction: instruction[0],
+  distance: parseInt(instruction.substring(1), 10),
+}));
 
 const manhattan = (x, y) => Math.abs(x) + Math.abs(y);
 

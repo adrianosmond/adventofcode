@@ -1,8 +1,6 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
-const input = readInput()
-  .split('\n')
-  .map((x) => x.split(''));
+const input = inputToCharGrid(readInput());
 
 const VERTICAL = '|';
 const HORIZONTAL = '-';

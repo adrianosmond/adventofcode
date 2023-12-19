@@ -1,11 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
-
-const sequences = input
-  .split('\n')
-  .map((s) => s.split(' ').map((n) => parseInt(n, 10)));
+const sequences = multilineStrToIntArrays(input);
 
 const getDiffs = (sequence) => {
   const diffs = [];

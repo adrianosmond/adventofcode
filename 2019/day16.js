@@ -1,8 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
-
-const signal = input.split('').map((x) => parseInt(x, 10));
+const signal = strToIntArray(input, '');
 const phases = [signal, new Array(signal.length).fill(0)];
 const base = [0, 1, 0, -1];
 
@@ -34,10 +33,10 @@ for (let i = 0; i < Math.ceil(input2Len / input.length); i++) {
   inputPart2 += input;
 }
 
-inputPart2 = inputPart2
-  .substr(inputPart2.length - input2Len)
-  .split('')
-  .map((x) => parseInt(x, 10));
+inputPart2 = strToIntArray(
+  inputPart2.substr(inputPart2.length - input2Len),
+  '',
+);
 
 for (let phase = 0; phase < 100; phase++) {
   for (let i = inputPart2.length - 2; i >= 0; i--) {

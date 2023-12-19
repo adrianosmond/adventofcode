@@ -1,4 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import {
+  readInput,
+  inputToCharGrid,
+  strToIntArray,
+} from '../utils/functions.js';
 import knotHash from './knotHash.js';
 import { sum } from '../utils/reducers.js';
 
@@ -28,7 +32,7 @@ console.log(
     .reduce(sum),
 );
 
-output = output.split('\n').map((r) => r.split(''));
+output = inputToCharGrid(output);
 
 function getNeighbours(row, col) {
   const n = [];
@@ -55,7 +59,7 @@ for (let row = 0; row < 128; row++) {
     const done = [];
     while (queue.length > 0) {
       const current = queue.shift();
-      const [r, c] = current.split(',').map((d) => parseInt(d, 10));
+      const [r, c] = strToIntArray(current, ',');
       const neighbours = getNeighbours(r, c);
       output[r][c] = '-';
       for (let n = 0; n < neighbours.length; n++) {

@@ -1,11 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import knotHash from './knotHash.js';
 
 const input = readInput();
 
 const day10part1 = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
-  const inputArr = inputStr.split(',').map((d) => parseInt(d, 10));
+  const inputArr = strToIntArray(inputStr, ',');
 
   let pos = 0;
   let skip = 0;

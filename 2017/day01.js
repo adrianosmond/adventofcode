@@ -1,8 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
-
-const captcha = input.split('').map((x) => parseInt(x, 10));
+const captcha = strToIntArray(input, '');
 
 console.log(
   'part1;',

@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = parseInt(readInput(), 10);
 
@@ -61,11 +61,7 @@ const day14part1 = () => {
 };
 
 const day14part2 = () => {
-  const target = input
-    .toString()
-    .split('')
-    .map((i) => parseInt(i, 10));
-
+  const target = strToIntArray(input.toString(), '');
   const [, maxRecipe] = makeRecipes(21000000, target, 2);
   return maxRecipe - target.length + 1;
 };

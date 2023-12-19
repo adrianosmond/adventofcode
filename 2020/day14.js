@@ -1,9 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
-
-const instructions = input.split('\n').map((i) => i.split(' = '));
+const instructions = splitAndMapInputLines(input, ' = ');
 
 const getValue = (mask, val) => {
   const binaryVal = val.toString(2).padStart(mask.length, '0');

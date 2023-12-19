@@ -1,9 +1,11 @@
-import { getNeighbours, readInput } from '../utils/functions.js';
+import {
+  getNeighbours,
+  readInput,
+  inputToIntGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
-const grid = input
-  .split('\n')
-  .map((r) => r.split('').map((c) => parseInt(c, 10)));
+const grid = inputToIntGrid(input);
 
 const findLeastHeatLoss = (minMovement, maxMovement) => {
   const queue = [[0, 0, 0, 0, 0]];

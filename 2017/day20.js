@@ -1,15 +1,10 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { lowestWithIndex } from '../utils/reducers.js';
 
 const input = readInput();
 
 const getParticles = () =>
-  input.split('\n').map((l) =>
-    l
-      .replace(/[^,\-0-9]/g, '')
-      .split(',')
-      .map((x) => parseInt(x, 10)),
-  );
+  input.split('\n').map((l) => strToIntArray(l.replace(/[^,\-0-9]/g, ''), ','));
 
 const x = 0;
 const y = 1;

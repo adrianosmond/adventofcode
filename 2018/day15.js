@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 import { sumByKey } from '../utils/reducers.js';
 
@@ -205,13 +205,13 @@ const makeFighters = (cave, elfBoost = 0) => {
 };
 
 function day15part1() {
-  const cave = input.split('\n').map((r) => r.split(''));
+  const cave = inputToCharGrid(input);
   const fighters = makeFighters(cave);
   return fightLoop(fighters, cave);
 }
 
 function day15part2() {
-  const cave = input.split('\n').map((r) => r.split(''));
+  const cave = inputToCharGrid(input);
   // try different numbers for the 2nd param
   const fighters = makeFighters(cave, 31);
   return fightLoop(fighters, cave, false);

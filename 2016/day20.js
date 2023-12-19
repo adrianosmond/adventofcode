@@ -1,10 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
-const ranges = input
-  .split('\n')
-  .map((row) => row.split('-').map((n) => parseInt(n, 10)))
-  .sort((a, b) => a[0] - b[0]);
+const ranges = multilineStrToIntArrays(input, '-').sort((a, b) => a[0] - b[0]);
 
 for (let i = 0; i < ranges.length - 1; i++) {
   if (ranges[i][1] > ranges[i + 1][1]) {

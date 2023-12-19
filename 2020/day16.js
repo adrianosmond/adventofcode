@@ -1,4 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import {
+  multilineStrToIntArrays,
+  readInput,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
 
@@ -17,11 +21,8 @@ const rules = r
     parseInt(d, 10),
   ]);
 
-const myTicket = t.split(',').map((i) => parseInt(i, 10));
-
-const nearby = n
-  .split('\n')
-  .map((ticket) => ticket.split(',').map((i) => parseInt(i, 10)));
+const myTicket = strToIntArray(t, ',');
+const nearby = multilineStrToIntArrays(n, ',');
 
 const isValid = (number, rule) =>
   (number >= rule[0] && number <= rule[1]) ||

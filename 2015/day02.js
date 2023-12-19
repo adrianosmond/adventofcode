@@ -1,13 +1,10 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
-const dimensions = input.split('\n').map((r) =>
-  r
-    .split('x')
-    .map((x) => parseInt(x, 10))
-    .sort((a, b) => a - b),
-);
+const dimensions = input
+  .split('\n')
+  .map((r) => strToIntArray(r, 'x').sort((a, b) => a - b));
 
 const getArea = ([w, h, l]) => 2 * w * h + 2 * h * l + 2 * l * w + w * h;
 const getLength = ([w, h, l]) => 2 * w + 2 * h + w * h * l;

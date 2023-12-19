@@ -1,11 +1,10 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-
-const instructions = input
-  .split('\n')
-  .map((i) => i.split(' '))
-  .map(([i, v]) => [i, parseInt(v, 10)]);
+const instructions = splitAndMapInputLines(input).map(([i, v]) => [
+  i,
+  parseInt(v, 10),
+]);
 
 let visited;
 let acc;

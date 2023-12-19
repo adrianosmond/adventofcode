@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -7,13 +7,7 @@ const processMove = (str) => {
     return ['s', parseInt(str.substring(1), 10)];
   }
   if (str[0] === 'x') {
-    return [
-      'x',
-      ...str
-        .substring(1)
-        .split('/')
-        .map((x) => parseInt(x, 10)),
-    ];
+    return ['x', ...strToIntArray(str.substring(1), '/')];
   }
   if (str[0] === 'p') {
     return ['p', ...str.substring(1).split('/')];

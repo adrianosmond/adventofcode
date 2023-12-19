@@ -1,4 +1,9 @@
-import { getNeighbours, manhattan, readInput } from '../utils/functions.js';
+import {
+  getNeighbours,
+  manhattan,
+  readInput,
+  inputToCharGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
 
@@ -9,7 +14,7 @@ const DIRECTIONS = {
   DOWN: [1, 0],
 };
 
-const startingGrid = input.split('\n').map((row) => row.split(''));
+const startingGrid = inputToCharGrid(input);
 const blizzards = startingGrid
   .map((row, rowIdx) =>
     row.map((cell, colIdx) => {

@@ -1,11 +1,8 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { mergeObjects, sum as sumFn } from '../utils/reducers.js';
 
 const input = readInput();
-
-const programs = input
-  .split('\n')
-  .map((p) => p.split(' -> '))
+const programs = splitAndMapInputLines(input, ' -> ')
   .map(([l, r]) => {
     const [key, val] = l.split(' ');
     const weight = parseInt(val.replace(/[()]/g, ''), 10);

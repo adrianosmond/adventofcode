@@ -1,8 +1,13 @@
-import { readInput, permutator, getNeighbours } from '../utils/functions.js';
+import {
+  readInput,
+  permutator,
+  getNeighbours,
+  inputToCharGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
 
-const grid = input.split('\n').map((r) => r.split(''));
+const grid = inputToCharGrid(input);
 
 const getDistance = (from, to) => {
   const queue = [from];

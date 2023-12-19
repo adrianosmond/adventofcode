@@ -1,11 +1,13 @@
 import { sum } from '../utils/reducers.js';
-import { getNeighbours, readInput, sortDesc } from '../utils/functions.js';
+import {
+  getNeighbours,
+  readInput,
+  sortDesc,
+  inputToIntGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
-
-const grid = input
-  .split('\n')
-  .map((r) => r.split('').map((n) => parseInt(n, 10)));
+const grid = inputToIntGrid(input);
 
 const findBasin = (cells, rowIdx, colIdx) => {
   cells.push(`${rowIdx},${colIdx}`);

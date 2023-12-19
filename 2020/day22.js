@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -6,7 +6,7 @@ const makeDecks = () =>
   input
     .replace(/Player \d:\n/g, '')
     .split('\n\n')
-    .map((deck) => deck.split('\n').map((card) => parseInt(card, 10)));
+    .map((deck) => strToIntArray(deck));
 
 const score = (decks) => {
   const winningDeck = decks.flat();

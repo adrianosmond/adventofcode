@@ -1,17 +1,17 @@
-import { readInput } from '../utils/functions.js';
+import {
+  readInput,
+  splitAndMapInputLines,
+  strToIntArray,
+} from '../utils/functions.js';
 
 const input = readInput();
-
-const programs = input
-  .split('\n')
-  .map((r) => r.split(' <-> '))
-  .reduce(
-    (acc, [key, values]) => ({
-      ...acc,
-      [key]: values.split(', ').map((v) => parseInt(v, 10)),
-    }),
-    {},
-  );
+const programs = splitAndMapInputLines(input, ' <-> ').reduce(
+  (acc, [key, values]) => ({
+    ...acc,
+    [key]: strToIntArray(values, ','),
+  }),
+  {},
+);
 
 const day12part1 = () => {
   const queue = [0];

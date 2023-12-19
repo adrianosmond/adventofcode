@@ -1,9 +1,9 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 
 const parseInput = () => {
-  const maze = input.split('\n').map((r) => r.split(''));
+  const maze = inputToCharGrid(input);
 
   let inner = null;
   const keys = {};

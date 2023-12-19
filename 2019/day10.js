@@ -1,9 +1,9 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, inputToCharGrid } from '../utils/functions.js';
 import { highestByKey } from '../utils/reducers.js';
 
 const input = readInput();
 
-const space = input.split('\n').map((r) => r.split(''));
+const space = inputToCharGrid(input);
 
 const distance = (a, b) => {
   const xDiff = Math.abs(a.x - b.x);

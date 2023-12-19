@@ -1,13 +1,12 @@
-import { lcm, readInput } from '../utils/functions.js';
+import { lcm, readInput, splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 
 const velocities = input.split('\n').map(() => [0, 0, 0]);
-const moons = input
-  .replace(/[<>=xyz]/g, '')
-  .split('\n')
-  .map((m) => m.split(', ').map((i) => parseInt(i, 10)));
+const moons = splitAndMapInputLines(input.replace(/[<>=xyz]/g, ''), ', ', (i) =>
+  parseInt(i, 10),
+);
 
 const history = [];
 history.push([...moons].flat());

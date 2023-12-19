@@ -1,7 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-const instructions = input.split('\n').map((r) => r.split(' -> '));
+const instructions = splitAndMapInputLines(input, ' -> ');
 
 const numberOrString = (val) =>
   Number.isNaN(parseInt(val, 10)) ? val : parseInt(val, 10);

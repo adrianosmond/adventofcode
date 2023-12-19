@@ -1,8 +1,13 @@
-import { getNeighbours, gridToCells, readInput } from '../utils/functions.js';
+import {
+  getNeighbours,
+  gridToCells,
+  readInput,
+  inputToCharGrid,
+} from '../utils/functions.js';
 
 const input = readInput();
 
-const grid = input.split('\n').map((r) => r.split(''));
+const grid = inputToCharGrid(input);
 
 grid.forEach((r) => {
   r.unshift('.');

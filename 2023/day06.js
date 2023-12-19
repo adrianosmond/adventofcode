@@ -1,17 +1,11 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();
-
 const [races, records] = input
   .replace(/(Time|Distance):/g, '')
   .split('\n')
-  .map((line) =>
-    line
-      .trim()
-      .split(/\s+/)
-      .map((n) => parseInt(n, 10)),
-  );
+  .map((line) => strToIntArray(line.trim(), /\s+/));
 
 const getWins = (duration, record) => {
   let wins = 0;

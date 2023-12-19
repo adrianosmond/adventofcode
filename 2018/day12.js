@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -7,7 +7,7 @@ let [initialState, stateRules] = input
   .split('\n\n');
 
 initialState = initialState.split('').map((x) => x === '#');
-stateRules = stateRules.split('\n').map((rule) => rule.split(' => '));
+stateRules = splitAndMapInputLines(stateRules, ' => ');
 
 const buffer = 150;
 const minRepetitions = 10;

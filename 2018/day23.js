@@ -1,12 +1,10 @@
-import { readInput } from '../utils/functions.js';
+import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
 
 const input = readInput();
-
-const bots = input
-  .replace(/pos=</g, '')
-  .replace(/>, r=/g, ',')
-  .split('\n')
-  .map((n) => n.split(',').map((d) => parseInt(d, 10)));
+const bots = multilineStrToIntArrays(
+  input.replace(/pos=</g, '').replace(/>, r=/g, ','),
+  ',',
+);
 
 const manhattan3d = (from, to) =>
   Math.abs(from[0] - to[0]) +

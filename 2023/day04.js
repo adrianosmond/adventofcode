@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();
@@ -9,7 +9,7 @@ const winningNumbersPerCard = input
       .replace(/\s+/g, ' ')
       .replace(/Card \d+:\s/g, '')
       .split(' | ')
-      .map((x) => x.split(' ').map((n) => parseInt(n, 10))),
+      .map((x) => strToIntArray(x, ' ')),
   )
   .map(([winners, myNumbers]) => winners.filter((w) => myNumbers.includes(w)));
 

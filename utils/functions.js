@@ -112,13 +112,24 @@ export function* iterateOverGrid(grid) {
   }
 }
 
-export function gridToCells(grid) {
+export const splitAndMapInputLines = (input, sep = ' ', fn = (x) => x) =>
+  input.split('\n').map((line) => line.split(sep).map(fn));
+
+export const multilineStrToIntArrays = (str, sep = ' ') =>
+  splitAndMapInputLines(str, sep, (number) => parseInt(number, 10));
+
+export const inputToCharGrid = (str) => splitAndMapInputLines(str, '');
+
+export const inputToIntGrid = (str) =>
+  splitAndMapInputLines(str, '', (c) => parseInt(c, 10));
+
+export const gridToCells = (grid) => {
   const result = [];
   for (const cell of iterateOverGrid(grid)) {
     result.push(cell);
   }
   return result;
-}
+};
 
 const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 

@@ -1,8 +1,7 @@
-import { readInput } from '../utils/functions.js';
+import { readInput, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
-
-const instructions = input.split('\n').map((x) => x.split(' '));
+const instructions = splitAndMapInputLines(input);
 
 const regKeys = {
   a: 0,
