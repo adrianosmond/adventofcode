@@ -82,13 +82,13 @@ const doCycle = (grid) => {
   moveRight(grid);
 };
 
-const part1 = () => {
+export const part1 = () => {
   const grid = inputToCharGrid(input);
   moveUp(grid);
   return getLoad(grid);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const grid = inputToCharGrid(input);
   const loads = {};
   const target = 1000000000;

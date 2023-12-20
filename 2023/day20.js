@@ -107,9 +107,9 @@ const pushButtons = (numPushes, part2) => {
   return pulses[0] * pulses[1];
 };
 
-const part1 = () => pushButtons(1000);
+export const part1 = () => pushButtons(1000);
 
-const part2 = () => pushButtons(Number.MAX_SAFE_INTEGER, true);
+export const part2 = () => pushButtons(Number.MAX_SAFE_INTEGER, true);
 
 console.log('part1', part1());
 console.log('part2', part2());

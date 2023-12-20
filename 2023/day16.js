@@ -79,9 +79,9 @@ const getEnergisedBeams = (row, col, direction) => {
   return countEnergisedBeams(beams);
 };
 
-const part1 = () => getEnergisedBeams(0, 0, DIRECTIONS.RIGHT);
+export const part1 = () => getEnergisedBeams(0, 0, DIRECTIONS.RIGHT);
 
-const part2 = () => {
+export const part2 = () => {
   const grid = inputToCharGrid(input);
 
   let max = 0;

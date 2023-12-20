@@ -105,7 +105,7 @@ const traverseWorkflows = (workflow, conditionsFromPrevWorkflows = []) => {
   return combinations;
 };
 
-const part1 = () => {
+export const part1 = () => {
   let total = 0;
   items.forEach((item) => {
     let w = 'in';
@@ -132,7 +132,7 @@ const part1 = () => {
   return total;
 };
 
-const part2 = () => traverseWorkflows('in');
+export const part2 = () => traverseWorkflows('in');
 
 console.log('part1', part1());
 console.log('part2', part2());

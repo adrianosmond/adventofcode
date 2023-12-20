@@ -63,9 +63,9 @@ const getArea = (coords) => {
   return area / 2 + perimeter / 2 + 1;
 };
 
-const part1 = () => getArea(getCoordinates());
+export const part1 = () => getArea(getCoordinates());
 
-const part2 = () => getArea(getCoordinates(true));
+export const part2 = () => getArea(getCoordinates(true));
 
 console.log('part1', part1());
 console.log('part2', part2());

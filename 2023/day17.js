@@ -92,9 +92,9 @@ const findLeastHeatLoss = (minMovement, maxMovement) => {
   );
 };
 
-const part1 = () => findLeastHeatLoss(0, 3);
+export const part1 = () => findLeastHeatLoss(0, 3);
 
-const part2 = () => findLeastHeatLoss(4, 10);
+export const part2 = () => findLeastHeatLoss(4, 10);
 
 console.log('part1', part1());
 console.log('part2', part2());

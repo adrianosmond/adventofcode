@@ -34,9 +34,9 @@ const getFocusingPower = (box, boxIndex) =>
     )
     .reduce(sum, 0);
 
-const part1 = () => strings.map(hashString).reduce(sum);
+export const part1 = () => strings.map(hashString).reduce(sum);
 
-const part2 = () => {
+export const part2 = () => {
   operations.forEach(([label, op, box]) => {
     if (op === null) {
       if (label in boxes[box]) delete boxes[box][label];
