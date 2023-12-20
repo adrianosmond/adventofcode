@@ -50,18 +50,15 @@ const getNeighbouringPartNumbers = (row, col) =>
     ),
   ).map((n) => numbersFound[n]);
 
-const part1 = () =>
+export const part1 = () =>
   gridToCells(grid)
     .filter(([cell]) => /[^0-9.]/.test(cell))
     .map(([, r, c]) => getNeighbouringPartNumbers(r, c).reduce(sum, 0))
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   gridToCells(grid)
     .filter(([cell]) => cell === '*')
     .map(([, r, c]) => getNeighbouringPartNumbers(r, c))
     .map((parts) => (parts.length === 2 ? parts[0] * parts[1] : 0))
     .reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

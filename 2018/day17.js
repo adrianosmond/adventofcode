@@ -139,5 +139,6 @@ for (let i = minY; i <= maxY; i++) {
   }
 }
 
-console.log('part1:', temp + perm);
-console.log('part2:', perm);
+export const part1 = () => temp + perm;
+
+export const part2 = () => perm;

@@ -30,26 +30,25 @@ const getABAs = (s) => {
   return abas;
 };
 
-const tls = ips.filter((ip) => {
-  const supernet = getSupernet(ip);
-  const hypernet = getHypernet(ip);
-  if (hasABBA(hypernet)) return false;
-  return hasABBA(supernet);
-});
+export const part1 = () =>
+  ips.filter((ip) => {
+    const supernet = getSupernet(ip);
+    const hypernet = getHypernet(ip);
+    if (hasABBA(hypernet)) return false;
+    return hasABBA(supernet);
+  }).length;
 
-const ssl = ips.filter((ip) => {
-  const supernet = getSupernet(ip);
-  const hypernet = getHypernet(ip);
-  const abas = getABAs(supernet);
-  for (let i = 0; i < abas.length; i++) {
-    const aba = abas[i];
-    const bab = aba[1] + aba[0] + aba[1];
-    if (hypernet.includes(bab)) {
-      return true;
+export const part2 = () =>
+  ips.filter((ip) => {
+    const supernet = getSupernet(ip);
+    const hypernet = getHypernet(ip);
+    const abas = getABAs(supernet);
+    for (let i = 0; i < abas.length; i++) {
+      const aba = abas[i];
+      const bab = aba[1] + aba[0] + aba[1];
+      if (hypernet.includes(bab)) {
+        return true;
+      }
     }
-  }
-  return false;
-});
-
-console.log('part1:', tls.length);
-console.log('part2:', ssl.length);
+    return false;
+  }).length;

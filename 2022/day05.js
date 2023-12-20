@@ -23,7 +23,7 @@ const indices = instructions.split('\n').map((p) => {
   return [parseInt(count, 10), parseInt(from, 10) - 1, parseInt(to, 10) - 1];
 });
 
-const part1 = () => {
+export const part1 = () => {
   const stacks = makeStacks();
   indices.forEach(([count, from, to]) => {
     for (let i = 0; i < count; i++) {
@@ -34,7 +34,7 @@ const part1 = () => {
   return stacks.map((s) => s[s.length - 1]).join('');
 };
 
-const part2 = () => {
+export const part2 = () => {
   const stacks = makeStacks();
   indices.forEach(([count, from, to]) => {
     const items = [];
@@ -45,6 +45,3 @@ const part2 = () => {
   });
   return stacks.map((s) => s[s.length - 1]).join('');
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

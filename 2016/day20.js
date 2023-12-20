@@ -15,15 +15,12 @@ for (let i = 0; i < ranges.length - 1; i++) {
   }
 }
 
-const part1 = () => ranges[0][1] + 1;
+export const part1 = () => ranges[0][1] + 1;
 
-const part2 = () => {
+export const part2 = () => {
   let allowed = 0;
   for (let i = 0; i < ranges.length - 1; i++) {
     allowed += ranges[i + 1][0] - ranges[i][1] - 1;
   }
   return allowed;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

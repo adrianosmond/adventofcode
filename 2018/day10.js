@@ -56,6 +56,6 @@ while (loops < 11000) {
   loops++;
 }
 
-console.log('part1:');
-console.log(message.map((r) => r.join('')).join('\n'));
-console.log('part2:', bestTime);
+export const part1 = () => message.map((r) => r.join('')).join('\n');
+
+export const part2 = () => bestTime;

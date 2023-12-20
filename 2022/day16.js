@@ -91,12 +91,12 @@ const makePaths = () => {
 
 const paths = makePaths();
 
-const part1 = () => {
+export const part1 = () => {
   paths.sort((a, b) => b.releasedAfter30 - a.releasedAfter30);
   return paths[0].releasedAfter30;
 };
 
-const part2 = () => {
+export const part2 = () => {
   const doneIn26 = paths
     .filter((p) => p.releasedAfter26 > 0)
     .sort((a, b) => b.releasedAfter26 - a.releasedAfter26);
@@ -120,6 +120,3 @@ const part2 = () => {
   }
   return best;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

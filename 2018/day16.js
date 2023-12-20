@@ -105,7 +105,7 @@ const compare = (a, b) => {
   return true;
 };
 
-const day16part1 = () =>
+export const part1 = () =>
   samples.reduce((total, sample) => {
     const [before, instruction, after] = sample;
     const [, ...values] = instruction;
@@ -116,7 +116,7 @@ const day16part1 = () =>
     return total + (matches >= 3 ? 1 : 0);
   }, 0);
 
-const day16part2 = () => {
+export const part2 = () => {
   let opCodes = [];
   for (let i = 0; i < 16; i++) {
     opCodes[i] = Object.keys(instructions);
@@ -165,6 +165,3 @@ const day16part2 = () => {
 
   return registers[0];
 };
-
-console.log('part1:', day16part1());
-console.log('part2:', day16part2());

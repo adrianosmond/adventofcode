@@ -53,7 +53,9 @@ const hullRobot = (startColor) => {
   return hull;
 };
 
-const day11part2 = () => {
+export const part1 = () => Object.values(hullRobot(0)).length;
+
+export const part2 = () => {
   const hull = hullRobot(1);
   const [minX, maxX, minY, maxY] = getLimits(hull);
   let painting = '';
@@ -68,6 +70,3 @@ const day11part2 = () => {
 
   return painting;
 };
-
-console.log('part1:', Object.values(hullRobot(0)).length);
-console.log('part2:', day11part2());

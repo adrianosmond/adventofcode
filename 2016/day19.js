@@ -26,7 +26,7 @@ const eliminateElf = (toEliminate) => {
   toEliminate.prev.next = toEliminate.next;
 };
 
-const part1 = () => {
+export const part1 = () => {
   const elves = makeCircle();
   let activeElf = elves[0];
   for (let numLeft = numElves; numLeft > 1; numLeft--) {
@@ -36,7 +36,7 @@ const part1 = () => {
   return activeElf.position + 1;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let wonByP1 = 1;
   while (wonByP1 < numElves) {
     wonByP1 *= 3;
@@ -48,6 +48,3 @@ const part2 = () => {
   }
   return remainder + (remainder - wonByP1);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

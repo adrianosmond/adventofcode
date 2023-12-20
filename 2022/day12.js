@@ -46,9 +46,9 @@ const getShortestDistance = (grid, startPos) => {
   return bestDistances[end[0]][end[1]];
 };
 
-const part1 = () => getShortestDistance(map, start);
+export const part1 = () => getShortestDistance(map, start);
 
-const part2 = () => {
+export const part2 = () => {
   let best = Number.MAX_SAFE_INTEGER;
   for (let r = 0; r < map.length; r++) {
     for (let c = 0; c < map[0].length; c++) {
@@ -59,6 +59,3 @@ const part2 = () => {
   }
   return best;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

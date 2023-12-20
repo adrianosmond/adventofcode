@@ -10,9 +10,9 @@ const getTimesIncreased = (arr) =>
     return timesIncreased + (curr > arr[idx - 1] ? 1 : 0);
   }, 0);
 
-const part1 = () => getTimesIncreased(depths);
+export const part1 = () => getTimesIncreased(depths);
 
-const part2 = () => {
+export const part2 = () => {
   const summed = depths
     .map((depth, idx) => {
       if (idx < 2) return false;
@@ -22,6 +22,3 @@ const part2 = () => {
 
   return getTimesIncreased(summed);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -22,14 +22,12 @@ const getPriority = (char) => {
   return code > 96 ? code - 96 : code - 38;
 };
 
-const part1 = () =>
+export const part1 = () =>
   rucksacks
     .map(getCompartments)
     .map(findCommonItems)
     .map(getPriority)
     .reduce(sum);
 
-const part2 = () => groups.map(findCommonItems).map(getPriority).reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () =>
+  groups.map(findCommonItems).map(getPriority).reduce(sum);

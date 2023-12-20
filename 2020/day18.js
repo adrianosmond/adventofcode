@@ -48,9 +48,6 @@ const evaluateAdditionFirst = (equation) => {
     .reduce((total, current) => total * parseInt(current, 10), 1);
 };
 
-const part1 = () => equations.map(evaluateLtoR).reduce(sum);
+export const part1 = () => equations.map(evaluateLtoR).reduce(sum);
 
-const part2 = () => equations.map(evaluateAdditionFirst).reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => equations.map(evaluateAdditionFirst).reduce(sum);

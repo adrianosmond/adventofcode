@@ -24,7 +24,7 @@ const simulate = (vx, vy) => {
   return [false, maxY];
 };
 
-const part1 = () => {
+export const part1 = () => {
   let maxY = 0;
   for (let vx = xMax; vx > 0; vx--) {
     for (let vy = yMin; vy < 200; vy++) {
@@ -35,7 +35,7 @@ const part1 = () => {
   return maxY;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let count = 0;
   for (let vx = xMax; vx > 0; vx--) {
     for (let vy = yMin; vy < 200; vy++) {
@@ -45,6 +45,3 @@ const part2 = () => {
   }
   return count;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

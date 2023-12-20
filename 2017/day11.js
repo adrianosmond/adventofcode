@@ -43,5 +43,6 @@ instructions.forEach((i) => {
   max = Math.max(max, distance(x, y));
 });
 
-console.log('part1:', distance(x, y));
-console.log('part2:', max);
+export const part1 = () => distance(x, y);
+
+export const part2 = () => max;

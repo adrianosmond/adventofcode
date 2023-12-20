@@ -33,9 +33,7 @@ const hasRequiredFields = (passport) =>
 
 const hasValidFields = (passport) => passport.every(isValidField);
 
-const part1 = () => passports.filter(hasRequiredFields).length;
-const part2 = () =>
-  passports.filter(hasRequiredFields).filter(hasValidFields).length;
+export const part1 = () => passports.filter(hasRequiredFields).length;
 
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () =>
+  passports.filter(hasRequiredFields).filter(hasValidFields).length;

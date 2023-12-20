@@ -6,13 +6,13 @@ const input = readInput();
 const groups = input.split('\n\n');
 const letters = new Array(26).fill().map((_, i) => String.fromCharCode(97 + i));
 
-const part1 = () =>
+export const part1 = () =>
   groups
     .map((group) => group.replace(/\s/g, ''))
     .map((answers) => new Set([...answers]).size)
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   groups
     .map((group) =>
       letters.reduce(
@@ -25,6 +25,3 @@ const part2 = () =>
       ),
     )
     .reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

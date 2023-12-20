@@ -19,17 +19,16 @@ messages.forEach((message) => {
   });
 });
 
-const mostCommon = freq
-  .map((f) => Object.entries(f).reduce(highestValueKey, { best: 0 }))
-  .map((f) => f.key)
-  .join('');
+export const part1 = () =>
+  freq
+    .map((f) => Object.entries(f).reduce(highestValueKey, { best: 0 }))
+    .map((f) => f.key)
+    .join('');
 
-const leastCommon = freq
-  .map((f) =>
-    Object.entries(f).reduce(lowestValueKey, { best: messages.length }),
-  )
-  .map((f) => f.key)
-  .join('');
-
-console.log('part1:', mostCommon);
-console.log('part2:', leastCommon);
+export const part2 = () =>
+  freq
+    .map((f) =>
+      Object.entries(f).reduce(lowestValueKey, { best: messages.length }),
+    )
+    .map((f) => f.key)
+    .join('');

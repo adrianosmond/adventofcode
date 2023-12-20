@@ -73,7 +73,7 @@ const opCodes = {
   },
 };
 
-const day19part1 = () => {
+export const part1 = () => {
   const registers = [0, 0, 0, 0, 0, 0];
   let ptr = 0;
   let instruction;
@@ -94,7 +94,7 @@ const day19part1 = () => {
    the large number and summing them up. Let's run the program until
    the large number is in one of the registers and then do the
    factoring and summing ourselves */
-const day19part2 = () => {
+export const part2 = () => {
   const registers = [1, 0, 0, 0, 0, 0];
   let ptr = 0;
   let instruction;
@@ -109,8 +109,5 @@ const day19part2 = () => {
     ptr++;
   }
   const factors = findFactors(Math.max(...registers));
-  return factors.reduce(sum, 0);
+  return factors.reduce(sum, 1);
 };
-
-console.log('part1:', day19part1());
-console.log('part2:', day19part2());

@@ -14,10 +14,10 @@ const springBot = (instructions) => {
   return output;
 };
 
-const day21part1 = () =>
+export const part1 = () =>
   springBot(['NOT C J', 'AND D J', 'NOT A T', 'OR T J', 'WALK']);
 
-const day21part2 = () =>
+export const part2 = () =>
   springBot([
     'NOT A J',
     'NOT B T',
@@ -31,6 +31,3 @@ const day21part2 = () =>
     'AND T J',
     'RUN',
   ]);
-
-console.log('part1:', day21part1());
-console.log('part2:', day21part2());

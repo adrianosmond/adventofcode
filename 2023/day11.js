@@ -38,7 +38,7 @@ const getDistance = () => {
   return total;
 };
 
-const part1 = () => {
+export const part1 = () => {
   galaxies.forEach((g) => {
     g.col += g.colExpansion;
     g.row += g.rowExpansion;
@@ -47,7 +47,7 @@ const part1 = () => {
   return getDistance();
 };
 
-const part2 = () => {
+export const part2 = () => {
   // one million times larger !== one million expansions
   // it's 999,999 expansions, but we already did one in p1
   // so we'll do 999,998 instead
@@ -58,6 +58,3 @@ const part2 = () => {
 
   return getDistance();
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

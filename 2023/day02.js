@@ -29,7 +29,7 @@ const games = input
     };
   });
 
-const part1 = () =>
+export const part1 = () =>
   games
     .filter((game) =>
       game.sets.every(
@@ -39,7 +39,7 @@ const part1 = () =>
     .map((game) => game.id)
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   games
     .map((game) => ({
       id: game.id,
@@ -54,6 +54,3 @@ const part2 = () =>
     }))
     .map((game) => game.sets.red * game.sets.green * game.sets.blue)
     .reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

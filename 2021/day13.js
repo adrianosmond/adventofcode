@@ -59,16 +59,12 @@ const fold = (foldsToDo) => {
     .map((r) => r.filter((_, i) => i <= maxX));
 };
 
-const part1 = () =>
+export const part1 = () =>
   fold([folds[0]])
     .flat()
     .filter((c) => c === '#').length;
 
-const part2 = () =>
+export const part2 = () =>
   fold(folds)
     .map((r) => r.join(''))
     .join('\n');
-
-console.log('part1', part1());
-console.log('part2');
-console.log(part2());

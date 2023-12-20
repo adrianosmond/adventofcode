@@ -167,7 +167,7 @@ const moveToNewFace = (face, row, col, direction) => {
   return [face, row, col, direction];
 };
 
-const part1 = () => {
+export const part1 = () => {
   const mapWidth = Math.max(...map.split('\n').map((s) => s.length));
   const grid = map
     .split('\n')
@@ -219,7 +219,7 @@ const part1 = () => {
   return 1000 * row + 4 * col + getScoreForDirection(direction);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const faces = getFaces();
   let direction = DIRECTIONS.RIGHT;
   let face = faces[0];
@@ -260,6 +260,3 @@ const part2 = () => {
 
   return 1000 * finalRow + 4 * finalCol + getScoreForDirection(direction);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

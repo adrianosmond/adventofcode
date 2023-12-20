@@ -30,10 +30,10 @@ const findLowPoints = () => {
 
 const lowPoints = findLowPoints();
 
-const part1 = () =>
+export const part1 = () =>
   lowPoints.map(([row, col]) => grid[row][col]).reduce(sum, lowPoints.length);
 
-const part2 = () => {
+export const part2 = () => {
   const basins = [];
 
   lowPoints.forEach(([row, col]) => {
@@ -46,6 +46,3 @@ const part2 = () => {
   const [first, second, third] = basins;
   return first * second * third;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -12,9 +12,6 @@ const getSumOfValues = (vals, ignoreRed = false) =>
     return total + getSumOfValues(Object.values(val), ignoreRed);
   }, 0);
 
-const part1 = () => getSumOfValues(Object.values(json));
+export const part1 = () => getSumOfValues(Object.values(json));
 
-const part2 = () => getSumOfValues(Object.values(json), true);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getSumOfValues(Object.values(json), true);

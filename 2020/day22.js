@@ -56,9 +56,6 @@ const combat = (decks, recursive = false) => {
   return decks;
 };
 
-const part1 = () => score(combat(makeDecks()));
+export const part1 = () => score(combat(makeDecks()));
 
-const part2 = () => score(combat(makeDecks(), true));
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => score(combat(makeDecks(), true));

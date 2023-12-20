@@ -15,6 +15,7 @@ const frequency = new Array(history.length);
 
 let foundCount = 0;
 let steps = 0;
+let energy = 0;
 
 while (foundCount < frequency.length) {
   for (let i = 0; i < moons.length; i++) {
@@ -60,7 +61,7 @@ while (foundCount < frequency.length) {
   steps++;
 
   if (steps === 1000) {
-    const energy = moons
+    energy = moons
       .map((m, idx) => {
         const pot = Math.abs(m[0]) + Math.abs(m[1]) + Math.abs(m[2]);
         const v = velocities[idx];
@@ -68,9 +69,9 @@ while (foundCount < frequency.length) {
         return pot * kin;
       })
       .reduce(sum);
-    console.log('part1:', energy);
   }
 }
 
-const uniqueFrequencies = new Set([...frequency]);
-console.log('part2:', lcm([...uniqueFrequencies]));
+export const part1 = () => energy;
+
+export const part2 = () => lcm([...new Set(frequency)]);

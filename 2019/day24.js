@@ -50,23 +50,6 @@ const nextMinute = (states, currentState) => {
   return getKey(next);
 };
 
-const day24part1 = () => {
-  const states = [inputToCharGrid(input), inputToCharGrid(input)];
-  let currentState = 0;
-  const seen = { [getKey(states[0])]: true };
-
-  while (true) {
-    const key = nextMinute(states, currentState);
-    currentState = (currentState + 1) % 2;
-    if (seen[key]) {
-      break;
-    }
-    seen[key] = true;
-  }
-
-  return getBiodiversity(states[currentState]);
-};
-
 const makeLevels = (numLevels) =>
   new Array(numLevels)
     .fill()
@@ -178,7 +161,24 @@ const getNumBugs = (state) => {
   return count;
 };
 
-const day24part2 = () => {
+export const part1 = () => {
+  const states = [inputToCharGrid(input), inputToCharGrid(input)];
+  let currentState = 0;
+  const seen = { [getKey(states[0])]: true };
+
+  while (true) {
+    const key = nextMinute(states, currentState);
+    currentState = (currentState + 1) % 2;
+    if (seen[key]) {
+      break;
+    }
+    seen[key] = true;
+  }
+
+  return getBiodiversity(states[currentState]);
+};
+
+export const part2 = () => {
   const numLevels = 203;
   const startLevel = Math.floor(numLevels / 2);
   const states = [makeLevels(numLevels), makeLevels(numLevels)];
@@ -192,6 +192,3 @@ const day24part2 = () => {
 
   return getNumBugs(states[currentState]);
 };
-
-console.log('part1:', day24part1());
-console.log('part2:', day24part2());

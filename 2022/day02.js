@@ -47,9 +47,6 @@ const getScore2 = ([p1, outcome]) => {
   }
 };
 
-const part1 = () => rounds.map(getScore).reduce(sum);
+export const part1 = () => rounds.map(getScore).reduce(sum);
 
-const part2 = () => rounds.map(getScore2).reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => rounds.map(getScore2).reduce(sum);

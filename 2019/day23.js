@@ -6,7 +6,7 @@ const input = strToIntArray(readInput(), ',');
 
 const NUM_COMPUTERS = 50;
 
-const day23 = () => {
+const rebuildNetwork = (part2 = false) => {
   const computers = new Array(NUM_COMPUTERS);
   const inputs = new Array(NUM_COMPUTERS).fill().map(() => []);
   let idleCount = 0;
@@ -31,8 +31,8 @@ const day23 = () => {
           inputs[addr].push(x, y);
         }
         if (addr === 255) {
-          if (!nat) {
-            console.log('part1:', y);
+          if (!nat && !part2) {
+            return y;
           }
           nat = [x, y];
         }
@@ -55,4 +55,7 @@ const day23 = () => {
     }
   }
 };
-console.log('part2:', day23());
+
+export const part1 = () => rebuildNetwork();
+
+export const part2 = () => rebuildNetwork(true);

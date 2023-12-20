@@ -10,7 +10,7 @@ for (const number of expenses) {
   map[number] = true;
 }
 
-const part1 = () => {
+export const part1 = () => {
   for (let i = 0; i < expenses.length; i++) {
     const number1 = expenses[i];
     const number2 = 2020 - number1;
@@ -20,7 +20,7 @@ const part1 = () => {
   }
 };
 
-const part2 = () => {
+export const part2 = () => {
   for (let i = 0; i < expenses.length; i++) {
     const number1 = expenses[i];
     for (let j = i + 1; j < expenses.length; j++) {
@@ -37,6 +37,3 @@ const part2 = () => {
     }
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

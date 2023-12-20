@@ -64,9 +64,6 @@ const isAir = (c) => !isInBounds(c) || cube[c[0]][c[1]][c[2]] === AIR;
 const getSurfaceArea = (test) =>
   cubes.map((pos) => getNeighbours(pos).filter(test).length).reduce(sum);
 
-const part1 = () => getSurfaceArea(isNotLava);
+export const part1 = () => getSurfaceArea(isNotLava);
 
-const part2 = () => getSurfaceArea(isAir);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getSurfaceArea(isAir);

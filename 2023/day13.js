@@ -68,11 +68,8 @@ const findSmudges = (gridIdx) => {
   }
 };
 
-const part1 = () =>
+export const part1 = () =>
   [...Array(grids.length).keys()].map(findReflections).reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   [...Array(grids.length).keys()].map(findSmudges).reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

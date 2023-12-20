@@ -25,14 +25,14 @@ const readout = {
   perfumes: 1,
 };
 
-const part1 = () =>
+export const part1 = () =>
   sues.filter((sue) =>
     Object.entries(sue).every(
       ([prop, val]) => prop === 'number' || readout[prop] === val,
     ),
   )[0].number;
 
-const part2 = () =>
+export const part2 = () =>
   sues.filter((sue) =>
     Object.entries(sue).every(([prop, val]) => {
       if (prop === 'number') return true;
@@ -42,6 +42,3 @@ const part2 = () =>
       return readout[prop] === val;
     }),
   )[0].number;
-
-console.log('part1', part1());
-console.log('part2', part2());

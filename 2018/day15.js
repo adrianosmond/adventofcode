@@ -205,18 +205,15 @@ const makeFighters = (cave, elfBoost = 0) => {
   return fighters;
 };
 
-function day15part1() {
+export const part1 = () => {
   const cave = inputToCharGrid(input);
   const fighters = makeFighters(cave);
   return fightLoop(fighters, cave);
-}
+};
 
-function day15part2() {
+export const part2 = () => {
   const cave = inputToCharGrid(input);
   // try different numbers for the 2nd param
   const fighters = makeFighters(cave, 31);
   return fightLoop(fighters, cave, false);
-}
-
-console.log('part1:', day15part1());
-console.log('part2:', day15part2());
+};

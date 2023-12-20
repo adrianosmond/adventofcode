@@ -25,9 +25,6 @@ const getPrevSequenceItem = (sequence) => {
   return sequence[0] - getPrevSequenceItem(diffs);
 };
 
-const part1 = () => sequences.map(getNextSequenceItem).reduce(sum);
+export const part1 = () => sequences.map(getNextSequenceItem).reduce(sum);
 
-const part2 = () => sequences.map(getPrevSequenceItem).reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => sequences.map(getPrevSequenceItem).reduce(sum);

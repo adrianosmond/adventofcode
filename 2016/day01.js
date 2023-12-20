@@ -34,5 +34,6 @@ instructions.forEach(({ direction, distance }) => {
   }
 });
 
-console.log('part1:', manhattan([0, 0], pos));
-console.log('part2:', visitedTwiceDistance);
+export const part1 = () => manhattan([0, 0], pos);
+
+export const part2 = () => visitedTwiceDistance;

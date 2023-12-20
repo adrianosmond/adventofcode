@@ -29,9 +29,9 @@ const getDistance = ([speed, travelTime, cycleTime]) => {
 
 const isMoving = (time, travelTime, cycleTime) => time % cycleTime < travelTime;
 
-const part1 = () => Math.max(...data.map(getDistance));
+export const part1 = () => Math.max(...data.map(getDistance));
 
-const part2 = () => {
+export const part2 = () => {
   const dataWithPoints = data.map((d) => [...d, 0, 0]);
   let bestDistance = 0;
 
@@ -53,6 +53,3 @@ const part2 = () => {
 
   return Math.max(...dataWithPoints.map((d) => d[POINTS_INDEX]));
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -16,11 +16,8 @@ const getWins = (duration, record) => {
   return wins;
 };
 
-const part1 = () =>
+export const part1 = () =>
   races.map((race, i) => getWins(race, records[i])).reduce(product);
 
-const part2 = () =>
+export const part2 = () =>
   getWins(parseInt(races.join(''), 10), parseInt(records.join(''), 10));
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -108,5 +108,6 @@ while (carts.length > 1) {
   }
 }
 
-console.log('part1:', firstCrash);
-console.log(`part2: ${carts[0].col},${carts[0].row}`);
+export const part1 = () => firstCrash;
+
+export const part2 = () => `${carts[0].col},${carts[0].row}`;

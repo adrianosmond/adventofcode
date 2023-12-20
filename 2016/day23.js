@@ -14,9 +14,8 @@ const makeInstructions = () => {
   });
   return instrs;
 };
-const part1 = () => runProgram([7, 0, 0, 0], makeInstructions()).next().value;
+export const part1 = () =>
+  runProgram([7, 0, 0, 0], makeInstructions()).next().value;
 
-const part2 = () => runProgram([12, 0, 0, 0], makeInstructions()).next().value;
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () =>
+  runProgram([12, 0, 0, 0], makeInstructions()).next().value;

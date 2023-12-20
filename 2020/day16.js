@@ -25,7 +25,23 @@ const isValid = (number, rule) =>
   (number >= rule[0] && number <= rule[1]) ||
   (number >= rule[2] && number <= rule[3]);
 
-const part1 = () => {
+const isValidTicket = (ticket) => {
+  for (let i = 0; i < ticket.length; i++) {
+    const number = ticket[i];
+    let valid = false;
+
+    for (let j = 0; j < rules.length && !valid; j++) {
+      valid = isValid(number, rules[j]);
+    }
+
+    if (!valid) {
+      return false;
+    }
+  }
+  return true;
+};
+
+export const part1 = () => {
   let errorRate = 0;
   nearby.forEach((ticket) => {
     for (let i = 0; i < ticket.length; i++) {
@@ -43,23 +59,7 @@ const part1 = () => {
   return errorRate;
 };
 
-const isValidTicket = (ticket) => {
-  for (let i = 0; i < ticket.length; i++) {
-    const number = ticket[i];
-    let valid = false;
-
-    for (let j = 0; j < rules.length && !valid; j++) {
-      valid = isValid(number, rules[j]);
-    }
-
-    if (!valid) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const part2 = () => {
+export const part2 = () => {
   const tickets = nearby.filter(isValidTicket);
   tickets.push(myTicket);
 
@@ -97,6 +97,3 @@ const part2 = () => {
     .flat()
     .reduce((ans, field, pos) => ans * (field < 6 ? myTicket[pos] : 1), 1);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

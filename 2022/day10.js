@@ -6,7 +6,7 @@ const instructions = input.split('\n').map((i) => {
   return [instr, val && parseInt(val, 10)];
 });
 
-const part1 = () => {
+export const part1 = () => {
   let cycle = 1;
   let x = 1;
   let strengthCheck = 20;
@@ -34,7 +34,7 @@ const part1 = () => {
   return strength;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let image = '';
   let currentPixel = 0;
   let spritePosition = 1;
@@ -63,6 +63,3 @@ const part2 = () => {
   });
   return image;
 };
-
-console.log('part1', part1());
-console.log('part2', `\n${part2()}`);

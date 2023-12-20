@@ -109,12 +109,12 @@ const getRepeatingSequenceStart = (sequenceLength) => {
   return -1;
 };
 
-const part1 = () => {
+export const part1 = () => {
   dropRocks();
   return heightDiffs.slice(0, 2022).reduce(sum);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const length = getRepeatingSequenceLength();
   const start = getRepeatingSequenceStart(length);
 
@@ -131,6 +131,3 @@ const part2 = () => {
     heightDiffs.slice(start, start + remainder).reduce(sum, 0)
   );
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

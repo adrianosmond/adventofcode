@@ -32,14 +32,14 @@ const packetOrder = (left, right) => {
   return 0;
 };
 
-const part1 = () =>
+export const part1 = () =>
   input
     .split('\n\n')
     .map((pair) => pair.split('\n').map((packet) => JSON.parse(packet)))
     .map(([l, r], index) => (packetOrder(l, r) < 0 ? index + 1 : 0))
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   inputWithDecoders
     .split('\n')
     .map((packet) => JSON.parse(packet))
@@ -49,6 +49,3 @@ const part2 = () =>
     )
     .filter(Boolean)
     .reduce(product);
-
-console.log('part1', part1());
-console.log('part2', part2());

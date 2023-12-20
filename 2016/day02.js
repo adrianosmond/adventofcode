@@ -12,7 +12,7 @@ const directions = {
   R: [0, 1],
 };
 
-const day2part1 = () => {
+export const part1 = () => {
   const keypad = [
     [1, 2, 3],
     [4, 5, 6],
@@ -37,7 +37,7 @@ const day2part1 = () => {
   return keycode;
 };
 
-const day2part2 = () => {
+export const part2 = () => {
   const keypad = [
     [-1, -1, 1, -1, -1],
     [-1, 2, 3, 4, -1],
@@ -66,6 +66,3 @@ const day2part2 = () => {
   });
   return keycode;
 };
-
-console.log('part1:', day2part1());
-console.log('part2:', day2part2());

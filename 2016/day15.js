@@ -26,9 +26,6 @@ const findBestTime = (discs) => {
   }
 };
 
-const part1 = () => findBestTime(getDiscs());
+export const part1 = () => findBestTime(getDiscs());
 
-const part2 = () => findBestTime([...getDiscs(), [11, 0]]);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => findBestTime([...getDiscs(), [11, 0]]);

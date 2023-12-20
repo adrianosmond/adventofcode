@@ -160,13 +160,15 @@ const findMostGeodes = (blueprint, state, timeLimit, best = 0) => {
   );
 };
 
-const part1 = () =>
+export const part1 = () =>
   blueprints
     .map((blueprint) => findMostGeodes(blueprint, initialState, 24))
     .reduce((a, b, idx) => a + b * (idx + 1));
 
-const part2 = () =>
-  blueprints
+export const part2 = () => {
+  console.log('This is going to take a little while...');
+
+  return blueprints
     .slice(0, 3)
     .map((blueprint, idx) => {
       const result = findMostGeodes(blueprint, initialState, 32);
@@ -174,7 +176,4 @@ const part2 = () =>
       return result;
     })
     .reduce(product);
-
-console.log('part1', part1());
-console.log('This is going to take a little while...');
-console.log('part2', part2());
+};

@@ -42,7 +42,7 @@ const getCookieScore = (sugar, sprinkles, candy, chocolate) =>
     )
     .reduce(product);
 
-const part1 = () => {
+export const part1 = () => {
   let best = 0;
   for (const [sugar, sprinkles, candy, chocolate] of getCombinations()) {
     best = Math.max(getCookieScore(sugar, sprinkles, candy, chocolate), best);
@@ -50,7 +50,7 @@ const part1 = () => {
   return best;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let best = 0;
   for (const [sugar, sprinkles, candy, chocolate] of getCombinations()) {
     const calories = getScoreForProperty(
@@ -65,6 +65,3 @@ const part2 = () => {
   }
   return best;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -44,9 +44,9 @@ const minValues = ranges.map((range) => range[MIN]);
 
 const arrayToNum = (arr) => parseInt(arr.join(''), 10);
 
-console.log('part1:', arrayToNum(maxValues));
+export const part1 = () => arrayToNum(maxValues);
 
-console.log('part2:', arrayToNum(minValues));
+export const part2 = () => arrayToNum(minValues);
 
 /*
 I coded the generic solution above retrospectively. I actually solved the problem

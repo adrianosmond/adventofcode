@@ -35,9 +35,9 @@ const getSeedForLocation = (l) => {
   return val;
 };
 
-const part1 = () => Math.min(...seeds.map(getLocationForSeed));
+export const part1 = () => Math.min(...seeds.map(getLocationForSeed));
 
-const part2 = () => {
+export const part2 = () => {
   console.log(
     "This is optimised enough to finish but it's fairly naively brute forcing and might take a few minutes...",
   );
@@ -52,6 +52,3 @@ const part2 = () => {
     location++;
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

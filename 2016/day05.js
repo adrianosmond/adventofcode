@@ -15,9 +15,6 @@ while (charsSolved < 8) {
   if (hash.startsWith('00000')) {
     if (password.length < 8) {
       password += hash.substr(5, 1);
-      if (password.length === 8) {
-        console.log('part1:', password);
-      }
     }
     const pos = parseInt(hash.substr(5, 1), 10);
     if (pos < password2.length && password2[pos] === '_') {
@@ -30,4 +27,6 @@ while (charsSolved < 8) {
   i++;
 }
 
-console.log('part2:', password2);
+export const part1 = () => password;
+
+export const part2 = () => password2;

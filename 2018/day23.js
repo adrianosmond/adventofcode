@@ -12,10 +12,6 @@ const manhattan3d = (from, to) =>
   Math.abs(from[1] - to[1]) +
   Math.abs(from[2] - to[2]);
 
-const biggestRangeBot = bots.reduce((best, bot) =>
-  bot[3] > best[3] ? bot : best,
-);
-
 const inRangeOfBot = ([fromX, fromY, fromZ, range]) =>
   bots.reduce(
     (tot, [toX, toY, toZ]) =>
@@ -44,51 +40,56 @@ const getMinMaxCoordinate = (list, idx) => {
   return [min, max];
 };
 
-const inRange = inRangeOfBot(biggestRangeBot);
+export const part1 = () => {
+  const biggestRangeBot = bots.reduce((best, bot) =>
+    bot[3] > best[3] ? bot : best,
+  );
+  return inRangeOfBot(biggestRangeBot);
+};
 
-const minRange = getMinMaxCoordinate(bots, 3)[0];
+export const part2 = () => {
+  const minRange = getMinMaxCoordinate(bots, 3)[0];
 
-let testRange = 1;
-while (testRange < minRange) testRange *= 2;
-testRange /= 2;
+  let testRange = 1;
+  while (testRange < minRange) testRange *= 2;
+  testRange /= 2;
 
-const home = [0, 0, 0];
-let [minX, maxX] = getMinMaxCoordinate(bots, 0);
-let [minY, maxY] = getMinMaxCoordinate(bots, 1);
-let [minZ, maxZ] = getMinMaxCoordinate(bots, 2);
-let bestCount = 0;
-let bestCoords = [0, 0, 0];
-let bestDist = Number.MAX_VALUE;
+  const home = [0, 0, 0];
+  let [minX, maxX] = getMinMaxCoordinate(bots, 0);
+  let [minY, maxY] = getMinMaxCoordinate(bots, 1);
+  let [minZ, maxZ] = getMinMaxCoordinate(bots, 2);
+  let bestCount = 0;
+  let bestCoords = [0, 0, 0];
+  let bestDist = Number.MAX_VALUE;
 
-while (testRange >= 1) {
-  for (let x = minX; x <= maxX; x += testRange) {
-    for (let y = minY; y <= maxY; y += testRange) {
-      for (let z = minZ; z <= maxZ; z += testRange) {
-        const coords = [x, y, z];
-        const numInRange = inRangeOfPt(coords);
-        const dist = manhattan3d(coords, home);
-        if (numInRange > bestCount) {
-          bestCount = numInRange;
-          bestCoords = coords;
-          bestDist = dist;
-        } else if (numInRange === bestCount) {
-          if (dist < bestDist) {
+  while (testRange >= 1) {
+    for (let x = minX; x <= maxX; x += testRange) {
+      for (let y = minY; y <= maxY; y += testRange) {
+        for (let z = minZ; z <= maxZ; z += testRange) {
+          const coords = [x, y, z];
+          const numInRange = inRangeOfPt(coords);
+          const dist = manhattan3d(coords, home);
+          if (numInRange > bestCount) {
             bestCount = numInRange;
             bestCoords = coords;
             bestDist = dist;
+          } else if (numInRange === bestCount) {
+            if (dist < bestDist) {
+              bestCount = numInRange;
+              bestCoords = coords;
+              bestDist = dist;
+            }
           }
         }
       }
     }
+    minX = bestCoords[0] - testRange;
+    maxX = bestCoords[0] + testRange;
+    minY = bestCoords[1] - testRange;
+    maxY = bestCoords[1] + testRange;
+    minZ = bestCoords[2] - testRange;
+    maxZ = bestCoords[2] + testRange;
+    testRange /= 2;
   }
-  minX = bestCoords[0] - testRange;
-  maxX = bestCoords[0] + testRange;
-  minY = bestCoords[1] - testRange;
-  maxY = bestCoords[1] + testRange;
-  minZ = bestCoords[2] - testRange;
-  maxZ = bestCoords[2] + testRange;
-  testRange /= 2;
-}
-
-console.log('part1:', inRange);
-console.log('part2:', bestDist);
+  return bestDist;
+};

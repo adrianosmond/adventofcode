@@ -21,7 +21,7 @@ const getStrongestBridge = (port, remainingPieces) => {
   );
 };
 
-console.log('part1:', getStrongestBridge(0, ports));
+export const part1 = () => getStrongestBridge(0, ports);
 
 const getLongestBridge = (port, remainingPieces) => {
   const options = getFittingPieces(port, remainingPieces);
@@ -59,4 +59,4 @@ const getLongestBridge = (port, remainingPieces) => {
     );
 };
 
-console.log('part2:', getLongestBridge(0, ports).strength);
+export const part2 = () => getLongestBridge(0, ports).strength;

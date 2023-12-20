@@ -37,5 +37,6 @@ while (true) {
   }
 }
 
-console.log('part1:', loops);
-console.log('part2:', loops - prevIndex - 1);
+export const part1 = () => loops;
+
+export const part2 = () => loops - prevIndex - 1;

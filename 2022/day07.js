@@ -33,15 +33,12 @@ for (const command of commands) {
 
 const FREE_SPACE = DISK_SIZE - sizes['/'];
 
-const part1 = () =>
+export const part1 = () =>
   Object.values(sizes)
     .filter((size) => size <= 100000)
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   Object.values(sizes)
     .sort((a, b) => a - b)
     .find((v) => v >= SPACE_NEEDED - FREE_SPACE);
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import readInput from '../utils/readInput.js';
 import { strToIntArray } from '../utils/functions.js';
 
@@ -43,7 +44,7 @@ for (let y = 0; y <= maxY; y++) {
   }
 }
 
-const part1 = () => {
+export const part1 = () => {
   let changed = true;
   let steps = 0;
   while (changed) {
@@ -79,5 +80,3 @@ const part1 = () => {
   }
   return steps;
 };
-
-console.log('part1', part1());

@@ -26,8 +26,6 @@ const getNthNumber = (maxTurn) => {
   return spoken;
 };
 
-const part1 = () => getNthNumber(2020);
-const part2 = () => getNthNumber(30000000);
+export const part1 = () => getNthNumber(2020);
 
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getNthNumber(30000000);

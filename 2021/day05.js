@@ -34,10 +34,7 @@ const countOverlaps = (coordinates) => {
   return Object.values(grid).filter((cell) => cell > 1).length;
 };
 
-const part1 = () =>
+export const part1 = () =>
   countOverlaps(lines.filter(([x1, y1, x2, y2]) => x1 === x2 || y1 === y2));
 
-const part2 = () => countOverlaps(lines);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => countOverlaps(lines);

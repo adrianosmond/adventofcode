@@ -30,14 +30,11 @@ const getSteps = (startNode) => {
   }
 };
 
-const part1 = () => getSteps('AAA');
+export const part1 = () => getSteps('AAA');
 
-const part2 = () =>
+export const part2 = () =>
   lcm(
     Object.keys(map)
       .filter((node) => node.endsWith('A'))
       .map(getSteps),
   );
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -53,7 +53,7 @@ const makeRecipes = (numRecipes, target, breakCondition) => {
   return [recipes, maxRecipe];
 };
 
-const day14part1 = () => {
+export const part1 = () => {
   const target = input;
   const [recipes] = makeRecipes(10 + target, target, 1);
   return recipes
@@ -61,11 +61,8 @@ const day14part1 = () => {
     .join('');
 };
 
-const day14part2 = () => {
+export const part2 = () => {
   const target = strToIntArray(input.toString(), '');
   const [, maxRecipe] = makeRecipes(21000000, target, 2);
   return maxRecipe - target.length + 1;
 };
-
-console.log('part1:', day14part1());
-console.log('part2:', day14part2());

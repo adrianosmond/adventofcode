@@ -33,7 +33,7 @@ const updateParticles = (particles) => {
   }
 };
 
-const day20part1 = () => {
+export const part1 = () => {
   let prevBestIdx = -1;
   let timesInARow = 0;
   const particles = getParticles();
@@ -55,7 +55,7 @@ const day20part1 = () => {
   return prevBestIdx;
 };
 
-const day20part2 = () => {
+export const part2 = () => {
   let particles = getParticles();
   let prevCount = particles.length;
   let timesInARow = 0;
@@ -79,6 +79,3 @@ const day20part2 = () => {
   }
   return prevCount;
 };
-
-console.log('part1:', day20part1());
-console.log('part2:', day20part2());

@@ -85,5 +85,8 @@ const makeDistanceMap = () => {
 };
 
 const distances = makeDistanceMap();
-console.log('part1:', distances[targetKey]);
-console.log('part2:', Object.values(distances).filter((v) => v <= 50).length);
+
+export const part1 = () => distances[targetKey];
+
+export const part2 = () =>
+  Object.values(distances).filter((v) => v <= 50).length;

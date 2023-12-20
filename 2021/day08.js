@@ -70,7 +70,7 @@ const findDigits = (signal) => {
   return digits;
 };
 
-const part1 = () =>
+export const part1 = () =>
   patterns.reduce(
     (total, [, output]) =>
       total +
@@ -78,7 +78,7 @@ const part1 = () =>
     0,
   );
 
-const part2 = () =>
+export const part2 = () =>
   patterns.reduce((total, [signal, output]) => {
     const digits = findDigits(signal);
     return (
@@ -86,6 +86,3 @@ const part2 = () =>
       parseInt(output.map((pattern) => digits.indexOf(pattern)).join(''), 10)
     );
   }, 0);
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -5,7 +5,7 @@ const input = readInput();
 const numbers = strToIntArray(input);
 const PREAMBLE = 25;
 
-const part1 = () => {
+export const part1 = () => {
   for (let i = PREAMBLE; i < numbers.length; i++) {
     const toValidate = numbers[i];
     const previousNumbers = numbers.slice(i - PREAMBLE, i);
@@ -22,9 +22,8 @@ const part1 = () => {
   }
 };
 
-const part2Target = part1();
-
-const part2 = () => {
+export const part2 = () => {
+  const part2Target = part1();
   for (let i = 0; i < numbers.length; i++) {
     let total = 0;
     let min = Number.MAX_SAFE_INTEGER;
@@ -42,6 +41,3 @@ const part2 = () => {
     }
   }
 };
-
-console.log('part1', part2Target);
-console.log('part2', part2());

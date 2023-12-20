@@ -31,19 +31,16 @@ const checksum = (str, len) => {
   return result;
 };
 
-const part1 = () => {
+export const part1 = () => {
   const len = 272;
   const extended = dragon(input, len);
   const cs = checksum(extended, len);
   return cs;
 };
 
-const part2 = () => {
+export const part2 = () => {
   const len = 35651584;
   const extended = dragon(input, len);
   const cs = checksum(extended, len);
   return cs;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

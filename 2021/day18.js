@@ -97,7 +97,7 @@ const magnitude = (number) =>
     ? number
     : 3 * magnitude(number[0]) + 2 * magnitude(number[1]);
 
-const part1 = () =>
+export const part1 = () =>
   magnitude(
     input
       .split('\n')
@@ -105,7 +105,7 @@ const part1 = () =>
       .reduce((total, current) => add(total, current)),
   );
 
-const part2 = () => {
+export const part2 = () => {
   const numbers = input.split('\n');
 
   let max = 0;
@@ -120,6 +120,3 @@ const part2 = () => {
   }
   return max;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

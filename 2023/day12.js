@@ -78,16 +78,13 @@ const unfold = (records, groups, numTimes = 1) => [
   Array(numTimes).fill(groups).flat(),
 ];
 
-const part1 = () =>
+export const part1 = () =>
   springs
     .map(([records, groups]) => getArrangements(records, groups))
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   springs
     .map(([records, groups]) => unfold(records, groups, 5))
     .map(([records, groups]) => getArrangements(records, groups))
     .reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

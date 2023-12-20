@@ -47,9 +47,6 @@ const makeGrid = (numRepeats = 1) => {
   return grid;
 };
 
-const part1 = () => getShortestDistance(makeGrid());
+export const part1 = () => getShortestDistance(makeGrid());
 
-const part2 = () => getShortestDistance(makeGrid(5));
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getShortestDistance(makeGrid(5));

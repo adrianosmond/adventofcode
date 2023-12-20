@@ -51,9 +51,6 @@ Object.keys(happinesses).forEach((person) => {
   happinessesWithMe.Me[person] = 0;
 });
 
-const part1 = () => getBestHappinessScore(happinesses);
+export const part1 = () => getBestHappinessScore(happinesses);
 
-const part2 = () => getBestHappinessScore(happinessesWithMe);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getBestHappinessScore(happinessesWithMe);

@@ -48,9 +48,6 @@ const findLongestPath = () => {
   return longest;
 };
 
-const part1 = () => findPath();
+export const part1 = () => findPath();
 
-const part2 = () => findLongestPath();
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => findLongestPath();

@@ -49,13 +49,14 @@ const decryptRoomName = ({ name, sectorId }) =>
     .join('');
 
 const realRooms = rooms.filter(checkRoom);
-const checksumSum = realRooms.reduce(sumByKey('sectorId'), 0);
 
-console.log('part1:', checksumSum);
+export const part1 = () => realRooms.reduce(sumByKey('sectorId'), 0);
 
-realRooms.forEach((room) => {
-  const realName = decryptRoomName(room);
-  if (realName.includes('north')) {
-    console.log('part2:', room.sectorId);
+export const part2 = () => {
+  for (const room of realRooms) {
+    const realName = decryptRoomName(room);
+    if (realName.includes('north')) {
+      return room.sectorId;
+    }
   }
-});
+};

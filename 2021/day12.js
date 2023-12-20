@@ -34,9 +34,6 @@ const countPaths = (node, visits, allowDuplicates = false) => {
   return count;
 };
 
-const part1 = () => countPaths('start', getEmptyVisits());
+export const part1 = () => countPaths('start', getEmptyVisits());
 
-const part2 = () => countPaths('start', getEmptyVisits(), true);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => countPaths('start', getEmptyVisits(), true);

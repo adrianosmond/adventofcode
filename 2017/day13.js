@@ -20,8 +20,6 @@ keys.forEach((depth) => {
   if (present) severity += depth * range;
 });
 
-console.log('part1:', severity);
-
 let delay = 0;
 while (true) {
   let caught = false;
@@ -34,4 +32,6 @@ while (true) {
   delay++;
 }
 
-console.log('part2:', delay);
+export const part1 = () => severity;
+
+export const part2 = () => delay;

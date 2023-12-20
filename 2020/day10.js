@@ -9,7 +9,7 @@ const jolts = strToIntArray(input).sort(sortAsc);
 jolts.unshift(0);
 jolts.push(Math.max(...jolts) + 3);
 
-const part1 = () => {
+export const part1 = () => {
   const differences = jolts.map((current, i) => jolts[i + 1] - current);
 
   return (
@@ -18,7 +18,7 @@ const part1 = () => {
   );
 };
 
-const part2 = () => {
+export const part2 = () => {
   const ways = {};
   const reversedJolts = [...jolts].reverse();
 
@@ -32,6 +32,3 @@ const part2 = () => {
 
   return ways[0];
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

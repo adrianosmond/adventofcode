@@ -35,15 +35,12 @@ const numbersToOutputChars = (px) => OUTPUT_CHARS[px];
 const imgToMultiLineString = (img, px, idx) =>
   img + px + ((idx + 1) % IMG_WIDTH === 0 ? '\n' : '');
 
-const day8part1 = () =>
+export const part1 = () =>
   layers.map(getZerosAndScore).reduce(chooseLayerWithFewestZeros, ALL_ZEROS)
     .score;
 
-const day8part2 = () =>
+export const part2 = () =>
   layers
     .reduce(overrideTransparentPixelsInImage, TRANSPARENT_IMG)
     .map(numbersToOutputChars)
     .reduce(imgToMultiLineString);
-
-console.log('part1:', day8part1());
-console.log(`part2:\n${day8part2()}`);

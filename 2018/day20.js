@@ -114,7 +114,6 @@ function findLongestPath(distance, from, ignore) {
   return 1 + Math.max(...options);
 }
 
-const biggestDistance = findLongestPath(0, [diff, diff]);
+export const part1 = () => findLongestPath(0, [diff, diff]);
 
-console.log('part1:', biggestDistance);
-console.log('part2:', far);
+export const part2 = () => far;

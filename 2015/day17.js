@@ -26,9 +26,6 @@ const findCombinations = (usedContainerIndices) => {
 
 findCombinations([]);
 
-const part1 = () => numCombinations.reduce(sum);
+export const part1 = () => numCombinations.reduce(sum);
 
-const part2 = () => numCombinations.filter((p) => p > 0)[0];
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => numCombinations.filter((p) => p > 0)[0];

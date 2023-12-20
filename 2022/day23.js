@@ -124,7 +124,7 @@ const getBounds = (elves) => {
   return [minRow, minCol, maxRow, maxCol];
 };
 
-const part1 = () => {
+export const part1 = () => {
   const elves = getElves();
 
   for (let round = 0; round < 10; round++) {
@@ -144,7 +144,7 @@ const part1 = () => {
   return count;
 };
 
-const part2 = () => {
+export const part2 = () => {
   const elves = getElves();
   let round = 0;
   while (doRound(elves, round)) {
@@ -152,6 +152,3 @@ const part2 = () => {
   }
   return round + 1;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

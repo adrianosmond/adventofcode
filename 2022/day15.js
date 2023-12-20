@@ -45,7 +45,7 @@ sensors.forEach(([x, y, distance]) => {
   maxY = Math.max(maxY, y + distance);
 });
 
-const part1 = () => {
+export const part1 = () => {
   let count = 0;
   for (let x = minX; x <= maxX; x++) {
     for (const [sx, sy, distance] of sensors) {
@@ -64,7 +64,7 @@ const part1 = () => {
   return count - numBeaconsInTargetRowWithinRangeOfSensor;
 };
 
-const part2 = () => {
+export const part2 = () => {
   for (let y = 0; y <= 4000000; y++) {
     for (let x = 0; x <= 4000000; x++) {
       let found = false;
@@ -84,6 +84,3 @@ const part2 = () => {
     }
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

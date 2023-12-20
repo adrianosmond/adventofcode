@@ -45,7 +45,7 @@ const transform = (state, middle) => {
 const countPlants = (plants) =>
   plants.reduce((acc, curr, idx) => acc + (curr ? idx - buffer : 0), 0);
 
-const day12part1 = () => {
+export const part1 = () => {
   const plants = [[...bufferedPlants], [...bufferedPlants]];
 
   let gen = 0;
@@ -61,7 +61,7 @@ const day12part1 = () => {
   return countPlants(plants[gen % 2]);
 };
 
-const day12part2 = () => {
+export const part2 = () => {
   const plants = [[...bufferedPlants], [...bufferedPlants]];
 
   let gen = 0;
@@ -90,6 +90,3 @@ const day12part2 = () => {
     'No pattern found. Try increasing buffer and/or minRepetitions',
   );
 };
-
-console.log('part1:', day12part1());
-console.log('part2:', day12part2());

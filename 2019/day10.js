@@ -143,7 +143,7 @@ const destroyAsteroids = (asteroids, monitoringStation) => {
 
 const asteroids = setupAsteroids();
 const bestAsteroid = findBestAsteroid(asteroids);
-const part2 = destroyAsteroids(asteroids, bestAsteroid);
 
-console.log('part1:', bestAsteroid.lineOfSight);
-console.log('part2:', part2);
+export const part1 = () => bestAsteroid.lineOfSight;
+
+export const part2 = () => destroyAsteroids(asteroids, bestAsteroid);

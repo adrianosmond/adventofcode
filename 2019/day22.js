@@ -58,12 +58,6 @@ const doShuffle = (numCards) => {
   return decks[instructions.length % 2];
 };
 
-const day22part1 = () => {
-  const numCards = 10007;
-  const deck = doShuffle(numCards);
-  return deck.indexOf(2019);
-};
-
 const mod = (n, m) => ((n % m) + m) % m;
 
 const modularPow = (b, e, modulus) => {
@@ -116,7 +110,13 @@ const getResultAfterManyShuffles = (numCards, numShuffles, i1, o1) => {
   return [increment, offset];
 };
 
-const day22part2 = () => {
+export const part1 = () => {
+  const numCards = 10007;
+  const deck = doShuffle(numCards);
+  return deck.indexOf(2019);
+};
+
+export const part2 = () => {
   const numCards = 119315717514047n;
   const numShuffles = 101741582076661n;
   const [i1, o1] = reduceInstructions(numCards);
@@ -128,6 +128,3 @@ const day22part2 = () => {
   );
   return Number(getCardAtPos(2020n, offset, increment, numCards));
 };
-
-console.log('part1:', day22part1());
-console.log('part2:', day22part2());

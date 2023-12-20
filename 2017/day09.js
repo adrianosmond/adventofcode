@@ -37,5 +37,6 @@ const buildStructure = (start) => {
 const score = (pts, structure) =>
   pts + structure.children.map((c) => score(pts + 1, c)).reduce(sum, 0);
 
-console.log('part1:', score(1, buildStructure(0)));
-console.log('part2:', removedInputLength);
+export const part1 = () => score(1, buildStructure(0));
+
+export const part2 = () => removedInputLength;

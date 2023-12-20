@@ -163,7 +163,9 @@ const doFight = (boost = 0, loopLimit = false) => {
   return [-1, false];
 };
 
-const day24part2 = () => {
+export const part1 = () => doFight()[0];
+
+export const part2 = () => {
   for (let boost = 1; boost < 2000; boost++) {
     const [score, result] = doFight(boost, 1000);
     if (result) {
@@ -172,6 +174,3 @@ const day24part2 = () => {
   }
   throw new Error('No boost found');
 };
-
-console.log('part1:', doFight()[0]);
-console.log('part2:', day24part2());

@@ -29,5 +29,6 @@ for (let i = from; i <= to; i++) {
   matches[1] += ascendingWithStrictDouble ? 1 : 0;
 }
 
-console.log('part1:', matches[0]);
-console.log('part2:', matches[1]);
+export const part1 = () => matches[0];
+
+export const part2 = () => matches[1];

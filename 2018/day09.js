@@ -1,6 +1,7 @@
 import readInput from '../utils/readInput.js';
 
-const input = parseInt(readInput(), 10);
+const input = readInput();
+const [numPlayers, points] = input.split(/[^0-9]+/).map((n) => parseInt(n, 10));
 
 class Marble {
   constructor(number, prev = null, next = null) {
@@ -48,7 +49,6 @@ class Circle {
 const game = (highestMarble) => {
   let currentPlayer = 1;
   let nextMarble = 1;
-  const numPlayers = 462;
   const scores = Array(numPlayers).fill(0);
   const circle = new Circle();
 
@@ -69,5 +69,6 @@ const game = (highestMarble) => {
   return Math.max(...scores);
 };
 
-console.log('part1:', game(input));
-console.log('part2:', game(input * 100));
+export const part1 = () => game(points);
+
+export const part2 = () => game(points * 100);

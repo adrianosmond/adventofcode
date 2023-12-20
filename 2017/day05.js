@@ -4,7 +4,7 @@ import { strToIntArray } from '../utils/functions.js';
 const input = readInput();
 const message = strToIntArray(input);
 
-const day5part1 = () => {
+export const part1 = () => {
   const jumps = [...message];
   let currentPosition = 0;
   let loop = 0;
@@ -18,7 +18,7 @@ const day5part1 = () => {
   return loop;
 };
 
-const day5part2 = () => {
+export const part2 = () => {
   const jumps = [...message];
   let currentPosition = 0;
   let loop = 0;
@@ -35,6 +35,3 @@ const day5part2 = () => {
   }
   return loop;
 };
-
-console.log('part1:', day5part1());
-console.log('part2:', day5part2());

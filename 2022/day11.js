@@ -63,9 +63,6 @@ const simulateMonkeys = (numRounds, worryModifier = (worry) => worry) => {
     .reduce(product);
 };
 
-const part1 = () => simulateMonkeys(20, (w) => Math.floor(w / 3));
+export const part1 = () => simulateMonkeys(20, (w) => Math.floor(w / 3));
 
-const part2 = () => simulateMonkeys(10000);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => simulateMonkeys(10000);

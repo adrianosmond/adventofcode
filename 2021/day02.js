@@ -7,7 +7,7 @@ const instructions = input.split('\n').map((line) => {
   return [instruction, parseInt(amount, 10)];
 });
 
-const part1 = () => {
+export const part1 = () => {
   let horizontal = 0;
   let depth = 0;
   instructions.forEach(([instruction, amount]) => {
@@ -27,7 +27,7 @@ const part1 = () => {
   return horizontal * depth;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let horizontal = 0;
   let depth = 0;
   let aim = 0;
@@ -48,6 +48,3 @@ const part2 = () => {
   });
   return horizontal * depth;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

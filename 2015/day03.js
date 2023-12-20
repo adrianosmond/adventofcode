@@ -43,9 +43,6 @@ const traceRoute = (numSantas) => {
   return Object.keys(visits).length;
 };
 
-const part1 = () => traceRoute(1);
+export const part1 = () => traceRoute(1);
 
-const part2 = () => traceRoute(2);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => traceRoute(2);

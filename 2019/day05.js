@@ -4,8 +4,10 @@ import { intComputer } from './intComputer.js';
 
 const input = strToIntArray(readInput(), ',');
 
-let output;
-for (output of intComputer(input, [1]));
+export const part1 = () => {
+  let output;
+  for (output of intComputer(input, [1]));
+  return output;
+};
 
-console.log('part1:', output);
-console.log('part2:', intComputer(input, [5]).next().value);
+export const part2 = () => intComputer(input, [5]).next().value;

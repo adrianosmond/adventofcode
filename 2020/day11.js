@@ -112,9 +112,6 @@ const findStableState = (maxDistance = 1, tolerance = 4) => {
     .reduce((total, cell) => total + (cell === STATES.OCCUPIED ? 1 : 0), 0);
 };
 
-const part1 = () => findStableState();
+export const part1 = () => findStableState();
 
-const part2 = () => findStableState(Number.MAX_SAFE_INTEGER, 5);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => findStableState(Number.MAX_SAFE_INTEGER, 5);

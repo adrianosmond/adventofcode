@@ -171,10 +171,11 @@ for (const output of computer) {
   inputs.push(...commands);
 }
 
-console.log('part1:', findShortestPath([0, 0], oxygen).length - 1);
+export const part1 = () => findShortestPath([0, 0], oxygen).length - 1;
 
-const allDistances = Object.keys(grid)
-  .filter((k) => grid[k] === FLOOR.EMPTY)
-  .map((k) => findShortestPath(oxygen, strToCoords(k)).length - 1);
-
-console.log('part2:', Math.max(...allDistances));
+export const part2 = () => {
+  const allDistances = Object.keys(grid)
+    .filter((k) => grid[k] === FLOOR.EMPTY)
+    .map((k) => findShortestPath(oxygen, strToCoords(k)).length - 1);
+  return Math.max(...allDistances);
+};

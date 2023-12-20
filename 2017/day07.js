@@ -29,8 +29,6 @@ const bottom = Object.keys(programs).filter(
   (i) => typeof programs[i].isBottom === 'undefined',
 )[0];
 
-console.log('part1:', bottom);
-
 function findImbalance(prog) {
   const program = programs[prog];
   let weights = [];
@@ -45,14 +43,12 @@ function findImbalance(prog) {
       const outlierIdx = weights.indexOf(outlier);
       const normal = outlier === weights[0] ? weights[1] : weights[0];
       const diff = normal - outlier;
-      console.log(
-        'part2:',
-        programs[program.children[outlierIdx]].weight + diff,
-      );
-      return program.weight + weights.length * normal;
+      return programs[program.children[outlierIdx]].weight + diff;
     }
   }
   return program.weight + sum;
 }
 
-findImbalance(bottom);
+export const part1 = () => bottom;
+
+export const part2 = () => findImbalance(bottom);

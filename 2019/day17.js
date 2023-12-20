@@ -226,5 +226,6 @@ const getDust = (grid) => {
 
 const grid = makeGrid();
 
-console.log('part1:', getAlignmentSum(grid));
-console.log('part2:', getDust(grid));
+export const part1 = () => getAlignmentSum(grid);
+
+export const part2 = () => getDust(grid);

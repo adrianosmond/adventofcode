@@ -60,7 +60,12 @@ function getInfiniteAreas(map) {
   return infinite;
 }
 
-function day6Part1() {
+const isWithinThreshold = (x, y, threshold) =>
+  input.reduce((acc, c) => acc + distance(x, y, c[0], c[1]), 0) < threshold
+    ? '#'
+    : '.';
+
+export const part1 = () => {
   const limits = getInputLimits();
   const map = createMap(limits);
   for (let y = 0; y < map.length; y++) {
@@ -83,14 +88,9 @@ function day6Part1() {
     {},
   );
   return Math.max(...Object.values(areas));
-}
+};
 
-const isWithinThreshold = (x, y, threshold) =>
-  input.reduce((acc, c) => acc + distance(x, y, c[0], c[1]), 0) < threshold
-    ? '#'
-    : '.';
-
-function day6Part2() {
+export const part2 = () => {
   const limits = getInputLimits();
   const map = createMap(limits);
   for (let y = 0; y < map.length; y++) {
@@ -100,7 +100,4 @@ function day6Part2() {
     }
   }
   return map.flat().filter((x) => x === '#').length;
-}
-
-console.log('part1:', day6Part1());
-console.log('part2:', day6Part2());
+};

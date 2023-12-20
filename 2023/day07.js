@@ -111,19 +111,16 @@ const hands = splitAndMapInputLines(input).map(([hand, bid]) => [
   parseInt(bid, 10),
 ]);
 
-const part1 = () =>
+export const part1 = () =>
   hands
     .map(([hand, bid]) => [processHand(hand), bid])
     .sort(sortByHandValue)
     .map(([, bid], idx) => bid * (idx + 1))
     .reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   hands
     .map(([hand, bid]) => [processHand(hand, true), bid])
     .sort(sortByHandValue)
     .map(([, bid], idx) => bid * (idx + 1))
     .reduce(sum);
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -62,15 +62,12 @@ const makeTree = (startIdx, tree) => {
   };
 };
 
-const day8part1 = () => findMetadata(0).metadata;
+export const part1 = () => findMetadata(0).metadata;
 
-const day8part2 = () => {
+export const part2 = () => {
   const tree = makeTree(0, {
     children: [],
     metadata: [],
   });
   return getTreeValue(tree);
 };
-
-console.log('part1:', day8part1());
-console.log('part2:', day8part2());

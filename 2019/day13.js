@@ -4,7 +4,7 @@ import { intComputer, getNOutputs } from './intComputer.js';
 
 const input = strToIntArray(readInput(), ',');
 
-const day12part1 = () => {
+export const part1 = () => {
   const computer = intComputer(input, []);
   let blocks = 0;
   for (const [, , output] of getNOutputs(3, computer)) {
@@ -13,7 +13,7 @@ const day12part1 = () => {
   return blocks;
 };
 
-const day12part2 = () => {
+export const part2 = () => {
   const program = [...input];
   program[0] = 2;
   const inputs = [];
@@ -37,6 +37,3 @@ const day12part2 = () => {
   }
   return score;
 };
-
-console.log('part1:', day12part1());
-console.log('part2:', day12part2());

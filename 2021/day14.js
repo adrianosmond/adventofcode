@@ -55,9 +55,6 @@ const getCharCountDifference = (numRounds) => {
   return Math.max(...occurrences) - Math.min(...occurrences);
 };
 
-const part1 = () => getCharCountDifference(10);
+export const part1 = () => getCharCountDifference(10);
 
-const part2 = () => getCharCountDifference(40);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getCharCountDifference(40);

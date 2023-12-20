@@ -14,15 +14,12 @@ const tickets = input
   })
   .sort(sortAsc);
 
-const part1 = () => tickets[tickets.length - 1];
+export const part1 = () => tickets[tickets.length - 1];
 
-const part2 = () => {
+export const part2 = () => {
   for (let i = 1; i < tickets.length; i++) {
     if (tickets[i] - tickets[i - 1] > 1) {
       return tickets[i] - 1;
     }
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

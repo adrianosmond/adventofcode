@@ -43,7 +43,7 @@ const getNumberOfBags = (target, count) =>
       0,
     );
 
-const part1 = () => {
+export const part1 = () => {
   const containingBagColor = new Set(findContaining('shiny gold'));
 
   for (const key of containingBagColor.keys()) {
@@ -53,7 +53,4 @@ const part1 = () => {
   return containingBagColor.size;
 };
 
-const part2 = () => getNumberOfBags('shiny gold', 1) - 1;
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getNumberOfBags('shiny gold', 1) - 1;

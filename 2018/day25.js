@@ -10,48 +10,46 @@ const manhattan4d = (from, to) =>
   Math.abs(from[2] - to[2]) +
   Math.abs(from[3] - to[3]);
 
-const constellations = [];
-let maxC = 0;
-points.forEach((coords) => {
-  const options = [];
-  constellations.forEach((toTest) => {
-    if (
-      manhattan4d(coords, toTest.coords) <= 3 &&
-      !options.includes(toTest.constellation)
-    ) {
-      options.push(toTest.constellation);
-    }
-  });
-  if (options.length === 0) {
-    constellations.push({
-      coords,
-      constellation: maxC++,
+// eslint-disable-next-line import/prefer-default-export
+export const part1 = () => {
+  const constellations = [];
+  let maxC = 0;
+  points.forEach((coords) => {
+    const options = [];
+    constellations.forEach((toTest) => {
+      if (
+        manhattan4d(coords, toTest.coords) <= 3 &&
+        !options.includes(toTest.constellation)
+      ) {
+        options.push(toTest.constellation);
+      }
     });
-  } else if (options.length === 1) {
-    constellations.push({
-      coords,
-      constellation: options[0],
-    });
-  } else {
-    constellations.push({
-      coords,
-      constellation: options[0],
-    });
-    for (let i = 0; i < options.length; i++) {
-      const toMerge = constellations.filter(
-        (x) => x.constellation === options[i],
-      );
-      for (let j = 0; j < toMerge.length; j++) {
-        const x = toMerge[j];
-        [x.constellation] = options;
+    if (options.length === 0) {
+      constellations.push({
+        coords,
+        constellation: maxC++,
+      });
+    } else if (options.length === 1) {
+      constellations.push({
+        coords,
+        constellation: options[0],
+      });
+    } else {
+      constellations.push({
+        coords,
+        constellation: options[0],
+      });
+      for (let i = 0; i < options.length; i++) {
+        const toMerge = constellations.filter(
+          (x) => x.constellation === options[i],
+        );
+        for (let j = 0; j < toMerge.length; j++) {
+          const x = toMerge[j];
+          [x.constellation] = options;
+        }
       }
     }
-  }
-});
+  });
 
-const list = [];
-constellations.forEach((c) => {
-  if (!list.includes(c.constellation)) list.push(c.constellation);
-});
-
-console.log('part1:', list.length);
+  return new Set(constellations.map((c) => c.constellation)).size;
+};

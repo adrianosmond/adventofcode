@@ -25,7 +25,9 @@ const intComputer = (intList, noun, verb) => {
   return program[0];
 };
 
-const part2 = () => {
+export const part1 = () => intComputer(input, 12, 2);
+
+export const part2 = () => {
   for (let noun = 0; noun <= 99; noun += 1) {
     for (let verb = 0; verb <= 99; verb += 1) {
       if (intComputer(input, noun, verb) === 19690720) {
@@ -35,6 +37,3 @@ const part2 = () => {
   }
   return 'failed';
 };
-
-console.log('part1:', intComputer(input, 12, 2));
-console.log('part2:', part2());

@@ -66,13 +66,16 @@ records = Object.values(records).map((r) => {
   };
 });
 
-const part1BestGuard = records.reduce(highestByKey('totalSleep'), {
-  totalSleep: -1,
-});
+export const part1 = () => {
+  const guard = records.reduce(highestByKey('totalSleep'), {
+    totalSleep: -1,
+  });
+  return guard.id * guard.bestMinute;
+};
 
-const part2BestGuard = records.reduce(highestByKey('mostSleeps'), {
-  mostSleeps: -1,
-});
-
-console.log('part1:', part1BestGuard.id * part1BestGuard.bestMinute);
-console.log('part2:', part2BestGuard.id * part2BestGuard.bestMinute);
+export const part2 = () => {
+  const guard = records.reduce(highestByKey('mostSleeps'), {
+    mostSleeps: -1,
+  });
+  return guard.id * guard.bestMinute;
+};

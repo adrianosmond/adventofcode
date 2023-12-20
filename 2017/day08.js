@@ -38,5 +38,6 @@ instructions.forEach((instruction) => {
   }
 });
 
-console.log('part1:', Math.max(...Object.values(reg)));
-console.log('part2:', max);
+export const part1 = () => Math.max(...Object.values(reg));
+
+export const part2 = () => max;

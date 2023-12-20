@@ -8,9 +8,6 @@ const calories = elves
   .map((elf) => strToIntArray(elf).reduce(sum))
   .sort(sortDesc);
 
-const part1 = () => calories[0];
+export const part1 = () => calories[0];
 
-const part2 = () => calories[0] + calories[1] + calories[2];
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => calories[0] + calories[1] + calories[2];

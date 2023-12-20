@@ -17,5 +17,6 @@ const removeDuplicates = (words) => {
   return 1;
 };
 
-console.log('part1:', passphrases.map(removeDuplicates).reduce(sum));
-console.log('part2:', alphabetised.map(removeDuplicates).reduce(sum));
+export const part1 = () => passphrases.map(removeDuplicates).reduce(sum);
+
+export const part2 = () => alphabetised.map(removeDuplicates).reduce(sum);

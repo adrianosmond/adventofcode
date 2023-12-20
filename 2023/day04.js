@@ -14,14 +14,14 @@ const winningNumbersPerCard = input
   )
   .map(([winners, myNumbers]) => winners.filter((w) => myNumbers.includes(w)));
 
-const part1 = () =>
+export const part1 = () =>
   winningNumbersPerCard
     .map((winningNumbers) =>
       winningNumbers.length === 0 ? 0 : 2 ** (winningNumbers.length - 1),
     )
     .reduce(sum);
 
-const part2 = () => {
+export const part2 = () => {
   const counts = Array(winningNumbersPerCard.length).fill(1);
   const scores = winningNumbersPerCard.map(
     (winningNumbers) => winningNumbers.length,
@@ -35,6 +35,3 @@ const part2 = () => {
 
   return counts.reduce(sum);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

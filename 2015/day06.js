@@ -15,7 +15,7 @@ const instructions = input.split('\n').map((r) => {
   ];
 });
 
-const part1 = () => {
+export const part1 = () => {
   const lights = new Array(1000).fill(0).map(() => new Array(1000).fill(false));
 
   instructions.forEach(([instr, x1, y1, x2, y2]) => {
@@ -35,7 +35,7 @@ const part1 = () => {
   return lights.reduce((total, row) => total + row.filter(Boolean).length, 0);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const lights = new Array(1000).fill(0).map(() => new Array(1000).fill(0));
 
   instructions.forEach(([instr, x1, y1, x2, y2]) => {
@@ -54,6 +54,3 @@ const part2 = () => {
 
   return lights.reduce((total, row) => total + row.reduce(sum), 0);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

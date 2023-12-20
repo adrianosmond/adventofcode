@@ -22,9 +22,6 @@ const getLength = (route) => {
 const options = permutator(Object.keys(distances));
 const lengths = options.map(getLength);
 
-const part1 = () => Math.min(...lengths);
+export const part1 = () => Math.min(...lengths);
 
-const part2 = () => Math.max(...lengths);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => Math.max(...lengths);

@@ -20,24 +20,6 @@ const getRolls = () => {
   return score;
 };
 
-const part1 = () => {
-  const positions = parseInput(input);
-  const scores = new Array(positions.length).fill(0);
-
-  while (true) {
-    for (let i = 0; i < positions.length; i++) {
-      positions[i] += getRolls() % 10;
-      if (positions[i] > 10) {
-        positions[i] -= 10;
-      }
-      scores[i] += positions[i];
-      if (scores[i] >= 1000) {
-        return scores[(i + 1) % 2] * numRolls;
-      }
-    }
-  }
-};
-
 // The number of times each score can appear from 3 rolls
 // Stored as [score, frequency]
 const outcomeFrequencies = [
@@ -70,12 +52,27 @@ const countWins = (p, s, t) => {
   return wins;
 };
 
-const part2 = () => {
+export const part1 = () => {
+  const positions = parseInput(input);
+  const scores = new Array(positions.length).fill(0);
+
+  while (true) {
+    for (let i = 0; i < positions.length; i++) {
+      positions[i] += getRolls() % 10;
+      if (positions[i] > 10) {
+        positions[i] -= 10;
+      }
+      scores[i] += positions[i];
+      if (scores[i] >= 1000) {
+        return scores[(i + 1) % 2] * numRolls;
+      }
+    }
+  }
+};
+
+export const part2 = () => {
   const positions = parseInput(input);
   const scores = new Array(positions.length).fill(0);
   const wins = countWins(positions, scores, 0);
   return Math.max(...wins);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

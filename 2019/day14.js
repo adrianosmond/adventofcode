@@ -97,29 +97,30 @@ const getQuantityNeeded = (amountOfFuel) => {
 
   return inputs[0][1];
 };
-const oreForOneFuel = getQuantityNeeded(1);
-console.log('part1:', oreForOneFuel);
 
-const target = 1000000000000;
-let lower = 1;
-let upper = target;
-while (upper !== lower) {
-  const mid = Math.round((upper + lower) / 2);
-  const oreNeeded = getQuantityNeeded(mid);
-  if (oreNeeded === target) {
-    upper = mid;
-    lower = mid;
-  } else if (upper - lower === 1) {
-    if (mid === upper) {
-      upper = lower;
+export const part1 = () => getQuantityNeeded(1);
+
+export const part2 = () => {
+  const target = 1000000000000;
+  let lower = 1;
+  let upper = target;
+  while (upper !== lower) {
+    const mid = Math.round((upper + lower) / 2);
+    const oreNeeded = getQuantityNeeded(mid);
+    if (oreNeeded === target) {
+      upper = mid;
+      lower = mid;
+    } else if (upper - lower === 1) {
+      if (mid === upper) {
+        upper = lower;
+      } else {
+        lower = upper;
+      }
+    } else if (oreNeeded > target) {
+      upper = mid;
     } else {
-      lower = upper;
+      lower = mid;
     }
-  } else if (oreNeeded > target) {
-    upper = mid;
-  } else {
-    lower = mid;
   }
-}
-
-console.log('part2:', lower);
+  return lower;
+};

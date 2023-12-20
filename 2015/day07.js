@@ -102,15 +102,10 @@ const buildCircuit = (map) => {
   return map.a;
 };
 
-const part1 = () => buildCircuit(makeMap());
+export const part1 = () => buildCircuit(makeMap());
 
-const answer1 = part1();
-
-const part2 = () => {
+export const part2 = () => {
   const map = makeMap();
-  map.b = answer1;
+  map.b = part1();
   return buildCircuit(map);
 };
-
-console.log('part1', answer1);
-console.log('part2', part2());

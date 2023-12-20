@@ -31,9 +31,6 @@ const isNice2 = (str) => {
   return false;
 };
 
-const part1 = () => strings.filter(isNice).length;
+export const part1 = () => strings.filter(isNice).length;
 
-const part2 = () => strings.filter(isNice2).length;
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => strings.filter(isNice2).length;

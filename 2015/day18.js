@@ -41,9 +41,6 @@ const runAnimation = (keepCornersOn = false) => {
   return grids[i % 2].flat().filter(Boolean).length;
 };
 
-const part1 = () => runAnimation();
+export const part1 = () => runAnimation();
 
-const part2 = () => runAnimation(true);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => runAnimation(true);

@@ -133,6 +133,3 @@ export const part1 = () => {
 };
 
 export const part2 = () => traverseWorkflows('in');
-
-console.log('part1', part1());
-console.log('part2', part2());

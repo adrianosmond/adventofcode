@@ -63,9 +63,6 @@ const getGrooveCoordinates = (multiplier = 1, numRounds = 1) => {
   return coords.reduce(sum);
 };
 
-const part1 = () => getGrooveCoordinates();
+export const part1 = () => getGrooveCoordinates();
 
-const part2 = () => getGrooveCoordinates(811589153, 10);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getGrooveCoordinates(811589153, 10);

@@ -69,5 +69,6 @@ wires.forEach((wire, idx) => {
   });
 });
 
-console.log('part1:', closestManhattan);
-console.log('part2:', closestSteps);
+export const part1 = () => closestManhattan;
+
+export const part2 = () => closestSteps;

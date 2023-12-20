@@ -42,24 +42,27 @@ class Circle {
   }
 }
 
-const circle = new Circle();
+export const part1 = () => {
+  const circle = new Circle();
 
-for (let i = 1; i < 2018; i++) {
-  circle.goClockwise(input + 1);
-  circle.addItem(i);
-}
-
-console.log('part1:', circle.currentItem.next.number);
-
-let val = 1;
-let idx = 1;
-for (let i = 2; i <= 50000000; i++) {
-  idx += input;
-  idx %= i;
-  if (idx === 0) {
-    val = i;
+  for (let i = 1; i < 2018; i++) {
+    circle.goClockwise(input + 1);
+    circle.addItem(i);
   }
-  idx++;
-}
 
-console.log('part2:', val);
+  return circle.currentItem.next.number;
+};
+
+export const part2 = () => {
+  let val = 1;
+  let idx = 1;
+  for (let i = 2; i <= 50000000; i++) {
+    idx += input;
+    idx %= i;
+    if (idx === 0) {
+      val = i;
+    }
+    idx++;
+  }
+  return val;
+};

@@ -117,7 +117,7 @@ const jumpToFreeTime = (dependencies, workers, freeWorkers) => [
   freeWorkers.freeAt,
 ];
 
-const day7part1 = () => {
+export const part1 = () => {
   let dependencies = setupDependencies();
   let steps = Object.keys(dependencies);
   let order = '';
@@ -130,7 +130,7 @@ const day7part1 = () => {
   return order;
 };
 
-const day7part2 = () => {
+export const part2 = () => {
   let deps = setupDependencies();
   let workers = setupWorkers();
   let time = 0;
@@ -165,6 +165,3 @@ const day7part2 = () => {
   }
   return time;
 };
-
-console.log('part1:', day7part1());
-console.log('part2:', day7part2());

@@ -44,5 +44,5 @@ for (let i = 0; i < checksumAfter; i++) {
   currentState = state;
 }
 
-const checksum = tape.reduce(sum);
-console.log('part1:', checksum);
+// eslint-disable-next-line import/prefer-default-export
+export const part1 = () => tape.reduce(sum);

@@ -28,7 +28,20 @@ const updateBounds = () => {
   maxY = Math.max(...ys);
 };
 
-const part1 = () => {
+const getAdjacentBlackTiles = (col, row) => {
+  let numBlackTiles = 0;
+
+  if (tiles[`${col - 2},${row}`]) numBlackTiles++;
+  if (tiles[`${col + 2},${row}`]) numBlackTiles++;
+  if (tiles[`${col - 1},${row - 1}`]) numBlackTiles++;
+  if (tiles[`${col - 1},${row + 1}`]) numBlackTiles++;
+  if (tiles[`${col + 1},${row - 1}`]) numBlackTiles++;
+  if (tiles[`${col + 1},${row + 1}`]) numBlackTiles++;
+
+  return numBlackTiles;
+};
+
+export const part1 = () => {
   instructions.forEach((directions) => {
     let x = 0;
     let y = 0;
@@ -62,20 +75,7 @@ const part1 = () => {
   return Object.keys(tiles).length;
 };
 
-const getAdjacentBlackTiles = (col, row) => {
-  let numBlackTiles = 0;
-
-  if (tiles[`${col - 2},${row}`]) numBlackTiles++;
-  if (tiles[`${col + 2},${row}`]) numBlackTiles++;
-  if (tiles[`${col - 1},${row - 1}`]) numBlackTiles++;
-  if (tiles[`${col - 1},${row + 1}`]) numBlackTiles++;
-  if (tiles[`${col + 1},${row - 1}`]) numBlackTiles++;
-  if (tiles[`${col + 1},${row + 1}`]) numBlackTiles++;
-
-  return numBlackTiles;
-};
-
-const part2 = () => {
+export const part2 = () => {
   for (let round = 0; round < 100; round++) {
     updateBounds();
     const newTiles = {};
@@ -98,6 +98,3 @@ const part2 = () => {
   }
   return Object.keys(tiles).length;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

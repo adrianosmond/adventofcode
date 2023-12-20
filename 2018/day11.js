@@ -71,5 +71,6 @@ const getBestSize = () => {
   throw new Error('Something went wrong');
 };
 
-console.log('part1:', getBestScore()[0]);
-console.log('part2:', getBestSize());
+export const part1 = () => getBestScore()[0];
+
+export const part2 = () => getBestSize();

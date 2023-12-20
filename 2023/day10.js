@@ -38,7 +38,7 @@ if (connectsAbove && connectsLeft) grid[start[0]][start[1]] = 'J';
 if (connectsBelow && connectsLeft) grid[start[0]][start[1]] = '7';
 if (connectsBelow && connectsRight) grid[start[0]][start[1]] = 'F';
 
-const part1 = () => {
+export const part1 = () => {
   let [r, c] = start;
   let cameFrom = '';
   let count = 0;
@@ -64,7 +64,7 @@ const part1 = () => {
   return count / 2;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let count = 0;
   for (let r = 0; r < grid.length; r++) {
     let crossings = 0;
@@ -86,6 +86,3 @@ const part2 = () => {
 
   return count;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

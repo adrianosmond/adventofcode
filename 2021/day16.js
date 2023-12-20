@@ -92,9 +92,6 @@ const getValue = (packet) => {
 
 const packet = parsePacket(binary);
 
-const part1 = () => sumVersionNumbers([packet]);
+export const part1 = () => sumVersionNumbers([packet]);
 
-const part2 = () => getValue(packet);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getValue(packet);

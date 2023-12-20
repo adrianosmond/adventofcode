@@ -161,5 +161,6 @@ const getPath = (maze, portals, from, to, recursive = false) => {
 };
 
 const [maze, portals, entrance, exit] = parseInput();
-console.log('part1:', getPath(maze, portals, entrance, exit));
-console.log('part2:', getPath(maze, portals, entrance, exit, true));
+export const part1 = () => getPath(maze, portals, entrance, exit);
+
+export const part2 = () => getPath(maze, portals, entrance, exit, true);

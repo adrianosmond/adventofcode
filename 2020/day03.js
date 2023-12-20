@@ -17,14 +17,11 @@ const treesEncountered = (downMovement, rightMovement) => {
   return numTrees;
 };
 
-const part1 = () => treesEncountered(1, 3);
+export const part1 = () => treesEncountered(1, 3);
 
-const part2 = () =>
+export const part2 = () =>
   treesEncountered(1, 1) *
   treesEncountered(1, 3) *
   treesEncountered(1, 5) *
   treesEncountered(1, 7) *
   treesEncountered(2, 1);
-
-console.log('part1', part1());
-console.log('part2', part2());

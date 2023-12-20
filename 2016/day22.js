@@ -14,7 +14,7 @@ const processed = listings.map((l) => {
   ];
 });
 
-const part1 = () => {
+export const part1 = () => {
   let pairs = 0;
   for (let a = 0; a < processed.length; a++) {
     for (let b = 0; b < processed.length; b++) {
@@ -59,10 +59,11 @@ const part1 = () => {
   takes 5 moves of the 0 to make the G move left once. 
   
   35 + 36*5 = 215 */
-const part2 = () => 215;
-
-console.log('part1', part1());
-console.log('part2', part2());
-console.log(
-  '      ^^^ This was worked out manually and is likely not your answer',
-);
+export const part2 = () => {
+  Promise.resolve().then(() =>
+    console.log(
+      '^^^ This was worked out manually and is likely not your answer',
+    ),
+  );
+  return 215;
+};

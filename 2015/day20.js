@@ -4,7 +4,7 @@ const input = readInput();
 const target = parseInt(input, 10);
 const max = 1000000;
 
-const part1 = () => {
+export const part1 = () => {
   const houses = new Array(max).fill(0);
   for (let elf = 1; elf < max; elf++) {
     for (let house = elf; house < max; house += elf) {
@@ -14,7 +14,7 @@ const part1 = () => {
   return houses.findIndex((h) => h >= target);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const houses = new Array(max).fill(0);
   for (let elf = 1; elf < max; elf++) {
     for (let house = elf; house < Math.min(max, elf + 50 * elf); house += elf) {
@@ -23,6 +23,3 @@ const part2 = () => {
   }
   return houses.findIndex((h) => h >= target);
 };
-
-console.log('part1:', part1());
-console.log('part2:', part2());

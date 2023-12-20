@@ -4,16 +4,14 @@ import { strToIntArray } from '../utils/functions.js';
 const input = readInput();
 const captcha = strToIntArray(input, '');
 
-console.log(
-  'part1;',
+export const part1 = () =>
   captcha.reduce(
     (tot, curr, idx) =>
       tot + (curr === captcha[(idx + 1) % captcha.length] ? curr : 0),
     0,
-  ),
-);
-console.log(
-  'part2;',
+  );
+
+export const part2 = () =>
   captcha.reduce(
     (tot, curr, idx) =>
       tot +
@@ -21,5 +19,4 @@ console.log(
         ? curr
         : 0),
     0,
-  ),
-);
+  );

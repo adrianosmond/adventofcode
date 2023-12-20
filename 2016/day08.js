@@ -48,12 +48,10 @@ instructions.forEach((instruction) => {
   }
 });
 
-console.log(
-  'part1:',
+export const part1 = () =>
   screen
     .map((r) => r.join(''))
     .join('')
-    .replace(/\s/g, '').length,
-);
-console.log('part2:');
-console.log(screen.map((r) => r.join('')).join('\n'));
+    .replace(/\s/g, '').length;
+
+export const part2 = () => screen.map((r) => r.join('')).join('\n');

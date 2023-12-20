@@ -1,6 +1,6 @@
 import { sum } from '../utils/reducers.js';
 import readInput from '../utils/readInput.js';
-import { multilineStrToIntArrays, strToIntArray } from '../utils/functions.js';
+import { strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -10,8 +10,14 @@ const getStartState = () => {
   let [numbers, ...boards] = input.split('\n\n');
 
   numbers = strToIntArray(numbers, ',');
-  boards = boards.map((board) => multilineStrToIntArrays(board, /\s+/));
-
+  boards = boards.map((board) =>
+    board.split('\n').map((row) =>
+      row
+        .trim()
+        .split(/\s+/)
+        .map((n) => parseInt(n, 10)),
+    ),
+  );
   return [numbers, boards];
 };
 
@@ -43,7 +49,7 @@ const getScore = (board, number) =>
     .filter((n) => n !== MARKED)
     .reduce(sum) * number;
 
-const part1 = () => {
+export const part1 = () => {
   const [numbers, boards] = getStartState();
   while (true) {
     const number = numbers.shift();
@@ -56,7 +62,7 @@ const part1 = () => {
   }
 };
 
-const part2 = () => {
+export const part2 = () => {
   const [numbers, boards] = getStartState();
   const hasWon = new Array(boards.length).fill(0);
   while (true) {
@@ -73,6 +79,3 @@ const part2 = () => {
     }
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

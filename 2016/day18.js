@@ -43,9 +43,6 @@ const solve = (maxRows) => {
   return safe;
 };
 
-const part1 = () => solve(40);
+export const part1 = () => solve(40);
 
-const part2 = () => solve(400000);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => solve(400000);

@@ -274,17 +274,14 @@ const searchMaze = (from, keyMap) => {
   return bestDistance;
 };
 
-const day18part1 = () => {
+export const part1 = () => {
   const [maze, keys, me] = makeMaze();
   const keyMap = makeKeyMap(maze, { start: me }, keys);
   return searchMaze(['start'], keyMap);
 };
 
-const day18part2 = () => {
+export const part2 = () => {
   const [maze, keys, robots] = makeMazes();
   const keyMap = makeKeyMap(maze, robots, keys);
   return searchMaze(Object.keys(robots), keyMap);
 };
-
-console.log('part1:', day18part1());
-console.log('part2:', day18part2());

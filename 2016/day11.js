@@ -131,14 +131,13 @@ const findSteps = (state) => {
   throw new Error('No route found');
 };
 
-console.log('part1:', findSteps(initialState));
+export const part1 = () => findSteps(initialState);
 
-const part2state = {
-  ...initialState,
-  elmi: 0,
-  elge: 0,
-  dimi: 0,
-  dige: 0,
-};
-
-console.log('part2:', findSteps(part2state));
+export const part2 = () =>
+  findSteps({
+    ...initialState,
+    elmi: 0,
+    elge: 0,
+    dimi: 0,
+    dige: 0,
+  });

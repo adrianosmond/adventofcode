@@ -51,9 +51,6 @@ const simulateMovement = (numKnots, startY = 0, startX = 0) => {
   return visited.size;
 };
 
-const part1 = () => simulateMovement(2);
+export const part1 = () => simulateMovement(2);
 
-const part2 = () => simulateMovement(10);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => simulateMovement(10);

@@ -111,6 +111,3 @@ export const part2 = () => {
   const startZ = h1z + (h1vz - rvz) * t;
   return startX + startY + startZ;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

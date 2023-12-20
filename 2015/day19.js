@@ -36,9 +36,6 @@ const contract = (molecule) => {
   return numReplacements;
 };
 
-const part1 = () => expand(target).size;
+export const part1 = () => expand(target).size;
 
-const part2 = () => contract(target);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => contract(target);

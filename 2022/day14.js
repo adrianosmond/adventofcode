@@ -79,14 +79,11 @@ const dropSand = () => {
   }
 };
 
-const part1 = () => dropSand();
+export const part1 = () => dropSand();
 
-const part2 = () => {
+export const part2 = () => {
   for (let x = 0; x < cave[0].length; x++) {
     cave[maxY - 1][x] = '#';
   }
   return dropSand();
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

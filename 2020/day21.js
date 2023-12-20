@@ -10,7 +10,7 @@ const data = splitAndMapInputLines(
 
 const possibilities = {};
 
-const part1 = () => {
+export const part1 = () => {
   const allIngredients = data.map(([i]) => i).flat();
   data.forEach(([ingredients, allergens]) => {
     allergens.forEach((allergen) => {
@@ -32,7 +32,7 @@ const part1 = () => {
   return allergyFree.length;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let changed = true;
   const done = [];
 
@@ -56,6 +56,3 @@ const part2 = () => {
     .map((a) => a[1])
     .join(',');
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

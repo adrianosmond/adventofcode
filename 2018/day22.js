@@ -41,15 +41,6 @@ for (let y = 0; y < limitY; y++) {
   }
 }
 
-let risk = 0;
-for (let y = 0; y <= targetY; y++) {
-  for (let x = 0; x <= targetX; x++) {
-    risk += type[y][x];
-  }
-}
-
-console.log('part1:', risk);
-
 const manhattan = (from, to) =>
   Math.abs(from.row - to.row) + Math.abs(from.col - to.col);
 
@@ -168,10 +159,18 @@ const findPath = (from, to) => {
   throw new Error('No path found');
 };
 
-console.log(
-  'part2:',
+export const part1 = () => {
+  let risk = 0;
+  for (let y = 0; y <= targetY; y++) {
+    for (let x = 0; x <= targetX; x++) {
+      risk += type[y][x];
+    }
+  }
+  return risk;
+};
+
+export const part2 = () =>
   findPath(
     { row: 0, col: 0, tool: 2 },
     { row: targetY, col: targetX, tool: 2 },
-  ),
-);
+  );

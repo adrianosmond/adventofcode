@@ -62,9 +62,6 @@ const performEnhancements = (numEnhancements) => {
   return Object.keys(grid.light).length;
 };
 
-const part1 = () => performEnhancements(2);
+export const part1 = () => performEnhancements(2);
 
-const part2 = () => performEnhancements(50);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => performEnhancements(50);

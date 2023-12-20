@@ -3,22 +3,28 @@ import { strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
-let output = '';
-let markerStart = -1;
-for (let i = 0; i < input.length; i++) {
-  if (markerStart >= 0 && input[i] === ')') {
-    const [len, repeats] = strToIntArray(input.substring(markerStart, i), 'x');
-    for (let j = 0; j < repeats; j++) {
-      output += input.substr(i + 1, len);
+export const part1 = () => {
+  let output = '';
+  let markerStart = -1;
+  for (let i = 0; i < input.length; i++) {
+    if (markerStart >= 0 && input[i] === ')') {
+      const [len, repeats] = strToIntArray(
+        input.substring(markerStart, i),
+        'x',
+      );
+      for (let j = 0; j < repeats; j++) {
+        output += input.substr(i + 1, len);
+      }
+      i += len;
+      markerStart = -1;
+    } else if (markerStart < 0 && input[i] === '(') {
+      markerStart = i + 1;
+    } else if (markerStart < 0) {
+      output += input[i];
     }
-    i += len;
-    markerStart = -1;
-  } else if (markerStart < 0 && input[i] === '(') {
-    markerStart = i + 1;
-  } else if (markerStart < 0) {
-    output += input[i];
   }
-}
+  return output.length;
+};
 
 const getLengths = (str) => {
   if (!str.includes('(')) return str.length;
@@ -46,5 +52,4 @@ const getLengths = (str) => {
   return length;
 };
 
-console.log('part1:', output.length);
-console.log('part2:', getLengths(input));
+export const part2 = () => getLengths(input);

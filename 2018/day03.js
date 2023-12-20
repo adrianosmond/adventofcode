@@ -48,15 +48,14 @@ claims.forEach(([elf, x, y, w, h]) => {
   }
 });
 
-const contested = grid
-  .map(
-    (row) =>
-      row.map((cell) => Object.keys(cell).length).filter((cell) => cell > 1)
-        .length,
-  )
-  .reduce(sum);
+export const part1 = () =>
+  grid
+    .map(
+      (row) =>
+        row.map((cell) => Object.keys(cell).length).filter((cell) => cell > 1)
+          .length,
+    )
+    .reduce(sum);
 
-const uniqueElf = unique.map((e, idx) => e && idx + 1).filter(Boolean);
-
-console.log('part1:', contested);
-console.log('part2:', uniqueElf[0]);
+export const part2 = () =>
+  unique.map((e, idx) => e && idx + 1).filter(Boolean)[0];

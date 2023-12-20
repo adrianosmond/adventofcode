@@ -33,9 +33,9 @@ const solve = (rules) => {
   );
 };
 
-const part1 = () => solve(r);
+export const part1 = () => solve(r);
 
-const part2 = () => {
+export const part2 = () => {
   let rules = r.replace('8: 42', '8: ( 42 )+');
   rules = rules.replace(
     '11: 42 31',
@@ -44,6 +44,3 @@ const part2 = () => {
 
   return solve(rules);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

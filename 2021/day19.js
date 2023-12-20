@@ -54,7 +54,7 @@ const maxManhattan = (posArr) => {
   return max;
 };
 
-const part1 = () => {
+export const part1 = () => {
   const s0 = scanners[0];
   while (scanners.length > 1) {
     for (let i = 1; i < scanners.length; i++) {
@@ -100,7 +100,4 @@ const part1 = () => {
   return s0.length;
 };
 
-const part2 = () => maxManhattan(positions);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => maxManhattan(positions);

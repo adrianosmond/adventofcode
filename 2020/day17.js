@@ -43,7 +43,7 @@ const getActiveNeighbours4d = (grid, x, y, z, w) => {
   return count;
 };
 
-const part1 = () => {
+export const part1 = () => {
   let grid = makeGrid(grid3d);
   let maxX = grid3d[0].length;
   let minX = 0;
@@ -78,7 +78,7 @@ const part1 = () => {
   return Object.keys(grid).length;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let grid = makeGrid(grid4d);
   let maxX = grid4d[0].length;
   let minX = 0;
@@ -121,6 +121,3 @@ const part2 = () => {
   }
   return Object.keys(grid).length;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

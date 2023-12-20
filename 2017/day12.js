@@ -10,7 +10,7 @@ const programs = splitAndMapInputLines(input, ' <-> ').reduce(
   {},
 );
 
-const day12part1 = () => {
+export const part1 = () => {
   const queue = [0];
   const visited = [];
 
@@ -27,7 +27,7 @@ const day12part1 = () => {
   return visited.length;
 };
 
-const day12part2 = () => {
+export const part2 = () => {
   const queue = [];
   const visited = [];
   let groups = 0;
@@ -48,6 +48,3 @@ const day12part2 = () => {
   }
   return groups;
 };
-
-console.log('part1:', day12part1());
-console.log('part2:', day12part2());

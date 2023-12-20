@@ -29,8 +29,8 @@ Object.entries(connections).forEach(([from, to]) => {
 });
 
 const makeAndOpenSVG = () => {
-  const dotFilePath = process.argv[1].replace('day25.js', 'graph.dot');
-  const svgFilePath = process.argv[1].replace('day25.js', 'graph.svg');
+  const dotFilePath = process.argv[2].replace('day25.js', 'graph.dot');
+  const svgFilePath = process.argv[2].replace('day25.js', 'graph.svg');
   writeFileSync(dotFilePath, graph);
   console.log('Generating SVG...');
   execSync(`neato -Tsvg ${dotFilePath} -o ${svgFilePath}`);
@@ -101,5 +101,3 @@ export const part1 = () => {
     return 0;
   }
 };
-
-console.log('part1', part1());

@@ -4,7 +4,7 @@ import knotHash from './knotHash.js';
 
 const input = readInput();
 
-const day10part1 = (inputStr) => {
+const hash = (inputStr) => {
   const list = new Array(256).fill().map((_, i) => i);
   const inputArr = strToIntArray(inputStr, ',');
 
@@ -29,5 +29,6 @@ const day10part1 = (inputStr) => {
   return list[0] * list[1];
 };
 
-console.log('part1:', day10part1(input));
-console.log('part2:', knotHash(input));
+export const part1 = () => hash(input);
+
+export const part2 = () => knotHash(input);

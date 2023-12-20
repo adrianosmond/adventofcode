@@ -1,30 +1,8 @@
 import readInput from '../utils/readInput.js';
-import { strToIntArray } from '../utils/functions.js';
+import { permutator, strToIntArray } from '../utils/functions.js';
 import { intComputer } from './intComputer.js';
 
 const input = strToIntArray(readInput(), ',');
-
-function* choose5(start = 0) {
-  for (let A = start; A < start + 5; A++) {
-    for (let B = start; B < start + 5; B++) {
-      if (B !== A) {
-        for (let C = start; C < start + 5; C++) {
-          if (C !== A && C !== B) {
-            for (let D = start; D < start + 5; D++) {
-              if (D !== A && D !== B && D !== C) {
-                for (let E = start; E < start + 5; E++) {
-                  if (E !== A && E !== B && E !== C && E !== D) {
-                    yield [A, B, C, D, E];
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
 
 const makeAmplifier = (inputValues) => intComputer(input, inputValues);
 
@@ -37,11 +15,12 @@ const runAmp = (amp, ampInputs, prevAmpOutput) => {
   return [prevAmpOutput, true];
 };
 
-const day7part1 = () => {
+export const part1 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
   let lastOutput = 0;
+  const permutations = permutator([0, 1, 2, 3, 4]);
 
-  for (const phases of choose5()) {
+  for (const phases of permutations) {
     lastOutput = phases.reduce(
       (prev, phase) => intComputer(input, [phase, prev]).next().value,
       0,
@@ -51,10 +30,11 @@ const day7part1 = () => {
   return bestOutput;
 };
 
-const day7part2 = () => {
+export const part2 = () => {
   let bestOutput = Number.MIN_SAFE_INTEGER;
+  const permutations = permutator([5, 6, 7, 8, 9]);
 
-  for (const phases of choose5(5)) {
+  for (const phases of permutations) {
     const inputs = phases.map((phase) => [phase]);
     const amps = inputs.map((i) => makeAmplifier(i));
     let lastOutput = 0;
@@ -71,6 +51,3 @@ const day7part2 = () => {
   }
   return bestOutput;
 };
-
-console.log('part1:', day7part1());
-console.log('part2:', day7part2());

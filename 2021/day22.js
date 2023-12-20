@@ -96,9 +96,6 @@ const followSteps = (limitRange = false) => {
   return numOn;
 };
 
-const part1 = () => followSteps(true);
+export const part1 = () => followSteps(true);
 
-const part2 = () => followSteps();
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => followSteps();

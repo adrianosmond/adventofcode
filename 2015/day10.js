@@ -19,7 +19,7 @@ const lookAndSay = (number) => {
   return result;
 };
 
-const part1 = () => {
+export const part1 = () => {
   let current = input;
   for (let i = 0; i < 40; i++) {
     current = lookAndSay(current);
@@ -27,13 +27,10 @@ const part1 = () => {
   return current.length;
 };
 
-const part2 = () => {
+export const part2 = () => {
   let current = input;
   for (let i = 0; i < 50; i++) {
     current = lookAndSay(current);
   }
   return current.length;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

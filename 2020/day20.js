@@ -42,37 +42,6 @@ input.split('\n\n').forEach((tile) => {
   };
 });
 
-const part1 = () => {
-  Object.entries(tiles).forEach(([tile, { edges }]) => {
-    const otherTiles = Object.entries(tiles).filter(([t]) => t !== tile);
-
-    edges.forEach((edge, i) => {
-      if (edge.linkedTile) return;
-      otherTiles.forEach(([t2, { edges: e2 }]) => {
-        e2.forEach((edge2, j) => {
-          if (edge2.linkedTile) return;
-          if (
-            edge.border === edge2.border ||
-            edge.border === edge2.border.split('').reverse().join('')
-          ) {
-            edge.linkedTile = t2;
-            edge2.linkedTile = tile;
-            edge.linkedEdge = j;
-            edge2.linkedEdge = i;
-          }
-        });
-      });
-    });
-  });
-
-  return Object.entries(tiles).reduce(
-    (total, [tile, { edges }]) =>
-      total *
-      (edges.filter((e) => e.linkedTile).length === 2 ? parseInt(tile, 10) : 1),
-    1,
-  );
-};
-
 const rotate = (grid) => {
   const newGrid = [];
   for (let i = 0; i < grid.length; i++) {
@@ -114,7 +83,38 @@ const flipTile = (tileId) => {
   tile.edges[3].border = tile.edges[3].border.split('').reverse().join('');
 };
 
-const part2 = () => {
+export const part1 = () => {
+  Object.entries(tiles).forEach(([tile, { edges }]) => {
+    const otherTiles = Object.entries(tiles).filter(([t]) => t !== tile);
+
+    edges.forEach((edge, i) => {
+      if (edge.linkedTile) return;
+      otherTiles.forEach(([t2, { edges: e2 }]) => {
+        e2.forEach((edge2, j) => {
+          if (edge2.linkedTile) return;
+          if (
+            edge.border === edge2.border ||
+            edge.border === edge2.border.split('').reverse().join('')
+          ) {
+            edge.linkedTile = t2;
+            edge2.linkedTile = tile;
+            edge.linkedEdge = j;
+            edge2.linkedEdge = i;
+          }
+        });
+      });
+    });
+  });
+
+  return Object.entries(tiles).reduce(
+    (total, [tile, { edges }]) =>
+      total *
+      (edges.filter((e) => e.linkedTile).length === 2 ? parseInt(tile, 10) : 1),
+    1,
+  );
+};
+
+export const part2 = () => {
   const topLeft = Object.entries(tiles).find(
     ([, { edges }]) => edges.filter((e) => e.linkedTile).length === 2,
   )[0];
@@ -198,6 +198,3 @@ const part2 = () => {
   }
   return -1;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

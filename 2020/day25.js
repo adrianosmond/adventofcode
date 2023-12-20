@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import readInput from '../utils/readInput.js';
 import { strToIntArray } from '../utils/functions.js';
 
@@ -5,7 +6,7 @@ const input = readInput();
 
 const [card, door] = strToIntArray(input);
 
-const part1 = () => {
+export const part1 = () => {
   let value = 1;
   let loops = 0;
 
@@ -24,5 +25,3 @@ const part1 = () => {
 
   return value;
 };
-
-console.log('part1', part1());

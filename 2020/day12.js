@@ -103,9 +103,6 @@ const moveWaypoint = () => {
   return manhattan([x, y]);
 };
 
-const part1 = () => move();
+export const part1 = () => move();
 
-const part2 = () => moveWaypoint();
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => moveWaypoint();

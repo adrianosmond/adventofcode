@@ -44,13 +44,13 @@ const runProgram = () => {
   return true;
 };
 
-const part1 = () => {
+export const part1 = () => {
   runProgram();
 
   return acc;
 };
 
-const part2 = () => {
+export const part2 = () => {
   for (let i = 0; i < instructions.length; i++) {
     if (instructions[i][0] === 'acc') continue;
     switchJmpAndNop(i);
@@ -62,6 +62,3 @@ const part2 = () => {
     switchJmpAndNop(i);
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

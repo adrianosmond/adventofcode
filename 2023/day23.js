@@ -99,6 +99,3 @@ const findLongestRoute = (distances, currentIdx = 0) => {
 export const part1 = () => findLongestRoute(calcDistances());
 
 export const part2 = () => findLongestRoute(calcDistances(true));
-
-console.log('part1', part1());
-console.log('part2', part2());

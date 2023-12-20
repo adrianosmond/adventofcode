@@ -12,5 +12,6 @@ const instructions = input.split('\n').map((i) => {
   return [op, xVal, yVal];
 });
 
-console.log('part1:', runProgram([0, 0, 0, 0], instructions).next().value);
-console.log('part2:', runProgram([0, 0, 1, 0], instructions).next().value);
+export const part1 = () => runProgram([0, 0, 0, 0], instructions).next().value;
+
+export const part2 = () => runProgram([0, 0, 1, 0], instructions).next().value;

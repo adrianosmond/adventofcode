@@ -21,9 +21,6 @@ const hasOverlap = ([elf1Min, elf1Max, elf2Min, elf2Max]) =>
   (elf1Min <= elf2Min && elf1Max >= elf2Min) ||
   (elf2Min <= elf1Min && elf2Max >= elf1Min);
 
-const part1 = () => pairs.filter(isCompletelyContained).length;
+export const part1 = () => pairs.filter(isCompletelyContained).length;
 
-const part2 = () => pairs.filter(hasOverlap).length;
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => pairs.filter(hasOverlap).length;

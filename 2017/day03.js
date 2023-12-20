@@ -40,7 +40,7 @@ const getCoordinates = (number) => {
   throw new Error('Coordinate not found');
 };
 
-const day4part1 = () => {
+export const part1 = () => {
   const coords = getCoordinates(input);
   return coords.map(Math.abs).reduce(sum);
 };
@@ -74,7 +74,7 @@ function getSurroundings(grid, y, x) {
   );
 }
 
-function day4part2() {
+export const part2 = () => {
   const size = 15;
   const grid = [];
   for (let i = 0; i < size; i++) {
@@ -101,7 +101,4 @@ function day4part2() {
   }
 
   return grid[current[0]][current[1]];
-}
-
-console.log('part1;', day4part1());
-console.log('part2:', day4part2());
+};

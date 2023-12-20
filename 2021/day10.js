@@ -53,9 +53,9 @@ const parsedLines = lines.map((line) => {
 const invalidLines = parsedLines.filter((line) => typeof line === 'number');
 const incompleteLines = parsedLines.filter((line) => typeof line === 'object');
 
-const part1 = () => invalidLines.reduce(sum);
+export const part1 = () => invalidLines.reduce(sum);
 
-const part2 = () => {
+export const part2 = () => {
   const scores = incompleteLines
     .map((line) =>
       line.reduce(
@@ -67,6 +67,3 @@ const part2 = () => {
 
   return scores[Math.floor(scores.length / 2)];
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

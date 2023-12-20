@@ -16,9 +16,6 @@ const firstBasementEntry = () => {
   return position;
 };
 
-const part1 = () => getDepth();
+export const part1 = () => getDepth();
 
-const part2 = () => firstBasementEntry();
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => firstBasementEntry();

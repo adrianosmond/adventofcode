@@ -57,7 +57,7 @@ const doCycle = (adj) => {
   return [lumber, wooded];
 };
 
-const day18part1 = () => {
+export const part1 = () => {
   let lumber = 0;
   let wooded = 0;
   for (let i = 0; i < 10; i++) {
@@ -69,7 +69,7 @@ const day18part1 = () => {
   return lumber * wooded;
 };
 
-const day18part2 = () => {
+export const part2 = () => {
   const target = 1000000000;
   const patternSize = 1000;
   const seen = {};
@@ -92,6 +92,3 @@ const day18part2 = () => {
   }
   throw new Error('No pattern found. Try increasing patternSize');
 };
-
-console.log('part1:', day18part1());
-console.log('part2:', day18part2());

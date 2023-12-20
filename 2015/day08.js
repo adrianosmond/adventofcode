@@ -16,11 +16,8 @@ const getUnescapedLength = (s) =>
 const getEscapedLength = (s) =>
   s.replace(/\\/g, '\\\\').replace(/"/g, '\\"').length + 2;
 
-const part1 = () =>
+export const part1 = () =>
   totalStringLength - strings.map(getUnescapedLength).reduce(sum);
 
-const part2 = () =>
+export const part2 = () =>
   strings.map(getEscapedLength).reduce(sum) - totalStringLength;
-
-console.log('part1', part1());
-console.log('part2', part2());

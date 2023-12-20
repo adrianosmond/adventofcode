@@ -126,18 +126,15 @@ const solveEquation = (monkeys) => {
   return monkeys.root[constBranch];
 };
 
-const part1 = () => {
+export const part1 = () => {
   const monkeys = getMonkeysObject();
   reduceTree(monkeys);
   return monkeys.root;
 };
 
-const part2 = () => {
+export const part2 = () => {
   const monkeys = getMonkeysObject();
   delete monkeys.humn;
   reduceTree(monkeys);
   return solveEquation(monkeys);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

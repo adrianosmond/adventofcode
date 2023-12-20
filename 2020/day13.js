@@ -3,7 +3,7 @@ import { strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 
-const part1 = () => {
+export const part1 = () => {
   const [now, ...buses] = strToIntArray(
     input.replace(/,x/g, '').replace(/,/g, '\n'),
   );
@@ -17,7 +17,7 @@ const part1 = () => {
   return (time - now) * departing;
 };
 
-const part2 = () => {
+export const part2 = () => {
   const [firstBus, ...buses] = input
     .split('\n')[1]
     .split(',')
@@ -39,6 +39,3 @@ const part2 = () => {
 
   return i;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

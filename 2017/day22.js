@@ -40,7 +40,7 @@ const makeGrid = () => {
   return grid;
 };
 
-function day22part1() {
+export const part1 = () => {
   const grid = makeGrid();
   let row = (size - 1) / 2;
   let col = row;
@@ -67,9 +67,9 @@ function day22part1() {
     }
   }
   return infections;
-}
+};
 
-function day22part2() {
+export const part2 = () => {
   const grid = makeGrid();
   let row = (size - 1) / 2;
   let col = row;
@@ -102,7 +102,4 @@ function day22part2() {
     }
   }
   return infections;
-}
-
-console.log('part1:', day22part1());
-console.log('part2:', day22part2());
+};

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import readInput from '../utils/readInput.js';
 import { sum } from '../utils/reducers.js';
 
@@ -49,6 +50,4 @@ const toSnafu = (number) => {
   return findSnafuValue(number, pow);
 };
 
-const part1 = () => toSnafu(numbers.map(toDecimal).reduce(sum));
-
-console.log('part1', part1());
+export const part1 = () => toSnafu(numbers.map(toDecimal).reduce(sum));

@@ -44,7 +44,7 @@ const getCommands = (snd, rcv) => ({
   },
 });
 
-function day18Part1() {
+export const part1 = () => {
   let lastSound = -1;
   let recovered = null;
   instructions = [0];
@@ -64,9 +64,9 @@ function day18Part1() {
     instructions[running]++;
   }
   return lastSound;
-}
+};
 
-function day18Part2() {
+export const part2 = () => {
   const queues = [[], []];
   const waiting = [false, false];
   const terminated = [false, false];
@@ -115,7 +115,4 @@ function day18Part2() {
     instructions[running]++;
   }
   return p1Sends;
-}
-
-console.log('part1:', day18Part1());
-console.log('part2:', day18Part2());
+};

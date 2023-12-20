@@ -1,5 +1,6 @@
 import readInput from '../utils/readInput.js';
 import { strToIntArray } from '../utils/functions.js';
+import { sum } from '../utils/reducers.js';
 
 const input = strToIntArray(readInput());
 
@@ -13,7 +14,8 @@ const getFuelNeededIncludingFuelMass = (mass) => {
   }
   return totalFuelMass;
 };
-const sum = (a, b) => a + b;
 
-console.log('part1:', input.map(getFuelNeededForMass).reduce(sum));
-console.log('part2:', input.map(getFuelNeededIncludingFuelMass).reduce(sum));
+export const part1 = () => input.map(getFuelNeededForMass).reduce(sum);
+
+export const part2 = () =>
+  input.map(getFuelNeededIncludingFuelMass).reduce(sum);

@@ -14,23 +14,6 @@ const getValue = (mask, val) => {
   return parseInt(valStr, 2);
 };
 
-const part1 = () => {
-  const memory = {};
-  let mask;
-
-  instructions.forEach(([i, v]) => {
-    if (i === 'mask') {
-      mask = v;
-    } else {
-      const address = parseInt(i.match(/mem\[([0-9]+)\]/)[1], 10);
-      const val = parseInt(v, 10);
-      memory[address] = getValue(mask, val);
-    }
-  });
-
-  return Object.values(memory).reduce(sum);
-};
-
 const getAllMasks = (mask) => {
   if (!mask.includes('X')) return mask;
 
@@ -51,7 +34,24 @@ const getDecodedAddresses = (originalMask, replacedMasks, address) =>
     return parseInt(addrStr, 2);
   });
 
-const part2 = () => {
+export const part1 = () => {
+  const memory = {};
+  let mask;
+
+  instructions.forEach(([i, v]) => {
+    if (i === 'mask') {
+      mask = v;
+    } else {
+      const address = parseInt(i.match(/mem\[([0-9]+)\]/)[1], 10);
+      const val = parseInt(v, 10);
+      memory[address] = getValue(mask, val);
+    }
+  });
+
+  return Object.values(memory).reduce(sum);
+};
+
+export const part2 = () => {
   const memory = {};
   let originalMask;
   let replacedMasks;
@@ -74,6 +74,3 @@ const part2 = () => {
 
   return Object.values(memory).reduce(sum);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

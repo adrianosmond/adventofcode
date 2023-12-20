@@ -71,5 +71,6 @@ const findKeys = (numHashes = 1) => {
   return indexes[63];
 };
 
-console.log('part1', findKeys());
-console.log('part2', findKeys(2017));
+export const part1 = () => findKeys();
+
+export const part2 = () => findKeys(2017);

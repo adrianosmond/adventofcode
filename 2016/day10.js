@@ -7,15 +7,15 @@ const instructions = input.split('\n');
 const bots = {};
 const outputs = {};
 const newBot = () => ({ inputs: [], low: null, high: null });
-
 const toResolve = [];
+let botNumber = -1;
 
 const resolveInputs = () => {
   while (toResolve.length > 0) {
     const botId = toResolve.shift();
     const bot = bots[botId];
     if (bot.inputs.includes(17) && bot.inputs.includes(61)) {
-      console.log('part1:', botId);
+      botNumber = botId;
     }
     const min = Math.min(...bot.inputs);
     const max = Math.max(...bot.inputs);
@@ -54,8 +54,8 @@ instructions.forEach((i) => {
       /bot (\d+) gives low to (bot|output) (\d+) and high to (bot|output) (\d+)/,
     );
     bots[bot] = newBot();
-    bots[bot].low = { type: type1, id: id1 };
-    bots[bot].high = { type: type2, id: id2 };
+    bots[bot].low = { type: type1, id: parseInt(id1, 10) };
+    bots[bot].high = { type: type2, id: parseInt(id2, 10) };
   }
 });
 
@@ -70,4 +70,6 @@ instructions.forEach((i) => {
   }
 });
 
-console.log('part2:', outputs['0'][0] * outputs['1'][0] * outputs['2'][0]);
+export const part1 = () => botNumber;
+
+export const part2 = () => outputs['0'][0] * outputs['1'][0] * outputs['2'][0];

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import readInput from '../utils/readInput.js';
 import runProgram from './assembunny.js';
 
@@ -12,7 +13,7 @@ const instructions = input.split('\n').map((i) => {
   return [op, xVal, yVal];
 });
 
-const part1 = () => {
+export const part1 = () => {
   for (let i = 1; i < 1000; i++) {
     let numOutputs = 0;
     for (const output of runProgram([i, 0, 0, 0], instructions)) {
@@ -22,5 +23,3 @@ const part1 = () => {
     }
   }
 };
-
-console.log('part1', part1());

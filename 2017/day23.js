@@ -49,7 +49,7 @@ while (instruction >= 0 && instruction < instructions.length) {
   instruction++;
 }
 
-console.log('part1:', multiplied);
+export const part1 = () => multiplied;
 
 let isPrime = false;
 let nonPrimes = 0;
@@ -74,4 +74,4 @@ for (let numToCheck = start; numToCheck <= end; numToCheck += 17) {
   }
 }
 
-console.log('part2:', nonPrimes);
+export const part2 = () => nonPrimes;

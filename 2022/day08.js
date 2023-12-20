@@ -49,9 +49,6 @@ const getScenicScore = () =>
     ),
   );
 
-const part1 = () => findVisible();
+export const part1 = () => findVisible();
 
-const part2 = () => getScenicScore();
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => getScenicScore();

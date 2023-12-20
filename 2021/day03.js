@@ -22,16 +22,6 @@ const getLCB = (nums, pos) => {
   return ones < zeros ? 1 : 0;
 };
 
-const part1 = () => {
-  let gamma = '';
-  let epsilon = '';
-  for (let i = 0; i < numBits; i++) {
-    gamma += getMCB(numbers, i);
-    epsilon += getLCB(numbers, i);
-  }
-  return parseInt(gamma, 2) * parseInt(epsilon, 2);
-};
-
 const filterNumbers = (getBit) => {
   let filtered = [...numbers];
   for (let i = 0; filtered.length > 1; i++) {
@@ -41,11 +31,18 @@ const filterNumbers = (getBit) => {
   return filtered[0];
 };
 
-const part2 = () => {
+export const part1 = () => {
+  let gamma = '';
+  let epsilon = '';
+  for (let i = 0; i < numBits; i++) {
+    gamma += getMCB(numbers, i);
+    epsilon += getLCB(numbers, i);
+  }
+  return parseInt(gamma, 2) * parseInt(epsilon, 2);
+};
+
+export const part2 = () => {
   const o2 = filterNumbers(getMCB);
   const co2 = filterNumbers(getLCB);
   return parseInt(o2, 2) * parseInt(co2, 2);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

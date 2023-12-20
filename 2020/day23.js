@@ -37,7 +37,7 @@ const play = (cups, numTurns) => {
   }
 };
 
-const part1 = () => {
+export const part1 = () => {
   const cups = {};
   numbers.forEach((number, index) => {
     cups[number] = {
@@ -57,7 +57,7 @@ const part1 = () => {
   return parseInt(answer, 10);
 };
 
-const part2 = () => {
+export const part2 = () => {
   const start = numbers[0];
   const NUM_CUPS = 1000000;
   const cups = {};
@@ -85,6 +85,3 @@ const part2 = () => {
 
   return first * second;
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

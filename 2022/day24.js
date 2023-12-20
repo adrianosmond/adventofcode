@@ -186,13 +186,10 @@ const findPath = (start, end, startTime) => {
   }
 };
 
-const part1 = () => findPath(entrance, exit, 0);
+export const part1 = () => findPath(entrance, exit, 0);
 
-const part2 = () => {
+export const part2 = () => {
   const p1 = findPath(entrance, exit, 0);
   const p2 = findPath(exit, entrance, p1);
   return findPath(entrance, exit, p2);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

@@ -141,15 +141,12 @@ const solve = (start, end) => {
   return best;
 };
 
-const part1 = () => solve(map, goal);
+export const part1 = () => solve(map, goal);
 
-const part2 = () => {
+export const part2 = () => {
   const rows = map.split('\n');
   rows.splice(2, 0, '  #D#C#B#A#', '  #D#B#A#C#');
   const modified = rows.join('\n');
 
   return solve(modified, goal2);
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

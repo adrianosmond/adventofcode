@@ -42,5 +42,6 @@ while (current !== ' ') {
   }
 }
 
-console.log('part1:', letters);
-console.log('part2:', steps);
+export const part1 = () => letters;
+
+export const part2 = () => steps;

@@ -74,9 +74,9 @@ const scramble = (start) => {
   return str;
 };
 
-const part1 = () => scramble('abcdefgh');
+export const part1 = () => scramble('abcdefgh');
 
-const part2 = () => {
+export const part2 = () => {
   const permutations = permutator(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
   const answer = 'fbgdceah';
   for (const p of permutations) {
@@ -84,6 +84,3 @@ const part2 = () => {
     if (scramble(test) === answer) return test;
   }
 };
-
-console.log('part1', part1());
-console.log('part2', part2());

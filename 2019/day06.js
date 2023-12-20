@@ -1,5 +1,6 @@
 import readInput from '../utils/readInput.js';
 import { splitAndMapInputLines } from '../utils/functions.js';
+import { sum } from '../utils/reducers.js';
 
 const input = readInput();
 const orbits = splitAndMapInputLines(input, ')');
@@ -28,12 +29,8 @@ const getUniqueSegments = (chainA, chainB) => [
   ...chainB.filter((c) => !chainA.includes(c)),
 ];
 
-const numOrbits = orbits
-  .map((o) => getChain(o[1]).length)
-  .reduce((a, b) => a + b, 0);
+export const part1 = () =>
+  orbits.map((o) => getChain(o[1]).length).reduce(sum, 0);
 
-const pathLength =
+export const part2 = () =>
   getUniqueSegments(getChain('YOU'), getChain('SAN')).length - 2;
-
-console.log('part1:', numOrbits);
-console.log('part2:', pathLength);

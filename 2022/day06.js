@@ -10,9 +10,6 @@ const findSequenceOfLength = (length) => {
   return -1;
 };
 
-const part1 = () => findSequenceOfLength(4);
+export const part1 = () => findSequenceOfLength(4);
 
-const part2 = () => findSequenceOfLength(14);
-
-console.log('part1', part1());
-console.log('part2', part2());
+export const part2 = () => findSequenceOfLength(14);

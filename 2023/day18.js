@@ -66,6 +66,3 @@ const getArea = (coords) => {
 export const part1 = () => getArea(getCoordinates());
 
 export const part2 = () => getArea(getCoordinates(true));
-
-console.log('part1', part1());
-console.log('part2', part2());
