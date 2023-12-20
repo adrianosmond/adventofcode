@@ -1,4 +1,5 @@
-import { readInput, manhattan } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { manhattan } from '../utils/functions.js';
 
 const input = readInput();
 

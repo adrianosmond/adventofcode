@@ -1,8 +1,5 @@
-import {
-  readInput,
-  inputToCharGrid,
-  strToIntArray,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { inputToCharGrid, strToIntArray } from '../utils/functions.js';
 import knotHash from './knotHash.js';
 import { sum } from '../utils/reducers.js';
 

@@ -1,4 +1,5 @@
-import { readInput, splitAndMapInputLines } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();

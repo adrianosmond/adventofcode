@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 import { sumByKey, mergeObjects } from '../utils/reducers.js';
 
 const input = readInput();

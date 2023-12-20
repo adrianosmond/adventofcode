@@ -1,4 +1,5 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 const digits = input.split('\n').map((s) => strToIntArray(s.trim(), /\s+/));

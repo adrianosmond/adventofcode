@@ -1,4 +1,5 @@
-import { readInput, splitAndMapInputLines } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 const [template, ins] = input.split('\n\n');

@@ -1,7 +1,7 @@
+import readInput from '../utils/readInput.js';
 import {
   getNeighbours,
   gridToCells,
-  readInput,
   inputToCharGrid,
 } from '../utils/functions.js';
 

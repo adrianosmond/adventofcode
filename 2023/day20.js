@@ -1,4 +1,5 @@
-import { lcm, readInput, splitAndMapInputLines } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { lcm, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 
@@ -15,31 +16,36 @@ const getInitialConfig = (machine) => {
   };
 };
 
-const modules = Object.fromEntries(
-  splitAndMapInputLines(input, ' -> ').map(([machine, destinations]) => {
-    const key = machine === 'broadcaster' ? machine : machine.substring(1);
-    const values = {
-      ...getInitialConfig(machine),
-      destinations: destinations.split(', '),
-    };
-    return [key, values];
-  }),
-);
+const makeModules = () => {
+  const modules = Object.fromEntries(
+    splitAndMapInputLines(input, ' -> ').map(([machine, destinations]) => {
+      const key = machine === 'broadcaster' ? machine : machine.substring(1);
+      const values = {
+        ...getInitialConfig(machine),
+        destinations: destinations.split(', '),
+      };
+      return [key, values];
+    }),
+  );
 
-Object.entries(modules)
-  .filter(([, config]) => config.type === 'conjunction')
-  .forEach(([name, config]) => {
-    Object.entries(modules)
-      .filter(([, b]) => b.destinations.some((d) => d === name))
-      .forEach(([a]) => {
-        config.inputs[a] = 0;
-      });
-  });
+  Object.entries(modules)
+    .filter(([, config]) => config.type === 'conjunction')
+    .forEach(([name, config]) => {
+      Object.entries(modules)
+        .filter(([, b]) => b.destinations.some((d) => d === name))
+        .forEach(([a]) => {
+          config.inputs[a] = 0;
+        });
+    });
 
-const getAncestors = (node) => {
+  return modules;
+};
+
+const getAncestors = (modules, node) => {
   const parent = Object.entries(modules).find(
     ([, config]) => config.destinations[0] === node,
-  )[0];
+  )?.[0];
+  if (!parent) return ['', []];
   return [
     parent,
     Object.entries(modules)
@@ -48,12 +54,14 @@ const getAncestors = (node) => {
   ];
 };
 
-let pushes = 1;
 const pushButtons = (numPushes, part2) => {
-  const [rxParent, rxGrandparents] = getAncestors('rx');
+  const modules = makeModules();
+  let pushes = 1;
+  const [rxParent, rxGrandparents] = getAncestors(modules, 'rx');
   const cycleLengths = Object.fromEntries(
     rxGrandparents.map((node) => [node, false]),
   );
+  if (part2 && rxParent === '') return;
 
   const pulses = [0, 0];
   while (pushes <= numPushes) {

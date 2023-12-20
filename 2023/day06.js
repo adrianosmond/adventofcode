@@ -1,4 +1,5 @@
-import { readInput, strToIntArray } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { strToIntArray } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();

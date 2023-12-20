@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 
 const input = readInput();
 const TIME_LIMIT = 2503;

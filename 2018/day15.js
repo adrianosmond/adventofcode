@@ -1,4 +1,5 @@
-import { readInput, inputToCharGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { inputToCharGrid } from '../utils/functions.js';
 
 import { sumByKey } from '../utils/reducers.js';
 

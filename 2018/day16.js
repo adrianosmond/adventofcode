@@ -1,4 +1,5 @@
-import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { multilineStrToIntArrays } from '../utils/functions.js';
 
 const input = readInput();
 let [samples, program] = input.split('\n\n\n\n');

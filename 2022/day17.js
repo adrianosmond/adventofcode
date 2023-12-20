@@ -1,4 +1,5 @@
-import { iterateOverGrid, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { iterateOverGrid } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();

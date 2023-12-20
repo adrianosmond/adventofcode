@@ -1,7 +1,7 @@
+import readInput from '../utils/readInput.js';
 import {
   getNeighboursWithDiagonals,
   gridToCells,
-  readInput,
   inputToCharGrid,
 } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';

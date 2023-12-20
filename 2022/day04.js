@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 
 const input = readInput();
 const pairs = input.split('\n').map((p) => {

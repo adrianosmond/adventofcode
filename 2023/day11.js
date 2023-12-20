@@ -1,9 +1,5 @@
-import {
-  gridToCells,
-  manhattan,
-  readInput,
-  inputToCharGrid,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { gridToCells, manhattan, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 

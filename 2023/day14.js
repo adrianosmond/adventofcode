@@ -1,4 +1,5 @@
-import { gridToCells, readInput, inputToCharGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { gridToCells, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 

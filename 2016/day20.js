@@ -1,4 +1,5 @@
-import { multilineStrToIntArrays, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { multilineStrToIntArrays } from '../utils/functions.js';
 
 const input = readInput();
 const ranges = multilineStrToIntArrays(input, '-').sort((a, b) => a[0] - b[0]);

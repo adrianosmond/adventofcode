@@ -1,5 +1,5 @@
 import md5 from 'spark-md5';
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 
 const input = readInput();
 

@@ -1,4 +1,5 @@
-import { readInput, inputToIntGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { inputToIntGrid } from '../utils/functions.js';
 
 const input = readInput();
 const levels = inputToIntGrid(input);

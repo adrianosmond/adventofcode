@@ -1,8 +1,5 @@
-import {
-  readInput,
-  splitAndMapInputLines,
-  strToIntArray,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { splitAndMapInputLines, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 const programs = splitAndMapInputLines(input, ' <-> ').reduce(

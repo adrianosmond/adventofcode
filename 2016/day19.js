@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 
 const input = readInput();
 const numElves = parseInt(input, 10);

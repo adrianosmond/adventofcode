@@ -1,4 +1,5 @@
-import { lcm, readInput, splitAndMapInputLines } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { lcm, splitAndMapInputLines } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();

@@ -1,4 +1,5 @@
-import { readInput, permutator } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { permutator } from '../utils/functions.js';
 
 const input = readInput();
 

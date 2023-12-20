@@ -1,8 +1,5 @@
-import {
-  getNeighbours,
-  readInput,
-  inputToIntGrid,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { getNeighbours, inputToIntGrid } from '../utils/functions.js';
 
 const input = readInput();
 const grid = inputToIntGrid(input);

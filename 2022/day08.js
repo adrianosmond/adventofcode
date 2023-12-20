@@ -1,4 +1,5 @@
-import { gridToCells, readInput, inputToIntGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { gridToCells, inputToIntGrid } from '../utils/functions.js';
 import { product } from '../utils/reducers.js';
 
 const input = readInput();

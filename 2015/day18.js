@@ -1,6 +1,6 @@
+import readInput from '../utils/readInput.js';
 import {
   getNeighboursWithDiagonals,
-  readInput,
   splitAndMapInputLines,
 } from '../utils/functions.js';
 

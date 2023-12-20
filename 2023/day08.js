@@ -1,4 +1,5 @@
-import { lcm, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { lcm } from '../utils/functions.js';
 
 const input = readInput();
 

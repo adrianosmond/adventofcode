@@ -1,4 +1,5 @@
-import { readInput, manhattan, inputToCharGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { manhattan, inputToCharGrid } from '../utils/functions.js';
 
 const input = readInput();
 const map = input.substring(14, input.length - 12);

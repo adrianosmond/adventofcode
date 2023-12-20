@@ -1,4 +1,5 @@
-import { getNeighbours, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { getNeighbours } from '../utils/functions.js';
 
 const input = readInput();
 let start;

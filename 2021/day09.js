@@ -1,10 +1,6 @@
 import { sum } from '../utils/reducers.js';
-import {
-  getNeighbours,
-  readInput,
-  sortDesc,
-  inputToIntGrid,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { getNeighbours, sortDesc, inputToIntGrid } from '../utils/functions.js';
 
 const input = readInput();
 const grid = inputToIntGrid(input);

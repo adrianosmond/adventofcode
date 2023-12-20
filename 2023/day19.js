@@ -1,4 +1,4 @@
-import { readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
 import { sum } from '../utils/reducers.js';
 
 let input = readInput();

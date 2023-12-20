@@ -1,5 +1,6 @@
 import md5 from 'spark-md5';
-import { readInput, sortAsc } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { sortAsc } from '../utils/functions.js';
 
 const input = readInput();
 

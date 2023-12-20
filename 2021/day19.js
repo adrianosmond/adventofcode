@@ -1,5 +1,5 @@
+import readInput from '../utils/readInput.js';
 import {
-  readInput,
   manhattan3d,
   multilineStrToIntArrays,
   strToIntArray,

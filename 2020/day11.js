@@ -1,8 +1,5 @@
-import {
-  readInput,
-  inputToCharGrid,
-  splitAndMapInputLines,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { inputToCharGrid, splitAndMapInputLines } from '../utils/functions.js';
 
 const input = readInput();
 

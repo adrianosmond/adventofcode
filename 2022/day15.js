@@ -1,4 +1,5 @@
-import { readInput, manhattan, strToIntArray } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { manhattan, strToIntArray } from '../utils/functions.js';
 import { sum } from '../utils/reducers.js';
 
 const input = readInput();

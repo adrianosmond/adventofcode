@@ -1,4 +1,5 @@
-import { readInput, inputToCharGrid } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { inputToCharGrid } from '../utils/functions.js';
 import { highestByKey } from '../utils/reducers.js';
 
 const input = readInput();

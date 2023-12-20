@@ -1,8 +1,5 @@
-import {
-  multilineStrToIntArrays,
-  readInput,
-  strToIntArray,
-} from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { multilineStrToIntArrays, strToIntArray } from '../utils/functions.js';
 
 const input = readInput();
 

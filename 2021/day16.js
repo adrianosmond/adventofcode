@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 
-import { hexToBinaryStr, readInput } from '../utils/functions.js';
+import readInput from '../utils/readInput.js';
+import { hexToBinaryStr } from '../utils/functions.js';
 import { sum, product } from '../utils/reducers.js';
 
 const input = readInput();
