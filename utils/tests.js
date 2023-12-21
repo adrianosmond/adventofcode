@@ -12,18 +12,18 @@ export default (year, day, testCases) => {
     beforeEach(() => {
       jest.resetModules();
     });
-    testCases.forEach(([input, output1, output2], i) => {
+    testCases.forEach(([input, args1, output1, args2, output2], i) => {
       test(`Case ${i} - part 1`, async () => {
         mockRead.mockReturnValue(input);
         const { part1 } = await import(`../${year}/day${day}.js`);
-        expect(part1()).toBe(output1);
+        expect(part1(...args1)).toBe(output1);
       });
 
       if (output2) {
         test(`Case ${i} - part 2`, async () => {
           mockRead.mockReturnValue(input);
           const { part2 } = await import(`../${year}/day${day}.js`);
-          expect(part2()).toBe(output2);
+          expect(part2(...args2)).toBe(output2);
         });
       }
     });

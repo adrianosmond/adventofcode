@@ -7,6 +7,7 @@ const testCases = [
 %b -> c
 %c -> inv
 &inv -> a`,
+    [],
     32000000,
   ],
   [
@@ -15,6 +16,7 @@ const testCases = [
 &inv -> b
 %b -> con
 &con -> output`,
+    [],
     11687500,
   ],
 ];
