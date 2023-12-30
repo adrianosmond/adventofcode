@@ -16,8 +16,6 @@ grid.forEach((r) => {
 grid.unshift(Array(grid[0].length).fill('.'));
 grid.push(Array(grid[0].length).fill('.'));
 
-const loop = grid.map((r) => r.map(() => '.'));
-
 const start = gridToCells(grid)
   .filter(([cell]) => cell === 'S')
   .map(([, row, col]) => [row, col])[0];
@@ -38,14 +36,12 @@ if (connectsAbove && connectsLeft) grid[start[0]][start[1]] = 'J';
 if (connectsBelow && connectsLeft) grid[start[0]][start[1]] = '7';
 if (connectsBelow && connectsRight) grid[start[0]][start[1]] = 'F';
 
-export const part1 = () => {
+const followPipe = (cb) => {
   let [r, c] = start;
   let cameFrom = '';
-  let count = 0;
 
   do {
     const cell = grid[r][c];
-    loop[r][c] = '#';
     if (['-', 'L', 'F'].includes(cell) && cameFrom !== 'R') {
       c++; // move right
       cameFrom = 'L';
@@ -59,12 +55,21 @@ export const part1 = () => {
       r++; // move down
       cameFrom = 'U';
     }
-    count++;
+    cb(r, c);
   } while (r !== start[0] || c !== start[1]);
+};
+
+export const part1 = () => {
+  let count = 0;
+  followPipe(() => count++);
   return count / 2;
 };
 
 export const part2 = () => {
+  const loop = grid.map((r) => r.map(() => '.'));
+  followPipe((r, c) => {
+    loop[r][c] = '#';
+  });
   let count = 0;
   for (let r = 0; r < grid.length; r++) {
     let crossings = 0;

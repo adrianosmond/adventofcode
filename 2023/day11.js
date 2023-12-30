@@ -4,29 +4,34 @@ import { gridToCells, manhattan, inputToCharGrid } from '../utils/functions.js';
 const input = readInput();
 
 const galaxyGrid = inputToCharGrid(input);
-const galaxies = gridToCells(galaxyGrid)
-  .filter(([cell]) => cell === '#')
-  .map(([, row, col]) => ({
-    row,
-    col,
-    rowExpansion: 0,
-    colExpansion: 0,
-  }));
 
-const emptyRows = [...Array(galaxyGrid.length).keys()].filter(
-  (r) => !galaxies.some((g) => g.row === r),
-);
+const getInitialGalaxyState = () => {
+  const galaxies = gridToCells(galaxyGrid)
+    .filter(([cell]) => cell === '#')
+    .map(([, row, col]) => ({
+      row,
+      col,
+      rowExpansion: 0,
+      colExpansion: 0,
+    }));
 
-const emptyCols = [...Array(galaxyGrid[0].length).keys()].filter(
-  (c) => !galaxies.some((g) => g.col === c),
-);
+  const emptyRows = [...Array(galaxyGrid.length).keys()].filter(
+    (r) => !galaxies.some((g) => g.row === r),
+  );
 
-galaxies.forEach((g) => {
-  g.colExpansion = emptyCols.filter((c) => c < g.col).length;
-  g.rowExpansion = emptyRows.filter((r) => r < g.row).length;
-});
+  const emptyCols = [...Array(galaxyGrid[0].length).keys()].filter(
+    (c) => !galaxies.some((g) => g.col === c),
+  );
 
-const getDistance = () => {
+  galaxies.forEach((g) => {
+    g.colExpansion = emptyCols.filter((c) => c < g.col).length;
+    g.rowExpansion = emptyRows.filter((r) => r < g.row).length;
+  });
+
+  return galaxies;
+};
+
+const getDistance = (galaxies) => {
   let total = 0;
   for (let i = 0; i < galaxies.length; i++) {
     const g1 = galaxies[i];
@@ -39,22 +44,22 @@ const getDistance = () => {
 };
 
 export const part1 = () => {
+  const galaxies = getInitialGalaxyState();
   galaxies.forEach((g) => {
     g.col += g.colExpansion;
     g.row += g.rowExpansion;
   });
 
-  return getDistance();
+  return getDistance(galaxies);
 };
 
-export const part2 = () => {
-  // one million times larger !== one million expansions
-  // it's 999,999 expansions, but we already did one in p1
-  // so we'll do 999,998 instead
+export const part2 = (multiple = 1000000) => {
+  // one million times larger !== one million expansions, it's 999,999 expansions
+  const galaxies = getInitialGalaxyState();
   galaxies.forEach((g) => {
-    g.col += 999998 * g.colExpansion;
-    g.row += 999998 * g.rowExpansion;
+    g.col += (multiple - 1) * g.colExpansion;
+    g.row += (multiple - 1) * g.rowExpansion;
   });
 
-  return getDistance();
+  return getDistance(galaxies);
 };
