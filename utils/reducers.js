@@ -23,3 +23,8 @@ export const mergeObjects = (all, curr) => ({
 export const sum = (tot, curr) => tot + curr;
 export const sumByKey = (key) => (tot, curr) => tot + curr[key];
 export const product = (tot, curr) => tot * curr;
+
+export const countOccurrences = (acc, v) => ({
+  ...acc,
+  [v]: (acc[v] ?? 0) + 1,
+});
