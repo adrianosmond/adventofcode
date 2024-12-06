@@ -47,6 +47,14 @@ export const permutator = (inputArr) => {
   return permute(inputArr);
 };
 
+/**
+ * @template T
+ * @param {T[][]} grid
+ * @param {number} rowIdx
+ * @param {number} colIdx
+ * @param {boolean} [preserveOrder=false]
+ * @returns {([number, number, T] | null)[]}
+ */
 export const getNeighbours = (grid, rowIdx, colIdx, preserveOrder = false) => {
   const neighbours = [];
   if (rowIdx < grid.length - 1)
@@ -64,6 +72,13 @@ export const getNeighbours = (grid, rowIdx, colIdx, preserveOrder = false) => {
   return neighbours;
 };
 
+/**
+ * @template T
+ * @param {T[][]} grid
+ * @param {number} rowIdx
+ * @param {number} colIdx
+ * @returns {[number, number, T][]}
+ */
 export const getNeighboursWithDiagonals = (grid, rowIdx, colIdx) => {
   const neighbours = getNeighbours(grid, rowIdx, colIdx);
   if (rowIdx < grid.length - 1) {
@@ -95,6 +110,12 @@ export const sortAsc = (a, b) => a - b;
 
 export const sortDesc = (a, b) => b - a;
 
+/**
+ * @generator
+ * @template T
+ * @param {T[][]} grid
+ * @yields {[T, number, number]}
+ */
 export function* iterateOverGrid(grid) {
   for (let row = 0; row < grid.length; row++) {
     for (let col = 0; col < grid[row].length; col++) {
@@ -107,14 +128,32 @@ export function* iterateOverGrid(grid) {
 export const splitAndMapInputLines = (input, sep = ' ', fn = (x) => x) =>
   input.split('\n').map((line) => line.split(sep).map(fn));
 
+/**
+ * @param {string} str
+ * @param {string} sep
+ * @returns {number[][]}
+ */
 export const multilineStrToIntArrays = (str, sep = ' ') =>
   splitAndMapInputLines(str, sep, (number) => parseInt(number, 10));
 
+/**
+ * @param {string} str
+ * @returns {string[][]}
+ */
 export const inputToCharGrid = (str) => splitAndMapInputLines(str, '');
 
+/**
+ * @param {string} str
+ * @returns {number[][]}
+ */
 export const inputToIntGrid = (str) =>
   splitAndMapInputLines(str, '', (c) => parseInt(c, 10));
 
+/**
+ * @template T
+ * @param {T[][]} str
+ * @returns {[T, number. number][]}
+ */
 export const gridToCells = (grid) => {
   const result = [];
   for (const cell of iterateOverGrid(grid)) {
@@ -127,4 +166,8 @@ const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 
 const lcmPair = (a, b) => (a * b) / gcd(a, b);
 
+/**
+ * @param {number[]} numbers
+ * @returns {number}
+ */
 export const lcm = (numbers) => numbers.reduce((a, b) => lcmPair(a, b));
