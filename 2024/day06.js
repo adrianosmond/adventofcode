@@ -16,7 +16,6 @@ const startIdx = grid.flat().findIndex((c) => c === '^');
 const startRow = Math.floor(startIdx / grid[0].length);
 const startCol = startIdx % grid[0].length;
 grid[startRow][startCol] = '.';
-const visited = {};
 
 const move = (row, col, direction) => {
   let [rDiff, cDiff] = MOVEMENTS[direction];
@@ -46,7 +45,8 @@ const pathHasLoop = () => {
   return false;
 };
 
-export const part1 = () => {
+const findVisited = () => {
+  const visited = {};
   let row = startRow;
   let col = startCol;
   let direction = DIRECTIONS.UP;
@@ -55,12 +55,14 @@ export const part1 = () => {
     [row, col, direction] = move(row, col, direction);
   } while (notOnGridEdge(row, col));
   visited[`${row},${col}`] = true;
-  return Object.keys(visited).length;
+  return visited;
 };
+
+export const part1 = () => Object.keys(findVisited()).length;
 
 export const part2 = () => {
   let loopsFound = 0;
-  const path = Object.keys(visited);
+  const path = Object.keys(findVisited());
   path.shift(); // don't check the starting square
   path.forEach((v) => {
     const [r, c] = strToIntArray(v, ',');

@@ -19,4 +19,4 @@ const testCases = [
   ],
 ];
 
-runTests(2024, 5, testCases);
+runTests(2024, 6, testCases);
