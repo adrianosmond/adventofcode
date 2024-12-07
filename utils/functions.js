@@ -125,6 +125,12 @@ export function* iterateOverGrid(grid) {
   }
 }
 
+/**
+ * @param {string} str
+ * @param {string} sep
+ * @param {function} fn
+ * @returns {unknown[][]}
+ */
 export const splitAndMapInputLines = (input, sep = ' ', fn = (x) => x) =>
   input.split('\n').map((line) => line.split(sep).map(fn));
 
