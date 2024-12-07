@@ -1,0 +1,39 @@
+import readInput from '../utils/readInput.ts';
+import { strToIntArray } from '../utils/functions.ts';
+
+const input = strToIntArray(readInput(), ',');
+
+const intComputer = (intList: number[], noun: number, verb: number) => {
+  const program = [...intList];
+  program[1] = noun;
+  program[2] = verb;
+
+  let ptr = 0;
+  let opCode = program[ptr];
+  while (opCode !== 99) {
+    const p1 = program[ptr + 1];
+    const p2 = program[ptr + 2];
+    const p3 = program[ptr + 3];
+    if (opCode === 1) {
+      program[p3] = program[p1] + program[p2];
+    } else if (opCode === 2) {
+      program[p3] = program[p1] * program[p2];
+    }
+    ptr += 4;
+    opCode = program[ptr];
+  }
+  return program[0];
+};
+
+export const part1 = () => intComputer(input, 12, 2);
+
+export const part2 = () => {
+  for (let noun = 0; noun <= 99; noun += 1) {
+    for (let verb = 0; verb <= 99; verb += 1) {
+      if (intComputer(input, noun, verb) === 19690720) {
+        return 100 * noun + verb;
+      }
+    }
+  }
+  return 'failed';
+};

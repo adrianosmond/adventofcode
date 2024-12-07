@@ -1,0 +1,152 @@
+import readInput from '../utils/readInput.ts';
+import { sum } from '../utils/reducers.ts';
+
+let input = readInput();
+
+let inputLen = input.length;
+while (true) {
+  // things like "s<1158:R,R" are just a waste of time as it doesn't matter
+  // what the condition is, the outcome is the same either way.
+  input = input.replace(/[xmas][<>]\d+:R,R/g, 'R');
+  input = input.replace(/[xmas][<>]\d+:A,A/g, 'A');
+  if (input.length === inputLen) break;
+  inputLen = input.length;
+}
+
+type Item = { x: number; m: number; a: number; s: number };
+type Category = keyof Item;
+type Symbol = '<' | '>';
+type Condition =
+  | [Category, Symbol, number, string]
+  | [Category, Symbol, number]
+  | [string];
+const [w, i] = input.split('\n\n').map((x) => x.split('\n'));
+const workflows = Object.fromEntries(
+  w
+    .map((w) => w.replace('}', '').split('{'))
+    .map(([k, v]) => [
+      k,
+      v.split(',').map((condition) => {
+        if (condition.indexOf(':') < 0) return [condition]; // only have a destination
+        const [cont, dest] = condition.split(':');
+        return [
+          cont[0], // category e.g. x|m|a|s
+          cont[1], // symbol e.g. <|>
+          parseInt(cont.substring(2), 10), // value
+          dest,
+        ];
+      }),
+    ]),
+) as Record<string, Condition[]>;
+
+const items: Item[] = i
+  .map((i) => i.replace(/=/g, ':'))
+  .map((i) => i.replace(/([xmas])/g, '"$1"'))
+  .map((i) => JSON.parse(i));
+
+const countCombinations = (combinations: Condition[]) => {
+  const range = {
+    x: [1, 4000],
+    m: [1, 4000],
+    a: [1, 4000],
+    s: [1, 4000],
+  };
+  combinations.forEach((combi) => {
+    if (combi.length === 1) return;
+    const [category, symbol, val] = combi;
+    if (symbol === '<')
+      range[category][1] = Math.min(range[category][1], val - 1);
+    else range[category][0] = Math.max(range[category][0], val + 1);
+  });
+
+  return Object.values(range).reduce(
+    (total, [min, max]) => (1 + (max - min)) * total,
+    1,
+  );
+};
+
+const opposite = (
+  category: Category,
+  symbol: Symbol,
+  val: number,
+): Condition => {
+  if (symbol === '<') return [category, '>', val - 1];
+  return [category, '<', val + 1];
+};
+
+const traverseWorkflows = (
+  workflow: string,
+  conditionsFromPrevWorkflows: Condition[] = [],
+) => {
+  const conditionsFromThisWorkflow: Condition[] = [];
+  let combinations = 0;
+  for (const condition of workflows[workflow]) {
+    if (condition.length === 1) {
+      const dest = condition[0];
+      if (dest === 'R') {
+        // do nothing for a rejection
+      } else if (dest === 'A') {
+        combinations += countCombinations([
+          ...conditionsFromPrevWorkflows,
+          ...conditionsFromThisWorkflow,
+        ]);
+      } else {
+        combinations += traverseWorkflows(dest, [
+          ...conditionsFromPrevWorkflows,
+          ...conditionsFromThisWorkflow,
+        ]);
+      }
+    } else {
+      const [category, symbol, val, dest] = condition;
+      if (dest === 'A') {
+        combinations += countCombinations([
+          ...conditionsFromPrevWorkflows,
+          ...conditionsFromThisWorkflow,
+          [category, symbol, val],
+        ]);
+      } else if (dest === 'R') {
+        // do nothing for a rejection
+      } else if (dest) {
+        combinations += traverseWorkflows(dest, [
+          ...conditionsFromPrevWorkflows,
+          ...conditionsFromThisWorkflow,
+          [category, symbol, val],
+        ]);
+      }
+      // we're now moving on to the next option. in order for that
+      // to match, the opposite of this condition must be the case
+      conditionsFromThisWorkflow.push(opposite(category, symbol, val));
+    }
+  }
+  return combinations;
+};
+
+export const part1 = () => {
+  let total = 0;
+  items.forEach((item) => {
+    let w: string = 'in';
+    while (w !== 'R' && w !== 'A') {
+      for (const condition of workflows[w]) {
+        if (condition.length === 1) {
+          w = condition[0];
+          break;
+        }
+        if (condition.length === 3) throw new Error('Something went wrong');
+        const [category, symbol, val, dest] = condition;
+        if (symbol === '<' && item[category] < val) {
+          w = dest;
+          break;
+        }
+        if (symbol === '>' && item[category] > val) {
+          w = dest;
+          break;
+        }
+      }
+    }
+
+    if (w === 'A') total += Object.values(item).reduce(sum);
+  });
+  return total;
+};
+
+export const part2 = () => traverseWorkflows('in');

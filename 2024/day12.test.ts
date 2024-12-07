@@ -1,0 +1,66 @@
+import runTests, { type TestCase } from '../utils/tests.ts';
+
+const testCases: TestCase[] = [
+  [
+    `AAAA
+BBCD
+BBCC
+EEEC`,
+    [],
+    140,
+    [],
+    80,
+  ],
+  [
+    `OOOOO
+OXOXO
+OOOOO
+OXOXO
+OOOOO`,
+    [],
+    772,
+    [],
+    436,
+  ],
+  [
+    `RRRRIICCFF
+RRRRIICCCF
+VVRRRCCFFF
+VVRCCCJFFF
+VVVVCJJCFE
+VVIVCCJJEE
+VVIIICJJEE
+MIIIIIJJEE
+MIIISIJEEE
+MMMISSJEEE`,
+    [],
+    1930,
+    [],
+    1206,
+  ],
+  [
+    `EEEEE
+EXXXX
+EEEEE
+EXXXX
+EEEEE`,
+    [],
+    692,
+    [],
+    236,
+  ],
+  [
+    `AAAAAA
+AAABBA
+AAABBA
+ABBAAA
+ABBAAA
+AAAAAA`,
+    [],
+    1184,
+    [],
+    368,
+  ],
+];
+
+runTests(2024, 12, testCases);

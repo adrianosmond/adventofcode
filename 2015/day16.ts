@@ -1,0 +1,48 @@
+import readInput from '../utils/readInput.ts';
+
+const input = readInput();
+
+const parseProperty = (property: string): [string, number] => {
+  const [key, value] = property.split(': ');
+  return [key, parseInt(value, 10)];
+};
+
+const sues: Record<string, number>[] = input.split('\n').map((sue) =>
+  Object.fromEntries(
+    sue
+      .replace(/Sue (\d+):/, 'number: $1,')
+      .split(', ')
+      .map(parseProperty),
+  ),
+);
+
+const readout: Record<string, number> = {
+  children: 3,
+  cats: 7,
+  samoyeds: 2,
+  pomeranians: 3,
+  akitas: 0,
+  vizslas: 0,
+  goldfish: 5,
+  trees: 3,
+  cars: 2,
+  perfumes: 1,
+};
+
+export const part1 = () =>
+  sues.filter((sue) =>
+    Object.entries(sue).every(
+      ([prop, val]) => prop === 'number' || readout[prop] === val,
+    ),
+  )[0].number;
+
+export const part2 = () =>
+  sues.filter((sue) =>
+    Object.entries(sue).every(([prop, val]) => {
+      if (prop === 'number') return true;
+      if (['cats', 'trees'].includes(prop)) return val > readout[prop];
+      if (['pomeranians', 'goldfish'].includes(prop))
+        return val < readout[prop];
+      return readout[prop] === val;
+    }),
+  )[0].number;

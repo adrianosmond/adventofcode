@@ -4,7 +4,15 @@ Solutions to [advent of code](https://adventofcode.com) problems. A new one gets
 
 This isn't really designed for you to download and run, but if you really want to you'll need to provide your own input files. You can get yours from [advent of code](https://adventofcode.com). Put them in the same directory as the problem you want to run in a file named `inputXX.txt`, where XX is the two digit day of the month, e.g. `input02.txt` or `input24.txt`.
 
-Once you've done that you can run it via `node aoc.js YYYY/dayMM.js`, e.g. `node aoc.js 2020/day12.js`
+Once you've done that you can run it, though you'll need a runtime that can do TypeScript.
+
+### Node 22.6+
+`node --experimental-strip-types aoc.ts YYYY/dayMM.ts`
+e.g. `node --experimental-strip-types aoc.ts 2020/day12.ts`
+
+### Bun
+`bun aoc.ts YYYY/dayMM.ts`
+e.g. `bun aoc.ts 2020/day12.ts`
 
 ## Disclaimer
 
