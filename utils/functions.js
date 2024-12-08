@@ -168,7 +168,7 @@ export const gridToCells = (grid) => {
   return result;
 };
 
-const gcd = (a, b) => (!b ? a : gcd(b, a % b));
+export const gcd = (a, b) => (!b ? a : gcd(b, a % b));
 
 const lcmPair = (a, b) => (a * b) / gcd(a, b);
 
