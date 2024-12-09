@@ -23,6 +23,11 @@ export const manhattan = ([x1, y1], [x2, y2] = [0, 0]) =>
 export const manhattan3d = ([x1, y1, z1], [x2, y2, z2] = [0, 0, 0]) =>
   Math.abs(x1 - x2) + Math.abs(y1 - y2) + Math.abs(z1 - z2);
 
+/**
+ * @param {string} str
+ * @param {string} [sep='\n']
+ * @returns {number[]}
+ */
 export const strToIntArray = (str, sep = '\n') =>
   str.split(sep).map((number) => parseInt(number, 10));
 
