@@ -7,6 +7,9 @@
   "env": {
     "jest/globals": true
   },
+  "globals":{
+    "BigInt": true
+  },
   "rules": {
     "import/extensions": ["error", "always"],
     "prettier/prettier": ["error"],
